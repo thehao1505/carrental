@@ -32,7 +32,7 @@ export function HeroSection() {
           <h2 className='text-4xl md:text-5xl font-serif italic text-moss-500 mb-6'>
             Chuyên nghiệp.
           </h2>
-          <p className='text-forest-500 w-[450px] text-xl mb-8'>
+          <p className='text-forest-500 max-w-[450px] md:max-w-full text-xl mb-8'>
             Cho thuê xe ô tô tự lái và có tài tại Dịch vụ du lịch Đại Dương - Đa
             dạng xe 4-45 chỗ, giá tốt, thủ tục nhanh, giao xe tận nơi. Đặt xe dễ
             dàng chỉ trong vài phút!
