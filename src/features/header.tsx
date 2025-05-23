@@ -5,6 +5,7 @@ import { Avatar, AvatarImage } from '@radix-ui/react-avatar';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
+import { ContactButton } from './contact-button';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,16 +24,19 @@ export default function Header() {
         <nav className='hidden md:flex gap-4'>
           <Link
             href='/gioi-thieu'
-            className='text-base font-bold text-forest-500'
+            className='text-base font-bold text-forest-500 hover:scale-105 transition-all duration-200'
           >
             Giới thiệu
           </Link>
-          <Link href='/tin-tuc' className='text-base font-bold text-forest-500'>
+          <Link
+            href='/tin-tuc'
+            className='text-base font-bold text-forest-500 hover:scale-105 transition-all duration-200'
+          >
             Tin tức
           </Link>
           <Link
             href='/bang-gia'
-            className='text-base font-bold text-forest-500'
+            className='text-base font-bold text-forest-500 hover:scale-105 transition-all duration-200'
           >
             Bảng giá
           </Link>
@@ -40,9 +44,7 @@ export default function Header() {
       </div>
 
       <div className='flex items-center gap-4'>
-        <button className='bg-forest-500 text-sm font-semibold px-6 py-2 rounded-3xl h-[50px] text-lemon-500'>
-          Liên hệ
-        </button>
+        <ContactButton />
 
         <Avatar className='hidden xl:block w-12 h-12 rounded-full overflow-hidden'>
           <AvatarImage
@@ -61,15 +63,21 @@ export default function Header() {
 
       {isOpen && (
         <div className='absolute top-[90px] left-0 w-full bg-white border-t px-6 py-4 flex flex-col gap-4 xl:hidden z-50'>
-          <Link href='/' className='text-sm font-bold text-forest-500'>
+          <Link
+            href='/gioi-thieu'
+            onClick={() => setIsOpen(false)}
+            className='text-sm font-bold text-forest-500 hover:scale-105 transition-all duration-200'
+          >
             Giới thiệu
           </Link>
-          <Link href='/' className='text-sm font-bold text-forest-500'>
+          <Link
+            href='/tin-tuc'
+            onClick={() => setIsOpen(false)}
+            className='text-sm font-bold text-forest-500 hover:scale-105 transition-all duration-200'
+          >
             Tin tức
           </Link>
-          <button className='bg-forest-500 text-sm font-semibold px-6 py-2 rounded-3xl text-lemon-500 w-fit'>
-            Liên hệ
-          </button>
+          <ContactButton />
         </div>
       )}
     </header>

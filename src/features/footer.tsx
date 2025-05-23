@@ -1,6 +1,11 @@
+'use client';
+
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export default function Footer() {
+  const router = useRouter();
+
   return (
     <footer className='bg-forest-500 text-white px-6 md:px-10 xl:px-30 pt-12'>
       <div className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12'>
@@ -41,10 +46,30 @@ export default function Footer() {
         <div>
           <h5 className='font-semibold mb-4'>Trang</h5>
           <ul className='space-y-2 text-moss-100'>
-            <li className='text-lemon-400'>Trang chủ</li>
-            <li>Giới thiệu</li>
-            <li>Tin tức</li>
-            <li>Liên hệ</li>
+            <li
+              onClick={() => router.push('/')}
+              className='transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline'
+            >
+              Trang chủ
+            </li>
+            <li
+              onClick={() => router.push('/gioi-thieu')}
+              className='transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline'
+            >
+              Giới thiệu
+            </li>
+            <li
+              onClick={() => router.push('/tin-tuc')}
+              className='transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline'
+            >
+              Tin tức
+            </li>
+            <li
+              onClick={() => router.push('/lien-he')}
+              className='transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline'
+            >
+              Liên hệ
+            </li>
           </ul>
         </div>
         <div>

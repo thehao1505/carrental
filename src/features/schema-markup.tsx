@@ -9,7 +9,7 @@ export default function SchemaMarkup() {
     script.innerHTML = JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'TravelAgency',
-      name: 'DVDL Đại Dương',
+      name: 'Đại Dương Travel',
       url: 'https://yourdomain.com',
       logo: 'https://yourdomain.com/logo-light.png',
       description:

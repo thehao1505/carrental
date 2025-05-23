@@ -10,16 +10,16 @@ export default function SubHeader() {
           <PhoneCall size={16} />
         </p>
         <span className='text-white'>0941 437 070</span>
-        <p className='text-white'>
+        <p className='hidden md:block text-white'>
           <Mail size={16} />
         </p>
-        <span className='text-white'>thehao155@gmail.com</span>
+        <span className='text-white hidden md:block'>thehao155@gmail.com</span>
       </div>
       <div className='flex flex-row items-center gap-2 text-sm'>
-        <p className='text-white'>
+        <p className='hidden md:block text-white'>
           <MapPin size={16} />
         </p>
-        <span className='text-white'>
+        <span className='text-white hidden md:block'>
           252/6 Phan Huy Chú, Buôn Ma Thuột, Đắk Lắk
         </span>
       </div>

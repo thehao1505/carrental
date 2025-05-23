@@ -62,7 +62,7 @@ export default function ThueXePage() {
         </h3>
         <Link
           href='/lien-he'
-          className='inline-block bg-forest-500 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition'
+          className='inline-block bg-forest-500 px-8 py-3 text-lemon-500 rounded-full text-lg font-semibold hover:bg-forest-600 transition hover:scale-105'
         >
           Liên hệ ngay
         </Link>

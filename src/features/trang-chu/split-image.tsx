@@ -32,29 +32,18 @@ export function HeroSection() {
           <h2 className='text-4xl md:text-5xl font-serif italic text-moss-500 mb-6'>
             Chuyên nghiệp.
           </h2>
-          <p className='text-forest-500 max-w-[450px] md:max-w-full text-xl mb-8'>
-            Cho thuê xe ô tô tự lái và có tài tại Dịch vụ du lịch Đại Dương - Đa
+          <p className='text-forest-500 max-w-[450px] md:max-w-[450px] text-xl mb-8'>
+            Cho thuê xe ô tô tự lái và có tài tại Đại Dương Travel - Đa
             dạng xe 4-45 chỗ, giá tốt, thủ tục nhanh, giao xe tận nơi. Đặt xe dễ
             dàng chỉ trong vài phút!
           </p>
           <div className='flex flex-col'>
-            <p className='font-bold mb-3'>
-              Liên hệ ngay qua zalo hoặc số điện thoại bên dưới:
-            </p>
-            <div className='flex gap-6'>
-              <button
-                onClick={() => router.push('/bang-gia')}
-                className='bg-green-900 hover:bg-green-800 text-lemon-500 font-medium py-3 px-8 rounded-full cursor-pointer'
-              >
-                Bảng giá
-              </button>
-              <button
-                onClick={() => router.push('https://zalo.me/0941437070')}
-                className='bg-green-900 hover:bg-green-800 text-lemon-500 font-medium py-3 px-8 rounded-full cursor-pointer'
-              >
-                Zalo
-              </button>
-            </div>
+            <button
+              onClick={() => {router.push('/lien-he')}}
+              className='bg-forest-500 cursor-pointer h-[50px] text-base font-semibold px-6 py-2 rounded-3xl text-lemon-500 w-fit hover:scale-105 transition-all duration-200 transform'
+            >
+              Liên hệ ngay
+            </button>
           </div>
         </div>
       </div>

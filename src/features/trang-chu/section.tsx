@@ -64,10 +64,10 @@ export default function StatsGrid() {
               backgroundPosition: 'center',
             }}
           >
-            <div className='absolute inset-0 bg-moss-500/90 flex flex-col justify-center items-center text-center text-lime-300 p-4'>
+            <div className='absolute inset-0 bg-moss-500/80 hover:bg-moss-500/30 hover:scale-105 transition-all duration-300 flex flex-col justify-center items-center text-center text-lime-300 p-4'>
               <h2 className='text-3xl font-bold'>{item.value}</h2>
               <h4 className='text-lg font-semibold mt-2'>{item.title}</h4>
-              <p className='text-sm text-lime-200 mt-1'>{item.description}</p>
+              <p className='text-sm mt-1 '>{item.description}</p>
             </div>
           </div>
         ))}

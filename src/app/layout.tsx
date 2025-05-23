@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/features/header";
 import Footer from "@/features/footer";
 import SubHeader from "@/features/sub-header";
+import FloatingContactButtons from "@/features/floating-button";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +43,9 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <FloatingContactButtons 
+          phoneNumber="0941437070"
+        />
       </body>
     </html>
   );

@@ -29,7 +29,7 @@ export default function Testimonials() {
                   <p className='font-semibold text-green-900'>{item.name}</p>
                   <p className='text-gray-600 text-sm'>{item.position}</p>
                 </div>
-                <p className='text-xl italic font-serif text-green-900 mb-4'>
+                <p className='text-xl italic text-green-900 mb-4'>
                   {item.quote}
                 </p>
               </div>
