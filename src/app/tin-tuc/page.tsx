@@ -45,7 +45,7 @@ export default function TinTucPage() {
               <div className='p-5 space-y-2'>
                 <span className='text-sm text-gray-500'>{article.date}</span>
                 <h2 className='text-lg font-semibold text-forest-600'>
-                  {article.title.length > 60 ? article.title.slice(0, 55) + '...' : article.title}
+                  {article.title.length > 60 ? article.title.slice(0, 50) + '...' : article.title}
                 </h2>
                 <p className='text-sm text-gray-600'>
                   {article.excerpt.length > 140 ? article.excerpt.slice(0, 137) + '...' : article.excerpt}

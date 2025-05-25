@@ -77,6 +77,13 @@ export default function Header() {
           >
             Tin tức
           </Link>
+          <Link
+            href='/bang-gia'
+            onClick={() => setIsOpen(false)}
+            className='text-sm font-bold text-forest-500 hover:scale-105 transition-all duration-200'
+          >
+            Bảng giá
+          </Link>
           <ContactButton />
         </div>
       )}

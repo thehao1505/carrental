@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { ContactButton } from '@/features/contact-button';
+import Link from 'next/link';
 
 export function BangGiaCard() {
   return (
@@ -413,7 +413,12 @@ export function BangGiaCard() {
         <p className='mb-6 text-gray-600'>
           Liên hệ chúng tôi để nhận báo giá ưu đãi và hỗ trợ tận tâm.
         </p>
-        <ContactButton />
+        <Link
+          href='/lien-he'
+          className='inline-block bg-forest-500 text-lemon-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition hover:scale-105'
+        >
+          Liên hệ ngay
+        </Link>
       </section>
     </main>
   );

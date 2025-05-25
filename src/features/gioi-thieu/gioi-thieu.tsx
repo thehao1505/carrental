@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { Car, Settings, BadgeCheck, Users } from 'lucide-react';
-import { ContactButton } from '@/features/contact-button';
 import SchemaMarkup from '@/features/schema-markup';
 
 const coreValues = [
@@ -265,7 +265,7 @@ export default function GioiThieuCard() {
             </div>
           </div>
         </section>
-        {/* Liên hệ */}
+
         <section className='max-w-5xl mx-auto px-6 py-16 text-center'>
           <h2 className='text-3xl font-bold text-forest-600 mb-4'>
             Sẵn sàng cho hành trình tiếp theo?
@@ -274,7 +274,12 @@ export default function GioiThieuCard() {
             Liên hệ với chúng tôi để được tư vấn và lên kế hoạch cho chuyến đi
             mơ ước của bạn ngay hôm nay!
           </p>
-          <ContactButton />
+          <Link
+            href='/lien-he'
+            className='inline-block bg-forest-500 text-lemon-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition hover:scale-105'
+          >
+            Liên hệ ngay
+          </Link>
         </section>
         <SchemaMarkup />
       </main>

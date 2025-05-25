@@ -30,31 +30,10 @@ export default function ThueXePage() {
         />
       </div>
 
-      <p className='text-lg mb-6 text-gray-700'>{xe.description}</p>
-
-      <div className='grid md:grid-cols-2 gap-8 mb-12'>
-        <div>
-          <h2 className='text-xl font-semibold text-moss-600 mb-2'>
-            Thông số kỹ thuật
-          </h2>
-          <ul className='list-disc pl-6 space-y-2 text-gray-700'>
-            {xe.specs.map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h2 className='text-xl font-semibold text-moss-600 mb-2'>
-            Lý do nên chọn
-          </h2>
-          <ul className='list-disc pl-6 space-y-2 text-gray-700'>
-            {xe.advantages.map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <article
+        className='prose prose-sm md:prose-base prose-forest max-w-none'
+        dangerouslySetInnerHTML={{ __html: xe.content }}
+      />
 
       <div className='text-center mt-10'>
         <h3 className='text-lg text-moss-500 mb-4'>
@@ -62,7 +41,7 @@ export default function ThueXePage() {
         </h3>
         <Link
           href='/lien-he'
-          className='inline-block bg-forest-500 px-8 py-3 text-lemon-500 rounded-full text-lg font-semibold hover:bg-forest-600 transition hover:scale-105'
+          className='inline-block bg-forest-500 text-lemon-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition hover:scale-105'
         >
           Liên hệ ngay
         </Link>

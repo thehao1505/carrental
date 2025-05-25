@@ -136,7 +136,7 @@ export default function LienHeCard() {
               : 'bg-red-100 text-red-700'}`}>
               {message}
             </div>
-          )}
+          )} 
 
           <input
             type='text'
