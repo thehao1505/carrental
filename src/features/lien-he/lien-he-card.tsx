@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, MapPin, Phone, MessageSquareText } from "lucide-react";
+import { Mail, MapPin, Phone, MessageSquareText, Facebook } from "lucide-react";
 import Link from "next/link";
 import { ChangeEvent, FormEvent, useState } from "react";
 
@@ -108,7 +108,24 @@ export default function LienHeCard() {
             <MapPin className="text-moss-500 mt-1" />
             <div>
               <p className="font-semibold">Địa chỉ</p>
-              <p className="text-gray-700">Buôn Ma Thuột, Đắk Lắk</p>
+              <a
+                href="https://maps.app.goo.gl/7AeopSFXS4vKVxwL6"
+                className="text-forest-500  hover:underline"
+              >
+                Buôn Ma Thuột, Đắk Lắk
+              </a>
+            </div>
+          </div>
+          <div className="flex items-start gap-4">
+            <Facebook className="text-moss-500 mt-1" />
+            <div>
+              <p className="font-semibold">Facebook</p>
+              <a
+                href="https://www.facebook.com/share/1AczYur4wu/"
+                className="text-forest-500  hover:underline"
+              >
+                Liên hệ ngay với tài xế
+              </a>
             </div>
           </div>
         </div>
