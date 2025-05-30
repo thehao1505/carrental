@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import {
-  Geist,
-  Geist_Mono,
-} from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/features/header";
 import Footer from "@/features/footer";
@@ -21,14 +18,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Đại Dương Travel",
+  title: "DVDL Đại Dương Ban Mê",
   description:
-    "Khám phá hành trình du lịch cùng Đại Dương Travel - chuyên tour nội địa, thuê xe đời mới, tổ chức team building và sự kiện trọn gói.",
+    "Khám phá hành trình du lịch cùng DVDL Đại Dương Ban Mê - chuyên tour nội địa, thuê xe đời mới, tổ chức team building và sự kiện trọn gói.",
   keywords: [
     // TODO: nhét thêm keywords
     "du lịch Buôn Ma Thuột",
     "thuê xe du lịch",
-    "Đại Dương Travel",
+    "DVDL Đại Dương Ban Mê",
     "tour Daklak",
   ],
 };
@@ -40,9 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <SubHeader />
         <Header />
         {children}

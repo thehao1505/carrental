@@ -1,8 +1,8 @@
 export const carRentalData = [
   {
-    slug: 'thuexe-4-cho',
-    title: 'Thuê xe 4 chỗ tại Buôn Ma Thuột',
-    image: '/images/thuexe-4-cho.jpg',
+    slug: "thuexe-4-cho",
+    title: "Thuê xe 4 chỗ tại Buôn Ma Thuột",
+    image: "/images/thuexe-4-cho.jpg",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
@@ -84,9 +84,9 @@ export const carRentalData = [
     `,
   },
   {
-    slug: 'thuexe-7-cho',
-    title: 'Thuê xe 7 chỗ tại Buôn Ma Thuột',
-    image: '/images/thuexe-7-cho.png',
+    slug: "thuexe-7-cho",
+    title: "Thuê xe 7 chỗ tại Buôn Ma Thuột",
+    image: "/images/thuexe-7-cho.png",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
@@ -173,12 +173,12 @@ export const carRentalData = [
           </table>
         </div>
       </div>
-    `
+    `,
   },
   {
-    slug: 'thuexe-16-cho',
-    title: 'Thuê xe 16 chỗ tại Buôn Ma Thuột',
-    image: '/images/thuexe-16-cho.jpg',
+    slug: "thuexe-16-cho",
+    title: "Thuê xe 16 chỗ tại Buôn Ma Thuột",
+    image: "/images/thuexe-16-cho.jpg",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
@@ -268,9 +268,9 @@ export const carRentalData = [
     `,
   },
   {
-    slug: 'thuexe-29-cho',
-    title: 'Thuê xe 29 chỗ tại Buôn Ma Thuột',
-    image: '/images/thuexe-29-cho.jpg',
+    slug: "thuexe-29-cho",
+    title: "Thuê xe 29 chỗ tại Buôn Ma Thuột",
+    image: "/images/thuexe-29-cho.jpg",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
@@ -340,12 +340,12 @@ export const carRentalData = [
             <tbody class="text-sm">
               <tr>
                 <td class="px-4 py-2 border">Thuê 1 ngày nội thành</td>
-                <td class="px-4 py-2 border">1.500.000 - 1.800.000</td>
+                <td class="px-4 py-2 border">1.900.000 - 2.500.000</td>
                 <td class="px-4 py-2 border">Tối đa 100km, 8 tiếng</td>
               </tr>
               <tr>
                 <td class="px-4 py-2 border">Đi ngoại tỉnh (Măng Đen, Pleiku…)</td>
-                <td class="px-4 py-2 border">2.500.000 - 3.200.000</td>
+                <td class="px-4 py-2 border">2.900.000 - 3.500.000</td>
                 <td class="px-4 py-2 border">Tùy quãng đường</td>
               </tr>
               <tr>
@@ -357,12 +357,12 @@ export const carRentalData = [
           </table>
         </div>
       </div>
-    `
+    `,
   },
   {
-    slug: 'thuexe-45-cho',
-    title: 'Thuê xe 45 chỗ tại Buôn Ma Thuột',
-    image: '/images/thuexe-45-cho.jpg',
+    slug: "thuexe-45-cho",
+    title: "Thuê xe 45 chỗ tại Buôn Ma Thuột",
+    image: "/images/thuexe-45-cho.jpg",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
@@ -450,12 +450,12 @@ export const carRentalData = [
           </table>
         </div>
       </div>
-    `
+    `,
   },
   {
-    slug: 'thuexe-limousine',
-    title: 'Thuê xe limousine tại Buôn Ma Thuột',
-    image: '/images/thuexe-limousine.jpg',
+    slug: "thuexe-limousine",
+    title: "Thuê xe limousine tại Buôn Ma Thuột",
+    image: "/images/thuexe-limousine.jpg",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
@@ -533,6 +533,6 @@ export const carRentalData = [
           </table>
         </div>
       </div>
-    `
+    `,
   },
 ];

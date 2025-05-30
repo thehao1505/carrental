@@ -456,7 +456,7 @@ export const articles = [
             Một nhà cung cấp uy tín sẽ giúp chuyến đi của bạn suôn sẻ và an toàn hơn rất nhiều.
           </p>
           <p class="mb-4">
-            Đại Dương Travel chúng tôi tự tin là một nhà cung cấp dịch vụ uy tín, tận tâm và chuyên nghiệp, giúp chuyến đi của bạn an toàn và thoải mái nhất.
+            DVDL Đại Dương Ban Mê chúng tôi tự tin là một nhà cung cấp dịch vụ uy tín, tận tâm và chuyên nghiệp, giúp chuyến đi của bạn an toàn và thoải mái nhất.
           </p>
           
           <div class="space-y-4">
@@ -474,7 +474,7 @@ export const articles = [
               <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div> 
                   <p class="mb-2">• <strong>Nationwide:</strong> Avis, Hertz, Budget</p>
-                  <p class="mb-2">• <strong>Địa phương:</strong> Đại Dương Travel</p>
+                  <p class="mb-2">• <strong>Địa phương:</strong> DVDL Đại Dương Ban Mê</p>
                 </div>
                 <div>
                   <p class="mb-2">• <strong>Online:</strong> Mioto, TIMO</p>

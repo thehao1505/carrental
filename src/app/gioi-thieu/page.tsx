@@ -1,38 +1,35 @@
-
-import { Metadata } from 'next';
-import GioiThieuCard from '@/features/gioi-thieu/gioi-thieu';
+import { Metadata } from "next";
+import GioiThieuCard from "@/features/gioi-thieu/gioi-thieu";
 
 export const metadata: Metadata = {
-  title: 'Giới Thiệu | Đại Dương Travel',
+  title: "Giới Thiệu | DVDL Đại Dương Ban Mê",
   description:
-    'Khám phá hành trình du lịch cùng Đại Dương Travel - chuyên tour nội địa, thuê xe đời mới, tổ chức team building và sự kiện trọn gói.',
+    "Khám phá hành trình du lịch cùng DVDL Đại Dương Ban Mê - chuyên tour nội địa, thuê xe đời mới.",
   keywords: [
-    'du lịch Buôn Ma Thuột',
-    'thuê xe du lịch',
-    'Đại Dương Travel',
-    'tour Daklak',
-    'tour riêng BMT',
-    'tổ chức sự kiện Đắk Lắk',
-    'dịch vụ du lịch Daklak',
+    "du lịch Buôn Ma Thuột",
+    "thuê xe du lịch",
+    "DVDL Đại Dương Ban Mê",
+    "tour Daklak",
+    "tour riêng BMT",
+    "tổ chức sự kiện Đắk Lắk",
+    "dịch vụ du lịch Daklak",
   ],
   openGraph: {
-    title: 'Giới Thiệu | Đại Dương Travel',
+    title: "Giới Thiệu | DVDL Đại Dương Ban Mê",
     description:
-      'Chúng tôi mang đến trải nghiệm du lịch cá nhân hóa, an toàn, minh bạch và tận tâm.',
+      "Chúng tôi mang đến trải nghiệm du lịch cá nhân hóa, an toàn, minh bạch và tận tâm.",
     images: [
       {
-        url: '/logo-light.png',
+        url: "/logo-light.png",
         width: 800,
         height: 600,
-        alt: 'Logo Đại Dương Travel',
+        alt: "Logo DVDL Đại Dương Ban Mê",
       },
     ],
-    type: 'website',
+    type: "website",
   },
 };
 
 export default function GioiThieu() {
-  return (
-    <GioiThieuCard />
-  );
+  return <GioiThieuCard />;
 }

@@ -25,9 +25,7 @@ export default function Footer() {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -74,17 +72,11 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         <div>
           <div className="flex items-center gap-2">
-            <Image
-              src="/images/logo-light.png"
-              alt="logo"
-              width={200}
-              height={100}
-            />
+            <Image src="/images/logo-light.png" alt="logo" width={200} height={100} />
           </div>
           <p className="text-sm text-moss-100 max-w-sm">
-            Dịch vụ thuê xe uy tín, nhanh chóng, giá hợp lý, từ xe tự lái đến có
-            tài xế. Đặt xe dễ dàng chỉ trong vài phút, sẵn sàng đồng hành cùng
-            bạn trên mọi hành trình!
+            Dịch vụ thuê xe uy tín, nhanh chóng, giá hợp lý. Đặt xe dễ dàng chỉ trong vài phút, sẵn
+            sàng đồng hành cùng bạn trên mọi hành trình!
           </p>
         </div>
 
@@ -197,25 +189,24 @@ export default function Footer() {
           <ul className="space-y-2 text-moss-100">
             <li>
               <a
-                href="tel:0941437070"
+                href="https://www.facebook.com/share/1AczYur4wu/"
                 className="hover:text-lemon-400 hover:underline"
               >
+                Facebook
+              </a>
+            </li>
+            <li>
+              <a href="tel:0941437070" className="hover:text-lemon-400 hover:underline">
                 0941 437 070
               </a>
             </li>
             <li>
-              <a
-                href="mailto:thehao155@gmail.com"
-                className="hover:text-lemon-400 hover:underline"
-              >
+              <a href="mailto:thehao155@gmail.com" className="hover:text-lemon-400 hover:underline">
                 thehao155@gmail.com
               </a>
             </li>
             <li>
-              <a
-                href="https://zalo.me/0941437070"
-                className="hover:text-lemon-400 hover:underline"
-              >
+              <a href="https://zalo.me/0941437070" className="hover:text-lemon-400 hover:underline">
                 Zalo: 0941 437 070
               </a>
             </li>
@@ -234,9 +225,8 @@ export default function Footer() {
       </div>
 
       <div className="py-3 text-center text-sm text-moss-100 border-t border-moss-100/20">
-        Copyright © Dai Duong Travel | Powered by{" "}
-        <span className="text-lemon-400">The Hao</span> | Designed by The Hao
-        Nguyen
+        Copyright © DVDL Đại Dương Ban Mê | Powered by{" "}
+        <span className="text-lemon-400">The Hao</span> | Designed by The Hao Nguyen
       </div>
     </footer>
   );

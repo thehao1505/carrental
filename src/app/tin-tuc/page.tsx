@@ -1,66 +1,35 @@
-'use client';
+import { Metadata } from "next";
+import { TinTucCard } from "@/features/tin-tuc/tin-tuc-card";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { articles } from '@/lib/data';
+export const metadata: Metadata = {
+  title: "Tin Tức | DVDL Đại Dương Ban Mê",
+  description:
+    "Khám phá hành trình du lịch cùng DVDL Đại Dương Ban Mê - chuyên tour nội địa, thuê xe đời mới.",
+  keywords: [
+    "du lịch Buôn Ma Thuột",
+    "thuê xe du lịch",
+    "DVDL Đại Dương Ban Mê",
+    "tour Daklak",
+    "tour riêng BMT",
+    "tổ chức sự kiện Đắk Lắk",
+    "dịch vụ du lịch Daklak",
+  ],
+  openGraph: {
+    title: "Tin Tức | DVDL Đại Dương Ban Mê",
+    description:
+      "Chúng tôi mang đến trải nghiệm du lịch cá nhân hóa, an toàn, minh bạch và tận tâm.",
+    images: [
+      {
+        url: "/logo-light.png",
+        width: 800,
+        height: 600,
+        alt: "Logo DVDL Đại Dương Ban Mê",
+      },
+    ],
+    type: "website",
+  },
+};
 
 export default function TinTucPage() {
-  const router = useRouter();
-  
-  return (
-    <main className='text-gray-800'>
-      <section className='relative h-[350px] w-full'>
-        <Image
-          src='/images/phongcanh.jpg'
-          alt='Giới thiệu công ty du lịch'
-          fill
-          className='object-cover'
-          priority
-        />
-        <div className='absolute inset-0 bg-black/50 flex items-center justify-center'>
-          <h1 className='text-4xl md:text-5xl text-white font-bold text-center px-4'>
-            Tin Tức & Cẩm Nang Du Lịch
-          </h1>
-        </div>
-      </section>
-
-      <section className='max-w-5xl mx-auto px-6 py-12'>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-          {articles.map((article, idx) => (
-            <div
-              key={idx}
-              onClick={() => {
-                router.push(`/tin-tuc/${article.slug}`);
-              }}
-              className='border rounded-xl shadow-sm overflow-hidden bg-white hover:shadow-md hover:scale-105 transition-all duration-300 cursor-pointer'
-            >
-              <Image
-                src={article.image}
-                alt={article.title}
-                width={400}
-                height={240}
-                className='w-full h-[200px] object-cover'
-              />
-              <div className='p-5 space-y-2'>
-                <span className='text-sm text-gray-500'>{article.date}</span>
-                <h2 className='text-lg font-semibold text-forest-600'>
-                  {article.title.length > 60 ? article.title.slice(0, 50) + '...' : article.title}
-                </h2>
-                <p className='text-sm text-gray-600'>
-                  {article.excerpt.length > 140 ? article.excerpt.slice(0, 137) + '...' : article.excerpt}
-                </p>
-                <Link
-                  href={`/tin-tuc/${article.slug}`}
-                  className='inline-block text-forest-500 text-sm font-medium hover:underline mt-2'
-                >
-                  Xem chi tiết →
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    </main>
-  );
+  return <TinTucCard />;
 }

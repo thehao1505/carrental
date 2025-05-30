@@ -1,57 +1,35 @@
-'use client';
+import { BaiVietCard } from "@/features/tin-tuc/tin-tuc-slug-card";
+import { Metadata } from "next";
 
-import { notFound, useParams } from 'next/navigation';
-import Image from 'next/image';
-import Link from 'next/link';
-import { articles } from '@/lib/data';
-import { useEffect, useState } from 'react';
+export const metadata: Metadata = {
+  title: "Tin Tức | DVDL Đại Dương Ban Mê",
+  description:
+    "Khám phá hành trình du lịch cùng DVDL Đại Dương Ban Mê - chuyên tour nội địa, thuê xe đời mới.",
+  keywords: [
+    "du lịch Buôn Ma Thuột",
+    "thuê xe du lịch",
+    "DVDL Đại Dương Ban Mê",
+    "tour Daklak",
+    "tour riêng BMT",
+    "tổ chức sự kiện Đắk Lắk",
+    "dịch vụ du lịch Daklak",
+  ],
+  openGraph: {
+    title: "Tin Tức | DVDL Đại Dương Ban Mê",
+    description:
+      "Chúng tôi mang đến trải nghiệm du lịch cá nhân hóa, an toàn, minh bạch và tận tâm.",
+    images: [
+      {
+        url: "/logo-light.png",
+        width: 800,
+        height: 600,
+        alt: "Logo DVDL Đại Dương Ban Mê",
+      },
+    ],
+    type: "website",
+  },
+};
 
 export default function BaiViet() {
-  const params = useParams();
-  const post = articles.find((p) => p.slug === params.slug);
-  const [date, setDate] = useState('');
-
-  useEffect(() => {
-    const dateString = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toLocaleDateString('vi-VN');
-    setDate(dateString);
-  }, []);
-
-  if (!post) return notFound();
-
-  return (
-    <main className='max-w-3xl mx-auto px-6 py-12 text-gray-800'>
-      <Link
-        href='/tin-tuc'
-        className='text-sm text-forest-500 hover:underline mb-6 inline-block'
-      >
-        ← Quay lại Tin tức
-      </Link>
-
-      <h1 className='text-3xl font-bold text-forest-600 mb-4'>{post.title}</h1>
-      <p className='text-sm text-gray-500 mb-6'>{date || post.date}</p>
-      <Image
-        src={post.image}
-        alt={post.title}
-        width={800}
-        height={400}
-        className='rounded-xl mb-6 w-full h-auto object-cover'
-      />
-      <article
-        className='prose prose-sm md:prose-base prose-forest max-w-none'
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
-
-      <div className='text-center mt-10'>
-        <h3 className='text-lg text-moss-500 mb-4'>
-          Bạn cần đặt xe hoặc báo giá?
-        </h3>
-        <Link
-          href='/lien-he'
-          className='inline-block bg-forest-500 text-lemon-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition hover:scale-105'
-        >
-          Liên hệ ngay
-        </Link>
-      </div>
-    </main>
-  );
+  return <BaiVietCard />;
 }
