@@ -58,14 +58,17 @@ export default function Footer() {
           phone: "",
           content: "",
         });
+
+        if (
+          typeof window !== "undefined" &&
+          typeof window.gtag === "function"
+        ) {
+          window.gtag("event", "conversion", {
+            send_to: "AW-17576533976/8vc5CJ-d9agbENi_kr1B",
+          });
+        }
       } else {
         setMessage(data.message || "Có lỗi xảy ra. Vui lòng thử lại.");
-      }
-
-      if (typeof window !== "undefined" && (window as any).gtag) {
-        (window as any).gtag("event", "conversion", {
-          send_to: "AW-17576533976/8vc5CJ-d9agbENi_kr1B",
-        });
       }
     } catch (error) {
       console.error("Form submission error:", error);
