@@ -4,7 +4,7 @@ interface Window {
     eventName: string,
     eventParams: {
       send_to: string;
-      [key: string]: any;
+      [key: string]: unknown;
     }
   ) => void;
 }
