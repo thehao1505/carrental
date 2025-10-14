@@ -25,7 +25,9 @@ export default function Footer() {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -59,6 +61,12 @@ export default function Footer() {
       } else {
         setMessage(data.message || "Có lỗi xảy ra. Vui lòng thử lại.");
       }
+
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("event", "conversion", {
+          send_to: "AW-17576533976/8vc5CJ-d9agbENi_kr1B",
+        });
+      }
     } catch (error) {
       console.error("Form submission error:", error);
       setMessage("Có lỗi xảy ra. Vui lòng thử lại.");
@@ -72,11 +80,16 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         <div>
           <div className="flex items-center gap-2">
-            <Image src="/images/logo-light.png" alt="logo" width={200} height={100} />
+            <Image
+              src="/images/logo-light.png"
+              alt="logo"
+              width={200}
+              height={100}
+            />
           </div>
           <p className="text-sm text-moss-100 max-w-sm">
-            Dịch vụ thuê xe uy tín, nhanh chóng, giá hợp lý. Đặt xe dễ dàng chỉ trong vài phút, sẵn
-            sàng đồng hành cùng bạn trên mọi hành trình!
+            Dịch vụ thuê xe uy tín, nhanh chóng, giá hợp lý. Đặt xe dễ dàng chỉ
+            trong vài phút, sẵn sàng đồng hành cùng bạn trên mọi hành trình!
           </p>
         </div>
 
@@ -196,17 +209,26 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="tel:0941437070" className="hover:text-lemon-400 hover:underline">
+              <a
+                href="tel:0941437070"
+                className="hover:text-lemon-400 hover:underline"
+              >
                 0941 437 070
               </a>
             </li>
             <li>
-              <a href="mailto:thehao155@gmail.com" className="hover:text-lemon-400 hover:underline">
+              <a
+                href="mailto:thehao155@gmail.com"
+                className="hover:text-lemon-400 hover:underline"
+              >
                 thehao155@gmail.com
               </a>
             </li>
             <li>
-              <a href="https://zalo.me/0941437070" className="hover:text-lemon-400 hover:underline">
+              <a
+                href="https://zalo.me/0941437070"
+                className="hover:text-lemon-400 hover:underline"
+              >
                 Zalo: 0941 437 070
               </a>
             </li>
@@ -226,7 +248,8 @@ export default function Footer() {
 
       <div className="py-3 text-center text-sm text-moss-100 border-t border-moss-100/20">
         Copyright © DVDL Đại Dương Ban Mê | Powered by{" "}
-        <span className="text-lemon-400">The Hao</span> | Designed by The Hao Nguyen
+        <span className="text-lemon-400">The Hao</span> | Designed by The Hao
+        Nguyen
       </div>
     </footer>
   );
