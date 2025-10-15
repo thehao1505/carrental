@@ -26,10 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...new Map(carRentalData.map((item) => [item.slug, item])).values(),
   ];
 
+  const date = new Date().toISOString();
+
   const carRentalUrls: MetadataRoute.Sitemap = uniqueCarRentalArticles.map(
     (article) => ({
-      url: `${siteUrl}/tin-tuc/${article.slug}`,
-      lastModified: formatDate(new Date().toISOString()),
+      url: `${siteUrl}/thue-xe/${article.slug}`,
+      lastModified: date,
       changeFrequency: "monthly",
       priority: 0.8,
     })
