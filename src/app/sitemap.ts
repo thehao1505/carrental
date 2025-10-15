@@ -29,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const carRentalUrls: MetadataRoute.Sitemap = uniqueCarRentalArticles.map(
     (article) => ({
       url: `${siteUrl}/tin-tuc/${article.slug}`,
-      lastModified: new Date().toISOString(),
+      lastModified: formatDate(new Date().toISOString()),
       changeFrequency: "monthly",
       priority: 0.8,
     })
