@@ -3,10 +3,40 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { articles } from "@/lib/data";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { config } from "@/lib/utils";
+// import { articles } from "@/lib/data";
+interface Article {
+  id: number;
+  title: string;
+  slug: string;
+  excerpt: string;
+  date: string;
+  image: any;
+}
 
 export const TinTucCard = () => {
   const router = useRouter();
+
+  const [articles, setArticles] = useState<Article[]>([]);
+
+  const getArticles = async () => {
+    const response = await axios.get(
+      `${config.url}/api/articles?populate=image`,
+      {
+        headers: {
+          Authorization: `Bearer ${config.api_key}`,
+        },
+      }
+    );
+    console.log("response", response);
+    setArticles(response.data.data);
+  };
+
+  useEffect(() => {
+    getArticles();
+  }, [config.url]);
 
   return (
     <main className="text-gray-800">
@@ -36,7 +66,7 @@ export const TinTucCard = () => {
               className="border rounded-xl shadow-sm overflow-hidden bg-white hover:shadow-md hover:scale-105 transition-all duration-300 cursor-pointer"
             >
               <Image
-                src={article.image}
+                src={`${config.url}${article.image[0]?.formats.medium.url}`}
                 alt={article.title}
                 width={400}
                 height={240}
@@ -45,7 +75,9 @@ export const TinTucCard = () => {
               <div className="p-5 space-y-2">
                 <span className="text-sm text-gray-500">{article.date}</span>
                 <h2 className="text-lg font-semibold text-forest-600">
-                  {article.title.length > 60 ? article.title.slice(0, 50) + "..." : article.title}
+                  {article.title.length > 60
+                    ? article.title.slice(0, 50) + "..."
+                    : article.title}
                 </h2>
                 <p className="text-sm text-gray-600">
                   {article.excerpt.length > 140

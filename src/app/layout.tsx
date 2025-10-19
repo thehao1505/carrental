@@ -21,7 +21,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "DVDL Đại Dương Ban Mê",
   description:
-    "Khám phá hành trình du lịch cùng DVDL Đại Dương Ban Mê - chuyên tour nội địa, thuê xe đời mới, tổ chức team building và sự kiện trọn gói.",
+    "Khám phá hành trình du lịch cùng DVDL Đại Dương Ban Mê - chuyên tour nội địa, thuê xe đời mới.",
+  metadataBase: new URL("https://dvdldaiduong.com"),
   keywords: [
     // TODO: nhét thêm keywords
     "du lịch Buôn Ma Thuột",

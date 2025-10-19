@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     "tổ chức sự kiện Đắk Lắk",
     "dịch vụ du lịch Daklak",
   ],
+  metadataBase: new URL("https://dvdldaiduong.com"),
   openGraph: {
     title: "Tin Tức | DVDL Đại Dương Ban Mê",
     description:
