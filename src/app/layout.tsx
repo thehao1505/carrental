@@ -53,11 +53,6 @@ export default function RootLayout({
             gtag('config', 'G-53XQGRKZ1K');
           `}
         </Script>
-        <Script id="conversion-script" strategy="afterInteractive">
-          {`
-          gtag('event', 'conversion', {'send_to': 'AW-17576533976/CSt8CO_Klq4bENi_kr1B'});
-        `}
-        </Script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

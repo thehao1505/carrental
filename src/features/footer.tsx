@@ -64,7 +64,7 @@ export default function Footer() {
           typeof window.gtag === "function"
         ) {
           window.gtag("event", "conversion", {
-            send_to: "AW-17576533976/8vc5CJ-d9agbENi_kr1B",
+            send_to: "AW-17576533976/CSt8CO_Klq4bENi_kr1B",
           });
         }
       } else {
