@@ -74,7 +74,7 @@ export default async function TinTucPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => {
             const imageUrl = post.image
-              ? urlFor(post.image)?.width(400).height(240).url()
+              ? urlFor(post.image)?.width(800).height(480).auto("format").url()
               : null;
 
             return (
@@ -87,8 +87,9 @@ export default async function TinTucPage() {
                   <Image
                     src={imageUrl}
                     alt={post.title}
-                    width={400}
-                    height={240}
+                    width={800}
+                    height={480}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="w-full h-[200px] object-cover"
                   />
                 ) : (
