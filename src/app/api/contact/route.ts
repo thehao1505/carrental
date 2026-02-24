@@ -13,7 +13,6 @@ const createTransporter = () => {
 }
 
 export async function POST(request: NextRequest) {
-  console.log(process.env.EMAIL_USER, process.env.EMAIL_PASS, process.env.ADMIN_EMAIL)
   try {
     const body = await request.json()
     const { name, phone, content } = body
@@ -66,10 +65,8 @@ export async function POST(request: NextRequest) {
       `,
     }
 
-    // Gửi email
     await transporter.sendMail(mailOptions)
 
-    // Log để debug (có thể lưu vào database)
     console.log(`New contact request from ${name} (${phone}) at ${new Date().toISOString()}`)
 
     return NextResponse.json(
