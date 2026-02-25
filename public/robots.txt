@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://dvdldaiduong.com
-
-# Sitemaps
-Sitemap: https://dvdldaiduong.com/sitemap.xml

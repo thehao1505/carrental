@@ -8,7 +8,10 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
+const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
+  _id, title, slug, publishedAt, _updatedAt, image, excerpt, body,
+  "categories": categories[]->title
+}`;
 
 const { projectId, dataset } = client.config();
 const urlFor = (source: SanityImageSource) =>
@@ -18,34 +21,73 @@ const urlFor = (source: SanityImageSource) =>
 
 const options = { next: { revalidate: 30 } };
 
+const siteUrl = "https://www.dvdldaiduong.com";
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const post = await client.fetch<SanityDocument>(POST_QUERY, await params, options);
+  const resolvedParams = await params;
+  const post = await client.fetch<SanityDocument>(POST_QUERY, resolvedParams, options);
+
+  if (!post) {
+    return {
+      title: "Bài viết không tồn tại",
+    };
+  }
+
+  const postImageUrl = post.image
+    ? urlFor(post.image)?.width(1200).height(630).auto("format").url()
+    : null;
+
+  const canonicalUrl = `/tin-tuc/${resolvedParams.slug}`;
 
   return {
-    title: post?.title
-      ? `${post.title} | DVDL Đại Dương Ban Mê`
-      : "Tin Tức | DVDL Đại Dương Ban Mê",
+    title: post.title || "Tin Tức",
     description:
-      post?.excerpt ||
+      post.excerpt ||
       "Khám phá hành trình du lịch cùng DVDL Đại Dương Ban Mê - chuyên tour nội địa, thuê xe đời mới.",
+    keywords: [
+      ...(post.categories || []),
+      "DVDL Đại Dương Ban Mê",
+      "du lịch Đắk Lắk",
+      "cẩm nang du lịch Buôn Ma Thuột",
+    ],
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
-      title: post?.title || "Tin Tức | DVDL Đại Dương Ban Mê",
+      title: post.title || "Tin Tức | DVDL Đại Dương Ban Mê",
       description:
-        post?.excerpt ||
+        post.excerpt ||
         "Chúng tôi mang đến trải nghiệm du lịch cá nhân hóa, an toàn, minh bạch và tận tâm.",
-      images: [
-        {
-          url: "/logo-light.png",
-          width: 800,
-          height: 600,
-          alt: "Logo DVDL Đại Dương Ban Mê",
-        },
-      ],
+      url: canonicalUrl,
+      locale: "vi_VN",
       type: "article",
+      publishedTime: post.publishedAt,
+      modifiedTime: post._updatedAt,
+      images: [
+        postImageUrl
+          ? {
+              url: postImageUrl,
+              width: 1200,
+              height: 630,
+              alt: post.title,
+            }
+          : {
+              url: "/og-image.jpg",
+              width: 1200,
+              height: 630,
+              alt: "DVDL Đại Dương Ban Mê",
+            },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title || "Tin Tức | DVDL Đại Dương Ban Mê",
+      description: post.excerpt || "Cẩm nang du lịch Buôn Ma Thuột từ DVDL Đại Dương Ban Mê.",
+      images: [postImageUrl || "/og-image.jpg"],
     },
   };
 }
@@ -55,13 +97,44 @@ export default async function BaiVietPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const post = await client.fetch<SanityDocument>(POST_QUERY, await params, options);
+  const resolvedParams = await params;
+  const post = await client.fetch<SanityDocument>(POST_QUERY, resolvedParams, options);
 
   if (!post) return notFound();
 
   const postImageUrl = post.image
     ? urlFor(post.image)?.width(800).height(400).url()
     : null;
+
+  // JSON-LD Article schema
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt || "",
+    image: postImageUrl
+      ? [urlFor(post.image)?.width(1200).height(630).url()]
+      : [`${siteUrl}/og-image.jpg`],
+    datePublished: post.publishedAt,
+    dateModified: post._updatedAt || post.publishedAt,
+    author: {
+      "@type": "Organization",
+      name: "DVDL Đại Dương Ban Mê",
+      url: siteUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "DVDL Đại Dương Ban Mê",
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/logo-light.png`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/tin-tuc/${resolvedParams.slug}`,
+    },
+  };
 
   // Custom components cho PortableText — heading, blockquote, list, ảnh trong body
   const portableTextComponents = {
@@ -124,9 +197,28 @@ export default async function BaiVietPage({
 
   return (
     <main className="max-w-3xl mx-auto px-6 py-12 text-gray-800">
-      <Link href="/tin-tuc" className="text-sm text-forest-500 hover:underline mb-6 inline-block">
-        ← Quay lại Tin tức
-      </Link>
+      {/* JSON-LD Article */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
+      {/* Breadcrumb */}
+      <nav aria-label="breadcrumb" className="mb-6">
+        <ol className="flex items-center gap-2 text-sm text-gray-500">
+          <li>
+            <Link href="/" className="hover:text-forest-500">Trang chủ</Link>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li>
+            <Link href="/tin-tuc" className="hover:text-forest-500">Tin tức</Link>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li className="text-gray-700 truncate max-w-[200px]" aria-current="page">
+            {post.title}
+          </li>
+        </ol>
+      </nav>
 
       <h1 className="text-3xl font-bold text-forest-600 mb-4">{post.title}</h1>
       <p className="text-sm text-gray-500 mb-6">
@@ -142,6 +234,7 @@ export default async function BaiVietPage({
           width={800}
           height={400}
           className="rounded-xl mb-6 w-full h-auto object-cover"
+          priority
         />
       )}
 

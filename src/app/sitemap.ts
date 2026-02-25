@@ -1,74 +1,96 @@
-// app/sitemap.ts
-import { articles, carRentalData } from "@/lib/data";
-import type { MetadataRoute } from "next"; // Sử dụng 'import type' cho an toàn kiểu
+import { client } from "@/sanity/client";
+import type { MetadataRoute } from "next";
 
-// Hàm chuyển đổi ngày từ 'dd/mm/yyyy' sang 'YYYY-MM-DD'
-function formatDate(dateString: string): string {
-  const [day, month, year] = dateString.split("/");
-  return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+const siteUrl = "https://www.dvdldaiduong.com";
+
+const POSTS_SITEMAP_QUERY = `*[_type == "post" && defined(slug.current)]{
+  "slug": slug.current,
+  publishedAt,
+  _updatedAt
+}`;
+
+// Fetch car rental data từ static lib (giữ nguyên để tương thích)
+async function getCarRentalUrls(): Promise<MetadataRoute.Sitemap> {
+  try {
+    const { carRentalData } = await import("@/lib/data");
+    const unique = [
+      ...new Map(carRentalData.map((item) => [item.slug, item])).values(),
+    ];
+    return unique.map((item) => ({
+      url: `${siteUrl}/thue-xe/${item.slug}`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    }));
+  } catch {
+    return [];
+  }
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = "https://www.dvdldaiduong.com";
-
-  const uniqueArticles = [
-    ...new Map(articles.map((item) => [item.slug, item])).values(),
-  ];
-
-  const articleUrls: MetadataRoute.Sitemap = uniqueArticles.map((article) => ({
-    url: `${siteUrl}/tin-tuc/${article.slug}`,
-    lastModified: formatDate(article.date),
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
-
-  const uniqueCarRentalArticles = [
-    ...new Map(carRentalData.map((item) => [item.slug, item])).values(),
-  ];
-
-  const date = new Date().toISOString();
-
-  const carRentalUrls: MetadataRoute.Sitemap = uniqueCarRentalArticles.map(
-    (article) => ({
-      url: `${siteUrl}/thue-xe/${article.slug}`,
-      lastModified: date,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    })
-  );
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const now = new Date().toISOString().split("T")[0];
 
   const staticUrls: MetadataRoute.Sitemap = [
     {
       url: siteUrl,
-      lastModified: new Date().toISOString().split("T")[0],
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${siteUrl}/bang-gia`,
-      lastModified: new Date().toISOString().split("T")[0],
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${siteUrl}/gioi-thieu`,
-      lastModified: new Date().toISOString().split("T")[0],
-      changeFrequency: "weekly",
-      priority: 0.9,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${siteUrl}/lien-he`,
-      lastModified: new Date().toISOString().split("T")[0],
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/tin-tuc`,
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${siteUrl}/tin-tuc`,
-      lastModified: new Date().toISOString().split("T")[0],
+      url: `${siteUrl}/thue-xe`,
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
   ];
 
-  return [...staticUrls, ...articleUrls, ...carRentalUrls];
+  // Fetch bài viết từ Sanity CMS
+  let postUrls: MetadataRoute.Sitemap = [];
+  try {
+    const posts = await client.fetch<
+      { slug: string; publishedAt?: string; _updatedAt?: string }[]
+    >(POSTS_SITEMAP_QUERY, {}, { next: { revalidate: 3600 } });
+
+    postUrls = posts.map((post) => ({
+      url: `${siteUrl}/tin-tuc/${post.slug}`,
+      lastModified: post._updatedAt
+        ? new Date(post._updatedAt).toISOString().split("T")[0]
+        : post.publishedAt
+        ? new Date(post.publishedAt).toISOString().split("T")[0]
+        : now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    }));
+  } catch {
+    // fallback: không crash nếu Sanity không khả dụng
+  }
+
+  const carRentalUrls = await getCarRentalUrls();
+
+  return [...staticUrls, ...postUrls, ...carRentalUrls];
 }

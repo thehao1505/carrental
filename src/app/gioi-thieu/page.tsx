@@ -2,31 +2,41 @@ import { Metadata } from "next";
 import GioiThieuCard from "@/features/gioi-thieu/gioi-thieu";
 
 export const metadata: Metadata = {
-  title: "Giới Thiệu | DVDL Đại Dương Ban Mê",
+  title: "Giới Thiệu",
   description:
-    "Khám phá hành trình du lịch cùng DVDL Đại Dương Ban Mê - chuyên tour nội địa, thuê xe đời mới.",
+    "DVDL Đại Dương Ban Mê - Đơn vị chuyên cung cấp dịch vụ thuê xe du lịch 4-45 chỗ, tour nội địa, tổ chức team building và sự kiện tại Buôn Ma Thuột, Đắk Lắk.",
   keywords: [
+    "giới thiệu DVDL Đại Dương Ban Mê",
     "du lịch Buôn Ma Thuột",
-    "thuê xe du lịch",
-    "DVDL Đại Dương Ban Mê",
-    "tour Daklak",
-    "tour riêng BMT",
+    "công ty du lịch Đắk Lắk",
+    "tour Daklak uy tín",
+    "thuê xe du lịch BMT",
     "tổ chức sự kiện Đắk Lắk",
-    "dịch vụ du lịch Daklak",
   ],
+  alternates: {
+    canonical: "/gioi-thieu",
+  },
   openGraph: {
     title: "Giới Thiệu | DVDL Đại Dương Ban Mê",
     description:
-      "Chúng tôi mang đến trải nghiệm du lịch cá nhân hóa, an toàn, minh bạch và tận tâm.",
+      "Chúng tôi mang đến trải nghiệm du lịch cá nhân hóa, an toàn, minh bạch và tận tâm tại Buôn Ma Thuột - Đắk Lắk.",
+    url: "/gioi-thieu",
+    locale: "vi_VN",
+    type: "website",
     images: [
       {
-        url: "/logo-light.png",
-        width: 800,
-        height: 600,
-        alt: "Logo DVDL Đại Dương Ban Mê",
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Giới thiệu DVDL Đại Dương Ban Mê",
       },
     ],
-    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Giới Thiệu | DVDL Đại Dương Ban Mê",
+    description:
+      "Đơn vị chuyên cung cấp dịch vụ thuê xe du lịch, tour nội địa tại Đắk Lắk.",
   },
 };
 

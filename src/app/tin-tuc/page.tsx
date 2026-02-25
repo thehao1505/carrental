@@ -20,31 +20,40 @@ const urlFor = (source: SanityImageSource) =>
     : null;
 
 export const metadata: Metadata = {
-  title: "Tin Tức | DVDL Đại Dương Ban Mê",
+  title: "Tin Tức & Cẩm Nang Du Lịch",
   description:
-    "Khám phá hành trình du lịch cùng DVDL Đại Dương Ban Mê - chuyên tour nội địa, thuê xe đời mới.",
+    "Khám phá cẩm nang du lịch Buôn Ma Thuột - Đắk Lắk, mẹo thuê xe, kinh nghiệm tổ chức tour và sự kiện từ DVDL Đại Dương Ban Mê.",
   keywords: [
-    "du lịch Buôn Ma Thuột",
-    "thuê xe du lịch",
-    "DVDL Đại Dương Ban Mê",
+    "tin tức du lịch Đắk Lắk",
+    "cẩm nang du lịch Buôn Ma Thuột",
+    "kinh nghiệm thuê xe Đắk Lắk",
+    "blog du lịch BMT",
     "tour Daklak",
-    "tour riêng BMT",
-    "tổ chức sự kiện Đắk Lắk",
-    "dịch vụ du lịch Daklak",
+    "DVDL Đại Dương Ban Mê",
   ],
+  alternates: {
+    canonical: "/tin-tuc",
+  },
   openGraph: {
-    title: "Tin Tức | DVDL Đại Dương Ban Mê",
+    title: "Tin Tức & Cẩm Nang Du Lịch | DVDL Đại Dương Ban Mê",
     description:
-      "Chúng tôi mang đến trải nghiệm du lịch cá nhân hóa, an toàn, minh bạch và tận tâm.",
+      "Khám phá cẩm nang du lịch Buôn Ma Thuột - Đắk Lắk, mẹo thuê xe, kinh nghiệm tour từ DVDL Đại Dương Ban Mê.",
+    url: "/tin-tuc",
+    locale: "vi_VN",
+    type: "website",
     images: [
       {
-        url: "/logo-light.png",
-        width: 800,
-        height: 600,
-        alt: "Logo DVDL Đại Dương Ban Mê",
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Tin tức và cẩm nang du lịch DVDL Đại Dương Ban Mê",
       },
     ],
-    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tin Tức & Cẩm Nang Du Lịch | DVDL Đại Dương Ban Mê",
+    description: "Cẩm nang du lịch Buôn Ma Thuột - Đắk Lắk từ DVDL Đại Dương Ban Mê.",
   },
 };
 
@@ -57,7 +66,7 @@ export default async function TinTucPage() {
       <section className="relative h-[350px] w-full">
         <Image
           src="/images/phongcanh.jpg"
-          alt="Giới thiệu công ty du lịch"
+          alt="Tin tức và cẩm nang du lịch Buôn Ma Thuột"
           fill
           className="object-cover"
           priority

@@ -1,38 +1,56 @@
 import { ThueXeSlugPage } from "@/features/thue-xe/thue-xe-card";
 import { Metadata } from "next";
+import { carRentalData } from "@/lib/data";
 
-export const metadata: Metadata = {
-  title: "Thuê Xe | DVDL Đại Dương Ban Mê",
-  description: "Thuê xe có tài xế, chuyên nghiệp tận tâm uy tín tại DVDL Đại Dương Ban Mê",
-  keywords: [
-    "thuê xe 4 chỗ",
-    "thuê xe 7 chỗ",
-    "thuê xe 16 chỗ",
-    "thuê xe 29 chỗ",
-    "thuê xe 45 chỗ",
-    "thuê xe limousine",
-    "thuê xe du lịch",
-    "DVDL Đại Dương Ban Mê",
-    "tour Daklak",
-    "tour riêng BMT",
-    "tổ chức sự kiện Đắk Lắk",
-    "dịch vụ du lịch Daklak",
-  ],
-  openGraph: {
-    title: "Thuê Xe | DVDL Đại Dương Ban Mê",
-    description:
-      "Chúng tôi mang đến trải nghiệm du lịch cá nhân hóa, an toàn, minh bạch và tận tâm.",
-    images: [
-      {
-        url: "/logo-light.png",
-        width: 800,
-        height: 600,
-        alt: "Logo DVDL Đại Dương Ban Mê",
-      },
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const xe = carRentalData.find((x) => x.slug === slug);
+
+  if (!xe) {
+    return {
+      title: "Dịch Vụ Thuê Xe",
+    };
+  }
+
+  const canonicalUrl = `/thue-xe/${slug}`;
+  const defaultDescription = `Dịch vụ ${xe.title} tại DVDL Đại Dương Ban Mê. Xe đời mới, tài xế chuyên nghiệp, an toàn và uy tín tại Buôn Ma Thuột - Đắk Lắk.`;
+
+  return {
+    title: xe.title,
+    description: defaultDescription,
+    keywords: [
+      xe.title,
+      "thuê xe du lịch Đắk Lắk",
+      "thuê xe Buôn Ma Thuột",
+      "DVDL Đại Dương Ban Mê",
+      "xe có tài xế BMT",
     ],
-    type: "website",
-  },
-};
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: `${xe.title} | DVDL Đại Dương Ban Mê`,
+      description: `Dịch vụ ${xe.title} - xe đời mới, tài xế chuyên nghiệp tại Buôn Ma Thuột.`,
+      url: canonicalUrl,
+      locale: "vi_VN",
+      type: "website",
+      images: [
+        xe.image
+          ? { url: xe.image, width: 800, height: 500, alt: xe.title }
+          : { url: "/og-image.jpg", width: 1200, height: 630, alt: xe.title },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${xe.title} | DVDL Đại Dương Ban Mê`,
+      description: `Dịch vụ ${xe.title} tại Buôn Ma Thuột - Đắk Lắk.`,
+    },
+  };
+}
 
 export default function ThueXePage() {
   return <ThueXeSlugPage />;
