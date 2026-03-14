@@ -249,6 +249,17 @@ export default function Footer() {
         </div>
       </div>
 
+      <div className="w-full pb-10 max-w-7xl mx-auto">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3893.0844752198745!2d107.9978574!3d12.642462799999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31721d3e858f396f%3A0x764224a5c2a39efe!2zRFZETCDEkOG6oEkgRMavxqBORyBCQU4gTcOK!5e0!3m2!1sen!2s!4v1773428162579!5m2!1sen!2s"
+          className="w-full h-[300px] md:h-[400px] rounded-2xl grayscale hover:grayscale-0 transition-all duration-500"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+
       <div className="py-3 text-center text-sm text-moss-100 border-t border-moss-100/20">
         Copyright © DVDL Đại Dương Ban Mê | Powered by{" "}
         <span className="text-lemon-400">The Hao</span> | Designed by The Hao
