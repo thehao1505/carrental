@@ -5,11 +5,16 @@ import Link from "next/link";
 import { client } from "@/sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
+import Pagination from "@/components/Pagination";
+
+const POSTS_PER_PAGE = 9;
 
 const POSTS_QUERY = `*[
   _type == "post"
   && defined(slug.current)
-]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt, image, excerpt}`;
+]|order(publishedAt desc)[$start...$end]{_id, title, slug, publishedAt, image, excerpt}`;
+
+const COUNT_QUERY = `count(*[_type == "post" && defined(slug.current)])`;
 
 const options = { next: { revalidate: 30 } };
 
@@ -53,12 +58,27 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Tin Tức & Cẩm Nang Du Lịch | DVDL Đại Dương Ban Mê",
-    description: "Cẩm nang du lịch Buôn Ma Thuột - Đắk Lắk từ DVDL Đại Dương Ban Mê.",
+    description:
+      "Cẩm nang du lịch Buôn Ma Thuột - Đắk Lắk từ DVDL Đại Dương Ban Mê.",
   },
 };
 
-export default async function TinTucPage() {
-  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
+export default async function TinTucPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const { page } = await searchParams;
+  const currentPage = Math.max(1, parseInt(page || "1", 10) || 1);
+  const start = (currentPage - 1) * POSTS_PER_PAGE;
+  const end = start + POSTS_PER_PAGE;
+
+  const [posts, totalCount] = await Promise.all([
+    client.fetch<SanityDocument[]>(POSTS_QUERY, { start, end }, options),
+    client.fetch<number>(COUNT_QUERY, {}, options),
+  ]);
+
+  const totalPages = Math.ceil(totalCount / POSTS_PER_PAGE);
 
   return (
     <main className="text-gray-800">
@@ -132,6 +152,13 @@ export default async function TinTucPage() {
             );
           })}
         </div>
+
+        {/* Pagination */}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          basePath="/tin-tuc"
+        />
       </section>
     </main>
   );
