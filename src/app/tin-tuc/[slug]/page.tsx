@@ -29,7 +29,11 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const resolvedParams = await params;
-  const post = await client.fetch<SanityDocument>(POST_QUERY, resolvedParams, options);
+  const post = await client.fetch<SanityDocument>(
+    POST_QUERY,
+    resolvedParams,
+    options,
+  );
 
   if (!post) {
     return {
@@ -86,7 +90,9 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: post.title || "Tin Tức | DVDL Đại Dương Ban Mê",
-      description: post.excerpt || "Cẩm nang du lịch Buôn Ma Thuột từ DVDL Đại Dương Ban Mê.",
+      description:
+        post.excerpt ||
+        "Cẩm nang du lịch Buôn Ma Thuột từ DVDL Đại Dương Ban Mê.",
       images: [postImageUrl || "/og-image.jpg"],
     },
   };
@@ -98,12 +104,16 @@ export default async function BaiVietPage({
   params: Promise<{ slug: string }>;
 }) {
   const resolvedParams = await params;
-  const post = await client.fetch<SanityDocument>(POST_QUERY, resolvedParams, options);
+  const post = await client.fetch<SanityDocument>(
+    POST_QUERY,
+    resolvedParams,
+    options,
+  );
 
   if (!post) return notFound();
 
   const postImageUrl = post.image
-    ? urlFor(post.image)?.width(800).height(400).url()
+    ? urlFor(post.image)?.width(1600).height(800).quality(85).auto("format").url()
     : null;
 
   // JSON-LD Article schema
@@ -140,15 +150,16 @@ export default async function BaiVietPage({
   const portableTextComponents = {
     types: {
       image: ({ value }: { value: SanityImageSource & { alt?: string } }) => {
-        const imgUrl = urlFor(value)?.width(800).url();
+        const imgUrl = urlFor(value)?.width(1400).quality(85).auto("format").url();
         if (!imgUrl) return null;
         return (
           <div className="my-6">
             <Image
               src={imgUrl}
               alt={(value as { alt?: string }).alt || "Ảnh minh hoạ"}
-              width={800}
-              height={450}
+              width={1400}
+              height={788}
+              sizes="(max-width: 768px) 100vw, 768px"
               className="rounded-xl w-full h-auto object-cover"
             />
           </div>
@@ -157,16 +168,24 @@ export default async function BaiVietPage({
     },
     block: {
       h1: ({ children }: { children?: React.ReactNode }) => (
-        <h1 className="text-3xl font-bold text-forest-700 mt-8 mb-4">{children}</h1>
+        <h1 className="text-3xl font-bold text-forest-700 mt-8 mb-4">
+          {children}
+        </h1>
       ),
       h2: ({ children }: { children?: React.ReactNode }) => (
-        <h2 className="text-2xl font-bold text-forest-600 mt-7 mb-3">{children}</h2>
+        <h2 className="text-2xl font-bold text-forest-600 mt-7 mb-3">
+          {children}
+        </h2>
       ),
       h3: ({ children }: { children?: React.ReactNode }) => (
-        <h3 className="text-xl font-semibold text-forest-600 mt-6 mb-2">{children}</h3>
+        <h3 className="text-xl font-semibold text-forest-600 mt-6 mb-2">
+          {children}
+        </h3>
       ),
       h4: ({ children }: { children?: React.ReactNode }) => (
-        <h4 className="text-lg font-semibold text-gray-800 mt-5 mb-2">{children}</h4>
+        <h4 className="text-lg font-semibold text-gray-800 mt-5 mb-2">
+          {children}
+        </h4>
       ),
       normal: ({ children }: { children?: React.ReactNode }) => (
         <p className="text-gray-700 leading-relaxed mb-4">{children}</p>
@@ -179,10 +198,14 @@ export default async function BaiVietPage({
     },
     list: {
       bullet: ({ children }: { children?: React.ReactNode }) => (
-        <ul className="list-disc list-inside space-y-1 mb-4 text-gray-700">{children}</ul>
+        <ul className="list-disc list-inside space-y-1 mb-4 text-gray-700">
+          {children}
+        </ul>
       ),
       number: ({ children }: { children?: React.ReactNode }) => (
-        <ol className="list-decimal list-inside space-y-1 mb-4 text-gray-700">{children}</ol>
+        <ol className="list-decimal list-inside space-y-1 mb-4 text-gray-700">
+          {children}
+        </ol>
       ),
     },
     listItem: {
@@ -207,14 +230,21 @@ export default async function BaiVietPage({
       <nav aria-label="breadcrumb" className="mb-6">
         <ol className="flex items-center gap-2 text-sm text-gray-500">
           <li>
-            <Link href="/" className="hover:text-forest-500">Trang chủ</Link>
+            <Link href="/" className="hover:text-forest-500">
+              Trang chủ
+            </Link>
           </li>
           <li aria-hidden="true">/</li>
           <li>
-            <Link href="/tin-tuc" className="hover:text-forest-500">Tin tức</Link>
+            <Link href="/tin-tuc" className="hover:text-forest-500">
+              Tin tức
+            </Link>
           </li>
           <li aria-hidden="true">/</li>
-          <li className="text-gray-700 truncate max-w-[200px]" aria-current="page">
+          <li
+            className="text-gray-700 truncate max-w-[200px]"
+            aria-current="page"
+          >
             {post.title}
           </li>
         </ol>
@@ -231,8 +261,9 @@ export default async function BaiVietPage({
         <Image
           src={postImageUrl}
           alt={post.title}
-          width={800}
-          height={400}
+          width={1600}
+          height={800}
+          sizes="(max-width: 768px) 100vw, 768px"
           className="rounded-xl mb-6 w-full h-auto object-cover"
           priority
         />
@@ -245,7 +276,9 @@ export default async function BaiVietPage({
       </article>
 
       <div className="text-center mt-10">
-        <h3 className="text-lg text-moss-500 mb-4">Bạn cần đặt xe hoặc báo giá?</h3>
+        <h3 className="text-lg text-moss-500 mb-4">
+          Bạn cần đặt xe hoặc báo giá?
+        </h3>
         <Link
           href="/lien-he"
           className="inline-block bg-forest-500 text-lemon-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition hover:scale-105"
