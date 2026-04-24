@@ -117,7 +117,9 @@ export default function RootLayout({
         {/* JSON-LD Organization + LocalBusiness */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
         />
         {/* Google tag (gtag.js) */}
         <Script
