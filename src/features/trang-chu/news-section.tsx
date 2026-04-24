@@ -1,11 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { articles } from '@/lib/data';
 
 export function NewsSection() {
-  const router = useRouter();
-
   return (
     <section className='bg-pale-500 w-full'>
       <div className='max-w-6xl mx-auto px-6 py-12 text-forest-500'>
@@ -15,11 +12,9 @@ export function NewsSection() {
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {articles.slice(0, 6).map((article, idx) => (
-            <div
+            <Link
               key={idx}
-              onClick={() => {
-                router.push(`/tin-tuc/${article.slug}`);
-              }}
+              href={`/tin-tuc/${article.slug}`}
               className='border rounded-xl shadow-sm overflow-hidden bg-white hover:shadow-md hover:scale-105 transition-all duration-300 cursor-pointer'
             >
               <Image
@@ -27,6 +22,7 @@ export function NewsSection() {
                 alt={article.title}
                 width={400}
                 height={240}
+                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                 className='w-full h-[200px] object-cover'
               />
               <div className='p-5 space-y-2'>
@@ -37,14 +33,11 @@ export function NewsSection() {
                 <p className='text-sm text-gray-600'>
                   {article.excerpt.length > 140 ? article.excerpt.slice(0, 137) + '...' : article.excerpt}
                 </p>
-                <Link
-                  href={`/tin-tuc/${article.slug}`}
-                  className='inline-block text-forest-500 text-sm font-medium hover:underline mt-2'
-                >
+                <span className='inline-block text-forest-500 text-sm font-medium hover:underline mt-2'>
                   Xem chi tiết →
-                </Link>
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

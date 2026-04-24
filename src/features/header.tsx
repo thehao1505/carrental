@@ -54,15 +54,22 @@ export default function Header() {
         </Avatar>
 
         <button
+          type="button"
           onClick={() => setIsOpen(!isOpen)}
           className="xl:hidden text-forest-500"
+          aria-label={isOpen ? "Đóng menu điều hướng" : "Mở menu điều hướng"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation-menu"
         >
           <Menu size={28} />
         </button>
       </div>
 
       {isOpen && (
-        <div className="absolute top-[90px] left-0 w-full bg-white border-t px-6 py-4 flex flex-col gap-4 xl:hidden z-50">
+        <div
+          id="mobile-navigation-menu"
+          className="absolute top-[90px] left-0 w-full bg-white border-t px-6 py-4 flex flex-col gap-4 xl:hidden z-50"
+        >
           <Link
             href="/gioi-thieu"
             onClick={() => setIsOpen(false)}

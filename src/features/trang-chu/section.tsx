@@ -1,4 +1,5 @@
-import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
 
 // components/StatsGrid.tsx
 const stats = [
@@ -48,28 +49,28 @@ const stats = [
 
 
 export default function StatsGrid() {
-  const router = useRouter();
-
   return (
     <section className='px-5 md:px-10 xl:px-30 pb-10'>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
         {stats.map((item, index) => (
-          <div
+          <Link
             key={index}
-            onClick={() => router.push(`/thue-xe/${item.slug}`)}
+            href={`/thue-xe/${item.slug}`}
             className='relative rounded-2xl overflow-hidden h-64 shadow-md cursor-pointer'
-            style={{
-              backgroundImage: `url(${item.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
           >
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
+              className='object-cover'
+            />
             <div className='absolute inset-0 bg-moss-500/80 hover:bg-moss-500/30 hover:scale-105 transition-all duration-300 flex flex-col justify-center items-center text-center text-lime-300 p-4'>
               <h2 className='text-3xl font-bold'>{item.value}</h2>
               <h4 className='text-lg font-semibold mt-2'>{item.title}</h4>
               <p className='text-sm mt-1 '>{item.description}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

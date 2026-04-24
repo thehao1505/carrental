@@ -8,3 +8,5 @@ interface Window {
     }
   ) => void;
 }
+
+declare module "*.css";
