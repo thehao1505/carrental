@@ -49,6 +49,7 @@ export default function Header() {
         <Avatar className="hidden xl:block w-12 h-12 rounded-full overflow-hidden">
           <AvatarImage
             src="/images/avatar-default.svg"
+            alt="Ảnh đại diện"
             className="object-cover"
           />
         </Avatar>

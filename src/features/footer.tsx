@@ -98,9 +98,9 @@ export default function Footer() {
 
         <form onSubmit={handleSubmit}>
           <div className="space-y-4">
-            <h4 className="font-semibold">
+            <h3 className="font-semibold">
               Để lại email hoặc số điện thoại để nhận được ưu đãi mới nhất
-            </h4>
+            </h3>
             {message && (
               <div
                 className={`py-3 px-6 rounded-r-3xl ${
@@ -134,7 +134,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-sm pb-10">
         <div>
-          <h5 className="font-semibold mb-4">Trang</h5>
+          <h4 className="font-semibold mb-4">Trang</h4>
           <ul className="space-y-2 text-moss-100">
             <li
               onClick={() => router.push("/")}
@@ -163,7 +163,7 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h5 className="font-semibold mb-4">Dịch vụ</h5>
+          <h4 className="font-semibold mb-4">Dịch vụ</h4>
           <ul className="space-y-2 text-moss-100">
             <li
               onClick={() => router.push("/tin-tuc/thue-xe-co-tai-xe")}
@@ -192,7 +192,7 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h5 className="font-semibold mb-4">Hỗ trợ</h5>
+          <h4 className="font-semibold mb-4">Hỗ trợ</h4>
           <ul className="space-y-2 text-moss-100">
             <li>Hướng dẫn sử dụng</li>
             <li>Chính sách bảo mật</li>
@@ -201,7 +201,7 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h5 className="font-semibold mb-4">Liên hệ</h5>
+          <h4 className="font-semibold mb-4">Liên hệ</h4>
           <ul className="space-y-2 text-moss-100">
             <li>
               <a

@@ -133,7 +133,6 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'AW-17576533976');
-            gtag('config', 'G-53XQGRKZ1K');
           `}
         </Script>
       </head>
@@ -142,7 +141,7 @@ export default function RootLayout({
       >
         <SubHeader />
         <Header />
-        {children}
+        <main>{children}</main>
         <Footer />
         <BackToTopButton />
         <FloatingContactButtons phoneNumber="0941437070" />
