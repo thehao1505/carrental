@@ -7,12 +7,15 @@ export function HeroSection() {
       <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center md:absolute md:left-0 md:top-0 md:bottom-0">
         <div className="z-10 rounded-2xl">
           <p className="text-moss-500 text-xl mb-2">Cho thuê xe du lịch</p>
-          <h1 className="text-5xl md:text-6xl font-bold text-moss-500 mb-2">
+          <p className="text-5xl md:text-6xl font-bold text-moss-500 mb-2">
             Tận tâm.
-          </h1>
+          </p>
           <h2 className="text-4xl md:text-5xl font-serif italic text-moss-500 mb-6">
             Chuyên nghiệp.
           </h2>
+          <h1 className="text-3xl md:text-4xl font-bold text-forest-500 max-w-[550px] mb-6">
+            Cho Thuê Xe Du Lịch Đắk Lắk - Xe 4 đến 45 Chỗ Có Tài Xế
+          </h1>
           <p className="text-forest-500 max-w-[450px] md:max-w-[450px] text-xl mb-8">
             Cho thuê xe ô tô có tài xế tại DVDL Đại Dương Ban Mê - Đa dạng xe
             4-45 chỗ, giá tốt, thủ tục nhanh, giao xe tận nơi. Đặt xe dễ dàng

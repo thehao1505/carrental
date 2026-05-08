@@ -37,13 +37,13 @@ export const metadata: Metadata = {
     "DVDL Đại Dương Ban Mê",
   ],
   alternates: {
-    canonical: "/tin-tuc",
+    canonical: "https://www.dvdldaiduong.com/tin-tuc",
   },
   openGraph: {
     title: "Tin Tức & Cẩm Nang Du Lịch | DVDL Đại Dương Ban Mê",
     description:
       "Khám phá cẩm nang du lịch Buôn Ma Thuột - Đắk Lắk, mẹo thuê xe, kinh nghiệm tour từ DVDL Đại Dương Ban Mê.",
-    url: "/tin-tuc",
+    url: "https://www.dvdldaiduong.com/tin-tuc",
     locale: "vi_VN",
     type: "website",
     images: [

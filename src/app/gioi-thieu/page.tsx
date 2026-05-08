@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     "tổ chức sự kiện Đắk Lắk",
   ],
   alternates: {
-    canonical: "/gioi-thieu",
+    canonical: "https://www.dvdldaiduong.com/gioi-thieu",
   },
   openGraph: {
     title: "Giới Thiệu | DVDL Đại Dương Ban Mê",
     description:
       "Chúng tôi mang đến trải nghiệm du lịch cá nhân hóa, an toàn, minh bạch và tận tâm tại Buôn Ma Thuột - Đắk Lắk.",
-    url: "/gioi-thieu",
+    url: "https://www.dvdldaiduong.com/gioi-thieu",
     locale: "vi_VN",
     type: "website",
     images: [

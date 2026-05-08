@@ -45,7 +45,7 @@ export async function generateMetadata({
     ? urlFor(post.image)?.width(1200).height(630).auto("format").url()
     : null;
 
-  const canonicalUrl = `/tin-tuc/${resolvedParams.slug}`;
+  const canonicalUrl = `${siteUrl}/tin-tuc/${resolvedParams.slug}`;
 
   return {
     title: post.title || "Tin Tức",
@@ -113,7 +113,12 @@ export default async function BaiVietPage({
   if (!post) return notFound();
 
   const postImageUrl = post.image
-    ? urlFor(post.image)?.width(1600).height(800).quality(85).auto("format").url()
+    ? urlFor(post.image)
+        ?.width(1600)
+        .height(800)
+        .quality(85)
+        .auto("format")
+        .url()
     : null;
 
   // JSON-LD Article schema
@@ -150,7 +155,11 @@ export default async function BaiVietPage({
   const portableTextComponents = {
     types: {
       image: ({ value }: { value: SanityImageSource & { alt?: string } }) => {
-        const imgUrl = urlFor(value)?.width(1400).quality(85).auto("format").url();
+        const imgUrl = urlFor(value)
+          ?.width(1400)
+          .quality(85)
+          .auto("format")
+          .url();
         if (!imgUrl) return null;
         return (
           <div className="my-6">

@@ -17,13 +17,13 @@ export const metadata: Metadata = {
     "DVDL Đại Dương Ban Mê",
   ],
   alternates: {
-    canonical: "/bang-gia",
+    canonical: "https://www.dvdldaiduong.com/bang-gia",
   },
   openGraph: {
     title: "Bảng Giá Thuê Xe Du Lịch | DVDL Đại Dương Ban Mê",
     description:
       "Bảng giá thuê xe 4-45 chỗ tại Buôn Ma Thuột. Giá cạnh tranh, xe đời mới, tài xế chuyên nghiệp, phục vụ 7/7.",
-    url: "/bang-gia",
+    url: "https://www.dvdldaiduong.com/bang-gia",
     locale: "vi_VN",
     type: "website",
     images: [

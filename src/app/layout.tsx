@@ -23,7 +23,8 @@ const siteUrl = "https://www.dvdldaiduong.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "DVDL Đại Dương Ban Mê - Thuê Xe & Tour Du Lịch Đắk Lắk",
+    default:
+      "Cho Thuê Xe Đắk Lắk Uy Tín | Xe 4-45 Chỗ Có Tài Xế - Đại Dương Ban Mê",
     template: "%s | DVDL Đại Dương Ban Mê",
   },
   description:
@@ -44,6 +45,9 @@ export const metadata: Metadata = {
   authors: [{ name: "DVDL Đại Dương Ban Mê", url: siteUrl }],
   creator: "DVDL Đại Dương Ban Mê",
   publisher: "DVDL Đại Dương Ban Mê",
+  alternates: {
+    canonical: siteUrl,
+  },
   robots: {
     index: true,
     follow: true,
@@ -56,7 +60,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "DVDL Đại Dương Ban Mê - Thuê Xe & Tour Du Lịch Đắk Lắk",
+    title:
+      "Cho Thuê Xe Đắk Lắk Uy Tín | Xe 4-45 Chỗ Có Tài Xế - Đại Dương Ban Mê",
     description:
       "Chúng tôi mang đến trải nghiệm du lịch cá nhân hóa, an toàn, minh bạch và tận tâm tại Buôn Ma Thuột - Đắk Lắk.",
     url: siteUrl,
@@ -74,7 +79,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DVDL Đại Dương Ban Mê - Thuê Xe & Tour Du Lịch Đắk Lắk",
+    title:
+      "Cho Thuê Xe Đắk Lắk Uy Tín | Xe 4-45 Chỗ Có Tài Xế - Đại Dương Ban Mê",
     description:
       "Chuyên tour nội địa, thuê xe đời mới, tổ chức team building và sự kiện tại Buôn Ma Thuột.",
     images: ["/og-image.jpg"],
@@ -91,11 +97,18 @@ const organizationSchema = {
   image: `${siteUrl}/og-image.jpg`,
   description:
     "Chuyên cung cấp dịch vụ thuê xe du lịch, tour nội địa, tổ chức team building và sự kiện tại Buôn Ma Thuột - Đắk Lắk.",
+  openingHours: "Mo-Su 06:00-22:00",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "252/6 Phan Huy Chú",
     addressLocality: "Buôn Ma Thuột",
     addressRegion: "Đắk Lắk",
     addressCountry: "VN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 12.6424628,
+    longitude: 107.9978574,
   },
   telephone: "+84941437070",
   priceRange: "$$",
@@ -103,7 +116,7 @@ const organizationSchema = {
     "@type": "State",
     name: "Đắk Lắk",
   },
-  sameAs: [],
+  sameAs: ["https://www.facebook.com/share/1AczYur4wu/"],
 };
 
 export default function RootLayout({

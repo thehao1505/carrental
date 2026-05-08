@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     "tư vấn du lịch BMT",
   ],
   alternates: {
-    canonical: "/lien-he",
+    canonical: "https://www.dvdldaiduong.com/lien-he",
   },
   openGraph: {
     title: "Liên Hệ | DVDL Đại Dương Ban Mê",
     description:
       "Liên hệ ngay để được tư vấn tour du lịch, thuê xe hoặc báo giá nhanh. Hotline: 0941.437.070.",
-    url: "/lien-he",
+    url: "https://www.dvdldaiduong.com/lien-he",
     locale: "vi_VN",
     type: "website",
     images: [
@@ -34,7 +34,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Liên Hệ | DVDL Đại Dương Ban Mê",
-    description: "Liên hệ ngay để được tư vấn tour du lịch và thuê xe tại Đắk Lắk.",
+    description:
+      "Liên hệ ngay để được tư vấn tour du lịch và thuê xe tại Đắk Lắk.",
   },
 };
 

@@ -2,6 +2,8 @@ import { ThueXeSlugPage } from "@/features/thue-xe/thue-xe-card";
 import { Metadata } from "next";
 import { carRentalData } from "@/lib/data";
 
+const siteUrl = "https://www.dvdldaiduong.com";
+
 export async function generateMetadata({
   params,
 }: {
@@ -16,7 +18,7 @@ export async function generateMetadata({
     };
   }
 
-  const canonicalUrl = `/thue-xe/${slug}`;
+  const canonicalUrl = `${siteUrl}/thue-xe/${slug}`;
   const defaultDescription = `Dịch vụ ${xe.title} tại DVDL Đại Dương Ban Mê. Xe đời mới, tài xế chuyên nghiệp, an toàn và uy tín tại Buôn Ma Thuột - Đắk Lắk.`;
 
   return {
