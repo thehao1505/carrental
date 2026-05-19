@@ -6,6 +6,7 @@ import Footer from "@/features/footer";
 import SubHeader from "@/features/sub-header";
 import FloatingContactButtons from "@/features/floating-button";
 import BackToTopButton from "@/features/backtotop-button";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -133,6 +134,20 @@ export default function RootLayout({
             __html: JSON.stringify(organizationSchema),
           }}
         />
+        {/* Google Analytics */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-9VSEK22HM5"
+          strategy="lazyOnload"
+        />
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-9VSEK22HM5');
+          `}
+        </Script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
