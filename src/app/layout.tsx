@@ -89,7 +89,7 @@ export const metadata: Metadata = {
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": ["Organization", "LocalBusiness", "TravelAgency"],
+  "@type": ["Organization", "TravelAgency"],
   name: "DVDL Đại Dương Ban Mê",
   alternateName: "Đại Dương Ban Mê",
   url: siteUrl,
