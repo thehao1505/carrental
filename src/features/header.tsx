@@ -51,6 +51,8 @@ export default function Header() {
             src="/images/avatar-default.svg"
             alt="Ảnh đại diện"
             className="object-cover"
+            width={48}
+            height={48}
           />
         </Avatar>
 
