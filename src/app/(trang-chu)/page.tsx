@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { NewsSection } from "@/features/trang-chu/news-section";
 import StatsGrid from "@/features/trang-chu/section";
 import { HeroSection } from "@/features/trang-chu/split-image";
@@ -48,7 +49,9 @@ export default function Home() {
       />
       <HeroSection />
       <StatsGrid />
-      <NewsSection />
+      <Suspense>
+        <NewsSection />
+      </Suspense>
       <Testimonials />
     </>
   );
