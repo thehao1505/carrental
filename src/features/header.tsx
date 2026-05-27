@@ -29,6 +29,12 @@ export default function Header() {
             Giới thiệu
           </Link>
           <Link
+            href="/thue-xe"
+            className="text-base font-bold text-forest-500 hover:scale-105 transition-all duration-200"
+          >
+            Thuê xe
+          </Link>
+          <Link
             href="/tin-tuc"
             className="text-base font-bold text-forest-500 hover:scale-105 transition-all duration-200"
           >
@@ -79,6 +85,13 @@ export default function Header() {
             className="text-sm font-bold text-forest-500 hover:scale-105 transition-all duration-200"
           >
             Giới thiệu
+          </Link>
+          <Link
+            href="/thue-xe"
+            onClick={() => setIsOpen(false)}
+            className="text-sm font-bold text-forest-500 hover:scale-105 transition-all duration-200"
+          >
+            Thuê xe
           </Link>
           <Link
             href="/tin-tuc"

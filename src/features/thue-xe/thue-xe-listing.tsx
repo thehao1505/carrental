@@ -73,6 +73,26 @@ export function ThueXeListing() {
         </div>
       </section>
 
+      {/* Landing page nổi bật */}
+      <section className="max-w-6xl mx-auto px-6 pb-4">
+        <Link
+          href="/thue-xe-du-lich-dak-lak"
+          className="flex items-center justify-between gap-4 bg-forest-500 text-white rounded-2xl px-7 py-5 hover:bg-forest-600 transition group"
+        >
+          <div>
+            <div className="font-bold text-lg leading-snug">
+              Thuê xe du lịch Đắk Lắk – Giá tốt, có tài xế
+            </div>
+            <div className="text-white/75 text-sm mt-1">
+              Giá từ 13.000đ/km · Buôn Đôn, Hồ Lắk, liên tỉnh · Phục vụ 24/7
+            </div>
+          </div>
+          <span className="text-lemon-400 text-2xl font-bold group-hover:translate-x-1 transition-transform shrink-0">
+            →
+          </span>
+        </Link>
+      </section>
+
       {/* CTA */}
       <section className="bg-forest-50 py-12 text-center px-4">
         <h2 className="text-2xl font-bold text-forest-600 mb-3">

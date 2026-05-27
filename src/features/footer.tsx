@@ -158,10 +158,22 @@ export default function Footer() {
           <h4 className="font-semibold mb-4">Dịch vụ</h4>
           <ul className="space-y-2 text-moss-100">
             <li
+              onClick={() => router.push("/thue-xe")}
+              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
+            >
+              Tất cả dịch vụ thuê xe
+            </li>
+            <li
               onClick={() => router.push("/tin-tuc/thue-xe-co-tai-xe")}
               className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
             >
               Thuê xe có tài xế
+            </li>
+            <li
+              onClick={() => router.push("/thue-xe-du-lich-dak-lak")}
+              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
+            >
+              Thuê xe du lịch Đắk Lắk
             </li>
             <li
               onClick={() => router.push("/thue-xe/thuexe-16-cho")}
