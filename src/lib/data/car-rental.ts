@@ -7,7 +7,7 @@ export const carRentalData = [
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
         <div class="border-b pb-6 mb-6">
-          <h2 class="text-2xl font-bold text-forest-600 mb-4">🚗 Dịch vụ thuê xe 4 chỗ tại Buôn Ma Thuột - Linh hoạt, tiện lợi cho mọi hành trình</h2>
+          <h2 class="text-2xl font-bold text-forest-600 mb-4">Dịch Vụ Thuê Xe 4 Chỗ Tại Buôn Ma Thuột – Linh Hoạt, Tiện Lợi</h2>
           <p class="text-lg leading-relaxed">
             Xe 4 chỗ là lựa chọn hoàn hảo cho <strong>cá nhân, gia đình nhỏ hoặc nhóm ít người</strong> cần sự linh hoạt khi di chuyển tại Buôn Ma Thuột. Xe nhỏ gọn, dễ luồn lách trong phố, tiết kiệm nhiên liệu và vẫn đảm bảo sự thoải mái trong những hành trình ngắn hoặc dài.
           </p>
@@ -91,7 +91,7 @@ export const carRentalData = [
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
         <div class="border-b pb-6 mb-6">
-          <h2 class="text-2xl font-bold text-forest-600 mb-4">🚙 Dịch vụ thuê xe 7 chỗ tại Buôn Ma Thuột - Chuyến đi tiện nghi, thoải mái</h2>
+          <h2 class="text-2xl font-bold text-forest-600 mb-4">Dịch Vụ Thuê Xe 7 Chỗ Tại Buôn Ma Thuột – Tiện Nghi</h2>
           <p class="text-lg leading-relaxed">
             Nếu bạn đi theo nhóm 4-7 người, mang theo nhiều hành lý hoặc đơn giản là muốn có không gian rộng rãi để di chuyển trong và ngoài thành phố, thì <strong>xe 7 chỗ là lựa chọn lý tưởng</strong>. Với kiểu dáng hiện đại, ghế ngồi thoải mái và khoang chứa đồ rộng, xe 7 chỗ giúp chuyến đi tại Buôn Ma Thuột trở nên mượt mà và thư thái hơn bao giờ hết.
           </p>
@@ -183,7 +183,7 @@ export const carRentalData = [
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
         <div class="border-b pb-6 mb-6">
-          <h2 class="text-2xl font-bold text-forest-600 mb-4">🚐 Dịch vụ thuê xe 16 chỗ tại Buôn Ma Thuột - Lựa chọn hoàn hảo cho chuyến đi đông người</h2>
+          <h2 class="text-2xl font-bold text-forest-600 mb-4">Dịch Vụ Thuê Xe 16 Chỗ Tại Buôn Ma Thuột – Phù Hợp Cho Đoàn</h2>
           <p class="text-lg leading-relaxed">
             Xe 16 chỗ là phương tiện lý tưởng cho các chuyến đi theo nhóm như <strong>du lịch gia đình, công tác nhóm, đưa đón đoàn</strong> tại Buôn Ma Thuột và các tỉnh lân cận. Với không gian vừa đủ, nội thất hiện đại, xe 16 chỗ mang lại sự thoải mái, tiết kiệm và linh hoạt cho mọi hành trình.
           </p>
@@ -275,7 +275,7 @@ export const carRentalData = [
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
         <div class="border-b pb-6 mb-6">
-          <h2 class="text-2xl font-bold text-forest-600 mb-4">🚌 Dịch vụ thuê xe 29 chỗ tại Buôn Ma Thuột - Đồng hành cùng những hành trình tập thể</h2>
+          <h2 class="text-2xl font-bold text-forest-600 mb-4">Dịch Vụ Thuê Xe 29 Chỗ Tại Buôn Ma Thuột – Hành Trình Tập Thể</h2>
           <p class="text-lg leading-relaxed">
             Xe 29 chỗ là phương tiện lý tưởng cho các <strong>chuyến đi theo đoàn</strong> như du lịch nhóm, tham quan trường học, công tác doanh nghiệp hay các sự kiện tập thể. Với không gian rộng rãi, hệ thống điều hòa mát lạnh và nội thất tiện nghi, xe 29 chỗ giúp chuyến đi trở nên dễ chịu và gắn kết hơn.
           </p>
@@ -367,7 +367,7 @@ export const carRentalData = [
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
         <div class="border-b pb-6 mb-6">
-          <h2 class="text-2xl font-bold text-forest-600 mb-4">🚌 Dịch vụ thuê xe 45 chỗ tại Buôn Ma Thuột - Lựa chọn hàng đầu cho tour đoàn, công ty, trường học</h2>
+          <h2 class="text-2xl font-bold text-forest-600 mb-4">Dịch Vụ Thuê Xe 45 Chỗ Tại Buôn Ma Thuột – Tour Đoàn</h2>
           <p class="text-lg leading-relaxed">
             Xe 45 chỗ là phương tiện lý tưởng cho những chuyến đi đông người như <strong>tour du lịch</strong>, <strong>đưa đón học sinh - công nhân</strong>, hay <strong>chuyên chở sự kiện, hội thảo</strong>. Với không gian rộng rãi, nội thất hiện đại, hệ thống điều hòa và âm thanh chất lượng, xe 45 chỗ mang đến sự thoải mái và an toàn cho mọi hành trình dài.
           </p>
@@ -460,7 +460,7 @@ export const carRentalData = [
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
         <div class="border-b pb-6 mb-6">
-          <h2 class="text-2xl font-bold text-forest-600 mb-4">✨ Dịch vụ thuê xe Limousine tại Buôn Ma Thuột - Đẳng cấp và tiện nghi hàng đầu</h2>
+          <h2 class="text-2xl font-bold text-forest-600 mb-4">Dịch Vụ Thuê Xe Limousine Tại Buôn Ma Thuột – Đẳng Cấp</h2>
           <p class="text-lg leading-relaxed">
             Nếu bạn đang tìm kiếm một phương tiện <strong>sang trọng, êm ái và hiện đại</strong> cho chuyến đi công tác, du lịch nghỉ dưỡng hay đón tiễn sân bay, thì xe <strong>Limousine</strong> là lựa chọn tuyệt vời. Tại Buôn Ma Thuột, chúng tôi cung cấp dịch vụ <strong>thuê xe Limousine 9 - 11 chỗ</strong> chất lượng cao, phục vụ theo yêu cầu riêng từng khách hàng.
           </p>

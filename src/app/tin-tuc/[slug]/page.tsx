@@ -177,9 +177,9 @@ export default async function BaiVietPage({
     },
     block: {
       h1: ({ children }: { children?: React.ReactNode }) => (
-        <h1 className="text-3xl font-bold text-forest-700 mt-8 mb-4">
+        <h2 className="text-3xl font-bold text-forest-700 mt-8 mb-4">
           {children}
-        </h1>
+        </h2>
       ),
       h2: ({ children }: { children?: React.ReactNode }) => (
         <h2 className="text-2xl font-bold text-forest-600 mt-7 mb-3">

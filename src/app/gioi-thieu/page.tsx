@@ -4,7 +4,7 @@ import GioiThieuCard from "@/features/gioi-thieu/gioi-thieu";
 export const metadata: Metadata = {
   title: "Giới Thiệu",
   description:
-    "DVDL Đại Dương Ban Mê - Đơn vị chuyên cung cấp dịch vụ thuê xe du lịch 4-45 chỗ, tour nội địa, tổ chức team building và sự kiện tại Buôn Ma Thuột, Đắk Lắk.",
+    "DVDL Đại Dương Ban Mê – Thuê xe 4-45 chỗ, tour nội địa, team building và sự kiện tại Buôn Ma Thuột, Đắk Lắk.",
   keywords: [
     "giới thiệu DVDL Đại Dương Ban Mê",
     "du lịch Buôn Ma Thuột",
