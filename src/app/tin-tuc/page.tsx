@@ -85,7 +85,7 @@ export default async function TinTucPage({
       {/* Hero Banner */}
       <section className="relative h-[350px] w-full">
         <Image
-          src="/images/phongcanh.jpg"
+          src="/images/phongcanh.webp"
           alt="Tin tức và cẩm nang du lịch Buôn Ma Thuột"
           fill
           className="object-cover"

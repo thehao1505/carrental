@@ -6,10 +6,9 @@ const siteUrl = "https://www.dvdldaiduong.com";
 const pageUrl = `${siteUrl}/thue-xe-du-lich-dak-lak`;
 
 export const metadata: Metadata = {
-  title:
-    "Thuê Xe Du Lịch Đắk Lắk – Xe 4–45 Chỗ, Có Tài Xế | DVDL Đại Dương Ban Mê",
+  title: "Thuê Xe Du Lịch Đắk Lắk | Xe 4-45 Chỗ Có Tài Xế",
   description:
-    "Thuê xe du lịch Đắk Lắk giá tốt – xe 4, 7, 16, 29, 45 chỗ & limousine có tài xế chuyên nghiệp. Khám phá Buôn Đôn, Hồ Lắk, Thác Dray Nur. Đặt ngay, giá từ 13.000đ/km.",
+    "Thuê xe du lịch Đắk Lắk – xe 4-45 chỗ & limousine có tài xế. Khám phá Buôn Đôn, Hồ Lắk, Thác Dray Nur. Giá từ 13.000đ/km.",
   keywords: [
     "thuê xe du lịch Đắk Lắk",
     "thuê xe Đắk Lắk",
@@ -228,7 +227,7 @@ export default function ThueXeDuLichDakLak() {
         {/* ── Hero ── */}
         <section className="relative h-[380px] w-full">
           <Image
-            src="/images/thuexe-7-cho.png"
+            src="/images/thuexe-7-cho.webp"
             alt="Thuê xe du lịch Đắk Lắk – DVDL Đại Dương Ban Mê"
             fill
             className="object-cover"

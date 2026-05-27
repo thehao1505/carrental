@@ -12,7 +12,7 @@ export const TinTucCard = () => {
     <main className="text-gray-800">
       <section className="relative h-[350px] w-full">
         <Image
-          src="/images/phongcanh.jpg"
+          src="/images/phongcanh.webp"
           alt="Giới thiệu công ty du lịch"
           fill
           className="object-cover"

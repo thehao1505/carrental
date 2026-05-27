@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import { NewsSection } from "@/features/trang-chu/news-section";
 import StatsGrid from "@/features/trang-chu/section";
@@ -5,6 +6,42 @@ import { HeroSection } from "@/features/trang-chu/split-image";
 import Testimonials from "@/features/trang-chu/testimonials";
 
 const siteUrl = "https://www.dvdldaiduong.com";
+
+export const metadata: Metadata = {
+  title: {
+    absolute:
+      "Cho Thuê Xe Đắk Lắk | Xe 4-45 Chỗ Có Tài Xế | DVDL Đại Dương Ban Mê",
+  },
+  description:
+    "Cho thuê xe Đắk Lắk uy tín – xe 4-45 chỗ có tài xế, tour nội địa, team building và sự kiện tại Buôn Ma Thuột.",
+  alternates: {
+    canonical: siteUrl,
+  },
+  openGraph: {
+    title:
+      "Cho Thuê Xe Đắk Lắk | Xe 4-45 Chỗ Có Tài Xế | DVDL Đại Dương Ban Mê",
+    description:
+      "Cho thuê xe Đắk Lắk uy tín – xe 4-45 chỗ có tài xế, tour nội địa, team building và sự kiện tại Buôn Ma Thuột.",
+    url: siteUrl,
+    locale: "vi_VN",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "DVDL Đại Dương Ban Mê - Cho thuê xe Đắk Lắk",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cho Thuê Xe Đắk Lắk | Xe 4-45 Chỗ Có Tài Xế",
+    description:
+      "Cho thuê xe Đắk Lắk uy tín – xe 4-45 chỗ có tài xế, tour nội địa, team building và sự kiện tại Buôn Ma Thuột.",
+    images: ["/og-image.jpg"],
+  },
+};
 
 const localBusinessSchema = {
   "@context": "https://schema.org",

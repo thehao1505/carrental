@@ -23,12 +23,11 @@ const siteUrl = "https://www.dvdldaiduong.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default:
-      "Cho Thuê Xe Đắk Lắk Uy Tín | Xe 4-45 Chỗ Có Tài Xế - Đại Dương Ban Mê",
+    default: "Cho Thuê Xe Đắk Lắk | Xe 4-45 Chỗ Có Tài Xế | DVDL",
     template: "%s | DVDL Đại Dương Ban Mê",
   },
   description:
-    "Khám phá hành trình du lịch cùng DVDL Đại Dương Ban Mê - chuyên tour nội địa, thuê xe đời mới 4-45 chỗ, tổ chức team building và sự kiện trọn gói tại Buôn Ma Thuột.",
+    "Cho thuê xe Đắk Lắk uy tín – xe 4-45 chỗ có tài xế, tour nội địa, team building và sự kiện tại Buôn Ma Thuột.",
   keywords: [
     "du lịch Buôn Ma Thuột",
     "thuê xe du lịch Đắk Lắk",
@@ -61,9 +60,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "Cho Thuê Xe Đắk Lắk Uy Tín | Xe 4-45 Chỗ Có Tài Xế - Đại Dương Ban Mê",
+      "Cho Thuê Xe Đắk Lắk | Xe 4-45 Chỗ Có Tài Xế | DVDL Đại Dương Ban Mê",
     description:
-      "Chúng tôi mang đến trải nghiệm du lịch cá nhân hóa, an toàn, minh bạch và tận tâm tại Buôn Ma Thuột - Đắk Lắk.",
+      "Cho thuê xe Đắk Lắk uy tín – xe 4-45 chỗ có tài xế, tour nội địa, team building và sự kiện tại Buôn Ma Thuột.",
     url: siteUrl,
     siteName: "DVDL Đại Dương Ban Mê",
     locale: "vi_VN",
@@ -79,10 +78,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Cho Thuê Xe Đắk Lắk Uy Tín | Xe 4-45 Chỗ Có Tài Xế - Đại Dương Ban Mê",
+    title: "Cho Thuê Xe Đắk Lắk | Xe 4-45 Chỗ Có Tài Xế",
     description:
-      "Chuyên tour nội địa, thuê xe đời mới, tổ chức team building và sự kiện tại Buôn Ma Thuột.",
+      "Cho thuê xe Đắk Lắk uy tín – xe 4-45 chỗ có tài xế, tour nội địa, team building và sự kiện tại Buôn Ma Thuột.",
     images: ["/og-image.jpg"],
   },
 };

@@ -9,7 +9,7 @@ export function BangGiaCard() {
       {/* Hero */}
       <section className="relative h-[300px] w-full">
         <Image
-          src="/images/daklak-museum.jpeg"
+          src="/images/daklak-museum.webp"
           alt="Bảng giá thuê xe Buôn Ma Thuột"
           fill
           className="object-cover"
@@ -309,7 +309,7 @@ export function BangGiaCard() {
           </div>
           <div>
             <Image
-              src="/images/hyundai-tucson.jpg"
+              src="/images/hyundai-tucson.webp"
               alt="Thuê xe ô tô 7 chỗ"
               width={500}
               height={300}

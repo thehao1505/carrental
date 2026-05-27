@@ -42,7 +42,7 @@ export function HeroSection() {
       >
         <div className="h-full w-full">
           <Image
-            src="/images/draynur-waterfall.jpg"
+            src="/images/draynur-waterfall.webp"
             alt="Thắng cảnh Tây Nguyên"
             fill
             sizes="(max-width: 768px) 100vw, 60vw"

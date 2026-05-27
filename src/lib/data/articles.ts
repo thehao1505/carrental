@@ -3,7 +3,7 @@ export const articles = [
     slug: "top-5-dia-diem-checkin-bmt",
     title: "Top 5 địa điểm check-in đẹp nhất Buôn Ma Thuột",
     date: `${new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toLocaleDateString("vi-VN")}`,
-    image: "/images/top-5-diadiemcheckin.jpg",
+    image: "/images/top-5-diadiemcheckin.webp",
     excerpt:
       "Khám phá những địa điểm cực chill tại Đắk Lắk dành cho tín đồ du lịch: từ Thác Dray Nur đến KDL Ko Tam...",
     content: `
@@ -306,7 +306,7 @@ export const articles = [
     slug: "kinh-nghiem-thue-xe-tiet-kiem",
     title: "5 kinh nghiệm thuê xe du lịch tiết kiệm và an toàn",
     date: `${new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toLocaleDateString("vi-VN")}`,
-    image: "/images/thuexe.jpg",
+    image: "/images/thuexe.webp",
     excerpt:
       "Thuê xe không chỉ cần giá rẻ, mà còn phải đảm bảo chất lượng và dịch vụ. Xem ngay 5 mẹo thực tế!",
     content: `
@@ -321,7 +321,7 @@ export const articles = [
         <!-- Kinh nghiệm 1 -->
         <div class="border-b pb-6 mb-6">
           <h2 class="text-2xl font-bold text-forest-600 mb-4">1. So sánh giá và đặt xe trước ít nhất 1 tuần</h2>
-          <img src="/images/compare-price.png" alt="So sánh giá thuê xe online" class="w-full rounded-lg mb-4" />
+          <img src="/images/compare-price.webp" alt="So sánh giá thuê xe online" width="800" height="533" class="w-full rounded-lg mb-4" />
           
           <p class="mb-4">
             <strong>Tại sao nên đặt trước?</strong> Giá thuê xe thường tăng cao vào cuối tuần, lễ tết và mùa du lịch cao điểm. Đặt trước giúp bạn có nhiều lựa chọn và giá tốt hơn.
@@ -351,7 +351,7 @@ export const articles = [
         <!-- Kinh nghiệm 2 -->
         <div class="border-b pb-6 mb-6">
           <h2 class="text-2xl font-bold text-forest-600 mb-4">2. Kiểm tra kỹ xe trước khi nhận</h2>
-          <img src="/images/xe-16(1).jpg" alt="Kiểm tra xe trước khi thuê" class="w-full rounded-lg mb-4" />
+          <img src="/images/xe-16(1).webp" alt="Kiểm tra xe trước khi thuê" width="800" height="533" class="w-full rounded-lg mb-4" />
           
           <p class="mb-4">
             Đây là bước quan trọng nhất để tránh những rắc rối không đáng có. Hãy kiểm tra tỉ mỉ từng chi tiết của xe.
@@ -385,7 +385,7 @@ export const articles = [
         <!-- Kinh nghiệm 3 -->
         <div class="border-b pb-6 mb-6">
           <h2 class="text-2xl font-bold text-forest-600 mb-4">3. Đọc kỹ hợp đồng và điều khoản</h2>
-          <img src="/images/kyhopdong.jpg" alt="Đọc hợp đồng thuê xe" class="w-full rounded-lg mb-4" />
+          <img src="/images/kyhopdong.webp" alt="Đọc hợp đồng thuê xe" width="800" height="533" class="w-full rounded-lg mb-4" />
           
           <p class="mb-4">
             Nhiều người bỏ qua bước này và gặp rắc rối sau này. Hãy đọc kỹ mọi điều khoản để bảo vệ quyền lợi của mình.
@@ -450,7 +450,7 @@ export const articles = [
         <!-- Kinh nghiệm 5 -->
         <div class="border-b pb-6 mb-6">
           <h2 class="text-2xl font-bold text-forest-600 mb-4">5. Chọn nhà cung cấp uy tín</h2>
-          <img src="/images/logo-header.svg" alt="Chọn công ty thuê xe uy tín" class="w-full rounded-lg mb-4" />
+          <img src="/images/logo-header.svg" alt="Chọn công ty thuê xe uy tín" width="800" height="533" class="w-full rounded-lg mb-4" />
           
           <p class="mb-2">
             Một nhà cung cấp uy tín sẽ giúp chuyến đi của bạn suôn sẻ và an toàn hơn rất nhiều.
@@ -496,7 +496,7 @@ export const articles = [
         <!-- Bonus tips -->
         <div class="border-b pb-6 mb-6">
           <h2 class="text-2xl font-bold text-forest-600 mb-4">Bonus: Những mẹo tiết kiệm thêm</h2>
-          <img src="/images/saving.jpg" alt="Mẹo tiết kiệm khi thuê xe" class="w-full rounded-lg mb-4" />
+          <img src="/images/saving.webp" alt="Mẹo tiết kiệm khi thuê xe" width="800" height="533" class="w-full rounded-lg mb-4" />
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -554,7 +554,7 @@ export const articles = [
     slug: "goi-tour-daklak-mua-he",
     title: "Gợi ý tour Đắk Lắk hè này: thiên nhiên, văn hóa, ẩm thực",
     date: `${new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toLocaleDateString("vi-VN")}`,
-    image: "/images/thien-nhien.jpg",
+    image: "/images/thien-nhien.webp",
     excerpt:
       "Tham khảo lịch trình tour Đắk Lắk 3N2Đ, kết hợp khám phá núi rừng và trải nghiệm văn hóa bản địa.",
     content: `
@@ -567,7 +567,7 @@ export const articles = [
 
         <div class="border-b pb-6 mb-6">
           <h2 class="text-2xl font-bold text-forest-600 mb-4">Tại sao chọn Đắk Lắk làm điểm đến hè này?</h2>
-          <img src="/images/phongcanh.jpg" alt="Phong cảnh Đắk Lắk" class="w-full rounded-lg mb-4" />
+          <img src="/images/phongcanh.webp" alt="Phong cảnh Đắk Lắk" width="800" height="533" class="w-full rounded-lg mb-4" />
           <p class="mb-4">
             Đắk Lắk sở hữu khí hậu mát mẻ quanh năm với nhiệt độ trung bình 22-25°C, đặc biệt thích hợp cho việc du lịch vào mùa hè. Tỉnh này nổi tiếng với:
           </p>
@@ -583,7 +583,7 @@ export const articles = [
           <!-- Ngày 1 -->
           <div class="mb-6">
             <h3 class="text-xl font-semibold text-forest-500 mb-3">Ngày 1: Buôn Ma Thuột - Khám phá thủ phủ cà phê</h3>
-            <Image src="/images/le-hoi-caphe.jpg" alt="Buôn Ma Thuột thành phố cà phê" class="w-full rounded-lg mb-4 object-cover" />
+            <Image src="/images/le-hoi-caphe.webp" alt="Buôn Ma Thuột thành phố cà phê" class="w-full rounded-lg mb-4 object-cover" />
             
             <p class="mb-2"><strong>Sáng (8:00-12:00):</strong></p>
             <p class="mb-2">• Đến sân bay Buôn Ma Thuột, nhận phòng khách sạn</p>
@@ -601,7 +601,7 @@ export const articles = [
           <!-- Ngày 2 -->
           <div class="mb-6">
             <h3 class="text-xl font-semibold text-forest-500 mb-3">Ngày 2: Thác Dray Nur - Làng Ako Dhong</h3>
-            <Image src="/images/draynur-waterfall.jpg" alt="Thác Dray Nur hùng vĩ" class="w-full rounded-lg mb-4" />
+            <Image src="/images/draynur-waterfall.webp" alt="Thác Dray Nur hùng vĩ" class="w-full rounded-lg mb-4" />
             
             <p class="mb-2"><strong>Sáng (7:00-12:00):</strong></p>
             <p class="mb-2">• Khởi hành đi thác Dray Nur (cách Buôn Ma Thuột 25km)</p>
@@ -619,7 +619,7 @@ export const articles = [
           <!-- Ngày 3 -->
           <div class="mb-6">
             <h3 class="text-xl font-semibold text-forest-500 mb-3">Ngày 3: Hồ Lắk - Vườn Quốc gia Yok Đôn</h3>
-            <img src="/images/ho-lak-buon-don.jpg" alt="Hồ Lắk thơ mộng" class="w-full rounded-lg mb-4" />
+            <img src="/images/ho-lak-buon-don.webp" alt="Hồ Lắk thơ mộng" width="800" height="533" class="w-full rounded-lg mb-4" />
             
             <p class="mb-2"><strong>Sáng (7:00-12:00):</strong></p>
             <p class="mb-2">• Di chuyển đến hồ Lắk (30km từ Buôn Ma Thuột)</p>
@@ -636,7 +636,7 @@ export const articles = [
         <!-- Ẩm thực đặc trưng -->
         <div class="border-b pb-6 mb-6">
           <h2 class="text-2xl font-bold text-forest-600 mb-4">Ẩm thực Đắk Lắk không thể bỏ qua</h2>
-          <img src="/images/comlam.jpg" alt="Ẩm thực Đắk Lắk đặc sắc" class="w-full rounded-lg mb-4" />
+          <img src="/images/comlam.webp" alt="Ẩm thực Đắk Lắk đặc sắc" width="800" height="533" class="w-full rounded-lg mb-4" />
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -674,7 +674,7 @@ export const articles = [
         <!-- Lưu ý khi đi tour -->
         <div class="border-b pb-6 mb-6">
           <h2 class="text-2xl font-bold text-forest-600 mb-4">Lưu ý quan trọng</h2>
-          <img src="/images/chuanbi.jpg" alt="Chuẩn bị cho chuyến đi" class="w-full rounded-lg mb-4" />
+          <img src="/images/chuanbi.webp" alt="Chuẩn bị cho chuyến đi" width="800" height="533" class="w-full rounded-lg mb-4" />
           
           <p class="mb-2"><strong>🎒 Đồ dùng cần thiết:</strong></p>
           <p class="mb-2">• Giày trekking chống trượt cho việc đi bộ trong rừng</p>
@@ -694,7 +694,7 @@ export const articles = [
         <!-- Kết luận -->
         <div>
           <h2 class="text-2xl font-bold text-forest-600 mb-4">Trải nghiệm đáng nhớ tại Đắk Lắk</h2>
-          <img src="/images/kyniemdep.jpg" alt="Kỷ niệm đẹp tại Đắk Lắk" class="w-full rounded-lg mb-4" />
+          <img src="/images/kyniemdep.webp" alt="Kỷ niệm đẹp tại Đắk Lắk" width="800" height="533" class="w-full rounded-lg mb-4" />
           <p class="text-lg leading-relaxed">
             Tour Đắk Lắk 3N2Đ không chỉ mang đến cho bạn những trải nghiệm thú vị về thiên nhiên hoang sơ mà còn giúp bạn hiểu sâu hơn về văn hóa đậm đà bản sắc của các dân tộc Tây Nguyên. Hãy chuẩn bị hành trang và lên đường khám phá vùng đất đầy quyến rũ này nhé!
           </p>
@@ -704,9 +704,10 @@ export const articles = [
   },
   {
     slug: "tour-mangden-kontum-pleiku-daklak",
-    title: "Đắk Lắk - Gia Lai - Măng Đen: Trọn Vẹn Một Tây Nguyên Hoang Sơ & Kỳ Bí",
+    title:
+      "Đắk Lắk - Gia Lai - Măng Đen: Trọn Vẹn Một Tây Nguyên Hoang Sơ & Kỳ Bí",
     date: `${new Date(Date.now() - 13 * 24 * 60 * 60 * 1000).toLocaleDateString("vi-VN")}`,
-    image: "/images/mangden.jpg",
+    image: "/images/mangden.webp",
     excerpt:
       "Khám phá Tây Nguyên trong 5 ngày 4 đêm qua hành trình độc đáo từ Đắk Lắk đến Măng Đen: thưởng thức cà phê Buôn Ma Thuột, hòa mình trong âm vang cồng chiêng, trekking thác Dray Nur, ngắm hoàng hôn hồ Lắk và trải nghiệm văn hóa bản địa nguyên sơ, đầy mê hoặc. Một chuyến đi đậm chất thiên nhiên – đậm đà bản sắc – khó quên trong đời.",
     content: `
@@ -724,7 +725,7 @@ export const articles = [
         <!-- Lý do không thể bỏ qua -->
         <div class="border-b pb-6 mb-6">
           <h2 class="text-2xl font-bold text-forest-600 mb-4">🔥 Tại sao Tây Nguyên là "Must-Visit" năm 2025?</h2>
-          <img src="/images/taynguyen.jpg" alt="Tây Nguyên hùng vĩ và thơ mộng" class="w-full rounded-lg mb-4" />
+          <img src="/images/taynguyen.webp" alt="Tây Nguyên hùng vĩ và thơ mộng" width="800" height="533" class="w-full rounded-lg mb-4" />
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="space-y-4">
@@ -763,7 +764,7 @@ export const articles = [
               <h3 class="text-xl font-bold">🌟 ĐẮKLẮK - Thủ phủ cà phê thế giới</h3>
             </div>
             <div class="bg-green-50 p-4 rounded-b-lg">
-              <img src="/images/thuphucaphe.jpg" alt="Đắk Lắk - Vương quốc cà phê" class="w-full rounded-lg mb-4" />
+              <img src="/images/thuphucaphe.webp" alt="Đắk Lắk - Vương quốc cà phê" width="800" height="533" class="w-full rounded-lg mb-4" />
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <p class="font-semibold mb-2">🎯 KHÔNG THỂ BỎ LỠ:</p>
@@ -789,7 +790,7 @@ export const articles = [
               <h3 class="text-xl font-bold">🌟 GIA LAI - Xứ sở hoa sim tím</h3>
             </div>
             <div class="bg-blue-50 p-4 rounded-b-lg">
-              <img src="/images/hoasim.jpg" alt="Gia Lai - Xứ sở hoa sim" class="w-full rounded-lg mb-4" />
+              <img src="/images/hoasim.webp" alt="Gia Lai - Xứ sở hoa sim" width="800" height="533" class="w-full rounded-lg mb-4" />
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <p class="font-semibold mb-2">🎯 ĐIỂM NHẤN ĐỘC ĐÁO:</p>
@@ -815,7 +816,7 @@ export const articles = [
               <h3 class="text-xl font-bold">🌟 MĂNG ĐEN - Đà Lạt thu nhỏ của Tây Nguyên</h3>
             </div>
             <div class="bg-purple-50 p-4 rounded-b-lg">
-              <Image src="/images/mangden.jpg" alt="Măng Đen - Đà Lạt thu nhỏ" class="w-full rounded-lg mb-4 h-[400px] w-auto object-cover" />
+              <Image src="/images/mangden.webp" alt="Măng Đen - Đà Lạt thu nhỏ" class="w-full rounded-lg mb-4 h-[400px] w-auto object-cover" />
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <p class="font-semibold mb-2">🎯 THIÊN ĐƯỜNG MÂY MÙ:</p>
@@ -839,7 +840,7 @@ export const articles = [
         <!-- Trải nghiệm độc quyền -->
         <div class="border-b pb-6 mb-6">
           <h2 class="text-2xl font-bold text-forest-600 mb-4">💎 Những trải nghiệm ONLY IN TÂY NGUYÊN</h2>
-          <img src="/api/placeholder/600/300" alt="Trải nghiệm độc đáo Tây Nguyên" class="w-full rounded-lg mb-4" />
+          <img src="/images/taynguyen.webp" alt="Trải nghiệm độc đáo Tây Nguyên" width="800" height="533" class="w-full rounded-lg mb-4" />
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="space-y-3">
@@ -882,9 +883,10 @@ export const articles = [
   },
   {
     slug: "thue-xe-co-tai-xe",
-    title: "Thuê Xe Có Tài Xế: Giải Pháp Di Chuyển An Toàn & Tiện Lợi Cho Mọi Chuyến Đi",
+    title:
+      "Thuê Xe Có Tài Xế: Giải Pháp Di Chuyển An Toàn & Tiện Lợi Cho Mọi Chuyến Đi",
     date: `${new Date(Date.now() - 16 * 24 * 60 * 60 * 1000).toLocaleDateString("vi-VN")}`,
-    image: "/images/thuexecotaixe.jpg",
+    image: "/images/thuexecotaixe.webp",
     excerpt:
       "Khám phá dịch vụ thuê xe có tài xế chuyên nghiệp với đội ngũ lái xe giàu kinh nghiệm, xe mới đời,q giá cả hợp lý. Từ du lịch gia đình đến công tác doanh nghiệp, từ đưa đón sân bay đến tour dài ngày - chúng tôi mang đến trải nghiệm di chuyển an toàn, thoải mái và đáng tin cậy nhất.",
     content: `
@@ -902,7 +904,7 @@ export const articles = [
         <!-- Lý do chọn thuê xe có tài xế -->
         <div class="border-b pb-6 mb-6">
           <h2 class="text-2xl font-bold text-forest-600 mb-4">🔥 Tại sao nên chọn thuê xe có tài xế?</h2>
-          <img src="/images/thuexe.jpg" alt="Dịch vụ thuê xe có tài xế chuyên nghiệp" class="w-full rounded-lg mb-4" />
+          <img src="/images/thuexe.webp" alt="Dịch vụ thuê xe có tài xế chuyên nghiệp" width="800" height="533" class="w-full rounded-lg mb-4" />
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="space-y-4">
@@ -941,7 +943,7 @@ export const articles = [
               <h3 class="text-xl font-bold">👨‍👩‍👧‍👦 XE DU LỊCH GIA ĐÌNH (4-7 chỗ)</h3>
             </div>
             <div class="bg-green-50 p-4 rounded-b-lg">
-              <img src="/images/noithatxe7cho.jpg" alt="Xe du lịch gia đình 4-7 chỗ" class="w-full rounded-lg mb-4" />
+              <img src="/images/noithatxe7cho.webp" alt="Xe du lịch gia đình 4-7 chỗ" width="800" height="533" class="w-full rounded-lg mb-4" />
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <p class="font-semibold mb-2">🚗 DÒNG XE PHỔ BIẾN:</p>
@@ -967,7 +969,7 @@ export const articles = [
               <h3 class="text-xl font-bold">✈️ XE ĐƯA ĐÓN SÂN BAY</h3>
             </div>
             <div class="bg-blue-50 p-4 rounded-b-lg">
-              <img src="/images/xe-16(1).jpg" alt="Dịch vụ đưa đón sân bay" class="w-full rounded-lg mb-4" />
+              <img src="/images/xe-16(1).webp" alt="Dịch vụ đưa đón sân bay" width="800" height="533" class="w-full rounded-lg mb-4" />
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <p class="font-semibold mb-2">🎯 DỊCH VỤ CHUYÊN NGHIỆP:</p>
@@ -991,7 +993,7 @@ export const articles = [
               <h3 class="text-xl font-bold">🚌 XE DU LỊCH NHÓM LỚN (16-45 chỗ)</h3>
             </div>
             <div class="bg-purple-50 p-4 rounded-b-lg">
-              <Image src="/images/xe-45.jpg" alt="Xe du lịch nhóm lớn 16-45 chỗ" class="w-full rounded-lg mb-4 h-[450px] w-auto object-cover" />
+              <Image src="/images/xe-45.webp" alt="Xe du lịch nhóm lớn 16-45 chỗ" class="w-full rounded-lg mb-4 h-[450px] w-auto object-cover" />
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <p class="font-semibold mb-2">🚐 LOẠI XE ĐA DẠNG:</p>
@@ -1115,9 +1117,10 @@ export const articles = [
   },
   {
     slug: "thue-xe-di-du-lich",
-    title: "Thuê Xe Du Lịch: Trải Nghiệm Chuyến Đi Hoàn Hảo Cùng Dịch Vụ Chuyên Nghiệp",
+    title:
+      "Thuê Xe Du Lịch: Trải Nghiệm Chuyến Đi Hoàn Hảo Cùng Dịch Vụ Chuyên Nghiệp",
     date: `${new Date(Date.now() - 19 * 24 * 60 * 60 * 1000).toLocaleDateString("vi-VN")}`,
-    image: "/images/dalat.jpg",
+    image: "/images/dalat.webp",
     excerpt:
       "Khám phá dịch vụ thuê xe du lịch chuyên nghiệp với đội xe đa dạng, tài xế giàu kinh nghiệm và dịch vụ tận tâm. Từ chuyến đi ngắn ngày đến tour dài hạn, từ gia đình nhỏ đến nhóm đông người - chúng tôi mang đến giải pháp di chuyển an toàn, tiện lợi và osát với giá cả hợp lý nhất.",
     content: `
@@ -1135,7 +1138,7 @@ export const articles = [
         <!-- Lý do chọn thuê xe du lịch -->
         <div class="border-b pb-6 mb-6">
           <h2 class="text-2xl font-bold text-forest-600 mb-4">🔥 Tại sao nên thuê xe du lịch?</h2>
-          <img src="/images/dibien.jpg" alt="Dịch vụ thuê xe du lịch chuyên nghiệp" class="w-full rounded-lg mb-4" />
+          <img src="/images/dibien.webp" alt="Dịch vụ thuê xe du lịch chuyên nghiệp" width="800" height="533" class="w-full rounded-lg mb-4" />
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="space-y-4">
@@ -1174,7 +1177,7 @@ export const articles = [
               <h3 class="text-xl font-bold">👨‍👩‍👧‍👦 DU LỊCH GIA ĐÌNH</h3>
             </div>
             <div class="bg-green-50 p-4 rounded-b-lg">
-              <img src="/images/family-trip.jpg" alt="Du lịch gia đình" class="w-full rounded-lg mb-4" />
+              <img src="/images/family-trip.webp" alt="Du lịch gia đình" width="800" height="533" class="w-full rounded-lg mb-4" />
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <p class="font-semibold mb-2">🚗 XE PHÙ HỢP:</p>
@@ -1200,7 +1203,7 @@ export const articles = [
               <h3 class="text-xl font-bold">🧑‍🤝‍🧑 DU LỊCH NHÓM BẠN</h3>
             </div>
             <div class="bg-blue-50 p-4 rounded-b-lg">
-              <img src="/images/friend-trip.jpg" alt="Du lịch nhóm bạn" class="w-full rounded-lg mb-4" />
+              <img src="/images/friend-trip.webp" alt="Du lịch nhóm bạn" width="800" height="533" class="w-full rounded-lg mb-4" />
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <p class="font-semibold mb-2">🚐 XE ĐA DẠNG:</p>
@@ -1226,7 +1229,7 @@ export const articles = [
               <h3 class="text-xl font-bold">🏢 DU LỊCH CÔNG TY - TEAM BUILDING</h3>
             </div>
             <div class="bg-purple-50 p-4 rounded-b-lg">
-              <img src="/images/team-building.jpg" alt="Du lịch công ty team building" class="w-full rounded-lg mb-4" />
+              <img src="/images/team-building.webp" alt="Du lịch công ty team building" width="800" height="533" class="w-full rounded-lg mb-4" />
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <p class="font-semibold mb-2">🚌 ĐỘI XE CHUYÊN NGHIỆP:</p>
@@ -1250,7 +1253,7 @@ export const articles = [
         <!-- Điểm đến hot -->
         <div class="border-b pb-6 mb-6">
           <h2 class="text-2xl font-bold text-forest-600 mb-4">🏖️ Các điểm đến hot được yêu thích</h2>
-          <img src="/images/dalat.jpg" alt="Các điểm đến du lịch hot" class="w-full rounded-lg mb-4" />
+          <img src="/images/dalat.webp" alt="Các điểm đến du lịch hot" class="w-full rounded-lg mb-4" />
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Đà Lạt -->
@@ -1385,9 +1388,10 @@ export const articles = [
   },
   {
     slug: "thue-xe-di-cong-tac",
-    title: "Thuê Xe Đi Công Tác: Dịch Vụ Chuyên Nghiệp Cho Doanh Nghiệp & Cá Nhân",
+    title:
+      "Thuê Xe Đi Công Tác: Dịch Vụ Chuyên Nghiệp Cho Doanh Nghiệp & Cá Nhân",
     date: `${new Date(Date.now() - 22 * 24 * 60 * 60 * 1000).toLocaleDateString("vi-VN")}`,
-    image: "/images/di-cong-tac.png",
+    image: "/images/di-cong-tac.webp",
     excerpt:
       "Dịch vụ thuê xe đi công tác chuyên nghiệp với đội xe đa dạng, tài xế kinh nghiệm và giá cả hợp lý. Phục vụ các chuyến công tác trong ngày, liên tỉnh, đưa đón khách hàng, hội nghị, sự kiện doanh nghiệp. Cam kết đúng giờ, an toàn và tạo ấn tượng chuyên nghiệp.",
     content: `
@@ -1405,7 +1409,7 @@ export const articles = [
         <!-- Lý do chọn thuê xe công tác -->
         <div class="border-b pb-6 mb-6">
           <h2 class="text-2xl font-bold text-forest-600 mb-4">🎯 Tại sao doanh nghiệp nên thuê xe công tác?</h2>
-          <img src="/images/congtac.jpg" alt="Dịch vụ thuê xe công tác chuyên nghiệp" class="w-full rounded-lg mb-4" />
+          <img src="/images/congtac.webp" alt="Dịch vụ thuê xe công tác chuyên nghiệp" class="w-full rounded-lg mb-4" />
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="space-y-4">
@@ -1444,7 +1448,7 @@ export const articles = [
               <h3 class="text-xl font-bold">👔 XE SEDAN CAO CẤP (4-5 chỗ)</h3>
             </div>
             <div class="bg-gray-50 p-4 rounded-b-lg">
-              <img src="/images/noithatxe4cho.jpg" alt="Xe sedan cao cấp cho công tác" class="w-full rounded-lg mb-4" />
+              <img src="/images/noithatxe4cho.webp" alt="Xe sedan cao cấp cho công tác" class="w-full rounded-lg mb-4" />
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <p class="font-semibold mb-2">🚗 DÒNG XE SANG TRỌNG:</p>
@@ -1470,7 +1474,7 @@ export const articles = [
               <h3 class="text-xl font-bold">🚐 XE SUV 7 CHỖ - NHÓM CÔNG TÁC</h3>
             </div>
             <div class="bg-blue-50 p-4 rounded-b-lg">
-              <img src="/images/noithatxe7cho.jpg" alt="Xe SUV 7 chỗ cho nhóm công tác" class="w-full rounded-lg mb-4" />
+              <img src="/images/noithatxe7cho.webp" alt="Xe SUV 7 chỗ cho nhóm công tác" class="w-full rounded-lg mb-4" />
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <p class="font-semibold mb-2">🚙 MẪU XE PHỔ BIẾN:</p>
@@ -1496,7 +1500,7 @@ export const articles = [
               <h3 class="text-xl font-bold">👑 XE MINUBUS 16 CHỖ - NHÓM CÔNG TÁC NHIỀU NGƯỜI</h3>
             </div>
             <div class="bg-purple-50 p-4 rounded-b-lg">
-              <img src="/images/noithatxelimousine.jpg" alt="Xe Limousine VIP cho lãnh đạo" class="w-full rounded-lg mb-4" />
+              <img src="/images/noithatxelimousine.webp" alt="Xe Limousine VIP cho lãnh đạo" class="w-full rounded-lg mb-4" />
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <p class="font-semibold mb-2">🏆 MẪU XE PHỔ BIẾN:</p>

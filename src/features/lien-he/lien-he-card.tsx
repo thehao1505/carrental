@@ -24,7 +24,9 @@ export default function LienHeCard() {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -64,10 +66,12 @@ export default function LienHeCard() {
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-12 text-gray-800">
-      <h1 className="text-3xl font-bold text-forest-600 mb-6 text-center">Liên hệ với chúng tôi</h1>
+      <h1 className="text-3xl font-bold text-forest-600 mb-6 text-center">
+        Liên hệ với chúng tôi
+      </h1>
       <p className="text-center text-lg text-gray-600 mb-10">
-        Hãy liên hệ với DVDL Đại Dương Ban Mê nếu bạn cần tư vấn tour, báo giá thuê xe hoặc hỗ trợ
-        dịch vụ!
+        Hãy liên hệ với DVDL Đại Dương Ban Mê nếu bạn cần tư vấn tour, báo giá
+        thuê xe hoặc hỗ trợ dịch vụ!
       </p>
 
       {/* Thông tin liên hệ */}
@@ -77,7 +81,10 @@ export default function LienHeCard() {
             <Phone className="text-moss-500 mt-1" />
             <div>
               <p className="font-semibold">Số điện thoại</p>
-              <a href="tel:0941437070" className="text-forest-500 hover:underline">
+              <a
+                href="tel:0941437070"
+                className="text-forest-500 hover:underline"
+              >
                 0941 437 070
               </a>
             </div>
@@ -89,6 +96,7 @@ export default function LienHeCard() {
               <Link
                 href="https://zalo.me/0941437070"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="text-forest-500 hover:underline"
               >
                 zalo.me/0941437070
@@ -99,7 +107,10 @@ export default function LienHeCard() {
             <Mail className="text-moss-500 mt-1" />
             <div>
               <p className="font-semibold">Email</p>
-              <a href="mailto:thehao155@gmail.com" className="text-forest-500 hover:underline">
+              <a
+                href="mailto:thehao155@gmail.com"
+                className="text-forest-500 hover:underline"
+              >
                 thehao155@gmail.com
               </a>
             </div>
@@ -131,8 +142,13 @@ export default function LienHeCard() {
         </div>
 
         {/* (Tùy chọn) Form liên hệ */}
-        <form onSubmit={handleSubmit} className="space-y-4 bg-gray-50 p-6 rounded-xl shadow">
-          <h2 className="text-lg font-semibold text-moss-600 mb-2">Gửi yêu cầu</h2>
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 bg-gray-50 p-6 rounded-xl shadow"
+        >
+          <h2 className="text-lg font-semibold text-moss-600 mb-2">
+            Gửi yêu cầu
+          </h2>
 
           {message && (
             <div
@@ -188,7 +204,9 @@ export default function LienHeCard() {
 
       {/* CTA */}
       <div className="text-center mt-16">
-        <p className="text-gray-600">Chúng tôi sẽ phản hồi nhanh nhất trong vòng 1 giờ làm việc.</p>
+        <p className="text-gray-600">
+          Chúng tôi sẽ phản hồi nhanh nhất trong vòng 1 giờ làm việc.
+        </p>
       </div>
     </main>
   );

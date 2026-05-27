@@ -35,7 +35,7 @@ export default function GioiThieuCard() {
         {/* Hero section */}
         <section className="relative h-[400px] w-full">
           <Image
-            src="/images/daklak-museum.jpeg"
+            src="/images/daklak-museum.webp"
             alt="Giới thiệu công ty du lịch"
             fill
             className="object-cover"
@@ -64,7 +64,7 @@ export default function GioiThieuCard() {
             câu chuyện đó.
           </p>
           <Image
-            src="/images/daklak-museum.jpeg"
+            src="/images/daklak-museum.webp"
             alt="Hành trình du lịch"
             width={1000}
             height={500}
@@ -151,7 +151,7 @@ export default function GioiThieuCard() {
             </div>
             <div>
               <Image
-                src="/images/daklak-museum.jpeg"
+                src="/images/daklak-museum.webp"
                 alt="Dịch vụ du lịch"
                 width={500}
                 height={300}
@@ -215,7 +215,7 @@ export default function GioiThieuCard() {
             {/* Hình minh họa */}
             <div className="mt-10">
               <Image
-                src="/images/daklak-museum.jpeg"
+                src="/images/daklak-museum.webp"
                 alt="Cam kết dịch vụ chất lượng"
                 width={1000}
                 height={500}
