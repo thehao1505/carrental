@@ -13,6 +13,14 @@ const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
   "categories": categories[]->title
 }`;
 
+const RELATED_QUERY = `*[_type == "post" && slug.current != $slug && defined(slug.current)]
+  {_id, title, slug, publishedAt, image, excerpt}`;
+
+function pickRandom<T>(arr: T[], n: number): T[] {
+  const shuffled = [...arr].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, n);
+}
+
 const { projectId, dataset } = client.config();
 const urlFor = (source: SanityImageSource) =>
   projectId && dataset
@@ -104,11 +112,11 @@ export default async function BaiVietPage({
   params: Promise<{ slug: string }>;
 }) {
   const resolvedParams = await params;
-  const post = await client.fetch<SanityDocument>(
-    POST_QUERY,
-    resolvedParams,
-    options,
-  );
+  const [post, allRelated] = await Promise.all([
+    client.fetch<SanityDocument>(POST_QUERY, resolvedParams, options),
+    client.fetch<SanityDocument[]>(RELATED_QUERY, resolvedParams, options),
+  ]);
+  const relatedPosts = pickRandom(allRelated, 4);
 
   if (!post) return notFound();
 
@@ -295,6 +303,50 @@ export default async function BaiVietPage({
           Liên hệ ngay
         </Link>
       </div>
+
+      {relatedPosts.length > 0 && (
+        <section className="mt-14 border-t pt-10">
+          <h2 className="text-xl font-bold text-forest-600 mb-6">
+            Bài viết liên quan
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {relatedPosts.map((related) => {
+              const relatedImageUrl = related.image
+                ? urlFor(related.image)?.width(600).height(360).auto("format").url()
+                : null;
+              return (
+                <Link
+                  key={related._id}
+                  href={`/tin-tuc/${related.slug.current}`}
+                  className="flex gap-4 group rounded-xl border p-3 hover:shadow-md transition-shadow bg-white"
+                >
+                  {relatedImageUrl ? (
+                    <Image
+                      src={relatedImageUrl}
+                      alt={related.title}
+                      width={120}
+                      height={80}
+                      className="w-[120px] h-[80px] object-cover rounded-lg flex-shrink-0"
+                    />
+                  ) : (
+                    <div className="w-[120px] h-[80px] bg-gray-100 rounded-lg flex-shrink-0" />
+                  )}
+                  <div className="flex flex-col justify-center gap-1 min-w-0">
+                    <p className="text-sm text-gray-500">
+                      {related.publishedAt
+                        ? new Date(related.publishedAt).toLocaleDateString("vi-VN")
+                        : ""}
+                    </p>
+                    <h3 className="text-sm font-semibold text-forest-700 group-hover:text-forest-500 line-clamp-2 leading-snug">
+                      {related.title}
+                    </h3>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
     </main>
   );
 }
