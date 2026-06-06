@@ -10,9 +10,9 @@ export function HeroSection() {
           <p className="text-5xl md:text-6xl font-bold text-moss-500 mb-2">
             Tận tâm.
           </p>
-          <h2 className="text-4xl md:text-5xl font-serif italic text-moss-500 mb-6">
+          <p className="text-4xl md:text-5xl font-serif italic text-moss-500 mb-6">
             Chuyên nghiệp.
-          </h2>
+          </p>
           <h1 className="text-3xl md:text-4xl font-bold text-forest-500 max-w-[550px] mb-6">
             Cho Thuê Xe Du Lịch Đắk Lắk - Xe 4 đến 45 Chỗ Có Tài Xế
           </h1>
