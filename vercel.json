@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "dvdldaiduong.com" }],
+      "destination": "https://www.dvdldaiduong.com/$1",
+      "permanent": true
+    }
+  ]
+}
