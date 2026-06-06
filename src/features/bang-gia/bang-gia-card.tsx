@@ -16,7 +16,7 @@ export function BangGiaCard() {
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <h1 className="text-4xl md:text-5xl text-white font-bold text-center px-4">
-            Bảng giá cho thuê xe ô tô du lịch tại Đắk Lắk năm 2025
+            Bảng giá cho thuê xe ô tô du lịch tại Đắk Lắk năm 2026
           </h1>
         </div>
       </section>
@@ -37,13 +37,15 @@ export function BangGiaCard() {
             <li>Các dịch vụ kèm theo chuyến đi.</li>
           </ul>
           <p className="mb-4">
-            Chẳng hạn, nếu quý khách thuê xe du lịch ở Buôn Ma Thuột đi Gia Lai sẽ có giá rẻ hơn
-            nhiều so với thuê xe đi Đà Lạt, thuê xe đi 1 ngày sẽ rẻ hơn 2 ngày.
+            Chẳng hạn, nếu quý khách thuê xe du lịch ở Buôn Ma Thuột đi Gia Lai
+            sẽ có giá rẻ hơn nhiều so với thuê xe đi Đà Lạt, thuê xe đi 1 ngày
+            sẽ rẻ hơn 2 ngày.
           </p>
           <p>
-            Để nắm được giá cho thuê xe ô tô chính xác, bạn hãy liên hệ trực tiếp với nhân viên của
-            công ty. Chuyên viên tư vấn của DVDL Đại Dương Ban Mê sẽ giúp bạn nắm được bảng giá thuê
-            xe chính xác nhất. Hoặc có thể tham khảo bảng giá thuê xe dưới đây:
+            Để nắm được giá cho thuê xe ô tô chính xác, bạn hãy liên hệ trực
+            tiếp với nhân viên của công ty. Chuyên viên tư vấn của DVDL Đại
+            Dương Ban Mê sẽ giúp bạn nắm được bảng giá thuê xe chính xác nhất.
+            Hoặc có thể tham khảo bảng giá thuê xe dưới đây:
           </p>
         </div>
       </section>
@@ -92,7 +94,14 @@ export function BangGiaCard() {
                     "450.000đ",
                     "600.000đ",
                   ],
-                  ["Sân bay BMT – Eakar", "1 lượt", "54km", "650.000đ", "700.000đ", "900.000đ"],
+                  [
+                    "Sân bay BMT – Eakar",
+                    "1 lượt",
+                    "54km",
+                    "650.000đ",
+                    "700.000đ",
+                    "900.000đ",
+                  ],
                   [
                     "Sân bay BMT – M’Đrăk",
                     "1 lượt",
@@ -101,7 +110,14 @@ export function BangGiaCard() {
                     "1.100.000đ",
                     "1.400.000đ",
                   ],
-                  ["Sân bay BMT – Buôn Đôn", "1 lượt", "35km", "450.000đ", "500.000đ", "700.000đ"],
+                  [
+                    "Sân bay BMT – Buôn Đôn",
+                    "1 lượt",
+                    "35km",
+                    "450.000đ",
+                    "500.000đ",
+                    "700.000đ",
+                  ],
                   [
                     "Sân bay BMT – Ea Sup hoặc Ea Hleo",
                     "1 lượt",
@@ -137,7 +153,10 @@ export function BangGiaCard() {
                 ].map((row, i) => (
                   <tr key={i} className="border-t">
                     {row.map((cell, j) => (
-                      <td key={j} className="py-2 px-3 whitespace-nowrap text-center">
+                      <td
+                        key={j}
+                        className="py-2 px-3 whitespace-nowrap text-center"
+                      >
                         {cell}
                       </td>
                     ))}
@@ -146,8 +165,8 @@ export function BangGiaCard() {
               </tbody>
             </table>
             <p className="text-sm text-gray-600 mt-4 italic">
-              * Giá đã bao gồm tài xế và nhiên liệu. Chưa bao gồm phí cầu đường, bến bãi và hóa đơn
-              VAT.
+              * Giá đã bao gồm tài xế và nhiên liệu. Chưa bao gồm phí cầu đường,
+              bến bãi và hóa đơn VAT.
             </p>
           </div>
         </div>
@@ -179,7 +198,10 @@ export function BangGiaCard() {
                 ].map((row, i) => (
                   <tr key={i} className="border-t">
                     {row.map((cell, j) => (
-                      <td key={j} className="py-2 px-3 whitespace-nowrap text-center">
+                      <td
+                        key={j}
+                        className="py-2 px-3 whitespace-nowrap text-center"
+                      >
                         {cell}
                       </td>
                     ))}
@@ -188,8 +210,8 @@ export function BangGiaCard() {
               </tbody>
             </table>
             <p className="text-sm text-gray-600 mt-4 italic">
-              * Giá đã bao gồm tài xế và nhiên liệu. Chưa bao gồm phí cầu đường, bến bãi và hóa đơn
-              VAT.
+              * Giá đã bao gồm tài xế và nhiên liệu. Chưa bao gồm phí cầu đường,
+              bến bãi và hóa đơn VAT.
             </p>
           </div>
         </div>
@@ -219,7 +241,13 @@ export function BangGiaCard() {
                     "250.000đ",
                     "500.000đ",
                   ],
-                  ["City tour (50km)", "1 ngày", "900.000đ", "1.100.000đ", "1.300.000đ"],
+                  [
+                    "City tour (50km)",
+                    "1 ngày",
+                    "900.000đ",
+                    "1.100.000đ",
+                    "1.300.000đ",
+                  ],
                   [
                     "Buôn Ma Thuột – Thác Dray Nur 2 chiều",
                     "5h",
@@ -227,7 +255,13 @@ export function BangGiaCard() {
                     "900.000đ",
                     "1.100.000đ",
                   ],
-                  ["City tour + Thác Dray Nur", "1 ngày", "1.100.000đ", "1.250.000đ", "1.700.000đ"],
+                  [
+                    "City tour + Thác Dray Nur",
+                    "1 ngày",
+                    "1.100.000đ",
+                    "1.250.000đ",
+                    "1.700.000đ",
+                  ],
                   [
                     "Buôn Ma Thuột – KDL Buôn Đôn 2 chiều",
                     "5h",
@@ -235,7 +269,13 @@ export function BangGiaCard() {
                     "1.000.000đ",
                     "1.200.000đ",
                   ],
-                  ["City tour + Buôn Đôn", "1 ngày", "1.200.000đ", "1.250.000đ", "1.700.000đ"],
+                  [
+                    "City tour + Buôn Đôn",
+                    "1 ngày",
+                    "1.200.000đ",
+                    "1.250.000đ",
+                    "1.700.000đ",
+                  ],
                   [
                     "Buôn Ma Thuột – Núi Đá Voi – Hồ Lắk 2 chiều",
                     "5h",
@@ -250,9 +290,27 @@ export function BangGiaCard() {
                     "1.300.000đ",
                     "1.700.000đ",
                   ],
-                  ["Tour Đắk Lắk 2 ngày 1 đêm", "2 ngày", "2.600.000đ", "2.800.000đ", "3.500.000đ"],
-                  ["Tour Đắk Lắk 3 ngày 2 đêm", "3 ngày", "3.600.000đ", "4.000.000đ", "4.800.000đ"],
-                  ["Buôn Ma Thuột – Gia Nghĩa", "125km", "1.400.000đ", "1.600.000đ", "2.400.000đ"],
+                  [
+                    "Tour Đắk Lắk 2 ngày 1 đêm",
+                    "2 ngày",
+                    "2.600.000đ",
+                    "2.800.000đ",
+                    "3.500.000đ",
+                  ],
+                  [
+                    "Tour Đắk Lắk 3 ngày 2 đêm",
+                    "3 ngày",
+                    "3.600.000đ",
+                    "4.000.000đ",
+                    "4.800.000đ",
+                  ],
+                  [
+                    "Buôn Ma Thuột – Gia Nghĩa",
+                    "125km",
+                    "1.400.000đ",
+                    "1.600.000đ",
+                    "2.400.000đ",
+                  ],
                   [
                     "Buôn Ma Thuột – Pleiku, Gia Lai",
                     "185km",
@@ -260,13 +318,34 @@ export function BangGiaCard() {
                     "2.200.000đ",
                     "3.000.000đ",
                   ],
-                  ["Buôn Ma Thuột – Nha Trang", "185km", "2.200.000đ", "2.200.000đ", "3.000.000đ"],
-                  ["Buôn Ma Thuột – Đà Lạt", "330km", "2.200.000đ", "2.500.000đ", "3.500.000đ"],
-                  ["Buôn Ma Thuột – Hồ Chí Minh", "-", "3.800.000đ", "4.200.000đ", "5.000.000đ"],
+                  [
+                    "Buôn Ma Thuột – Nha Trang",
+                    "185km",
+                    "2.200.000đ",
+                    "2.200.000đ",
+                    "3.000.000đ",
+                  ],
+                  [
+                    "Buôn Ma Thuột – Đà Lạt",
+                    "330km",
+                    "2.200.000đ",
+                    "2.500.000đ",
+                    "3.500.000đ",
+                  ],
+                  [
+                    "Buôn Ma Thuột – Hồ Chí Minh",
+                    "-",
+                    "3.800.000đ",
+                    "4.200.000đ",
+                    "5.000.000đ",
+                  ],
                 ].map((row, i) => (
                   <tr key={i} className="border-t">
                     {row.map((cell, j) => (
-                      <td key={j} className="py-2 px-3 whitespace-nowrap text-center">
+                      <td
+                        key={j}
+                        className="py-2 px-3 whitespace-nowrap text-center"
+                      >
                         {cell}
                       </td>
                     ))}
@@ -275,36 +354,41 @@ export function BangGiaCard() {
               </tbody>
             </table>
             <p className="text-sm text-gray-600 mt-4 italic">
-              * Giá đã bao gồm tài xế và nhiên liệu. Chưa bao gồm phí cầu đường, bến bãi và hóa đơn
-              VAT.
+              * Giá đã bao gồm tài xế và nhiên liệu. Chưa bao gồm phí cầu đường,
+              bến bãi và hóa đơn VAT.
             </p>
           </div>
         </div>
       </section>
 
       <section className="max-w-5xl mx-auto px-6 pb-16 space-y-4">
-        <h2 className="text-2xl font-bold text-forest-600 mb-4">Lái xe giàu kinh nghiệm</h2>
+        <h2 className="text-2xl font-bold text-forest-600 mb-4">
+          Lái xe giàu kinh nghiệm
+        </h2>
         <p>
-          Tất cả các lái xe đều là những người có nhiều năm kinh nghiệm. Khi phục vụ khách hàng, họ
-          đều thể hiện thái độ tận tâm, dễ chịu. Tất cả đều đặt sự an toàn và sự hài lòng của khách
-          hàng lên hàng đầu.
+          Tất cả các lái xe đều là những người có nhiều năm kinh nghiệm. Khi
+          phục vụ khách hàng, họ đều thể hiện thái độ tận tâm, dễ chịu. Tất cả
+          đều đặt sự an toàn và sự hài lòng của khách hàng lên hàng đầu.
         </p>
         <p>
-          Các nhân viên tư vấn của DVDL Đại Dương Ban Mê luôn tư vấn tận tình giúp quý khách lựa
-          chọn được loại xe phù hợp với chuyến đi của mình. Luôn trực tổng đài 24/7 sẵn sàng hỗ trợ
-          quý khách bất cứ lúc nào
+          Các nhân viên tư vấn của DVDL Đại Dương Ban Mê luôn tư vấn tận tình
+          giúp quý khách lựa chọn được loại xe phù hợp với chuyến đi của mình.
+          Luôn trực tổng đài 24/7 sẵn sàng hỗ trợ quý khách bất cứ lúc nào
         </p>
       </section>
 
       <section className="max-w-5xl mx-auto px-6 pb-16 space-y-4">
-        <h2 className="text-2xl font-bold text-forest-600 mb-4">Cho thuê xe đời mới</h2>
+        <h2 className="text-2xl font-bold text-forest-600 mb-4">
+          Cho thuê xe đời mới
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <p>
-              DVDL Đại Dương Ban Mê cung cấp đầy đủ các dòng xe 4, 7, 16, 29, 45 chỗ, xe giường nằm,
-              xe limousine từ bình dân đến cao cấp. Tất cả xe của công ty đều là xe đời mới, được
-              kiểm định, bảo dưỡng định kỳ. Từ đó, giúp khách hàng dễ dàng lựa chọn được dòng xe phù
-              hợp và có được những hành trình an toàn.
+              DVDL Đại Dương Ban Mê cung cấp đầy đủ các dòng xe 4, 7, 16, 29, 45
+              chỗ, xe giường nằm, xe limousine từ bình dân đến cao cấp. Tất cả
+              xe của công ty đều là xe đời mới, được kiểm định, bảo dưỡng định
+              kỳ. Từ đó, giúp khách hàng dễ dàng lựa chọn được dòng xe phù hợp
+              và có được những hành trình an toàn.
             </p>
           </div>
           <div>
@@ -321,7 +405,9 @@ export function BangGiaCard() {
 
       {/* CTA */}
       <section className="text-center pb-16">
-        <h2 className="text-2xl font-bold text-forest-600 mb-3">Bạn cần tư vấn nhanh?</h2>
+        <h2 className="text-2xl font-bold text-forest-600 mb-3">
+          Bạn cần tư vấn nhanh?
+        </h2>
         <p className="mb-6 text-gray-600">
           Liên hệ chúng tôi để nhận báo giá ưu đãi và hỗ trợ tận tâm.
         </p>
