@@ -2,6 +2,7 @@
 
 import { Mail, MapPin, Phone, MessageSquareText, Facebook } from "lucide-react";
 import Link from "next/link";
+import LazyMapEmbed from "@/features/lazy-map-embed";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 export interface ContactFormData {
@@ -202,8 +203,17 @@ export default function LienHeCard() {
         </form>
       </div>
 
+      {/* Google Maps */}
+      <div className="mb-10">
+        <h2 className="text-lg font-semibold text-forest-600 mb-4 flex items-center gap-2">
+          <MapPin size={18} />
+          Vị trí của chúng tôi
+        </h2>
+        <LazyMapEmbed />
+      </div>
+
       {/* CTA */}
-      <div className="text-center mt-16">
+      <div className="text-center">
         <p className="text-gray-600">
           Chúng tôi sẽ phản hồi nhanh nhất trong vòng 1 giờ làm việc.
         </p>
