@@ -43,18 +43,17 @@ export const metadata: Metadata = {
   },
 };
 
-const localBusinessSchema = {
+const businessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": `${siteUrl}/#localbusiness`,
+  "@type": ["CarRental", "TravelAgency"],
+  "@id": `${siteUrl}/#business`,
   name: "DVDL Đại Dương Ban Mê",
+  alternateName: "Đại Dương Ban Mê",
   url: siteUrl,
-  image: `${siteUrl}/og-image.jpg`,
   logo: `${siteUrl}/images/logo-light.png`,
-  telephone: "+84941437070",
+  image: `${siteUrl}/og-image.jpg`,
+  telephone: "+84-941-437-070",
   email: "dvdldaiduong@gmail.com",
-  priceRange: "$$",
-  openingHours: "Mo-Su 06:00-22:00",
   address: {
     "@type": "PostalAddress",
     streetAddress: "252/6 Phan Huy Chú",
@@ -65,14 +64,27 @@ const localBusinessSchema = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 12.6424628,
-    longitude: 107.9978574,
+    latitude: 12.64246,
+    longitude: 107.99786,
   },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday", "Tuesday", "Wednesday", "Thursday",
+        "Friday", "Saturday", "Sunday",
+      ],
+      opens: "06:00",
+      closes: "22:00",
+    },
+  ],
+  priceRange: "$$",
+  areaServed: [
+    { "@type": "City", name: "Buôn Ma Thuột" },
+    { "@type": "AdministrativeArea", name: "Đắk Lắk" },
+  ],
   sameAs: ["https://www.facebook.com/share/1AczYur4wu/"],
-  areaServed: {
-    "@type": "State",
-    name: "Đắk Lắk",
-  },
+  foundingDate: "2018",
 };
 
 export default function Home() {
@@ -81,7 +93,7 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessSchema),
+          __html: JSON.stringify(businessSchema),
         }}
       />
       <HeroSection />

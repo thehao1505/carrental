@@ -85,38 +85,6 @@ export const metadata: Metadata = {
   },
 };
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": ["Organization", "TravelAgency"],
-  name: "DVDL Đại Dương Ban Mê",
-  alternateName: "Đại Dương Ban Mê",
-  url: siteUrl,
-  logo: `${siteUrl}/logo-light.png`,
-  image: `${siteUrl}/og-image.jpg`,
-  description:
-    "Chuyên cung cấp dịch vụ thuê xe du lịch, tour nội địa, tổ chức team building và sự kiện tại Buôn Ma Thuột - Đắk Lắk.",
-  openingHours: "Mo-Su 06:00-22:00",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "252/6 Phan Huy Chú",
-    addressLocality: "Buôn Ma Thuột",
-    addressRegion: "Đắk Lắk",
-    addressCountry: "VN",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 12.6424628,
-    longitude: 107.9978574,
-  },
-  telephone: "+84941437070",
-  priceRange: "$$",
-  areaServed: {
-    "@type": "State",
-    name: "Đắk Lắk",
-  },
-  sameAs: ["https://www.facebook.com/share/1AczYur4wu/"],
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -133,13 +101,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KK22VG58');`}
         </Script>
-        {/* JSON-LD Organization + LocalBusiness */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
-          }}
-        />
         {/* Google Analytics */}
         <Script
           async
