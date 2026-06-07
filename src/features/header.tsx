@@ -41,6 +41,12 @@ export default function Header() {
             Tin tức
           </Link>
           <Link
+            href="/tour-dak-lak"
+            className="text-base font-bold text-forest-500 hover:scale-105 transition-all duration-200"
+          >
+            Tour Đắk Lắk
+          </Link>
+          <Link
             href="/bang-gia"
             className="text-base font-bold text-forest-500 hover:scale-105 transition-all duration-200"
           >
@@ -99,6 +105,13 @@ export default function Header() {
             className="text-sm font-bold text-forest-500 hover:scale-105 transition-all duration-200"
           >
             Tin tức
+          </Link>
+          <Link
+            href="/tour-dak-lak"
+            onClick={() => setIsOpen(false)}
+            className="text-sm font-bold text-forest-500 hover:scale-105 transition-all duration-200"
+          >
+            Tour Đắk Lắk
           </Link>
           <Link
             href="/bang-gia"
