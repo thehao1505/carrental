@@ -52,7 +52,7 @@ const localBusinessSchema = {
   image: `${siteUrl}/og-image.jpg`,
   logo: `${siteUrl}/images/logo-light.png`,
   telephone: "+84941437070",
-  email: "thehao155@gmail.com",
+  email: "dvdldaiduong@gmail.com",
   priceRange: "$$",
   openingHours: "Mo-Su 06:00-22:00",
   address: {

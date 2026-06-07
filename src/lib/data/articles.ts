@@ -1566,7 +1566,7 @@ export const articles = [
               <div class="bg-gradient-to-r from-indigo-100 to-blue-100 p-4 rounded-lg border-l-4 border-blue-400">
                 <p class="font-bold text-lg mb-2">1️⃣ TIẾP NHẬN YÊU CẦU</p>
                 <p class="text-sm mb-2"><strong>Hotline doanh nghiệp:</strong> 0941 43 70 70</p>
-                <p class="text-sm mb-2"><strong>Email:</strong> thehao155@gmail.com</p>
+                <p class="text-sm mb-2"><strong>Email:</strong> dvdldaiduong@gmail.com</p>
                 <p class="text-sm">Tư vấn loại xe, lộ trình phù hợp</p>
               </div>
               
@@ -1648,7 +1648,7 @@ export const articles = [
             </div>
             <div>
               <p class="font-bold mb-1">📧 GỬI YÊU CẦU</p>
-              <p>thehao155@gmail.com</p>
+              <p>dvdldaiduong@gmail.com</p>
             </div>
             <div>
               <p class="font-bold mb-1">🤝 HỢP TÁC DÀI HẠN</p>

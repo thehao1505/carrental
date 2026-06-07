@@ -225,10 +225,10 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="mailto:thehao155@gmail.com"
+                href="mailto:dvdldaiduong@gmail.com"
                 className="hover:text-lemon-400 hover:underline"
               >
-                thehao155@gmail.com
+                dvdldaiduong@gmail.com
               </a>
             </li>
             <li>

@@ -108,10 +108,10 @@ export default function LienHeCard() {
             <div>
               <p className="font-semibold">Email</p>
               <a
-                href="mailto:thehao155@gmail.com"
+                href="mailto:dvdldaiduong@gmail.com"
                 className="text-forest-500 hover:underline"
               >
-                thehao155@gmail.com
+                dvdldaiduong@gmail.com
               </a>
             </div>
           </div>

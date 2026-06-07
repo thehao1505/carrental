@@ -1566,7 +1566,7 @@ export const articlesEn = [
               <div class="bg-gradient-to-r from-indigo-100 to-blue-100 p-4 rounded-lg border-l-4 border-blue-400">
                 <p class="font-bold text-lg mb-2">1️⃣ RECEIVE YOUR REQUEST</p>
                 <p class="text-sm mb-2"><strong>Corporate hotline:</strong> 0941 43 70 70</p>
-                <p class="text-sm mb-2"><strong>Email:</strong> thehao155@gmail.com</p>
+                <p class="text-sm mb-2"><strong>Email:</strong> dvdldaiduong@gmail.com</p>
                 <p class="text-sm">Advise on suitable vehicle and route</p>
               </div>
 
@@ -1648,7 +1648,7 @@ export const articlesEn = [
             </div>
             <div>
               <p class="font-bold mb-1">📧 SEND INQUIRY</p>
-              <p>thehao155@gmail.com</p>
+              <p>dvdldaiduong@gmail.com</p>
             </div>
             <div>
               <p class="font-bold mb-1">🤝 LONG-TERM PARTNERSHIP</p>

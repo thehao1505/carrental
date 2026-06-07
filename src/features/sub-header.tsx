@@ -18,8 +18,8 @@ export default function SubHeader() {
           <Mail size={16} />
         </p>
         <span className='text-white hidden md:block '>
-          <a href="mailto:thehao155@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-lemon-500 hover:underline">
-            thehao155@gmail.com
+          <a href="mailto:dvdldaiduong@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-lemon-500 hover:underline">
+            dvdldaiduong@gmail.com
           </a>
         </span>
       </div>
