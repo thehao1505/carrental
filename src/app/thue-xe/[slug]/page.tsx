@@ -16,21 +16,10 @@ function buildServiceSchema(xe: { slug: string; title: string; image: string }) 
     description,
     url: canonicalUrl,
     image: xe.image.startsWith("http") ? xe.image : `${siteUrl}${xe.image}`,
-    provider: {
-      "@type": "LocalBusiness",
-      name: "DVDL Đại Dương Ban Mê",
-      url: siteUrl,
-      telephone: "+84941437070",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Buôn Ma Thuột",
-        addressRegion: "Đắk Lắk",
-        addressCountry: "VN",
-      },
-    },
+    provider: { "@id": `${siteUrl}/#business` },
     areaServed: [
       { "@type": "City", name: "Buôn Ma Thuột" },
-      { "@type": "State", name: "Đắk Lắk" },
+      { "@type": "AdministrativeArea", name: "Đắk Lắk" },
     ],
     offers: {
       "@type": "Offer",
@@ -38,6 +27,33 @@ function buildServiceSchema(xe: { slug: string; title: string; image: string }) 
       availability: "https://schema.org/InStock",
       url: canonicalUrl,
     },
+  };
+}
+
+function buildBreadcrumbSchema(xe: { slug: string; title: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Trang chủ",
+        item: siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Thuê xe",
+        item: `${siteUrl}/thue-xe`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: xe.title,
+        item: `${siteUrl}/thue-xe/${xe.slug}`,
+      },
+    ],
   };
 }
 
@@ -102,12 +118,20 @@ export default async function ThueXePage({
   return (
     <>
       {xe && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(buildServiceSchema(xe)),
-          }}
-        />
+        <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(buildServiceSchema(xe)),
+            }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(buildBreadcrumbSchema(xe)),
+            }}
+          />
+        </>
       )}
       <ThueXeSlugPage />
     </>

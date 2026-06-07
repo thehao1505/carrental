@@ -141,16 +141,16 @@ export default async function BaiVietPage({
     datePublished: post.publishedAt,
     dateModified: post._updatedAt || post.publishedAt,
     author: {
-      "@type": "Organization",
+      "@type": "Person",
       name: "DVDL Đại Dương Ban Mê",
-      url: siteUrl,
+      url: `${siteUrl}/gioi-thieu`,
     },
     publisher: {
       "@type": "Organization",
       name: "DVDL Đại Dương Ban Mê",
       logo: {
         "@type": "ImageObject",
-        url: `${siteUrl}/logo-light.png`,
+        url: `${siteUrl}/images/logo-light.png`,
       },
     },
     mainEntityOfPage: {
