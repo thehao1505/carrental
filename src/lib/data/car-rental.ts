@@ -2,7 +2,7 @@ export const carRentalData = [
   {
     slug: "thue-xe-4-cho",
     title: "Thuê xe 4 chỗ tại Buôn Ma Thuột",
-    image: "/images/thuexe-4-cho.webp",
+    image: "/images/thue-xe-4-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
@@ -11,7 +11,7 @@ export const carRentalData = [
           <p class="text-lg leading-relaxed">
             Xe 4 chỗ là lựa chọn hoàn hảo cho <strong>cá nhân, gia đình nhỏ hoặc nhóm ít người</strong> cần sự linh hoạt khi di chuyển tại Buôn Ma Thuột. Xe nhỏ gọn, dễ luồn lách trong phố, tiết kiệm nhiên liệu và vẫn đảm bảo sự thoải mái trong những hành trình ngắn hoặc dài.
           </p>
-          <img src="/images/noithatxe4cho.webp" alt="Thuê xe 4 chỗ tại Buôn Ma Thuột" width="800" height="533" class="w-full rounded-lg mt-4"/>
+          <img src="/images/noi-that-xe-4-cho.webp" alt="Thuê xe 4 chỗ tại Buôn Ma Thuột" width="800" height="533" class="w-full rounded-lg mt-4"/>
         </div>
 
         <!-- Lợi ích -->
@@ -86,7 +86,7 @@ export const carRentalData = [
   {
     slug: "thue-xe-7-cho",
     title: "Thuê xe 7 chỗ tại Buôn Ma Thuột",
-    image: "/images/thuexe-7-cho.webp",
+    image: "/images/thue-xe-7-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
@@ -95,7 +95,7 @@ export const carRentalData = [
           <p class="text-lg leading-relaxed">
             Nếu bạn đi theo nhóm 4-7 người, mang theo nhiều hành lý hoặc đơn giản là muốn có không gian rộng rãi để di chuyển trong và ngoài thành phố, thì <strong>xe 7 chỗ là lựa chọn lý tưởng</strong>. Với kiểu dáng hiện đại, ghế ngồi thoải mái và khoang chứa đồ rộng, xe 7 chỗ giúp chuyến đi tại Buôn Ma Thuột trở nên mượt mà và thư thái hơn bao giờ hết.
           </p>
-          <img src="/images/noithatxe7cho.webp" alt="Xe 7 chỗ chất lượng cao tại Buôn Ma Thuột" width="800" height="533" class="w-full rounded-lg mt-4"/>
+          <img src="/images/noi-that-xe-7-cho.webp" alt="Xe 7 chỗ chất lượng cao tại Buôn Ma Thuột" width="800" height="533" class="w-full rounded-lg mt-4"/>
         </div>
 
         <!-- Lợi ích -->
@@ -178,7 +178,7 @@ export const carRentalData = [
   {
     slug: "thue-xe-16-cho",
     title: "Thuê xe 16 chỗ tại Buôn Ma Thuột",
-    image: "/images/thuexe-16-cho.webp",
+    image: "/images/thue-xe-16-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
@@ -187,7 +187,7 @@ export const carRentalData = [
           <p class="text-lg leading-relaxed">
             Xe 16 chỗ là phương tiện lý tưởng cho các chuyến đi theo nhóm như <strong>du lịch gia đình, công tác nhóm, đưa đón đoàn</strong> tại Buôn Ma Thuột và các tỉnh lân cận. Với không gian vừa đủ, nội thất hiện đại, xe 16 chỗ mang lại sự thoải mái, tiết kiệm và linh hoạt cho mọi hành trình.
           </p>
-          <img src="/images/xe-16(2).webp" alt="Thuê xe 16 chỗ tại Buôn Ma Thuột" width="800" height="533" class="w-full rounded-lg mt-4"/>
+          <img src="/images/ben-trong-xe-16-cho.webp" alt="Thuê xe 16 chỗ tại Buôn Ma Thuột" width="800" height="533" class="w-full rounded-lg mt-4"/>
         </div>
 
         <!-- Lợi ích -->
@@ -270,7 +270,7 @@ export const carRentalData = [
   {
     slug: "thue-xe-29-cho",
     title: "Thuê xe 29 chỗ tại Buôn Ma Thuột",
-    image: "/images/thuexe-29-cho.webp",
+    image: "/images/thue-xe-29-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
@@ -279,7 +279,7 @@ export const carRentalData = [
           <p class="text-lg leading-relaxed">
             Xe 29 chỗ là phương tiện lý tưởng cho các <strong>chuyến đi theo đoàn</strong> như du lịch nhóm, tham quan trường học, công tác doanh nghiệp hay các sự kiện tập thể. Với không gian rộng rãi, hệ thống điều hòa mát lạnh và nội thất tiện nghi, xe 29 chỗ giúp chuyến đi trở nên dễ chịu và gắn kết hơn.
           </p>
-          <Image src="/images/noithatxe29cho.webp" alt="Thuê xe 29 chỗ chất lượng tại Buôn Ma Thuột" class="w-full rounded-lg mt-4 h-[450px] w-auto object-cover"/>
+          <Image src="/images/noi-that-xe-29-cho.webp" alt="Thuê xe 29 chỗ chất lượng tại Buôn Ma Thuột" class="w-full rounded-lg mt-4 h-[450px] w-auto object-cover"/>
         </div>
 
         <!-- Lợi ích -->
@@ -362,7 +362,7 @@ export const carRentalData = [
   {
     slug: "thue-xe-45-cho",
     title: "Thuê xe 45 chỗ tại Buôn Ma Thuột",
-    image: "/images/thuexe-45-cho.webp",
+    image: "/images/thue-xe-45-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
@@ -371,7 +371,7 @@ export const carRentalData = [
           <p class="text-lg leading-relaxed">
             Xe 45 chỗ là phương tiện lý tưởng cho những chuyến đi đông người như <strong>tour du lịch</strong>, <strong>đưa đón học sinh - công nhân</strong>, hay <strong>chuyên chở sự kiện, hội thảo</strong>. Với không gian rộng rãi, nội thất hiện đại, hệ thống điều hòa và âm thanh chất lượng, xe 45 chỗ mang đến sự thoải mái và an toàn cho mọi hành trình dài.
           </p>
-          <img src="/images/noithatxe45cho.webp" alt="Xe 45 chỗ chất lượng cao tại Buôn Ma Thuột" width="800" height="533" class="w-full rounded-lg mt-4"/>
+          <img src="/images/noi-that-xe-45-cho.webp" alt="Xe 45 chỗ chất lượng cao tại Buôn Ma Thuột" width="800" height="533" class="w-full rounded-lg mt-4"/>
         </div>
 
         <!-- Lợi ích -->
@@ -455,7 +455,7 @@ export const carRentalData = [
   {
     slug: "thue-xe-limousine",
     title: "Thuê xe limousine tại Buôn Ma Thuột",
-    image: "/images/thuexe-limousine.webp",
+    image: "/images/thue-xe-limousine.webp",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Giới thiệu -->
@@ -464,7 +464,7 @@ export const carRentalData = [
           <p class="text-lg leading-relaxed">
             Nếu bạn đang tìm kiếm một phương tiện <strong>sang trọng, êm ái và hiện đại</strong> cho chuyến đi công tác, du lịch nghỉ dưỡng hay đón tiễn sân bay, thì xe <strong>Limousine</strong> là lựa chọn tuyệt vời. Tại Buôn Ma Thuột, chúng tôi cung cấp dịch vụ <strong>thuê xe Limousine 9 - 11 chỗ</strong> chất lượng cao, phục vụ theo yêu cầu riêng từng khách hàng.
           </p>
-          <img src="/images/noithatxelimousine.webp" alt="Nội thất xe limousine tại Buôn Ma Thuột" width="800" height="533" class="w-full rounded-lg mt-4"/>
+          <img src="/images/noi-that-xe-limousine.webp" alt="Nội thất xe limousine tại Buôn Ma Thuột" width="800" height="533" class="w-full rounded-lg mt-4"/>
         </div>
 
         <!-- Lý do chọn Limousine -->
