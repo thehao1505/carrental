@@ -65,18 +65,36 @@ const serviceListSchema = {
     "@type": "OfferCatalog",
     name: "Các loại xe cho thuê",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Thuê xe 4 chỗ" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Thuê xe 7 chỗ" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Thuê xe 16 chỗ" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Thuê xe 29 chỗ" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Thuê xe 45 chỗ" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Thuê xe Limousine" } },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Thuê xe 4 chỗ" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Thuê xe 7 chỗ" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Thuê xe 16 chỗ" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Thuê xe 29 chỗ" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Thuê xe 45 chỗ" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Thuê xe Limousine" },
+      },
     ],
   },
 };
 
 export const metadata: Metadata = {
-  title: "Dịch Vụ Thuê Xe Tại Buôn Ma Thuột | DVDL Đại Dương Ban Mê",
+  title: "Dịch Vụ Thuê Xe Tại Buôn Ma Thuột",
   description:
     "Thuê xe 4, 7, 16, 29, 45 chỗ và limousine tại Buôn Ma Thuột – Đắk Lắk. Xe đời mới, tài xế chuyên nghiệp, giá cả minh bạch. Đặt xe ngay hôm nay!",
   keywords: [
@@ -94,7 +112,7 @@ export const metadata: Metadata = {
     canonical: "https://www.dvdldaiduong.com/thue-xe",
   },
   openGraph: {
-    title: "Dịch Vụ Thuê Xe Tại Buôn Ma Thuột | DVDL Đại Dương Ban Mê",
+    title: "Dịch Vụ Thuê Xe Tại Buôn Ma Thuột",
     description:
       "Đa dạng loại xe từ 4–45 chỗ & limousine. Tài xế chuyên nghiệp, xe đời mới, giá cả minh bạch tại Buôn Ma Thuột.",
     url: "https://www.dvdldaiduong.com/thue-xe",
