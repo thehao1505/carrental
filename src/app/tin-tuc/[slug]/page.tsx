@@ -268,11 +268,18 @@ export default async function BaiVietPage({
       </nav>
 
       <h1 className="text-3xl font-bold text-forest-600 mb-4">{post.title}</h1>
-      <p className="text-sm text-gray-500 mb-6">
-        {post.publishedAt
-          ? new Date(post.publishedAt).toLocaleDateString("vi-VN")
-          : ""}
-      </p>
+      <div className="flex items-center gap-3 text-sm text-gray-500 mb-6">
+        {post.publishedAt && (
+          <span>{new Date(post.publishedAt).toLocaleDateString("vi-VN")}</span>
+        )}
+        <span aria-hidden="true">·</span>
+        <span>
+          Bài viết bởi:{" "}
+          <Link href="/gioi-thieu" className="text-forest-600 hover:underline font-medium">
+            Đội ngũ DVDL Đại Dương Ban Mê
+          </Link>
+        </span>
+      </div>
 
       {postImageUrl && (
         <Image
