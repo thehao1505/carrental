@@ -23,7 +23,7 @@ export function ThueXeListing() {
       {/* Hero */}
       <section className="relative h-[340px] w-full">
         <Image
-          src="/images/thuexe-7-cho.webp"
+          src="/images/thue-xe-7-cho.webp"
           alt="Dịch vụ thuê xe tại Buôn Ma Thuột"
           fill
           className="object-cover"

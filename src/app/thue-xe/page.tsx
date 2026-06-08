@@ -120,7 +120,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/thuexe-7-cho.png",
+        url: "/images/thue-xe-7-cho.webp",
         width: 1200,
         height: 630,
         alt: "Dịch vụ thuê xe tại Buôn Ma Thuột",

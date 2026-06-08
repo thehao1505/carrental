@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/thuexe-7-cho.png",
+        url: "/images/thue-xe-7-cho.webp",
         width: 1200,
         height: 630,
         alt: "Thuê xe du lịch Đắk Lắk – DVDL Đại Dương Ban Mê",
@@ -58,7 +58,7 @@ const serviceSchema = {
   description:
     "Dịch vụ thuê xe du lịch Đắk Lắk – xe 4, 7, 16, 29, 45 chỗ và limousine có tài xế chuyên nghiệp. Phục vụ tham quan Buôn Đôn, Hồ Lắk, Thác Dray Nur và các tuyến liên tỉnh.",
   url: pageUrl,
-  image: `${siteUrl}/images/thuexe-7-cho.png`,
+  image: `${siteUrl}/images/thue-xe-7-cho.webp`,
   provider: {
     "@type": "LocalBusiness",
     name: "DVDL Đại Dương Ban Mê",
@@ -226,7 +226,7 @@ export default function ThueXeDuLichDakLak() {
         {/* ── Hero ── */}
         <section className="relative h-[380px] w-full">
           <Image
-            src="/images/thuexe-7-cho.webp"
+            src="/images/thue-xe-7-cho.webp"
             alt="Thuê xe du lịch Đắk Lắk – DVDL Đại Dương Ban Mê"
             fill
             className="object-cover"

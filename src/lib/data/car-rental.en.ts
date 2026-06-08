@@ -2,7 +2,7 @@ export const carRentalDataEn = [
   {
     slug: "car-rental-4-seat",
     title: "4-Seat Car Rental in Buon Ma Thuot",
-    image: "/images/thuexe-4-cho.webp",
+    image: "/images/thue-xe-4-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Introduction -->
@@ -11,7 +11,7 @@ export const carRentalDataEn = [
           <p class="text-lg leading-relaxed">
             A 4-seat car is the perfect choice for <strong>individuals, small families, or small groups</strong> who need flexibility when getting around Buon Ma Thuot. Compact and easy to navigate through city streets, fuel-efficient, and still comfortable for both short and long journeys.
           </p>
-          <img src="/images/noithatxe4cho.webp" alt="4-seat car rental in Buon Ma Thuot" width="800" height="533" class="w-full rounded-lg mt-4"/>
+          <img src="/images/noi-that-xe-4-cho.webp" alt="4-seat car rental in Buon Ma Thuot" width="800" height="533" class="w-full rounded-lg mt-4"/>
         </div>
 
         <!-- Benefits -->
@@ -86,7 +86,7 @@ export const carRentalDataEn = [
   {
     slug: "car-rental-7-seat",
     title: "7-Seat Car Rental in Buon Ma Thuot",
-    image: "/images/thuexe-7-cho.webp",
+    image: "/images/thue-xe-7-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Introduction -->
@@ -95,7 +95,7 @@ export const carRentalDataEn = [
           <p class="text-lg leading-relaxed">
             If you are travelling in a group of 4–7 people, carrying a lot of luggage, or simply want a more spacious ride around and outside the city, then a <strong>7-seat car is the ideal choice</strong>. With a modern design, comfortable seats, and ample cargo space, a 7-seat car makes every journey in Buon Ma Thuot smoother and more relaxing than ever.
           </p>
-          <img src="/images/noithatxe7cho.webp" alt="Premium 7-seat car rental in Buon Ma Thuot" width="800" height="533" class="w-full rounded-lg mt-4"/>
+          <img src="/images/noi-that-xe-7-cho.webp" alt="Premium 7-seat car rental in Buon Ma Thuot" width="800" height="533" class="w-full rounded-lg mt-4"/>
         </div>
 
         <!-- Benefits -->
@@ -178,7 +178,7 @@ export const carRentalDataEn = [
   {
     slug: "car-rental-16-seat",
     title: "16-Seat Car Rental in Buon Ma Thuot",
-    image: "/images/thuexe-16-cho.webp",
+    image: "/images/thue-xe-16-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Introduction -->
@@ -187,7 +187,7 @@ export const carRentalDataEn = [
           <p class="text-lg leading-relaxed">
             A 16-seat car is the ideal vehicle for group trips such as <strong>family tours, business group outings, or group transfers</strong> in Buon Ma Thuot and nearby provinces. With just the right amount of space and a modern interior, a 16-seat car offers comfort, value, and flexibility for every journey.
           </p>
-          <img src="/images/xe-16(2).webp" alt="16-seat car rental in Buon Ma Thuot" width="800" height="533" class="w-full rounded-lg mt-4"/>
+          <img src="/images/ben-trong-xe-16-cho.webp" alt="16-seat car rental in Buon Ma Thuot" width="800" height="533" class="w-full rounded-lg mt-4"/>
         </div>
 
         <!-- Benefits -->
@@ -270,7 +270,7 @@ export const carRentalDataEn = [
   {
     slug: "car-rental-29-seat",
     title: "29-Seat Car Rental in Buon Ma Thuot",
-    image: "/images/thuexe-29-cho.webp",
+    image: "/images/thue-xe-29-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Introduction -->
@@ -279,7 +279,7 @@ export const carRentalDataEn = [
           <p class="text-lg leading-relaxed">
             A 29-seat car is the ideal vehicle for <strong>group trips</strong> such as group tours, school excursions, corporate outings, or collective events. With a spacious interior, a cool air-conditioning system, and comfortable amenities, a 29-seat car makes every journey more pleasant and brings people closer together.
           </p>
-          <Image src="/images/noithatxe29cho.webp" alt="Quality 29-seat car rental in Buon Ma Thuot" class="w-full rounded-lg mt-4 h-[450px] w-auto object-cover"/>
+          <Image src="/images/noi-that-xe-29-cho.webp" alt="Quality 29-seat car rental in Buon Ma Thuot" class="w-full rounded-lg mt-4 h-[450px] w-auto object-cover"/>
         </div>
 
         <!-- Benefits -->
@@ -362,7 +362,7 @@ export const carRentalDataEn = [
   {
     slug: "car-rental-45-seat",
     title: "45-Seat Car Rental in Buon Ma Thuot",
-    image: "/images/thuexe-45-cho.webp",
+    image: "/images/thue-xe-45-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Introduction -->
@@ -371,7 +371,7 @@ export const carRentalDataEn = [
           <p class="text-lg leading-relaxed">
             A 45-seat car is the ideal vehicle for large group trips such as <strong>tour groups</strong>, <strong>student or worker shuttles</strong>, or <strong>event and conference transportation</strong>. With a spacious interior, modern amenities, quality air conditioning, and sound systems, a 45-seat car provides comfort and safety for every long journey.
           </p>
-          <img src="/images/noithatxe45cho.webp" alt="Premium 45-seat car rental in Buon Ma Thuot" width="800" height="533" class="w-full rounded-lg mt-4"/>
+          <img src="/images/noi-that-xe-45-cho.webp" alt="Premium 45-seat car rental in Buon Ma Thuot" width="800" height="533" class="w-full rounded-lg mt-4"/>
         </div>
 
         <!-- Benefits -->
@@ -455,7 +455,7 @@ export const carRentalDataEn = [
   {
     slug: "car-rental-limousine",
     title: "Limousine Car Rental in Buon Ma Thuot",
-    image: "/images/thuexe-limousine.webp",
+    image: "/images/thue-xe-limousine.webp",
     content: `
       <div class="max-w-3xl mx-auto">
         <!-- Introduction -->
@@ -464,7 +464,7 @@ export const carRentalDataEn = [
           <p class="text-lg leading-relaxed">
             If you are looking for a <strong>luxurious, smooth, and modern</strong> vehicle for a business trip, leisure retreat, or airport transfer, then a <strong>Limousine</strong> is the perfect choice. In Buon Ma Thuot, we provide high-quality <strong>9–11 seat Limousine rental</strong> service, tailored to each customer's individual needs.
           </p>
-          <img src="/images/noithatxelimousine.webp" alt="Limousine interior in Buon Ma Thuot" width="800" height="533" class="w-full rounded-lg mt-4"/>
+          <img src="/images/noi-that-xe-limousine.webp" alt="Limousine interior in Buon Ma Thuot" width="800" height="533" class="w-full rounded-lg mt-4"/>
         </div>
 
         <!-- Reasons to choose Limousine -->
