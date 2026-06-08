@@ -198,10 +198,18 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-4">Hỗ trợ</h4>
           <ul className="space-y-2 text-moss-100">
-            <li>Hướng dẫn sử dụng</li>
-            <li>Chính sách bảo mật</li>
-            <li>Chính sách vận chuyển</li>
-            <li>Hướng dẫn sử dụng</li>
+            <li
+              onClick={() => router.push("/chinh-sach-bao-mat")}
+              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
+            >
+              Chính sách bảo mật
+            </li>
+            <li
+              onClick={() => router.push("/chinh-sach-van-chuyen")}
+              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
+            >
+              Chính sách vận chuyển
+            </li>
           </ul>
         </div>
         <div>
