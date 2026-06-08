@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 const siteUrl = "https://www.dvdldaiduong.com";
-const pageUrl = `${siteUrl}/thue-xe-du-lich-dak-lak`;
+const pageUrl = `${siteUrl}/thue-xe/du-lich-dak-lak`;
 
 export const metadata: Metadata = {
   title: "Thuê Xe Du Lịch Đắk Lắk | Xe 4-45 Chỗ Có Tài Xế",
@@ -11,7 +11,6 @@ export const metadata: Metadata = {
     "Thuê xe du lịch Đắk Lắk – xe 4-45 chỗ & limousine có tài xế. Khám phá Buôn Đôn, Hồ Lắk, Thác Dray Nur. Giá từ 13.000đ/km.",
   keywords: [
     "thuê xe du lịch Đắk Lắk",
-    "thuê xe Đắk Lắk",
     "thuê xe Buôn Ma Thuột",
     "cho thuê xe du lịch Buôn Ma Thuột",
     "thuê xe có tài xế Đắk Lắk",
