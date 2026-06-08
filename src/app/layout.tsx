@@ -133,7 +133,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <main>{children}</main>
         <Footer />
         <BackToTopButton />
-        <FloatingContactButtons phoneNumber="0941437070" />
+        <FloatingContactButtons phoneNumber="0941437070" zaloNumber="0941437070" />
       </body>
     </html>
   );
