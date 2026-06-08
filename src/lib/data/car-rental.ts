@@ -1,6 +1,6 @@
 export const carRentalData = [
   {
-    slug: "thuexe-4-cho",
+    slug: "thue-xe-4-cho",
     title: "Thuê xe 4 chỗ tại Buôn Ma Thuột",
     image: "/images/thuexe-4-cho.webp",
     content: `
@@ -84,7 +84,7 @@ export const carRentalData = [
     `,
   },
   {
-    slug: "thuexe-7-cho",
+    slug: "thue-xe-7-cho",
     title: "Thuê xe 7 chỗ tại Buôn Ma Thuột",
     image: "/images/thuexe-7-cho.webp",
     content: `
@@ -176,7 +176,7 @@ export const carRentalData = [
     `,
   },
   {
-    slug: "thuexe-16-cho",
+    slug: "thue-xe-16-cho",
     title: "Thuê xe 16 chỗ tại Buôn Ma Thuột",
     image: "/images/thuexe-16-cho.webp",
     content: `
@@ -268,7 +268,7 @@ export const carRentalData = [
     `,
   },
   {
-    slug: "thuexe-29-cho",
+    slug: "thue-xe-29-cho",
     title: "Thuê xe 29 chỗ tại Buôn Ma Thuột",
     image: "/images/thuexe-29-cho.webp",
     content: `
@@ -360,7 +360,7 @@ export const carRentalData = [
     `,
   },
   {
-    slug: "thuexe-45-cho",
+    slug: "thue-xe-45-cho",
     title: "Thuê xe 45 chỗ tại Buôn Ma Thuột",
     image: "/images/thuexe-45-cho.webp",
     content: `
@@ -453,7 +453,7 @@ export const carRentalData = [
     `,
   },
   {
-    slug: "thuexe-limousine",
+    slug: "thue-xe-limousine",
     title: "Thuê xe limousine tại Buôn Ma Thuột",
     image: "/images/thuexe-limousine.webp",
     content: `

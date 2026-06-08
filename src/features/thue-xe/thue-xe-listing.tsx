@@ -3,17 +3,17 @@ import Link from "next/link";
 import { carRentalData } from "@/lib/data";
 
 const excerpts: Record<string, string> = {
-  "thuexe-4-cho":
+  "thue-xe-4-cho":
     "Phù hợp cá nhân, cặp đôi hoặc gia đình nhỏ. Linh hoạt, tiết kiệm, dễ di chuyển trong phố.",
-  "thuexe-7-cho":
+  "thue-xe-7-cho":
     "Lý tưởng cho nhóm 5–7 người. Không gian rộng rãi, khoang hành lý lớn, đi lại thoải mái.",
-  "thuexe-16-cho":
+  "thue-xe-16-cho":
     "Thích hợp nhóm trung bình. Ghế ngồi tiêu chuẩn, điều hòa mát, phù hợp tham quan và hội thao.",
-  "thuexe-29-cho":
+  "thue-xe-29-cho":
     "Dành cho đoàn khách đông. Lý tưởng cho team building, du lịch nhóm và đưa đón sự kiện.",
-  "thuexe-45-cho":
+  "thue-xe-45-cho":
     "Xe du lịch cỡ lớn phục vụ đoàn khách, chuyến đi liên tỉnh hoặc tour dài ngày.",
-  "thuexe-limousine":
+  "thue-xe-limousine":
     "Sang trọng, đẳng cấp. Phù hợp sự kiện đặc biệt, đón tiễn khách VIP và hội nghị cao cấp.",
 };
 

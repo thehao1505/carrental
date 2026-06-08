@@ -1,7 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      { source: "/thue-xe/thuexe-4-cho", destination: "/thue-xe/thue-xe-4-cho", permanent: true },
+      { source: "/thue-xe/thuexe-7-cho", destination: "/thue-xe/thue-xe-7-cho", permanent: true },
+      { source: "/thue-xe/thuexe-16-cho", destination: "/thue-xe/thue-xe-16-cho", permanent: true },
+      { source: "/thue-xe/thuexe-29-cho", destination: "/thue-xe/thue-xe-29-cho", permanent: true },
+      { source: "/thue-xe/thuexe-45-cho", destination: "/thue-xe/thue-xe-45-cho", permanent: true },
+      { source: "/thue-xe/thuexe-limousine", destination: "/thue-xe/thue-xe-limousine", permanent: true },
+    ];
+  },
   images: {
     remotePatterns: [
       {

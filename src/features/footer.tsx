@@ -176,7 +176,7 @@ export default function Footer() {
               Thuê xe du lịch Đắk Lắk
             </li>
             <li
-              onClick={() => router.push("/thue-xe/thuexe-16-cho")}
+              onClick={() => router.push("/thue-xe/thue-xe-16-cho")}
               className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
             >
               Thuê xe 16 chỗ
