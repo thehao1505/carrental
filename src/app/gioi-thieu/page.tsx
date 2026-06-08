@@ -40,6 +40,41 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": ["TravelAgency", "CarRental"],
+  name: "DVDL Đại Dương Ban Mê",
+  url: "https://www.dvdldaiduong.com",
+  logo: "https://www.dvdldaiduong.com/logo-light.png",
+  description:
+    "Công ty du lịch chuyên tour nội địa, thuê xe đời mới, tổ chức team building và sự kiện tại Đắk Lắk.",
+  foundingDate: "2018",
+  telephone: "+84941437070",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "252/6 Phan Huy Chú",
+    addressLocality: "Buôn Ma Thuột",
+    addressRegion: "Đắk Lắk",
+    postalCode: "630000",
+    addressCountry: "VN",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+84941437070",
+    contactType: "Customer Service",
+    availableLanguage: "Vietnamese",
+  },
+  sameAs: ["https://www.facebook.com/dvdldaiduong"],
+};
+
 export default function GioiThieu() {
-  return <GioiThieuCard />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <GioiThieuCard />
+    </>
+  );
 }

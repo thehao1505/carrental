@@ -1,8 +1,6 @@
 import { BangGiaCard } from "@/features/bang-gia/bang-gia-card";
 import { Metadata } from "next";
 
-const siteUrl = "https://www.dvdldaiduong.com";
-
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",

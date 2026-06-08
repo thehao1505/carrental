@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Car, Settings, BadgeCheck, Users } from "lucide-react";
-import SchemaMarkup from "@/features/schema-markup";
 
 const coreValues = [
   {
@@ -240,7 +239,6 @@ export default function GioiThieuCard() {
             Liên hệ ngay
           </Link>
         </section>
-        <SchemaMarkup />
       </main>
     </>
   );
