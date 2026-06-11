@@ -102,6 +102,20 @@ const STATIC_ROUTES: Array<{
     changeFrequency: "monthly",
     priority: 0.85,
   },
+  {
+    path: "/chinh-sach-bao-mat",
+    files: ["src/app/chinh-sach-bao-mat"],
+    fallback: "2026-06-08",
+    changeFrequency: "monthly",
+    priority: 0.3,
+  },
+  {
+    path: "/chinh-sach-van-chuyen",
+    files: ["src/app/chinh-sach-van-chuyen"],
+    fallback: "2026-06-08",
+    changeFrequency: "monthly",
+    priority: 0.3,
+  },
 ];
 
 const CAR_RENTAL_DATA_FILE = "src/lib/data/car-rental.ts";
