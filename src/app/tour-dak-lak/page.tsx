@@ -354,6 +354,19 @@ export default function TourDakLak() {
 
         {/* ── Quick answer + intro ── */}
         <section className="max-w-5xl mx-auto px-6 py-14">
+          {/* TL;DR — 30–50 word definitive answer for AI extractors */}
+          <div
+            className="bg-forest-50 border-l-4 border-forest-500 rounded-r-2xl px-6 py-5 mb-6"
+            data-testid="tldr"
+          >
+            <p className="font-bold text-forest-700 text-base mb-1">Tóm tắt</p>
+            <p className="text-gray-800 text-[15px] leading-relaxed">
+              Tour Đắk Lắk xe riêng có tài xế bản địa, giá từ 1.200.000đ/xe/ngày, với 3 gói linh hoạt:
+              văn hóa 1 ngày, phiêu lưu 2N1Đ, toàn diện 3N2Đ. Hành trình tùy chỉnh tự do qua Buôn Đôn,
+              Hồ Lắk, Yok Đôn, Dray Nur – không phụ thu ẩn, phục vụ 24/7 tại Buôn Ma Thuột.
+            </p>
+          </div>
+
           {/* Price answer box */}
           <div className="bg-lemon-50 border-l-4 border-lemon-500 rounded-r-2xl px-6 py-5 mb-8">
             <p className="font-bold text-forest-700 text-base mb-1">
@@ -614,6 +627,62 @@ export default function TourDakLak() {
               </details>
             ))}
           </div>
+        </section>
+
+        {/* ── Authoritative references (E-E-A-T + GEO citation signal) ── */}
+        <section className="max-w-4xl mx-auto px-6 pb-14">
+          <h2 className="text-xl font-bold text-forest-600 mb-4">
+            Nguồn tham khảo & Thông tin chính thức
+          </h2>
+          <p className="text-gray-600 text-sm mb-4">
+            Thông tin về các điểm đến trong tour được tham chiếu từ các nguồn chính thức:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-sm text-gray-700">
+            <li>
+              <a
+                href="https://yokdonnationalpark.vn/"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="text-forest-600 hover:underline font-medium"
+              >
+                Vườn Quốc Gia Yok Đôn
+              </a>{" "}
+              – trang thông tin chính thức về rừng khộp, đàn voi rừng và các tour sinh thái được cấp phép.
+            </li>
+            <li>
+              <a
+                href="https://svhttdldaklak.gov.vn/"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="text-forest-600 hover:underline font-medium"
+              >
+                Sở Văn hóa, Thể thao và Du lịch Đắk Lắk
+              </a>{" "}
+              – cơ quan quản lý nhà nước về du lịch tại Đắk Lắk, cập nhật sự kiện và quy định hoạt động.
+            </li>
+            <li>
+              <a
+                href="https://dulichdaklak.gov.vn/"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="text-forest-600 hover:underline font-medium"
+              >
+                Cổng thông tin du lịch Đắk Lắk
+              </a>{" "}
+              – danh mục điểm đến, lễ hội cà phê Buôn Ma Thuột và bản đồ du lịch tỉnh.
+            </li>
+            <li>
+              <a
+                href="https://www.gso.gov.vn/"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="text-forest-600 hover:underline font-medium"
+              >
+                Tổng cục Thống kê (GSO)
+              </a>{" "}
+              – số liệu thống kê chính thức về lượng khách du lịch và kinh tế Đắk Lắk.
+            </li>
+          </ul>
         </section>
 
         {/* ── Final CTA ── */}

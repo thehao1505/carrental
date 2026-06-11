@@ -258,6 +258,21 @@ export default function ThueXeDuLichDakLak() {
           </div>
         </section>
 
+        {/* ── TL;DR (30–50 word definitive answer for AI extractors) ── */}
+        <section className="max-w-5xl mx-auto px-6 pt-10">
+          <div
+            className="bg-forest-50 border-l-4 border-forest-500 rounded-r-2xl px-6 py-5"
+            data-testid="tldr"
+          >
+            <p className="font-bold text-forest-700 text-base mb-1">Tóm tắt</p>
+            <p className="text-gray-800 text-[15px] leading-relaxed">
+              Thuê xe du lịch Đắk Lắk tại DVDL Đại Dương Ban Mê: đội xe 4–45 chỗ và limousine có tài xế bản địa,
+              giá từ 13.000đ/km hoặc trọn gói theo tuyến (Buôn Đôn, Hồ Lắk, Dray Nur, Yok Đôn, Đà Lạt, Nha Trang).
+              Đặt xe 24/7, đón trả tận nơi, giá đã bao gồm tài xế và nhiên liệu.
+            </p>
+          </div>
+        </section>
+
         {/* ── Giới thiệu dịch vụ ── */}
         <section className="max-w-5xl mx-auto px-6 py-14">
           <h2 className="text-3xl font-bold text-forest-600 mb-6">
@@ -561,6 +576,51 @@ export default function ThueXeDuLichDakLak() {
               </details>
             ))}
           </div>
+        </section>
+
+        {/* ── Authoritative references (E-E-A-T + GEO citation signal) ── */}
+        <section className="max-w-4xl mx-auto px-6 pb-14">
+          <h2 className="text-xl font-bold text-forest-600 mb-4">
+            Nguồn tham khảo & Thông tin chính thức
+          </h2>
+          <p className="text-gray-600 text-sm mb-4">
+            Thông tin về các điểm đến được tham chiếu từ các nguồn quản lý nhà nước và đơn vị chính thức:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-sm text-gray-700">
+            <li>
+              <a
+                href="https://yokdonnationalpark.vn/"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="text-forest-600 hover:underline font-medium"
+              >
+                Vườn Quốc Gia Yok Đôn
+              </a>{" "}
+              – trang chính thức của vườn quốc gia với thông tin về rừng khộp và tour sinh thái được cấp phép.
+            </li>
+            <li>
+              <a
+                href="https://svhttdldaklak.gov.vn/"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="text-forest-600 hover:underline font-medium"
+              >
+                Sở Văn hóa, Thể thao và Du lịch Đắk Lắk
+              </a>{" "}
+              – cơ quan quản lý nhà nước về du lịch tỉnh Đắk Lắk.
+            </li>
+            <li>
+              <a
+                href="https://dulichdaklak.gov.vn/"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="text-forest-600 hover:underline font-medium"
+              >
+                Cổng thông tin du lịch Đắk Lắk
+              </a>{" "}
+              – bản đồ và danh mục điểm đến chính thức, lễ hội cà phê Buôn Ma Thuột.
+            </li>
+          </ul>
         </section>
 
         {/* ── CTA cuối trang ── */}

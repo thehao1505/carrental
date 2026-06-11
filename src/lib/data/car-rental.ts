@@ -2,6 +2,7 @@ export const carRentalData = [
   {
     slug: "thue-xe-4-cho",
     title: "Thuê xe 4 chỗ tại Buôn Ma Thuột",
+    tldr: "Thuê xe 4 chỗ tại Buôn Ma Thuột giá từ 800.000 – 1.500.000 VNĐ/ngày tùy lộ trình, phù hợp cá nhân hoặc gia đình 1–3 người. Xe Vios, City, Mazda 2 đời mới kèm tài xế chuyên nghiệp, đón trả tận nơi 24/7 trong nội thành và đi tỉnh.",
     image: "/images/thue-xe-4-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
@@ -153,6 +154,7 @@ export const carRentalData = [
   {
     slug: "thue-xe-7-cho",
     title: "Thuê xe 7 chỗ tại Buôn Ma Thuột",
+    tldr: "Thuê xe 7 chỗ tại Buôn Ma Thuột giá từ 1.100.000 – 2.200.000 VNĐ/ngày, phục vụ nhóm 4–7 người. Dòng Innova, Fortuner, Xpander đời mới có tài xế bản địa rành đường Tây Nguyên, đưa đón sân bay BMV, tour Đắk Lắk và tuyến liên tỉnh.",
     image: "/images/thue-xe-7-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
@@ -314,6 +316,7 @@ export const carRentalData = [
   {
     slug: "thue-xe-16-cho",
     title: "Thuê xe 16 chỗ tại Buôn Ma Thuột",
+    tldr: "Thuê xe 16 chỗ tại Buôn Ma Thuột giá từ 1.800.000 – 3.500.000 VNĐ/ngày cho đoàn 10–16 người. Dòng Ford Transit, Hyundai Solati đời mới máy lạnh, tài xế kinh nghiệm tuyến Tây Nguyên, phục vụ tour, hội nghị, đám cưới và đưa đón sân bay.",
     image: "/images/thue-xe-16-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
@@ -474,6 +477,7 @@ export const carRentalData = [
   {
     slug: "thue-xe-29-cho",
     title: "Thuê xe 29 chỗ tại Buôn Ma Thuột",
+    tldr: "Thuê xe 29 chỗ tại Buôn Ma Thuột giá từ 3.000.000 – 5.500.000 VNĐ/ngày, phù hợp đoàn 20–29 người. Dòng Hyundai County, Universe Mini máy lạnh, ghế ngả, tài xế dày dạn, phục vụ tour Buôn Đôn – Pleiku – Đà Lạt – Nha Trang trọn gói.",
     image: "/images/thue-xe-29-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
@@ -634,6 +638,7 @@ export const carRentalData = [
   {
     slug: "thue-xe-45-cho",
     title: "Thuê xe 45 chỗ tại Buôn Ma Thuột",
+    tldr: "Thuê xe 45 chỗ tại Buôn Ma Thuột giá từ 4.500.000 – 8.000.000 VNĐ/ngày cho đoàn 30–45 người. Dòng Universe, Aero Space đời mới có wifi, máy lạnh, micro, phục vụ tour công ty, hội nghị, lễ kỷ niệm tại Đắk Lắk và liên tỉnh Tây Nguyên.",
     image: "/images/thue-xe-45-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
@@ -795,6 +800,7 @@ export const carRentalData = [
   {
     slug: "thue-xe-limousine",
     title: "Thuê xe limousine tại Buôn Ma Thuột",
+    tldr: "Thuê xe limousine tại Buôn Ma Thuột giá từ 1.800.000 – 3.500.000 VNĐ/ngày cho nhóm 9–11 khách VIP. Dòng Dcar, Skybus ghế da massage, bàn gỗ, mini bar, phục vụ đưa đón sân bay BMV, tour cao cấp và công tác doanh nghiệp.",
     image: "/images/thue-xe-limousine.webp",
     content: `
       <div class="max-w-3xl mx-auto">

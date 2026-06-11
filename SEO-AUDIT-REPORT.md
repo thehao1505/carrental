@@ -204,9 +204,9 @@ Schemas **are** server-rendered. The defects are in their content, not their pre
 | Technical Accessibility | 55 |
 
 ### Critical GEO Gaps
-1. **`/llms.txt` returns 404.** Highest-leverage GEO fix. A starter file is appended at the end of this report.
-2. **No "TL;DR" opening on commercial or blog pages.** AI extractors look for a 30–50-word definitive answer near the H1. Example for `/thue-xe/thue-xe-7-cho`: *"Thuê xe 7 chỗ tại Buôn Ma Thuột có giá từ 500.000–2.000.000 VNĐ tùy tuyến, phục vụ nhóm 4–7 người với tài xế chuyên nghiệp, đón trả tận nơi 24/7."*
-3. **No external authoritative citations.** A regional travel content site should link to Đắk Lắk Tourism Department, Yok Đôn National Park official sites, or GSO statistics. Outbound citations to credible sources are a primary AI citation signal.
+1. ~~**`/llms.txt` returns 404.**~~ **RESOLVED (2026-06-12)** — endpoint serves HTTP 200 from `src/app/llms.txt/route.ts` (verified: `x-vercel-cache: PRERENDER`, content-type `text/plain; charset=utf-8`). Audit result was stale (pre-deploy of commit `00d87dd`).
+2. ~~**No "TL;DR" opening on commercial or blog pages.**~~ **PARTIALLY RESOLVED (2026-06-12)** — added 30–50 word `data-testid="tldr"` blocks under H1 on all 6 `/thue-xe/*` vehicle pages (via new `tldr` field in `src/lib/data/car-rental.ts` + render in `src/features/thue-xe/thue-xe-card.tsx`), `/thue-xe/du-lich-dak-lak`, and `/tour-dak-lak`. Still pending: blog posts at `/tin-tuc/*`.
+3. ~~**No external authoritative citations.**~~ **PARTIALLY RESOLVED (2026-06-12)** — added "Nguồn tham khảo" sections with outbound links to Vườn Quốc Gia Yok Đôn, Sở VHTT&DL Đắk Lắk, Cổng thông tin du lịch Đắk Lắk, GSO on `/tour-dak-lak` and `/thue-xe/du-lich-dak-lak`. Still pending: per-post citations on `/tin-tuc/*` (e.g. Buôn Đôn, Hồ Lắk travel guides).
 4. **Brand entity weakness** — no Wikipedia, no YouTube channel (YouTube mention correlation with AI citations is 0.737, highest of any signal), no Vietnamese press mentions (Vnexpress, Dan Tri, Báo Mới), no Reddit/Quora seeding.
 5. **AI crawler access:** wildcard `User-Agent: *` allows GPTBot, ClaudeBot, PerplexityBot, Google-Extended, OAI-SearchBot, CCBot. No blocks. Acceptable.
 

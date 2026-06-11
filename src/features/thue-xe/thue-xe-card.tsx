@@ -29,6 +29,14 @@ export function ThueXeSlugPage() {
       </Link>
 
       <h1 className="text-3xl font-bold text-forest-600 mb-4">{xe.title}</h1>
+      {"tldr" in xe && typeof xe.tldr === "string" && xe.tldr.length > 0 && (
+        <p
+          className="text-base md:text-lg leading-relaxed text-gray-800 bg-lemon-50 border-l-4 border-forest-500 rounded-md px-4 py-3 mb-6"
+          data-testid="tldr"
+        >
+          <strong className="text-forest-600">Tóm tắt:</strong> {xe.tldr}
+        </p>
+      )}
       <div className="relative w-full h-[500px] rounded-xl overflow-hidden shadow-md mb-8">
         <Image src={xe.image} alt={xe.title} fill className="object-cover" priority />
       </div>
