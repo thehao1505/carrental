@@ -170,7 +170,7 @@ export default function Footer() {
               Thuê xe có tài xế
             </li>
             <li
-              onClick={() => router.push("/thue-xe-du-lich-dak-lak")}
+              onClick={() => router.push("/thue-xe/du-lich-dak-lak")}
               className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
             >
               Thuê xe du lịch Đắk Lắk

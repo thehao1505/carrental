@@ -67,6 +67,7 @@ const businessSchema = {
     latitude: 12.64246,
     longitude: 107.99786,
   },
+  hasMap: "https://maps.app.goo.gl/7AeopSFXS4vKVxwL6",
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -83,7 +84,10 @@ const businessSchema = {
     { "@type": "City", name: "Buôn Ma Thuột" },
     { "@type": "AdministrativeArea", name: "Đắk Lắk" },
   ],
-  sameAs: ["https://www.facebook.com/share/1AczYur4wu/"],
+  sameAs: [
+    "https://www.facebook.com/share/1AczYur4wu/",
+    "https://maps.app.goo.gl/7AeopSFXS4vKVxwL6",
+  ],
   foundingDate: "2018",
 };
 

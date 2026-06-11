@@ -416,6 +416,36 @@ export default function TourDakLak() {
           </div>
         </section>
 
+        {/* ── Xe riêng vs tour đoàn ── */}
+        <section className="bg-gray-50 py-14 px-6">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-2xl font-bold text-forest-600 mb-3 text-center">
+              Tại Sao Nên Chọn Xe Riêng Thay Vì Tour Đoàn?
+            </h2>
+            <p className="text-center text-gray-500 mb-8 text-sm">
+              5 lý do khách đã trải nghiệm cả hai đều chọn xe riêng lần sau
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {reasons.map((item, i) => (
+                <div
+                  key={i}
+                  className="flex gap-4 bg-white rounded-xl p-5 shadow-sm border border-gray-100"
+                >
+                  <div className="shrink-0 w-7 h-7 rounded-full bg-lemon-100 flex items-center justify-center text-forest-600 font-bold text-sm">
+                    {i + 1}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gray-800 text-sm">{item.title}</div>
+                    <div className="text-gray-600 text-sm mt-1 leading-relaxed">
+                      {item.desc}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── Itineraries ── */}
         <section id="lich-trinh" className="bg-forest-50 py-14 px-6">
           <div className="max-w-5xl mx-auto">
@@ -545,36 +575,6 @@ export default function TourDakLak() {
             >
               Đặt Tour & Nhận Báo Giá
             </a>
-          </div>
-        </section>
-
-        {/* ── Xe riêng vs tour đoàn ── */}
-        <section className="bg-gray-50 py-14 px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl font-bold text-forest-600 mb-3 text-center">
-              Tại Sao Nên Chọn Xe Riêng Thay Vì Tour Đoàn?
-            </h2>
-            <p className="text-center text-gray-500 mb-8 text-sm">
-              5 lý do khách đã trải nghiệm cả hai đều chọn xe riêng lần sau
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {reasons.map((item, i) => (
-                <div
-                  key={i}
-                  className="flex gap-4 bg-white rounded-xl p-5 shadow-sm border border-gray-100"
-                >
-                  <div className="shrink-0 w-7 h-7 rounded-full bg-lemon-100 flex items-center justify-center text-forest-600 font-bold text-sm">
-                    {i + 1}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-800 text-sm">{item.title}</div>
-                    <div className="text-gray-600 text-sm mt-1 leading-relaxed">
-                      {item.desc}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 

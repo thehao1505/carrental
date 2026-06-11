@@ -25,6 +25,10 @@ const nextConfig: NextConfig = {
   async headers() {
     const securityHeaders = [
       {
+        key: "Strict-Transport-Security",
+        value: "max-age=604800",
+      },
+      {
         key: "Permissions-Policy",
         value: "attribution-reporting=()",
       },

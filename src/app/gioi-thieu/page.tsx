@@ -43,9 +43,10 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": ["TravelAgency", "CarRental"],
+  "@id": "https://www.dvdldaiduong.com/#business",
   name: "DVDL Đại Dương Ban Mê",
   url: "https://www.dvdldaiduong.com",
-  logo: "https://www.dvdldaiduong.com/logo-light.png",
+  logo: "https://www.dvdldaiduong.com/images/logo-light.png",
   description:
     "Công ty du lịch chuyên tour nội địa, thuê xe đời mới, tổ chức team building và sự kiện tại Đắk Lắk.",
   foundingDate: "2018",
@@ -64,7 +65,11 @@ const organizationSchema = {
     contactType: "Customer Service",
     availableLanguage: "Vietnamese",
   },
-  sameAs: ["https://www.facebook.com/dvdldaiduong"],
+  hasMap: "https://maps.app.goo.gl/7AeopSFXS4vKVxwL6",
+  sameAs: [
+    "https://www.facebook.com/dvdldaiduong",
+    "https://maps.app.goo.gl/7AeopSFXS4vKVxwL6",
+  ],
 };
 
 export default function GioiThieu() {
