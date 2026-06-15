@@ -397,7 +397,7 @@ export default function ThueXeDuLichDakLak() {
         {/* ── Bảng giá ── */}
         <section className="max-w-5xl mx-auto px-6 py-14 space-y-12">
           <h2 className="text-3xl font-bold text-forest-600 text-center">
-            Bảng Giá Thuê Xe Du Lịch Đắk Lắk 2025
+            Bảng Giá Thuê Xe Du Lịch Đắk Lắk 2026
           </h2>
 
           {/* Giá theo km */}

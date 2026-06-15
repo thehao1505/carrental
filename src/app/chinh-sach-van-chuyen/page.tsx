@@ -14,7 +14,7 @@ export default function ChinhSachVanChuyen() {
   return (
     <main className="max-w-4xl mx-auto px-6 py-16 text-gray-800">
       <h1 className="text-3xl font-bold text-forest-600 mb-2">Chính Sách Vận Chuyển</h1>
-      <p className="text-sm text-gray-500 mb-10">Cập nhật lần cuối: tháng 6 năm 2025</p>
+      <p className="text-sm text-gray-500 mb-10">Cập nhật lần cuối: tháng 6 năm 2026</p>
 
       <section className="mb-8">
         <h2 className="text-xl font-semibold text-forest-500 mb-3">1. Phạm vi dịch vụ</h2>

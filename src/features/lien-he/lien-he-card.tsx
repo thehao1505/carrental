@@ -124,7 +124,7 @@ export default function LienHeCard() {
                 href="https://maps.app.goo.gl/7AeopSFXS4vKVxwL6"
                 className="text-forest-500  hover:underline"
               >
-                Buôn Ma Thuột, Đắk Lắk
+                252/6 Phan Huy Chú, Buôn Ma Thuột, Đắk Lắk
               </a>
             </div>
           </div>

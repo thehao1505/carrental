@@ -516,7 +516,7 @@ export default function TourDakLak() {
         {/* ── Pricing ── */}
         <section className="max-w-5xl mx-auto px-6 py-14">
           <h2 className="text-3xl font-bold text-forest-600 text-center mb-2">
-            Bảng Giá Tour Đắk Lắk 2025
+            Bảng Giá Tour Đắk Lắk 2026
           </h2>
           <p className="text-center text-gray-500 mb-8 text-sm">
             Giá thuê xe theo gói tour – bao gồm tài xế và nhiên liệu
