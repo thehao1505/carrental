@@ -4,9 +4,20 @@ import { carRentalData } from "@/lib/data";
 
 const siteUrl = "https://www.dvdldaiduong.com";
 
+// Daily price range (VND) per vehicle slug — extracted from each tldr in src/lib/data/car-rental.ts
+const dailyPriceVND: Record<string, { low: number; high: number }> = {
+  "thue-xe-4-cho": { low: 800000, high: 1500000 },
+  "thue-xe-7-cho": { low: 1100000, high: 2200000 },
+  "thue-xe-16-cho": { low: 1800000, high: 3500000 },
+  "thue-xe-29-cho": { low: 3000000, high: 5500000 },
+  "thue-xe-45-cho": { low: 4500000, high: 8000000 },
+  "thue-xe-limousine": { low: 1800000, high: 3500000 },
+};
+
 function buildServiceSchema(xe: { slug: string; title: string; image: string }) {
   const canonicalUrl = `${siteUrl}/thue-xe/${xe.slug}`;
   const description = `Dịch vụ ${xe.title} tại DVDL Đại Dương Ban Mê. Xe đời mới, tài xế chuyên nghiệp, an toàn và uy tín tại Buôn Ma Thuột - Đắk Lắk.`;
+  const price = dailyPriceVND[xe.slug];
 
   return {
     "@context": "https://schema.org",
@@ -21,12 +32,33 @@ function buildServiceSchema(xe: { slug: string; title: string; image: string }) 
       { "@type": "City", name: "Buôn Ma Thuột" },
       { "@type": "AdministrativeArea", name: "Đắk Lắk" },
     ],
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "VND",
-      availability: "https://schema.org/InStock",
-      url: canonicalUrl,
-    },
+    offers: price
+      ? {
+          "@type": "AggregateOffer",
+          priceCurrency: "VND",
+          lowPrice: price.low,
+          highPrice: price.high,
+          offerCount: 1,
+          availability: "https://schema.org/InStock",
+          url: canonicalUrl,
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            price: price.low,
+            priceCurrency: "VND",
+            unitText: "DAY",
+            referenceQuantity: {
+              "@type": "QuantitativeValue",
+              value: 1,
+              unitCode: "DAY",
+            },
+          },
+        }
+      : {
+          "@type": "Offer",
+          priceCurrency: "VND",
+          availability: "https://schema.org/InStock",
+          url: canonicalUrl,
+        },
   };
 }
 

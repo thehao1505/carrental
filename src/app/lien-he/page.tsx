@@ -1,6 +1,31 @@
 import { Metadata } from "next";
 import LienHeCard from "@/features/lien-he/lien-he-card";
 
+const siteUrl = "https://www.dvdldaiduong.com";
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${siteUrl}/lien-he#contactpage`,
+  url: `${siteUrl}/lien-he`,
+  name: "Liên Hệ DVDL Đại Dương Ban Mê",
+  description:
+    "Liên hệ DVDL Đại Dương Ban Mê - hotline, email, địa chỉ văn phòng và bản đồ tại Buôn Ma Thuột, Đắk Lắk.",
+  inLanguage: "vi-VN",
+  mainEntity: { "@id": `${siteUrl}/#business` },
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Trang chủ", item: siteUrl },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Liên hệ",
+        item: `${siteUrl}/lien-he`,
+      },
+    ],
+  },
+};
+
 export const metadata: Metadata = {
   title: "Liên Hệ",
   description:
@@ -40,5 +65,13 @@ export const metadata: Metadata = {
 };
 
 export default function LienHePage() {
-  return <LienHeCard />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
+      />
+      <LienHeCard />
+    </>
+  );
 }

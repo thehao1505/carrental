@@ -40,36 +40,29 @@ export const metadata: Metadata = {
   },
 };
 
-const organizationSchema = {
+const siteUrl = "https://www.dvdldaiduong.com";
+const aboutPageSchema = {
   "@context": "https://schema.org",
-  "@type": ["TravelAgency", "CarRental"],
-  "@id": "https://www.dvdldaiduong.com/#business",
-  name: "DVDL Đại Dương Ban Mê",
-  url: "https://www.dvdldaiduong.com",
-  logo: "https://www.dvdldaiduong.com/images/logo-light.png",
+  "@type": "AboutPage",
+  "@id": `${siteUrl}/gioi-thieu#aboutpage`,
+  url: `${siteUrl}/gioi-thieu`,
+  name: "Giới Thiệu DVDL Đại Dương Ban Mê",
   description:
-    "Công ty du lịch chuyên tour nội địa, thuê xe đời mới, tổ chức team building và sự kiện tại Đắk Lắk.",
-  foundingDate: "2018",
-  telephone: "+84941437070",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "252/6 Phan Huy Chú",
-    addressLocality: "Buôn Ma Thuột",
-    addressRegion: "Đắk Lắk",
-    postalCode: "630000",
-    addressCountry: "VN",
+    "Đơn vị chuyên thuê xe du lịch 4-45 chỗ, tour nội địa và team building tại Buôn Ma Thuột, Đắk Lắk. Hoạt động từ 2018.",
+  inLanguage: "vi-VN",
+  mainEntity: { "@id": `${siteUrl}/#business` },
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Trang chủ", item: siteUrl },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Giới thiệu",
+        item: `${siteUrl}/gioi-thieu`,
+      },
+    ],
   },
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+84941437070",
-    contactType: "Customer Service",
-    availableLanguage: "Vietnamese",
-  },
-  hasMap: "https://maps.app.goo.gl/7AeopSFXS4vKVxwL6",
-  sameAs: [
-    "https://www.facebook.com/dvdldaiduong",
-    "https://maps.app.goo.gl/7AeopSFXS4vKVxwL6",
-  ],
 };
 
 export default function GioiThieu() {
@@ -77,7 +70,7 @@ export default function GioiThieu() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
       />
       <GioiThieuCard />
     </>

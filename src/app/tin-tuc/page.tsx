@@ -16,6 +16,13 @@ const POSTS_QUERY = `*[
 
 const COUNT_QUERY = `count(*[_type == "post" && defined(slug.current)])`;
 
+const ALL_POSTS_FOR_SCHEMA_QUERY = `*[
+  _type == "post"
+  && defined(slug.current)
+]|order(publishedAt desc){title, slug, publishedAt, excerpt}`;
+
+const siteUrl = "https://www.dvdldaiduong.com";
+
 const options = { next: { revalidate: 30 } };
 
 const { projectId, dataset } = client.config();
@@ -73,15 +80,58 @@ export default async function TinTucPage({
   const start = (currentPage - 1) * POSTS_PER_PAGE;
   const end = start + POSTS_PER_PAGE;
 
-  const [posts, totalCount] = await Promise.all([
+  const [posts, totalCount, allPostsForSchema] = await Promise.all([
     client.fetch<SanityDocument[]>(POSTS_QUERY, { start, end }, options),
     client.fetch<number>(COUNT_QUERY, {}, options),
+    client.fetch<SanityDocument[]>(ALL_POSTS_FOR_SCHEMA_QUERY, {}, options),
   ]);
 
   const totalPages = Math.ceil(totalCount / POSTS_PER_PAGE);
 
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${siteUrl}/tin-tuc#blog`,
+    url: `${siteUrl}/tin-tuc`,
+    name: "Tin Tức & Cẩm Nang Du Lịch DVDL Đại Dương Ban Mê",
+    description:
+      "Cẩm nang du lịch Buôn Ma Thuột - Đắk Lắk, mẹo thuê xe và kinh nghiệm tour.",
+    inLanguage: "vi-VN",
+    publisher: { "@id": `${siteUrl}/#business` },
+    blogPost: allPostsForSchema.map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.title,
+      url: `${siteUrl}/tin-tuc/${p.slug?.current}`,
+      datePublished: p.publishedAt,
+      ...(p.excerpt ? { description: p.excerpt } : {}),
+    })),
+  };
+
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${siteUrl}/tin-tuc#itemlist`,
+    name: "Tin Tức & Cẩm Nang Du Lịch",
+    numberOfItems: allPostsForSchema.length,
+    itemListOrder: "https://schema.org/ItemListOrderDescending",
+    itemListElement: allPostsForSchema.map((p, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      url: `${siteUrl}/tin-tuc/${p.slug?.current}`,
+      name: p.title,
+    })),
+  };
+
   return (
     <main className="text-gray-800">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
       {/* Hero Banner */}
       <section className="relative h-[350px] w-full">
         <Image

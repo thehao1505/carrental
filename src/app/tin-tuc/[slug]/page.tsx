@@ -141,12 +141,14 @@ export default async function BaiVietPage({
     datePublished: post.publishedAt,
     dateModified: post._updatedAt || post.publishedAt,
     author: {
-      "@type": "Person",
+      "@type": "Organization",
+      "@id": `${siteUrl}/#business`,
       name: "DVDL Đại Dương Ban Mê",
       url: `${siteUrl}/gioi-thieu`,
     },
     publisher: {
       "@type": "Organization",
+      "@id": `${siteUrl}/#business`,
       name: "DVDL Đại Dương Ban Mê",
       logo: {
         "@type": "ImageObject",
