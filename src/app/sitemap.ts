@@ -103,6 +103,13 @@ const STATIC_ROUTES: Array<{
     priority: 0.85,
   },
   {
+    path: "/thue-xe/doanh-nghiep",
+    files: ["src/app/thue-xe/doanh-nghiep"],
+    fallback: "2026-06-15",
+    changeFrequency: "monthly",
+    priority: 0.8,
+  },
+  {
     path: "/chinh-sach-bao-mat",
     files: ["src/app/chinh-sach-bao-mat"],
     fallback: "2026-06-08",
