@@ -25,6 +25,9 @@ export function HeroSection() {
               tại đây.
             </Link>
           </p>
+          <p className="text-forest-500 text-sm font-medium mb-6">
+            Giá từ 800.000đ/ngày có tài xế — 4 đến 45 chỗ
+          </p>
           <div className="flex flex-col">
             <Link
               href="/lien-he"
@@ -37,8 +40,7 @@ export function HeroSection() {
       </div>
 
       <div
-        className="md:w-full relative overflow-hidden ml-100 rounded-r-2xl"
-        style={{ clipPath: "polygon(40% 0, 100% 0, 100% 100%, 20% 100%)" }}
+        className="w-full min-h-[280px] md:min-h-0 md:w-full relative overflow-hidden md:ml-100 rounded-2xl md:rounded-l-none md:rounded-r-2xl md:[clip-path:polygon(40%_0,100%_0,100%_100%,20%_100%)]"
       >
         <div className="h-full w-full">
           <Image
