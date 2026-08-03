@@ -293,7 +293,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] C-9 · Fix sameAs URLs (Facebook share link + Google Maps goo.gl)
+### [x] C-9 · Fix sameAs URLs (Facebook share link + Google Maps goo.gl)
+
+> ✅ **ĐÃ LÀM** — `(trang-chu)/page.tsx`: `@type` → `["RentalCarAgency","TravelAgency"]`; `sameAs` → `facebook.com/dvdldaiduong` (best-effort, không xác minh được URL thật vì Facebook chặn scrape không đăng nhập) + Google Maps search URL (kèm TODO comment thay bằng CID URL từ GBP dashboard). `hasMap` cố ý giữ nguyên goo.gl vì ngoài phạm vi task này.
 
 **File:** Homepage schema (tìm trong `src/app/layout.tsx` hoặc `src/app/(trang-chu)/page.tsx`)
 

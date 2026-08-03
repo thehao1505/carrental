@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 
 const businessSchema = {
   "@context": "https://schema.org",
-  "@type": ["CarRental", "TravelAgency"],
+  "@type": ["RentalCarAgency", "TravelAgency"],
   "@id": `${siteUrl}/#business`,
   name: "DVDL Đại Dương Ban Mê",
   alternateName: "Đại Dương Ban Mê",
@@ -85,8 +85,10 @@ const businessSchema = {
     { "@type": "AdministrativeArea", name: "Đắk Lắk" },
   ],
   sameAs: [
-    "https://www.facebook.com/share/1AczYur4wu/",
-    "https://maps.app.goo.gl/7AeopSFXS4vKVxwL6",
+    "https://www.facebook.com/dvdldaiduong",
+    // TODO: replace with the canonical CID URL from the GBP dashboard,
+    // e.g. "https://www.google.com/maps?cid=XXXXXX"
+    "https://www.google.com/maps/search/DVDL+%C4%90%E1%BA%A1i+D%C6%B0%C6%A1ng+Ban+M%C3%AA/@12.64246,107.99786,17z",
   ],
   foundingDate: "2018",
 };
