@@ -554,9 +554,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] H-7 · Update `llms.txt` — thêm link llms-full.txt và thêm `/tour-dak-lak`
+### [x] H-7 · Update `llms.txt` — thêm link llms-full.txt và thêm `/tour-dak-lak`
 
-> ⬜ **CHƯA LÀM** — `src/app/llms.txt/route.ts`: không tham chiếu `llms-full.txt`, mục "## Trang chính" chưa có `/tour-dak-lak`.
+> ✅ **ĐÃ LÀM** — `llms.txt/route.ts:29` thêm dòng tham chiếu `llms-full.txt` ngay sau blockquote mô tả; `route.ts:37` thêm `/tour-dak-lak` vào mục "## Trang chính".
 
 **File:** `src/app/llms.txt` (hoặc route tương đương)
 
