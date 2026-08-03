@@ -31,44 +31,59 @@ const urlFor = (source: SanityImageSource) =>
     ? imageUrlBuilder({ projectId, dataset }).image(source)
     : null;
 
-export const metadata: Metadata = {
-  title: "Tin Tức & Cẩm Nang Du Lịch",
-  description:
-    "Khám phá cẩm nang du lịch Buôn Ma Thuột - Đắk Lắk, mẹo thuê xe, kinh nghiệm tổ chức tour và sự kiện từ DVDL Đại Dương Ban Mê.",
-  keywords: [
-    "tin tức du lịch Đắk Lắk",
-    "cẩm nang du lịch Buôn Ma Thuột",
-    "kinh nghiệm thuê xe Đắk Lắk",
-    "blog du lịch BMT",
-    "tour Daklak",
-    "DVDL Đại Dương Ban Mê",
-  ],
-  alternates: {
-    canonical: "https://www.dvdldaiduong.com/tin-tuc",
-  },
-  openGraph: {
-    title: "Tin Tức & Cẩm Nang Du Lịch | DVDL Đại Dương Ban Mê",
+// Build the canonical URL for a given page. Page 1 has no query param so it
+// resolves to the clean /tin-tuc URL; paginated pages self-reference.
+const canonicalForPage = (page: number) =>
+  page > 1 ? `${siteUrl}/tin-tuc?page=${page}` : `${siteUrl}/tin-tuc`;
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}): Promise<Metadata> {
+  const { page } = await searchParams;
+  const currentPage = Math.max(1, parseInt(page || "1", 10) || 1);
+  const canonical = canonicalForPage(currentPage);
+
+  return {
+    title: "Tin Tức & Cẩm Nang Du Lịch",
     description:
-      "Khám phá cẩm nang du lịch Buôn Ma Thuột - Đắk Lắk, mẹo thuê xe, kinh nghiệm tour từ DVDL Đại Dương Ban Mê.",
-    url: "https://www.dvdldaiduong.com/tin-tuc",
-    locale: "vi_VN",
-    type: "website",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Tin tức và cẩm nang du lịch DVDL Đại Dương Ban Mê",
-      },
+      "Khám phá cẩm nang du lịch Buôn Ma Thuột - Đắk Lắk, mẹo thuê xe, kinh nghiệm tổ chức tour và sự kiện từ DVDL Đại Dương Ban Mê.",
+    keywords: [
+      "tin tức du lịch Đắk Lắk",
+      "cẩm nang du lịch Buôn Ma Thuột",
+      "kinh nghiệm thuê xe Đắk Lắk",
+      "blog du lịch BMT",
+      "tour Daklak",
+      "DVDL Đại Dương Ban Mê",
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Tin Tức & Cẩm Nang Du Lịch | DVDL Đại Dương Ban Mê",
-    description:
-      "Cẩm nang du lịch Buôn Ma Thuột - Đắk Lắk từ DVDL Đại Dương Ban Mê.",
-  },
-};
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      title: "Tin Tức & Cẩm Nang Du Lịch | DVDL Đại Dương Ban Mê",
+      description:
+        "Khám phá cẩm nang du lịch Buôn Ma Thuột - Đắk Lắk, mẹo thuê xe, kinh nghiệm tour từ DVDL Đại Dương Ban Mê.",
+      url: canonical,
+      locale: "vi_VN",
+      type: "website",
+      images: [
+        {
+          url: "/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Tin tức và cẩm nang du lịch DVDL Đại Dương Ban Mê",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Tin Tức & Cẩm Nang Du Lịch | DVDL Đại Dương Ban Mê",
+      description:
+        "Cẩm nang du lịch Buôn Ma Thuột - Đắk Lắk từ DVDL Đại Dương Ban Mê.",
+    },
+  };
+}
 
 export default async function TinTucPage({
   searchParams,
@@ -124,6 +139,12 @@ export default async function TinTucPage({
 
   return (
     <main className="text-gray-800">
+      {currentPage > 1 && (
+        <link rel="prev" href={canonicalForPage(currentPage - 1)} />
+      )}
+      {currentPage < totalPages && (
+        <link rel="next" href={canonicalForPage(currentPage + 1)} />
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}

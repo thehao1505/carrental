@@ -10,11 +10,11 @@ export default function FloatingContactButtons({
   zaloNumber = "0941437070",
 }: FloatingContactButtonsProps) {
   return (
-    <div className="fixed bottom-24 right-5 flex flex-col items-end gap-3 z-50">
+    <div className="fixed bottom-6 md:bottom-24 right-5 flex flex-col items-end gap-3 z-50">
       {/* Phone Button */}
       <div className="group flex items-center gap-3">
-        {/* Tooltip */}
-        <div className="pointer-events-none opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-out">
+        {/* Tooltip — desktop only; hidden on mobile to avoid overlapping body text */}
+        <div className="hidden md:block pointer-events-none opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-out">
           <div className="bg-gray-900/90 text-white text-sm font-medium px-3 py-1.5 rounded-lg whitespace-nowrap shadow-lg">
             {phoneNumber}
             <div className="absolute right-[-6px] top-1/2 -translate-y-1/2 border-4 border-transparent border-l-gray-900/90" />
@@ -39,8 +39,8 @@ export default function FloatingContactButtons({
 
       {/* Zalo Button */}
       <div className="group flex items-center gap-3">
-        {/* Tooltip */}
-        <div className="pointer-events-none opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-out">
+        {/* Tooltip — desktop only; hidden on mobile to avoid overlapping body text */}
+        <div className="hidden md:block pointer-events-none opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-out">
           <div className="relative bg-gray-900/90 text-white text-sm font-medium px-3 py-1.5 rounded-lg whitespace-nowrap shadow-lg">
             Nhắn Zalo
             <div className="absolute right-[-6px] top-1/2 -translate-y-1/2 border-4 border-transparent border-l-gray-900/90" />
