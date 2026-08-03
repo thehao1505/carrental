@@ -93,6 +93,26 @@ const businessSchema = {
   foundingDate: "2018",
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  url: siteUrl,
+  name: "DVDL Đại Dương Ban Mê",
+  description:
+    "Cho thuê xe du lịch có tài xế tại Buôn Ma Thuột, Đắk Lắk – xe 4 đến 45 chỗ, tour Tây Nguyên",
+  inLanguage: "vi-VN",
+  publisher: { "@id": `${siteUrl}/#business` },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${siteUrl}/tin-tuc?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
 export default function Home() {
   return (
     <>
@@ -100,6 +120,12 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(businessSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteSchema),
         }}
       />
       <HeroSection />

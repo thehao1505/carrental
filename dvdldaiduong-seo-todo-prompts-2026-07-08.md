@@ -392,7 +392,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] H-3 · Thêm WebSite + SearchAction schema vào homepage
+### [x] H-3 · Thêm WebSite + SearchAction schema vào homepage
+
+> ✅ **ĐÃ LÀM** — `(trang-chu)/page.tsx:94-112` có `websiteSchema` (`@id` `.../#website`, `publisher` trỏ `.../#business`, `SearchAction` với `urlTemplate` chứa `{search_term_string}`), render riêng ở `<script>` thứ hai, không merge vào `businessSchema`.
 
 **File:** `src/app/layout.tsx` hoặc `src/app/(trang-chu)/page.tsx`
 
