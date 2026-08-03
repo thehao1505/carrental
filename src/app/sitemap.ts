@@ -43,85 +43,61 @@ const STATIC_ROUTES: Array<{
   path: string;
   files: string[];
   fallback: string;
-  changeFrequency: "weekly" | "monthly";
-  priority: number;
 }> = [
   {
     path: "",
     files: ["src/app/(trang-chu)"],
     fallback: "2026-06-07",
-    changeFrequency: "weekly",
-    priority: 1,
   },
   {
     path: "/bang-gia",
     files: ["src/app/bang-gia"],
     fallback: "2026-06-08",
-    changeFrequency: "weekly",
-    priority: 0.9,
   },
   {
     path: "/gioi-thieu",
     files: ["src/app/gioi-thieu"],
     fallback: "2026-06-08",
-    changeFrequency: "monthly",
-    priority: 0.8,
   },
   {
     path: "/lien-he",
     files: ["src/app/lien-he"],
     fallback: "2026-05-08",
-    changeFrequency: "monthly",
-    priority: 0.8,
   },
   {
     path: "/tin-tuc",
     files: ["src/app/tin-tuc"],
     fallback: "2026-06-08",
-    changeFrequency: "weekly",
-    priority: 0.9,
   },
   {
     path: "/thue-xe",
     files: ["src/app/thue-xe", "src/lib/data/car-rental.ts"],
     fallback: "2026-06-09",
-    changeFrequency: "weekly",
-    priority: 0.9,
   },
   {
     path: "/tour-dak-lak",
     files: ["src/app/tour-dak-lak"],
     fallback: "2026-06-07",
-    changeFrequency: "weekly",
-    priority: 0.95,
   },
   {
     path: "/thue-xe/du-lich-dak-lak",
     files: ["src/app/thue-xe/du-lich-dak-lak"],
     fallback: "2026-06-08",
-    changeFrequency: "monthly",
-    priority: 0.85,
   },
   {
     path: "/thue-xe/doanh-nghiep",
     files: ["src/app/thue-xe/doanh-nghiep"],
     fallback: "2026-06-15",
-    changeFrequency: "monthly",
-    priority: 0.8,
   },
   {
     path: "/chinh-sach-bao-mat",
     files: ["src/app/chinh-sach-bao-mat"],
     fallback: "2026-06-08",
-    changeFrequency: "monthly",
-    priority: 0.3,
   },
   {
     path: "/chinh-sach-van-chuyen",
     files: ["src/app/chinh-sach-van-chuyen"],
     fallback: "2026-06-08",
-    changeFrequency: "monthly",
-    priority: 0.3,
   },
 ];
 
@@ -146,8 +122,6 @@ async function getCarRentalUrls(): Promise<MetadataRoute.Sitemap> {
     return unique.map((item) => ({
       url: `${siteUrl}/thue-xe/${item.slug}`,
       lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
     }));
   } catch {
     return [];
@@ -158,8 +132,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticUrls: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
     url: `${siteUrl}${route.path}`,
     lastModified: gitLastModified(route.files) ?? route.fallback,
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
   }));
 
   let postUrls: MetadataRoute.Sitemap = [];
@@ -174,8 +146,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         toYmd(post._updatedAt) ??
         toYmd(post.publishedAt) ??
         new Date().toISOString().split("T")[0],
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
     }));
   } catch {
     // fallback: don't crash if Sanity is unavailable

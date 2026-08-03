@@ -523,9 +523,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] H-6 · Remove deprecated `<changefreq>` và `<priority>` khỏi sitemap
+### [x] H-6 · Remove deprecated `<changefreq>` và `<priority>` khỏi sitemap
 
-> ⬜ **CHƯA LÀM** — `sitemap.ts` vẫn khai báo & emit cả `changeFrequency` và `priority` (type dòng 46-47, ghi ra ở 149-150/161-162/177-178).
+> ✅ **ĐÃ LÀM** — `sitemap.ts`: xoá `changeFrequency`/`priority` khỏi type `STATIC_ROUTES`, `getCarRentalUrls()` và `postUrls`; mỗi entry chỉ còn `url` + `lastModified`. `next-sitemap.config.js` không có 2 field này và không được wire vào build script nên không cần sửa.
 
 **File:** `src/app/sitemap.ts`
 
