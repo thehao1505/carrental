@@ -438,7 +438,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] H-4 · Thêm BreadcrumbList cho các inner pages
+### [x] H-4 · Thêm BreadcrumbList cho các inner pages
+
+> ✅ **ĐÃ LÀM** (4/4) — Helper `generateBreadcrumb()` mới ở `src/lib/schema.ts`, dùng cho `/thue-xe`, `/tour-dak-lak`, `/bang-gia`, `/tin-tuc/[slug]` (dùng `post.title` động). Mỗi trang có 1 `<script>` BreadcrumbList riêng, không merge vào schema khác.
 
 **Files:** `src/app/thue-xe/page.tsx`, `src/app/tour-dak-lak/page.tsx`, `src/app/bang-gia/page.tsx`, `src/app/tin-tuc/[slug]/page.tsx`
 
@@ -452,9 +454,9 @@ Context: The schema and technical audits found BreadcrumbList is missing on /thu
 
 Task:
 1. Create a reusable helper function or component (e.g., in src/lib/schema.ts or src/components/BreadcrumbSchema.tsx) that generates a BreadcrumbList JSON-LD block given an array of {name, url} items.
-   
+
    Function signature: generateBreadcrumb(items: {name: string; url: string}[]): object
-   
+
    Output format:
    {
      "@context": "https://schema.org",
@@ -470,11 +472,11 @@ Task:
 2. Add BreadcrumbList to these pages (as a separate <script type="application/ld+json"> in the page's JSX):
 
    /thue-xe → [{"name": "Trang chủ", "url": "https://www.dvdldaiduong.com"}, {"name": "Thuê xe", "url": "https://www.dvdldaiduong.com/thue-xe"}]
-   
+
    /tour-dak-lak → [{"name": "Trang chủ", "url": "https://www.dvdldaiduong.com"}, {"name": "Tour Đắk Lắk", "url": "https://www.dvdldaiduong.com/tour-dak-lak"}]
-   
+
    /bang-gia → [{"name": "Trang chủ", "url": "https://www.dvdldaiduong.com"}, {"name": "Bảng Giá", "url": "https://www.dvdldaiduong.com/bang-gia"}]
-   
+
    /tin-tuc/[slug] → [{"name": "Trang chủ", "url": "..."}, {"name": "Tin Tức", "url": ".../tin-tuc"}, {"name": post.title, "url": ".../tin-tuc/[slug]"}] — use the dynamic post data for the third item
 
 3. Read each page file first to understand where to insert the schema.

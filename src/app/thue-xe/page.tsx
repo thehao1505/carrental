@@ -1,7 +1,13 @@
 import { ThueXeListing } from "@/features/thue-xe/thue-xe-listing";
 import { Metadata } from "next";
+import { generateBreadcrumb } from "@/lib/schema";
 
 const siteUrl = "https://www.dvdldaiduong.com";
+
+const breadcrumbSchema = generateBreadcrumb([
+  { name: "Trang chủ", url: siteUrl },
+  { name: "Thuê xe", url: `${siteUrl}/thue-xe` },
+]);
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -139,6 +145,10 @@ export default function ThueXePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceListSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <ThueXeListing />
     </>

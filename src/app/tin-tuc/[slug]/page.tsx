@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { generateBreadcrumb } from "@/lib/schema";
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
   _id, title, slug, publishedAt, _updatedAt, image, excerpt, body,
@@ -161,6 +162,12 @@ export default async function BaiVietPage({
     },
   };
 
+  const breadcrumbSchema = generateBreadcrumb([
+    { name: "Trang chủ", url: siteUrl },
+    { name: "Tin Tức", url: `${siteUrl}/tin-tuc` },
+    { name: post.title, url: `${siteUrl}/tin-tuc/${resolvedParams.slug}` },
+  ]);
+
   // Custom components cho PortableText — heading, blockquote, list, ảnh trong body
   const portableTextComponents = {
     types: {
@@ -243,6 +250,10 @@ export default async function BaiVietPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       {/* Breadcrumb */}

@@ -1,5 +1,13 @@
 import { BangGiaCard } from "@/features/bang-gia/bang-gia-card";
 import { Metadata } from "next";
+import { generateBreadcrumb } from "@/lib/schema";
+
+const siteUrl = "https://www.dvdldaiduong.com";
+
+const breadcrumbSchema = generateBreadcrumb([
+  { name: "Trang chủ", url: siteUrl },
+  { name: "Bảng Giá", url: `${siteUrl}/bang-gia` },
+]);
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -95,6 +103,10 @@ export default function BangGia() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <BangGiaCard />
     </>

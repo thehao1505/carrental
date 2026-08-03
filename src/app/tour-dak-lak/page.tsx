@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 import TourBookingForm from "@/features/tour-dak-lak/booking-form";
+import { generateBreadcrumb } from "@/lib/schema";
 
 const siteUrl = "https://www.dvdldaiduong.com";
 const pageUrl = `${siteUrl}/tour-dak-lak`;
@@ -170,6 +171,11 @@ const faqSchema = {
   ],
 };
 
+const breadcrumbSchema = generateBreadcrumb([
+  { name: "Trang chủ", url: siteUrl },
+  { name: "Tour Đắk Lắk", url: pageUrl },
+]);
+
 const itineraries = [
   {
     id: "1-ngay",
@@ -300,6 +306,10 @@ export default function TourDakLak() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <main className="text-gray-800">
