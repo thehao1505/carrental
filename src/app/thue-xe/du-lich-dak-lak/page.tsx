@@ -59,20 +59,7 @@ const serviceSchema = {
     "Dịch vụ thuê xe du lịch Đắk Lắk – xe 4, 7, 16, 29, 45 chỗ và limousine có tài xế chuyên nghiệp. Phục vụ tham quan Buôn Đôn, Hồ Lắk, Thác Dray Nur và các tuyến liên tỉnh.",
   url: pageUrl,
   image: `${siteUrl}/images/thue-xe-7-cho.webp`,
-  provider: {
-    "@type": "LocalBusiness",
-    name: "DVDL Đại Dương Ban Mê",
-    url: siteUrl,
-    telephone: "+84941437070",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "252/6 Phan Huy Chú",
-      addressLocality: "Buôn Ma Thuột",
-      addressRegion: "Đắk Lắk",
-      postalCode: "630000",
-      addressCountry: "VN",
-    },
-  },
+  provider: { "@id": `${siteUrl}/#business` },
   areaServed: [
     { "@type": "City", name: "Buôn Ma Thuột" },
     { "@type": "State", name: "Đắk Lắk" },

@@ -59,20 +59,7 @@ const touristTripSchema = {
   url: pageUrl,
   image: `${siteUrl}/images/taynguyen.webp`,
   touristType: ["Cultural tourism", "Adventure tourism", "Eco-tourism"],
-  provider: {
-    "@type": "LocalBusiness",
-    name: "DVDL Đại Dương Ban Mê",
-    url: siteUrl,
-    telephone: "+84941437070",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "252/6 Phan Huy Chú",
-      addressLocality: "Buôn Ma Thuột",
-      addressRegion: "Đắk Lắk",
-      postalCode: "630000",
-      addressCountry: "VN",
-    },
-  },
+  provider: { "@id": `${siteUrl}/#business` },
   itinerary: {
     "@type": "ItemList",
     itemListElement: [

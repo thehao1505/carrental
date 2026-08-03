@@ -52,7 +52,7 @@ const businessSchema = {
   url: siteUrl,
   logo: `${siteUrl}/images/logo-light.png`,
   image: `${siteUrl}/og-image.jpg`,
-  telephone: "+84-941-437-070",
+  telephone: "+84941437070",
   email: "dvdldaiduong@gmail.com",
   address: {
     "@type": "PostalAddress",
