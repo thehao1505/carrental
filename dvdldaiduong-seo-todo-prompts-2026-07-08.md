@@ -223,6 +223,8 @@ After making the changes, spawn a sub-agent to verify:
 
 ### [ ] C-7 · Fix hamburger menu tap target (28px → 48px+)
 
+> ✅ **ĐÃ LÀM** — `header.tsx:74` đã có `aria-label`/`aria-expanded`/`aria-controls`, nhưng nút vẫn `className="xl:hidden text-forest-500"` với `<Menu size={28}>` → vùng chạm ~28×28px, CHƯA đạt 48×48px. Cần thêm `p-2.5` hoặc `min-w-[48px] min-h-[48px]`.
+
 **File:** `src/features/header.tsx`
 
 **Vấn đề:** Hamburger button chỉ 28×28px trên mobile, minimum yêu cầu là 48×48px.

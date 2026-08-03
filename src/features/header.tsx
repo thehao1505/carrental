@@ -71,7 +71,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="xl:hidden text-forest-500"
+          className="xl:hidden text-forest-500 min-w-[48px] min-h-[48px] flex items-center justify-center"
           aria-label={isOpen ? "Đóng menu điều hướng" : "Mở menu điều hướng"}
           aria-expanded={isOpen}
           aria-controls="mobile-navigation-menu"
