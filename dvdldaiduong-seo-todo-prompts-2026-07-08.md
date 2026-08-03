@@ -1,4 +1,5 @@
 # SEO Todo List + Claude Code Prompts — dvdldaiduong.com
+
 > **Cách dùng:** Copy từng prompt vào Claude Code. Mỗi prompt đã bao gồm bước verify bằng sub-agent.  
 > **Thứ tự:** Làm Critical trước → High → Medium.
 
@@ -6,7 +7,9 @@
 
 ## CRITICAL FIXES
 
-### [ ] C-1 · Fix mobile hero image (ảnh hero biến mất trên mobile)
+### [x] C-1 · Fix mobile hero image (ảnh hero biến mất trên mobile)
+
+> ✅ **ĐÃ LÀM** — `split-image.tsx:42` dùng `w-full min-h-[280px]` trên mobile, clipPath polygon chỉ áp dụng từ `md:` trở lên.
 
 **File:** `src/features/trang-chu/split-image.tsx`
 
@@ -37,7 +40,9 @@ After making the change, spawn a sub-agent to verify:
 
 ---
 
-### [ ] C-2 · Thêm giá vào homepage hero và card trên `/thue-xe`
+### [x] C-2 · Thêm giá vào homepage hero và card trên `/thue-xe`
+
+> ✅ **ĐÃ LÀM** — Hero có dòng "Giá từ 800.000đ/ngày…" (SSR). Card giá nằm ở `thue-xe-listing.tsx` (map `startingPrices` → "Từ …đ/ngày"), server-rendered.
 
 **Files:** `src/features/trang-chu/split-image.tsx`, `src/features/thue-xe/thue-xe-card.tsx`
 
@@ -73,7 +78,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] C-3 · Mở rộng trang `/thue-xe` từ 275 → 1.000+ từ
+### [x] C-3 · Mở rộng trang `/thue-xe` từ 275 → 1.000+ từ
+
+> ✅ **ĐÃ LÀM** — `thue-xe-listing.tsx` có đủ intro prose, bảng giá, "Tại sao chọn…", "Quy trình đặt xe", "Thuê xe BMT đi đâu?"; ~1.000–1.150 từ, server-rendered.
 
 **File:** `src/app/thue-xe/page.tsx` (và có thể `src/features/thue-xe/thue-xe-listing.tsx`)
 
@@ -107,7 +114,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] C-4 · Fix canonical sai trên `/tin-tuc?page=2`
+### [x] C-4 · Fix canonical sai trên `/tin-tuc?page=2`
+
+> ✅ **ĐÃ LÀM** — `tin-tuc/page.tsx` có helper `canonicalForPage`, `generateMetadata` tự canonical theo trang, kèm `<link rel="prev/next">`.
 
 **File:** `src/app/tin-tuc/page.tsx`
 
@@ -139,7 +148,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] C-5 · Fix HSTS header trên apex domain (thiếu includeSubDomains; preload)
+### [x] C-5 · Fix HSTS header trên apex domain (thiếu includeSubDomains; preload)
+
+> ✅ **ĐÃ LÀM** — `vercel.json:10-20` phục vụ đầy đủ `max-age=63072000; includeSubDomains; preload`. Lưu ý: header áp dụng site-wide (`/(.*)`) chứ không gate riêng theo `has:host` apex như prompt mô tả — nhưng mục tiêu (đủ điều kiện preload) đã đạt.
 
 **File:** `vercel.json`
 
@@ -178,7 +189,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] C-6 · Fix floating contact widget trên mobile (đè lên text)
+### [x] C-6 · Fix floating contact widget trên mobile (đè lên text)
+
+> ✅ **ĐÃ LÀM** — `floating-button.tsx`: tooltip `hidden md:block`, vị trí `bottom-6 md:bottom-24`, nút giữ `w-14 h-14`.
 
 **File:** `src/features/floating-button.tsx`
 
@@ -312,7 +325,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ## HIGH PRIORITY
 
-### [ ] H-1 · Rút ngắn title trang `/tour-dak-lak` (86 chars → ~60)
+### [x] H-1 · Rút ngắn title trang `/tour-dak-lak` (86 chars → ~60)
+
+> ✅ **ĐÃ LÀM** — `tour-dak-lak/page.tsx:10` title = "Tour Đắk Lắk 2-3 Ngày: Khám Phá Tây Nguyên Với Xe Riêng | DVDL" (62 ký tự, DVDL 1 lần).
 
 **File:** `src/app/tour-dak-lak/page.tsx`
 
@@ -465,7 +480,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] H-5 · Set `priority={true}` trên hero images của `/thue-xe` và `/tour-dak-lak`
+### [x] H-5 · Set `priority={true}` trên hero images của `/thue-xe` và `/tour-dak-lak`
+
+> ✅ **ĐÃ LÀM** — `thue-xe-listing.tsx:39` và `tour-dak-lak/page.tsx:326` đều có `priority` trên hero Image.
 
 **Files:** `src/app/thue-xe/page.tsx`, `src/app/tour-dak-lak/page.tsx` hoặc các feature components tương ứng
 
@@ -484,7 +501,7 @@ Task:
 4. Do not add priority={true} to card images, thumbnails, or below-fold images — only the hero/LCP candidate image
 
 After making the changes, spawn a sub-agent to verify:
-- Sub-agent task: 
+- Sub-agent task:
   1. Run `curl -s https://www.dvdldaiduong.com/thue-xe | grep -i "fetchpriority\|rel=\"preload\"" | head -5` to check if the preload/fetchpriority exists on the live site
   2. OR read the modified component files and confirm the hero <Image> has priority={true} (not priority={false} or missing)
   Report the exact prop values on the hero Image in each page's component tree.
@@ -495,6 +512,8 @@ After making the changes, spawn a sub-agent to verify:
 ---
 
 ### [ ] H-6 · Remove deprecated `<changefreq>` và `<priority>` khỏi sitemap
+
+> ⬜ **CHƯA LÀM** — `sitemap.ts` vẫn khai báo & emit cả `changeFrequency` và `priority` (type dòng 46-47, ghi ra ở 149-150/161-162/177-178).
 
 **File:** `src/app/sitemap.ts`
 
@@ -524,6 +543,8 @@ After making the changes, spawn a sub-agent to verify:
 ---
 
 ### [ ] H-7 · Update `llms.txt` — thêm link llms-full.txt và thêm `/tour-dak-lak`
+
+> ⬜ **CHƯA LÀM** — `src/app/llms.txt/route.ts`: không tham chiếu `llms-full.txt`, mục "## Trang chính" chưa có `/tour-dak-lak`.
 
 **File:** `src/app/llms.txt` (hoặc route tương đương)
 
@@ -556,6 +577,8 @@ After making the changes, spawn a sub-agent to verify:
 
 ### [ ] H-8 · Thêm giá 29-chỗ và 45-chỗ vào trang `/bang-gia`
 
+> ⬜ **CHƯA LÀM** — `bang-gia-card.tsx` 3 bảng giá chỉ có cột 4/7/16 chỗ. 29 & 45 chỗ chỉ nhắc trong prose (dòng 387), không có giá.
+
 **File:** `src/app/bang-gia/page.tsx` và `src/features/bang-gia/bang-gia-card.tsx`
 
 <details>
@@ -587,6 +610,8 @@ After making the changes, spawn a sub-agent to verify:
 ## MEDIUM PRIORITY
 
 ### [ ] M-1 · Xóa `unsafe-inline` khỏi CSP (migrate GTM sang nonce)
+
+> ⬜ **CHƯA LÀM** — `next.config.ts:48-50` vẫn `'unsafe-inline'` trong script-src/style-src, không có `'nonce-'`/`'strict-dynamic'`; chưa có `src/middleware.ts`.
 
 **File:** `next.config.ts`
 
@@ -622,6 +647,8 @@ After making the changes, spawn a sub-agent to verify:
 ---
 
 ### [ ] M-2 · Thêm question-form H2s vào key pages
+
+> ⚠️ **LÀM MỘT PHẦN** (2/3) — `/thue-xe` (3 H2 câu hỏi) và `/tour-dak-lak` (2) đã đạt. `/bang-gia` (`bang-gia-card.tsx`) chỉ có 1 H2 dạng câu hỏi ("Bạn cần tư vấn nhanh?") — cần thêm 1.
 
 **Files:** `src/app/thue-xe/page.tsx`, `src/app/bang-gia/page.tsx`, `src/app/tour-dak-lak/page.tsx`
 
@@ -659,6 +686,8 @@ After making the changes, spawn a sub-agent to verify:
 
 ### [ ] M-3 · Expand Permissions-Policy header
 
+> ⬜ **CHƯA LÀM** — `next.config.ts:31-34` chỉ có `attribution-reporting=()`, thiếu camera/microphone/geolocation/payment.
+
 **File:** `next.config.ts`
 
 <details>
@@ -686,6 +715,8 @@ After making the changes, spawn a sub-agent to verify:
 ---
 
 ### [ ] M-4 · Capture SEO drift baseline (để theo dõi regression)
+
+> ⬜ **CHƯA LÀM / KHÔNG XÁC MINH ĐƯỢC** — Không tìm thấy artifact baseline nào (đây là hành động chạy tool, không để lại file trong repo).
 
 **Tool:** `/seo drift baseline`
 
@@ -725,18 +756,18 @@ After capturing baselines, spawn a sub-agent to verify:
 1. Bundle size check:
    npx @next/bundle-analyzer — Three.js + R3F + Drei add ~150-250KB brotli
    Current total JS: 200KB brotli → expected post-merge: 350-450KB brotli
-   
+
 2. Dynamic import:
    The 3D component MUST use: dynamic(() => import('./3DComponent'), { ssr: false })
    to prevent it from blocking LCP render
-   
+
 3. CSP check:
    Verify worker-src includes 'blob:' for Draco WASM:
    "worker-src 'self' blob:; script-src ... 'wasm-unsafe-eval'"
-   
+
 4. Draco path:
    Confirm /draco/ files are in /public/draco/ and served correctly
-   
+
 5. Mobile performance:
    Run Lighthouse mobile on the 3D page after merge
    LCP must remain < 2.5s — if not, lazy-load the 3D section below the fold
@@ -744,5 +775,5 @@ After capturing baselines, spawn a sub-agent to verify:
 
 ---
 
-*File: dvdldaiduong-seo-todo-prompts-2026-07-08.md*  
-*Nguồn: SEO Audit Report 2026-07-08 | dvdldaiduong.com*
+_File: dvdldaiduong-seo-todo-prompts-2026-07-08.md_  
+_Nguồn: SEO Audit Report 2026-07-08 | dvdldaiduong.com_
