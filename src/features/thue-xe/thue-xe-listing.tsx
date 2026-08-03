@@ -46,6 +46,22 @@ export function ThueXeListing() {
             Đa dạng loại xe từ 4–45 chỗ & limousine. Tài xế chuyên nghiệp, xe
             đời mới, giá cả minh bạch.
           </p>
+          <div className="flex flex-col sm:flex-row gap-3 mt-2">
+            <a
+              href="tel:0941437070"
+              className="bg-forest-500 text-lemon-500 px-6 py-3 rounded-3xl text-base font-semibold text-center hover:bg-forest-600 hover:scale-105 transition-all duration-200"
+            >
+              Đặt xe ngay — Gọi 0941 437 070
+            </a>
+            <a
+              href="https://zalo.me/0941437070"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-forest-500 px-6 py-3 rounded-3xl text-base font-semibold text-center hover:bg-lemon-500 hover:scale-105 transition-all duration-200"
+            >
+              Zalo ngay
+            </a>
+          </div>
         </div>
       </section>
 

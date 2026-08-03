@@ -360,7 +360,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] H-2 · Thêm CTA "Đặt xe ngay" above-the-fold trên trang `/thue-xe`
+### [x] H-2 · Thêm CTA "Đặt xe ngay" above-the-fold trên trang `/thue-xe`
+
+> ✅ **ĐÃ LÀM** — `thue-xe-listing.tsx:49-63` hero (h-[340px]) đã có nút "Đặt xe ngay — Gọi 0941 437 070" (`tel:0941437070`) và "Zalo ngay" (`https://zalo.me/0941437070`), flex-col trên mobile / flex-row trên desktop, server-rendered.
 
 **File:** `src/app/thue-xe/page.tsx` hoặc component của nó
 
@@ -376,7 +378,7 @@ Task:
 1. Read src/app/thue-xe/page.tsx and identify the first section/component rendered (likely a hero or header section for this page)
 2. Add a prominent CTA button visible within the first 500px of the page. If there's a page hero/header section, add the button there. If not, add it just above the vehicle card listing.
 3. Button should:
-   - Text: "Đặt xe ngay — Gọi 0941 437 070" 
+   - Text: "Đặt xe ngay — Gọi 0941 437 070"
    - Link: tel:0941437070 (click-to-call on mobile) OR href="/lien-he" (if you prefer a form page)
    - Style: match the existing "Liên hệ ngay" button style from the homepage (bg-forest-500, text-lemon-500, rounded-3xl)
    - Also add a secondary Zalo button beside it: href="https://zalo.me/0941437070", text "Zalo ngay"
