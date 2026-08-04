@@ -221,9 +221,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] C-7 · Fix hamburger menu tap target (28px → 48px+)
+### [x] C-7 · Fix hamburger menu tap target (28px → 48px+)
 
-> ✅ **ĐÃ LÀM** — `header.tsx:74` đã có `aria-label`/`aria-expanded`/`aria-controls`, nhưng nút vẫn `className="xl:hidden text-forest-500"` với `<Menu size={28}>` → vùng chạm ~28×28px, CHƯA đạt 48×48px. Cần thêm `p-2.5` hoặc `min-w-[48px] min-h-[48px]`.
+> ✅ **ĐÃ LÀM** — `header.tsx:74` đã có `aria-label`/`aria-expanded`/`aria-controls` và `className` đã thêm `min-w-[48px] min-h-[48px] flex items-center justify-center` → vùng chạm đạt 48×48px, icon `<Menu size={28}>` giữ nguyên kích thước hiển thị.
 
 **File:** `src/features/header.tsx`
 
@@ -255,7 +255,7 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] C-8 · Fix schema: chuẩn hóa số điện thoại và sửa TouristTrip provider
+### [x] C-8 · Fix schema: chuẩn hóa số điện thoại và sửa TouristTrip provider
 
 > ✅ **ĐÃ LÀM** — `/thue-xe`, `/thue-xe/[slug]`, `/thue-xe/doanh-nghiep` đã dùng `provider: {"@id": ".../#business"}`. CÒN LẠI: `(trang-chu)/page.tsx:55` và `llms-full.txt/route.ts:40` vẫn `+84-941-437-070` (có gạch); `tour-dak-lak/page.tsx:62-75` và `thue-xe/du-lich-dak-lak/page.tsx:62-75` vẫn inline full LocalBusiness trong TouristTrip.
 
@@ -621,9 +621,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ## MEDIUM PRIORITY
 
-### [ ] M-1 · Xóa `unsafe-inline` khỏi CSP (migrate GTM sang nonce)
+### [x] M-1 · Xóa `unsafe-inline` khỏi CSP (migrate GTM sang nonce)
 
-> ⬜ **CHƯA LÀM** — `next.config.ts:48-50` vẫn `'unsafe-inline'` trong script-src/style-src, không có `'nonce-'`/`'strict-dynamic'`; chưa có `src/middleware.ts`.
+> ✅ **ĐÃ LÀM** — `src/middleware.ts` sinh nonce per-request, set `Content-Security-Policy` với `'nonce-{nonce}' 'strict-dynamic'` trong `script-src`; `next.config.ts` không còn set CSP tĩnh (đã xoá, có comment tham chiếu middleware); `layout.tsx` đọc `x-nonce` qua `headers()` và truyền vào cả 3 thẻ `<Script>` GTM/GA. `'unsafe-inline'` vẫn còn trong `script-src` và `style-src` nhưng đúng chủ đích — làm fallback cho browser cũ (browser hỗ trợ `strict-dynamic` sẽ tự ignore `unsafe-inline`), đúng như khuyến nghị gốc ở bước 5 của prompt này. Không đụng đến `style-src` vì việc bỏ `unsafe-inline` ở đó đòi hỏi loại bỏ toàn bộ inline `style={{}}` trong codebase — ngoài phạm vi.
 
 **File:** `next.config.ts`
 
