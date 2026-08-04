@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <div className="relative flex flex-col md:flex-row min-h-[300px] h-[650px] rounded-2xl w-auto mx-5 md:mx-10 xl:mx-30 mb-30 bg-lemon-500">
+    <div className="relative flex flex-col md:flex-row min-h-[300px] md:h-[650px] rounded-2xl w-auto mx-5 md:mx-10 xl:mx-30 mb-30 bg-lemon-500">
       <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center md:absolute md:left-0 md:top-0 md:bottom-0">
         <div className="z-10 rounded-2xl">
           <p className="text-moss-500 text-xl mb-2">Cho thuê xe du lịch</p>
@@ -40,7 +40,7 @@ export function HeroSection() {
       </div>
 
       <div
-        className="w-full min-h-[280px] md:min-h-0 md:w-full relative overflow-hidden md:ml-100 rounded-2xl md:rounded-l-none md:rounded-r-2xl md:[clip-path:polygon(40%_0,100%_0,100%_100%,20%_100%)]"
+        className="hidden md:block md:w-full relative overflow-hidden md:ml-100 rounded-2xl md:rounded-l-none md:rounded-r-2xl md:[clip-path:polygon(40%_0,100%_0,100%_100%,20%_100%)]"
       >
         <div className="h-full w-full">
           <Image
