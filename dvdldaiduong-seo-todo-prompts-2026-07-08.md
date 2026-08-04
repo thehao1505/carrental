@@ -257,7 +257,7 @@ After making the changes, spawn a sub-agent to verify:
 
 ### [x] C-8 · Fix schema: chuẩn hóa số điện thoại và sửa TouristTrip provider
 
-> ✅ **ĐÃ LÀM** — `/thue-xe`, `/thue-xe/[slug]`, `/thue-xe/doanh-nghiep` đã dùng `provider: {"@id": ".../#business"}`. CÒN LẠI: `(trang-chu)/page.tsx:55` và `llms-full.txt/route.ts:40` vẫn `+84-941-437-070` (có gạch); `tour-dak-lak/page.tsx:62-75` và `thue-xe/du-lich-dak-lak/page.tsx:62-75` vẫn inline full LocalBusiness trong TouristTrip.
+> ✅ **ĐÃ LÀM (hoàn tất)** — `(trang-chu)/page.tsx:55` đã dùng `+84941437070`; `/tour-dak-lak` TouristTrip và `/thue-xe/du-lich-dak-lak` Service đều dùng `provider: {"@id": ".../#business"}`, không còn inline `LocalBusiness`. `llms-full.txt/route.ts:40` (chỗ cuối cùng còn format có gạch) đã sửa thành `+84941437070`. Không còn nơi nào dùng format `+84-941-437-070`.
 
 **Files:** Schema files (kiểm tra trong `src/app/tour-dak-lak/page.tsx`, `src/app/thue-xe/page.tsx`, layout)
 

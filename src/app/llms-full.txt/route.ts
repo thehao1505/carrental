@@ -37,7 +37,7 @@ export async function GET() {
     `> Dịch vụ cho thuê xe du lịch có tài xế và tour nội địa tại Buôn Ma Thuột, Đắk Lắk (Tây Nguyên, Việt Nam). Hoạt động từ 2018.`,
     ``,
     `**Website:** ${siteUrl}`,
-    `**Hotline / Zalo:** 0941 437 070 (+84-941-437-070)`,
+    `**Hotline / Zalo:** 0941 437 070 (+84941437070)`,
     `**Email:** dvdldaiduong@gmail.com`,
     `**Địa chỉ:** 252/6 Phan Huy Chú, Buôn Ma Thuột, Đắk Lắk, Việt Nam`,
     `**Giờ phục vụ:** 06:00 – 22:00, 7 ngày/tuần`,
