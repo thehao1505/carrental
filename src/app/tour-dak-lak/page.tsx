@@ -8,7 +8,7 @@ const siteUrl = "https://www.dvdldaiduong.com";
 const pageUrl = `${siteUrl}/tour-dak-lak`;
 
 export const metadata: Metadata = {
-  title: "Tour Đắk Lắk 2-3 Ngày: Khám Phá Tây Nguyên Với Xe Riêng | DVDL",
+  title: "Tour Đắk Lắk Xe Riêng | Từ 1.200.000đ/Xe",
   description:
     "Tour Đắk Lắk xe riêng có tài xế – giá từ 1.200.000đ/xe/ngày. 3 gói lịch trình: văn hóa 1 ngày, phiêu lưu 2N1Đ, toàn diện 3N2Đ. Tùy chỉnh tự do, không phụ thu ẩn.",
   keywords: [
