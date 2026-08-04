@@ -726,9 +726,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] M-4 · Capture SEO drift baseline (để theo dõi regression)
+### [x] M-4 · Capture SEO drift baseline (để theo dõi regression)
 
-> ⬜ **CHƯA LÀM / KHÔNG XÁC MINH ĐƯỢC** — Không tìm thấy artifact baseline nào (đây là hành động chạy tool, không để lại file trong repo).
+> ✅ **ĐÃ LÀM (2026-08-04)** — Baseline đã capture cho homepage, `/thue-xe`, `/tour-dak-lak`, `/bang-gia` (lưu ở `~/.cache/claude-seo/drift/baselines.db`, log tại `~/Downloads/drift-baselines-2026-08-04.txt`). Lưu ý: baseline của `/tour-dak-lak` cho thấy title live production vẫn là bản 86-ký-tự cũ (trùng "DVDL"), khác với title đã fix trong repo cho H-1 ("Tour Đắk Lắk Xe Riêng | Từ 1.200.000đ/Xe | DVDL Ban Mê") — có thể site chưa deploy bản mới nhất.
 
 **Tool:** `/seo drift baseline`
 
