@@ -30,7 +30,8 @@ const nextConfig: NextConfig = {
       },
       {
         key: "Permissions-Policy",
-        value: "attribution-reporting=()",
+        value:
+          "camera=(), microphone=(), geolocation=(), payment=(), usb=(), autoplay=(), attribution-reporting=(), display-capture=(), fullscreen=(self)",
       },
       {
         key: "Referrer-Policy",

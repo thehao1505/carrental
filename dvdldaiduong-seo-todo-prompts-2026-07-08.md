@@ -696,9 +696,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] M-3 · Expand Permissions-Policy header
+### [x] M-3 · Expand Permissions-Policy header
 
-> ⬜ **CHƯA LÀM** — `next.config.ts:31-34` chỉ có `attribution-reporting=()`, thiếu camera/microphone/geolocation/payment.
+> ✅ **ĐÃ LÀM** — `next.config.ts` `Permissions-Policy` value mở rộng thành `camera=(), microphone=(), geolocation=(), payment=(), usb=(), autoplay=(), attribution-reporting=(), display-capture=(), fullscreen=(self)`.
 
 **File:** `next.config.ts`
 
