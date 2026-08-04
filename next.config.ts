@@ -31,7 +31,7 @@ const nextConfig: NextConfig = {
       {
         key: "Permissions-Policy",
         value:
-          "camera=(), microphone=(), geolocation=(), payment=(), usb=(), autoplay=(), attribution-reporting=(), display-capture=(), fullscreen=(self)",
+          'camera=(), microphone=(), geolocation=(), payment=(), usb=(), autoplay=(), attribution-reporting=(), display-capture=(), fullscreen=(self "https://www.google.com")',
       },
       {
         key: "Referrer-Policy",
@@ -45,9 +45,9 @@ const nextConfig: NextConfig = {
         key: "X-Content-Type-Options",
         value: "nosniff",
       },
-      // Content-Security-Policy is set per-request in src/middleware.ts (nonce +
+      // Content-Security-Policy is set per-request in src/proxy.ts (nonce +
       // 'strict-dynamic'). Do not duplicate it here — Next.js sends both the
-      // config-level and middleware-level headers as separate CSP instances,
+      // config-level and proxy-level headers as separate CSP instances,
       // which the browser then enforces as an intersection, not an override.
     ];
 
