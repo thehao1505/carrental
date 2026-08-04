@@ -359,6 +359,54 @@ export function BangGiaCard() {
             </p>
           </div>
         </div>
+
+        {/* BẢNG 4: Xe 29 chỗ, 45 chỗ */}
+        <div>
+          <h2 className="text-2xl font-bold text-forest-600 mb-4">
+            Thuê xe 29 chỗ, 45 chỗ giá bao nhiêu?
+          </h2>
+          <div className="overflow-x-auto">
+            <table className="w-full table-auto border border-gray-200 shadow-sm">
+              <thead className="bg-moss-100 text-moss-700">
+                <tr>
+                  <th className="py-2 px-3 text-center">Dịch vụ</th>
+                  <th className="py-2 px-3 text-center">Xe 29 chỗ</th>
+                  <th className="py-2 px-3 text-center">Xe 45 chỗ</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-700">
+                {[
+                  ["Đưa đón sân bay", "400.000đ", "500.000đ"],
+                  ["Giá/km nội thành", "18.000đ", "20.000đ"],
+                  ["Giá/ngày trọn gói", "từ 2.500.000đ", "từ 3.500.000đ"],
+                ].map((row, i) => (
+                  <tr key={i} className="border-t">
+                    {row.map((cell, j) => (
+                      <td
+                        key={j}
+                        className="py-2 px-3 whitespace-nowrap text-center"
+                      >
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="text-sm text-gray-600 mt-4 italic">
+              Phù hợp cho đoàn doanh nghiệp, team building, sự kiện, du lịch
+              nhóm lớn. Liên hệ để nhận báo giá theo hành trình cụ thể.
+            </p>
+          </div>
+          <div className="mt-4">
+            <Link
+              href="/lien-he"
+              className="inline-block bg-forest-500 text-lemon-500 px-6 py-2.5 rounded-full text-base font-semibold hover:bg-forest-600 transition hover:scale-105"
+            >
+              Liên hệ nhận báo giá
+            </Link>
+          </div>
+        </div>
       </section>
 
       <section className="max-w-5xl mx-auto px-6 pb-16 space-y-4">

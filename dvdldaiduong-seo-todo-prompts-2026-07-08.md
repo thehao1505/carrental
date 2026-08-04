@@ -587,9 +587,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] H-8 · Thêm giá 29-chỗ và 45-chỗ vào trang `/bang-gia`
+### [x] H-8 · Thêm giá 29-chỗ và 45-chỗ vào trang `/bang-gia`
 
-> ⬜ **CHƯA LÀM** — `bang-gia-card.tsx` 3 bảng giá chỉ có cột 4/7/16 chỗ. 29 & 45 chỗ chỉ nhắc trong prose (dòng 387), không có giá.
+> ✅ **ĐÃ LÀM** — Thêm bảng giá thứ 4 vào `bang-gia-card.tsx` (H2 dạng câu hỏi "Thuê xe 29 chỗ, 45 chỗ giá bao nhiêu?"): đưa đón sân bay 400.000đ/500.000đ, giá/km nội thành 18.000đ/20.000đ, giá/ngày trọn gói từ 2.500.000đ/3.500.000đ, kèm note + CTA `/lien-he`. Tiêu đề câu hỏi này cũng giải quyết luôn phần còn thiếu của M-2.
 
 **File:** `src/app/bang-gia/page.tsx` và `src/features/bang-gia/bang-gia-card.tsx`
 
@@ -658,9 +658,9 @@ After making the changes, spawn a sub-agent to verify:
 
 ---
 
-### [ ] M-2 · Thêm question-form H2s vào key pages
+### [x] M-2 · Thêm question-form H2s vào key pages
 
-> ⚠️ **LÀM MỘT PHẦN** (2/3) — `/thue-xe` (3 H2 câu hỏi) và `/tour-dak-lak` (2) đã đạt. `/bang-gia` (`bang-gia-card.tsx`) chỉ có 1 H2 dạng câu hỏi ("Bạn cần tư vấn nhanh?") — cần thêm 1.
+> ✅ **ĐÃ LÀM (hoàn tất, 3/3)** — `/thue-xe` (3 H2 câu hỏi) và `/tour-dak-lak` (2) đã đạt từ trước. `/bang-gia` (`bang-gia-card.tsx`) nay có 2 H2 dạng câu hỏi: "Bạn cần tư vấn nhanh?" và "Thuê xe 29 chỗ, 45 chỗ giá bao nhiêu?" (thêm cùng lúc với H-8).
 
 **Files:** `src/app/thue-xe/page.tsx`, `src/app/bang-gia/page.tsx`, `src/app/tour-dak-lak/page.tsx`
 
