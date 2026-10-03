@@ -1,6 +1,7 @@
 import { useState } from "react";
+import type { Dictionary } from "@/lib/i18n/types";
 
-export function ContactButton() {
+export function ContactButton({ dict }: { dict: Dictionary["contactButton"] }) {
   const [copied, setCopied] = useState(false);
   const [isClicked, setIsClicked] = useState(false)
 
@@ -28,11 +29,11 @@ export function ContactButton() {
             isClicked ? 'scale-95' : ''
           }`}
         >
-          Liên hệ
+          {dict.label}
         </button>
       ) : (
         <button className='bg-forest-500 text-sm h-[50px] font-semibold px-6 py-2 rounded-3xl text-lemon-500 w-fit'>
-          Đã copy sđt
+          {dict.copied}
         </button>
       )}
     </>

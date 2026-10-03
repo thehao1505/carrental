@@ -3,6 +3,8 @@
 import { Mail, MapPin, Phone, MessageSquareText, Facebook } from "lucide-react";
 import Link from "next/link";
 import LazyMapEmbed from "@/features/lazy-map-embed";
+import type { Locale } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/types";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 export interface ContactFormData {
@@ -16,14 +18,24 @@ export interface ApiResponse {
   success: boolean;
 }
 
-export default function LienHeCard() {
+type LienHeCardProps = {
+  dict: Pick<Dictionary, "map" | "subHeader"> & {
+    contact: Dictionary["pages"]["contact"];
+  };
+  locale: Locale;
+};
+
+export default function LienHeCard({ dict, locale }: LienHeCardProps) {
+  const { contact } = dict;
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     phone: "",
     content: "",
   });
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
+  // A flag rather than word-matching the message string, which would break as
+  // soon as the message is translated.
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -38,7 +50,7 @@ export default function LienHeCard() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setMessage("");
+    setStatus("idle");
 
     try {
       const response = await fetch("/api/contact", {
@@ -46,20 +58,20 @@ export default function LienHeCard() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, locale }),
       });
 
       const data: ApiResponse = await response.json();
 
-      if (response.ok) {
-        setMessage("Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ lại sớm.");
+      if (response.ok && data.success) {
+        setStatus("success");
         setFormData({ name: "", phone: "", content: "" });
       } else {
-        setMessage(data.message || "Có lỗi xảy ra. Vui lòng thử lại.");
+        setStatus("error");
       }
     } catch (error) {
       console.error("Form submission error:", error);
-      setMessage("Có lỗi xảy ra. Vui lòng thử lại.");
+      setStatus("error");
     } finally {
       setIsSubmitting(false);
     }
@@ -68,20 +80,17 @@ export default function LienHeCard() {
   return (
     <main className="max-w-5xl mx-auto px-6 py-12 text-gray-800">
       <h1 className="text-3xl font-bold text-forest-600 mb-6 text-center">
-        Liên hệ với chúng tôi
+        {contact.h1}
       </h1>
-      <p className="text-center text-lg text-gray-600 mb-10">
-        Hãy liên hệ với DVDL Đại Dương Ban Mê nếu bạn cần tư vấn tour, báo giá
-        thuê xe hoặc hỗ trợ dịch vụ!
-      </p>
+      <p className="text-center text-lg text-gray-600 mb-10">{contact.lead}</p>
 
-      {/* Thông tin liên hệ */}
+      {/* Contact details */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <div className="space-y-6">
           <div className="flex items-start gap-4">
             <Phone className="text-moss-500 mt-1" />
             <div>
-              <p className="font-semibold">Số điện thoại</p>
+              <p className="font-semibold">{contact.labels.phone}</p>
               <a
                 href="tel:0941437070"
                 className="text-forest-500 hover:underline"
@@ -93,7 +102,7 @@ export default function LienHeCard() {
           <div className="flex items-start gap-4">
             <MessageSquareText className="text-moss-500 mt-1" />
             <div>
-              <p className="font-semibold">Zalo hỗ trợ</p>
+              <p className="font-semibold">{contact.labels.zalo}</p>
               <Link
                 href="https://zalo.me/0941437070"
                 target="_blank"
@@ -107,7 +116,7 @@ export default function LienHeCard() {
           <div className="flex items-start gap-4">
             <Mail className="text-moss-500 mt-1" />
             <div>
-              <p className="font-semibold">Email</p>
+              <p className="font-semibold">{contact.labels.email}</p>
               <a
                 href="mailto:dvdldaiduong@gmail.com"
                 className="text-forest-500 hover:underline"
@@ -119,47 +128,47 @@ export default function LienHeCard() {
           <div className="flex items-start gap-4">
             <MapPin className="text-moss-500 mt-1" />
             <div>
-              <p className="font-semibold">Địa chỉ</p>
+              <p className="font-semibold">{contact.labels.address}</p>
               <a
                 href="https://maps.app.goo.gl/7AeopSFXS4vKVxwL6"
                 className="text-forest-500  hover:underline"
               >
-                252/6 Phan Huy Chú, Buôn Ma Thuột, Đắk Lắk
+                {dict.subHeader.address}
               </a>
             </div>
           </div>
           <div className="flex items-start gap-4">
             <Facebook className="text-moss-500 mt-1" />
             <div>
-              <p className="font-semibold">Facebook</p>
+              <p className="font-semibold">{contact.labels.facebook}</p>
               <a
                 href="https://www.facebook.com/share/1AczYur4wu/"
                 className="text-forest-500  hover:underline"
               >
-                Liên hệ ngay với tài xế
+                {contact.facebookLinkText}
               </a>
             </div>
           </div>
         </div>
 
-        {/* (Tùy chọn) Form liên hệ */}
+        {/* Contact form */}
         <form
           onSubmit={handleSubmit}
           className="space-y-4 bg-gray-50 p-6 rounded-xl shadow"
         >
           <h2 className="text-lg font-semibold text-moss-600 mb-2">
-            Gửi yêu cầu
+            {contact.form.heading}
           </h2>
 
-          {message && (
+          {status !== "idle" && (
             <div
               className={`p-3 rounded-md ${
-                message.includes("thành công")
+                status === "success"
                   ? "bg-green-100 text-green-700"
                   : "bg-red-100 text-red-700"
               }`}
             >
-              {message}
+              {status === "success" ? contact.form.success : contact.form.error}
             </div>
           )}
 
@@ -168,7 +177,7 @@ export default function LienHeCard() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="Họ và tên"
+            placeholder={contact.form.namePlaceholder}
             className="w-full border px-4 py-2 rounded-md focus:outline-moss-500"
             required
           />
@@ -178,7 +187,7 @@ export default function LienHeCard() {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="Số điện thoại"
+            placeholder={contact.form.phonePlaceholder}
             className="w-full border px-4 py-2 rounded-md focus:outline-moss-500"
             required
           />
@@ -188,7 +197,7 @@ export default function LienHeCard() {
             name="content"
             value={formData.content}
             onChange={handleChange}
-            placeholder="Nội dung yêu cầu"
+            placeholder={contact.form.contentPlaceholder}
             className="w-full border px-4 py-2 rounded-md focus:outline-moss-500"
             required
           />
@@ -198,7 +207,7 @@ export default function LienHeCard() {
             disabled={isSubmitting}
             className="bg-forest-500 text-white px-6 py-2 rounded-full hover:bg-forest-600 transition disabled:opacity-50"
           >
-            {isSubmitting ? "Đang gửi..." : "Gửi yêu cầu"}
+            {isSubmitting ? contact.form.submitting : contact.form.submit}
           </button>
         </form>
       </div>
@@ -207,16 +216,14 @@ export default function LienHeCard() {
       <div className="mb-10">
         <h2 className="text-lg font-semibold text-forest-600 mb-4 flex items-center gap-2">
           <MapPin size={18} />
-          Vị trí của chúng tôi
+          {contact.mapHeading}
         </h2>
-        <LazyMapEmbed />
+        <LazyMapEmbed dict={dict.map} />
       </div>
 
       {/* CTA */}
       <div className="text-center">
-        <p className="text-gray-600">
-          Chúng tôi sẽ phản hồi nhanh nhất trong vòng 1 giờ làm việc.
-        </p>
+        <p className="text-gray-600">{contact.responseNote}</p>
       </div>
     </main>
   );

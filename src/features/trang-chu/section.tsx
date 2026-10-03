@@ -1,60 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Dictionary } from "@/lib/i18n/types";
 
 // components/StatsGrid.tsx
-const stats = [
-  {
-    value: "4 Chỗ",
-    slug: "thue-xe-4-cho",
-    title: "Di chuyển cá nhân",
-    description: "Lý tưởng cho công tác, đưa đón sân bay, đi lại hằng ngày.",
-    image: "/images/thue-xe-4-cho.webp",
-  },
-  {
-    value: "7 Chỗ",
-    slug: "thue-xe-7-cho",
-    title: "Nhóm nhỏ thoải mái",
-    description: "Phù hợp cho gia đình, nhóm bạn đi chơi hoặc du lịch gần.",
-    image: "/images/thue-xe-7-cho.webp",
-  },
-  {
-    value: "16 Chỗ",
-    slug: "thue-xe-16-cho",
-    title: "Dịch vụ linh hoạt",
-    description: "Xe đời mới, lý tưởng cho tour, sự kiện, đưa đón công ty.",
-    image: "/images/thue-xe-16-cho.webp",
-  },
-  {
-    value: "29 Chỗ",
-    slug: "thue-xe-29-cho",
-    title: "Đoàn thể vừa",
-    description: "Phù hợp cho trường học, công ty, tour 1-3 ngày.",
-    image: "/images/thue-xe-29-cho.webp",
-  },
-  {
-    value: "45 Chỗ",
-    slug: "thue-xe-45-cho",
-    title: "Hành trình dài",
-    description: "Xe hiện đại, phục vụ tour đoàn, hội nghị chuyên nghiệp.",
-    image: "/images/thue-xe-45-cho.webp",
-  },
-  {
-    value: "Limousine",
-    slug: "thue-xe-limousine",
-    title: "Di chuyển đẳng cấp",
-    description: "Nội thất sang trọng, ghế massage, Wi-Fi, màn hình riêng.",
-    image: "/images/thue-xe-limousine.webp",
-  },
-];
+type StatsGridProps = {
+  items: Dictionary["pages"]["home"]["vehicles"];
+  /** Locale-correct base path for vehicle detail pages, e.g. /thue-xe. */
+  carRentalBasePath: string;
+};
 
-export default function StatsGrid() {
+export default function StatsGrid({ items, carRentalBasePath }: StatsGridProps) {
   return (
     <section className="px-5 md:px-10 xl:px-30 pb-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {stats.map((item, index) => (
+        {items.map((item, index) => (
           <Link
             key={index}
-            href={`/thue-xe/${item.slug}`}
+            href={`${carRentalBasePath}/${item.slug}`}
             className="relative rounded-2xl overflow-hidden h-64 shadow-md cursor-pointer"
           >
             <Image

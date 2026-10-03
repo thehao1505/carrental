@@ -1,6 +1,8 @@
 "use client";
 
 import { ChangeEvent, FormEvent, useState } from "react";
+import type { Dictionary } from "@/lib/i18n/types";
+import type { Locale } from "@/lib/i18n/config";
 
 interface FormData {
   name: string;
@@ -11,20 +13,42 @@ interface FormData {
   note: string;
 }
 
-export default function TourBookingForm() {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    phone: "",
-    tourType: "",
-    groupSize: "",
-    date: "",
-    note: "",
-  });
+const EMPTY: FormData = {
+  name: "",
+  phone: "",
+  tourType: "",
+  groupSize: "",
+  date: "",
+  note: "",
+};
+
+/**
+ * The enquiry body is written for the inbox, not for the visitor, so it stays
+ * Vietnamese in every locale — the person reading it works in Vietnamese. The
+ * heading notes which language the visitor was browsing in, so a reply can go
+ * out in the right one. (The API route also tags the subject; see
+ * src/app/api/contact/route.ts.)
+ */
+const enquiryHeading: Record<Locale, string> = {
+  vi: "[YÊU CẦU ĐẶT TOUR ĐẮK LẮK]",
+  en: "[YÊU CẦU ĐẶT TOUR ĐẮK LẮK — khách gửi từ trang tiếng Anh]",
+};
+
+type Props = {
+  dict: Dictionary["tourBooking"];
+  locale: Locale;
+};
+
+export default function TourBookingForm({ dict, locale }: Props) {
+  const [formData, setFormData] = useState<FormData>(EMPTY);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // A status flag rather than matching on the message text — string matching
+  // breaks the moment the copy is translated.
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -33,9 +57,10 @@ export default function TourBookingForm() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setStatus("idle");
     setMessage("");
 
-    const content = `[YÊU CẦU ĐẶT TOUR ĐẮK LẮK]
+    const content = `${enquiryHeading[locale]}
 Tour: ${formData.tourType}
 Số người: ${formData.groupSize}
 Ngày dự kiến: ${formData.date || "Chưa xác định"}
@@ -49,17 +74,20 @@ Ghi chú: ${formData.note || "Không có"}`;
           name: formData.name,
           phone: formData.phone,
           content,
+          locale,
         }),
       });
-      const data = await res.json();
       if (res.ok) {
-        setMessage("Đặt tour thành công! Chúng tôi sẽ liên hệ xác nhận trong vòng 30 phút.");
-        setFormData({ name: "", phone: "", tourType: "", groupSize: "", date: "", note: "" });
+        setStatus("success");
+        setMessage(dict.success);
+        setFormData(EMPTY);
       } else {
-        setMessage(data.message || "Có lỗi xảy ra. Vui lòng thử lại.");
+        setStatus("error");
+        setMessage(dict.error);
       }
     } catch {
-      setMessage("Có lỗi xảy ra. Vui lòng thử lại hoặc gọi hotline.");
+      setStatus("error");
+      setMessage(dict.errorNetwork);
     } finally {
       setIsSubmitting(false);
     }
@@ -73,7 +101,7 @@ Ghi chú: ${formData.note || "Không có"}`;
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Họ và tên <span className="text-red-500">*</span>
+            {dict.nameLabel} <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
@@ -81,13 +109,13 @@ Ghi chú: ${formData.note || "Không có"}`;
             value={formData.name}
             onChange={handleChange}
             required
-            placeholder="Nguyễn Văn A"
+            placeholder={dict.namePlaceholder}
             className={inputClass}
           />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Số điện thoại <span className="text-red-500">*</span>
+            {dict.phoneLabel} <span className="text-red-500">*</span>
           </label>
           <input
             type="tel"
@@ -95,7 +123,7 @@ Ghi chú: ${formData.note || "Không có"}`;
             value={formData.phone}
             onChange={handleChange}
             required
-            placeholder="0941.437.070"
+            placeholder={dict.phonePlaceholder}
             className={inputClass}
           />
         </div>
@@ -104,7 +132,7 @@ Ghi chú: ${formData.note || "Không có"}`;
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Chọn gói tour <span className="text-red-500">*</span>
+            {dict.tourLabel} <span className="text-red-500">*</span>
           </label>
           <select
             name="tourType"
@@ -113,16 +141,17 @@ Ghi chú: ${formData.note || "Không có"}`;
             required
             className={inputClass}
           >
-            <option value="">-- Chọn gói tour --</option>
-            <option value="Tour 1 ngày – Văn Hóa Buôn Ma Thuột">Tour 1 ngày – Văn Hóa BMT</option>
-            <option value="Tour 2 ngày 1 đêm – Phiêu Lưu Tây Nguyên">Tour 2 ngày 1 đêm – Phiêu Lưu</option>
-            <option value="Tour 3 ngày 2 đêm – Khám Phá Tây Nguyên Toàn Diện">Tour 3 ngày 2 đêm – Toàn Diện</option>
-            <option value="Tour tùy chỉnh">Tour tùy chỉnh theo yêu cầu</option>
+            <option value="">{dict.tourPlaceholder}</option>
+            {dict.tourOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Số người <span className="text-red-500">*</span>
+            {dict.groupLabel} <span className="text-red-500">*</span>
           </label>
           <select
             name="groupSize"
@@ -131,19 +160,19 @@ Ghi chú: ${formData.note || "Không có"}`;
             required
             className={inputClass}
           >
-            <option value="">-- Số người --</option>
-            <option value="1-2 người">1–2 người</option>
-            <option value="3-4 người">3–4 người</option>
-            <option value="5-7 người">5–7 người</option>
-            <option value="8-16 người">8–16 người</option>
-            <option value="Trên 16 người">Trên 16 người</option>
+            <option value="">{dict.groupPlaceholder}</option>
+            {dict.groupOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
         </div>
       </div>
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">
-          Ngày dự kiến khởi hành
+          {dict.dateLabel}
         </label>
         <input
           type="date"
@@ -156,14 +185,14 @@ Ghi chú: ${formData.note || "Không có"}`;
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">
-          Ghi chú thêm (điểm xuất phát, yêu cầu đặc biệt…)
+          {dict.noteLabel}
         </label>
         <textarea
           name="note"
           value={formData.note}
           onChange={handleChange}
           rows={3}
-          placeholder="VD: Xuất phát từ sân bay, cần ghế trẻ em, muốn thêm điểm Đồi Cỏ Hồng…"
+          placeholder={dict.notePlaceholder}
           className={inputClass + " resize-none"}
         />
       </div>
@@ -171,7 +200,7 @@ Ghi chú: ${formData.note || "Không có"}`;
       {message && (
         <div
           className={`px-4 py-3 rounded-xl text-sm font-medium ${
-            message.includes("thành công")
+            status === "success"
               ? "bg-green-50 text-green-700 border border-green-200"
               : "bg-red-50 text-red-700 border border-red-200"
           }`}
@@ -185,14 +214,17 @@ Ghi chú: ${formData.note || "Không có"}`;
         disabled={isSubmitting}
         className="w-full bg-lemon-500 text-forest-700 font-bold py-3.5 rounded-xl text-base hover:bg-lemon-400 transition hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        {isSubmitting ? "Đang gửi…" : "Đặt Tour Ngay"}
+        {isSubmitting ? dict.submitting : dict.submit}
       </button>
       <p className="text-xs text-gray-400 text-center">
-        Hoặc gọi ngay{" "}
-        <a href="tel:0941437070" className="text-forest-600 font-semibold hover:underline">
-          0941.437.070
-        </a>{" "}
-        để được tư vấn miễn phí
+        {dict.hotlineBefore}
+        <a
+          href="tel:0941437070"
+          className="text-forest-600 font-semibold hover:underline"
+        >
+          {dict.hotlineNumber}
+        </a>
+        {dict.hotlineAfter}
       </p>
     </form>
   );

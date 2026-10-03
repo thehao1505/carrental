@@ -15,7 +15,14 @@ const createTransporter = () => {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, phone, content } = body
+    const { name, phone, content, locale } = body
+
+    // Both forms post the locale of the page the visitor was on. The email stays
+    // in Vietnamese — whoever reads the inbox works in Vietnamese — but it has to
+    // say when the enquiry came from an English page, so staff know to reply in
+    // English. Anything other than 'en' is treated as Vietnamese.
+    const isEnglish = locale === 'en'
+    const localeTag = isEnglish ? ' [EN]' : ''
 
     // Validate dữ liệu
     if (!name || !phone || !content) {
@@ -31,12 +38,17 @@ export async function POST(request: NextRequest) {
     const mailOptions = {
       from: process.env.EMAIL_USER!,
       to: process.env.ADMIN_EMAIL!,
-      subject: `Yêu cầu mới từ ${name}`,
+      subject: `Yêu cầu mới từ ${name}${localeTag}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #2d5a3d; border-bottom: 2px solid #2d5a3d; padding-bottom: 10px;">
             🔔 Có yêu cầu mới từ website
           </h2>
+          ${isEnglish
+            ? `<p style="background-color: #fff4d6; border-left: 4px solid #e0a800; padding: 12px; margin: 16px 0; font-weight: bold;">
+                 🌐 Khách gửi từ trang tiếng Anh — vui lòng phản hồi bằng tiếng Anh.
+               </p>`
+            : ''}
           
           <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <p style="margin: 10px 0;"><strong>👤 Họ tên:</strong> ${name}</p>
@@ -67,7 +79,7 @@ export async function POST(request: NextRequest) {
 
     await transporter.sendMail(mailOptions)
 
-    console.log(`New contact request from ${name} (${phone}) at ${new Date().toISOString()}`)
+    console.log(`New contact request from ${name} (${phone}) [${isEnglish ? 'en' : 'vi'}] at ${new Date().toISOString()}`)
 
     return NextResponse.json(
       { message: 'Gửi yêu cầu thành công', success: true },

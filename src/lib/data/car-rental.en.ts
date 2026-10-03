@@ -2,6 +2,7 @@ export const carRentalDataEn = [
   {
     slug: "car-rental-4-seat",
     title: "4-Seat Car Rental in Buon Ma Thuot",
+    tldr: "A 4-seat car in Buon Ma Thuot costs 800,000 – 1,500,000 VND per day depending on the route, and suits an individual or a family of 1–3. Late-model Vios, City and Mazda 2 with a professional driver, door-to-door 24/7 within the city and on trips out of the province.",
     image: "/images/thue-xe-4-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
@@ -57,7 +58,7 @@ export const carRentalDataEn = [
             <thead class="bg-gray-100 text-left">
               <tr>
                 <th class="px-4 py-2 border">Service Type</th>
-                <th class="px-4 py-2 border">Price (VNĐ)</th>
+                <th class="px-4 py-2 border">Price (VND)</th>
                 <th class="px-4 py-2 border">Notes</th>
               </tr>
             </thead>
@@ -86,6 +87,7 @@ export const carRentalDataEn = [
   {
     slug: "car-rental-7-seat",
     title: "7-Seat Car Rental in Buon Ma Thuot",
+    tldr: "A 7-seat car in Buon Ma Thuot costs 1,100,000 – 2,200,000 VND per day and carries groups of 4–7. Late-model Innova, Fortuner and Xpander with a local driver who knows the Central Highlands roads, for BMV airport transfers, Dak Lak tours and inter-provincial routes.",
     image: "/images/thue-xe-7-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
@@ -149,7 +151,7 @@ export const carRentalDataEn = [
             <thead class="bg-gray-100 text-left">
               <tr>
                 <th class="px-4 py-2 border">Trip Type</th>
-                <th class="px-4 py-2 border">Price (VNĐ)</th>
+                <th class="px-4 py-2 border">Price (VND)</th>
                 <th class="px-4 py-2 border">Notes</th>
               </tr>
             </thead>
@@ -178,6 +180,7 @@ export const carRentalDataEn = [
   {
     slug: "car-rental-16-seat",
     title: "16-Seat Car Rental in Buon Ma Thuot",
+    tldr: "A 16-seat van in Buon Ma Thuot costs 1,800,000 – 3,500,000 VND per day for groups of 10–16. Late-model air-conditioned Ford Transit and Hyundai Solati with drivers experienced on Central Highlands routes, for tours, conferences, weddings and airport transfers.",
     image: "/images/thue-xe-16-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
@@ -241,7 +244,7 @@ export const carRentalDataEn = [
             <thead class="bg-gray-100 text-left">
               <tr>
                 <th class="px-4 py-2 border">Service Type</th>
-                <th class="px-4 py-2 border">Price (VNĐ)</th>
+                <th class="px-4 py-2 border">Price (VND)</th>
                 <th class="px-4 py-2 border">Notes</th>
               </tr>
             </thead>
@@ -270,6 +273,7 @@ export const carRentalDataEn = [
   {
     slug: "car-rental-29-seat",
     title: "29-Seat Car Rental in Buon Ma Thuot",
+    tldr: "A 29-seat coach in Buon Ma Thuot costs 3,000,000 – 5,500,000 VND per day and suits groups of 20–29. Air-conditioned Hyundai County and Universe Mini with reclining seats and seasoned drivers, for all-inclusive tours to Buon Don, Pleiku, Da Lat and Nha Trang.",
     image: "/images/thue-xe-29-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
@@ -333,7 +337,7 @@ export const carRentalDataEn = [
             <thead class="bg-gray-100 text-left">
               <tr>
                 <th class="px-4 py-2 border">Service Type</th>
-                <th class="px-4 py-2 border">Price (VNĐ)</th>
+                <th class="px-4 py-2 border">Price (VND)</th>
                 <th class="px-4 py-2 border">Notes</th>
               </tr>
             </thead>
@@ -362,6 +366,7 @@ export const carRentalDataEn = [
   {
     slug: "car-rental-45-seat",
     title: "45-Seat Car Rental in Buon Ma Thuot",
+    tldr: "A 45-seat coach in Buon Ma Thuot costs 4,500,000 – 8,000,000 VND per day for groups of 30–45. Late-model Universe and Aero Space with wifi, air conditioning and a microphone, for company tours, conferences and anniversaries in Dak Lak and across the Central Highlands.",
     image: "/images/thue-xe-45-cho.webp",
     content: `
       <div class="max-w-3xl mx-auto">
@@ -426,7 +431,7 @@ export const carRentalDataEn = [
             <thead class="bg-gray-100 text-left">
               <tr>
                 <th class="px-4 py-2 border">Service Type</th>
-                <th class="px-4 py-2 border">Price (VNĐ)</th>
+                <th class="px-4 py-2 border">Price (VND)</th>
                 <th class="px-4 py-2 border">Notes</th>
               </tr>
             </thead>
@@ -455,6 +460,7 @@ export const carRentalDataEn = [
   {
     slug: "car-rental-limousine",
     title: "Limousine Car Rental in Buon Ma Thuot",
+    tldr: "A limousine in Buon Ma Thuot costs 1,800,000 – 3,500,000 VND per day for 9–11 VIP passengers. Dcar and Skybus with massage leather seats, wooden tables and a mini bar, for BMV airport transfers, premium tours and corporate travel.",
     image: "/images/thue-xe-limousine.webp",
     content: `
       <div class="max-w-3xl mx-auto">
@@ -509,7 +515,7 @@ export const carRentalDataEn = [
             <thead class="bg-gray-100 text-left">
               <tr>
                 <th class="px-4 py-2 border">Service</th>
-                <th class="px-4 py-2 border">Price (VNĐ)</th>
+                <th class="px-4 py-2 border">Price (VND)</th>
                 <th class="px-4 py-2 border">Notes</th>
               </tr>
             </thead>

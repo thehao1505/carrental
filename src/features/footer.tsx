@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, Fragment, FormEvent, useState } from "react";
 import LazyMapEmbed from "@/features/lazy-map-embed";
+import type { Locale } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/types";
 
 export interface ContactFormData {
   name: string;
@@ -16,15 +18,29 @@ export interface ApiResponse {
   success: boolean;
 }
 
-export default function Footer() {
+// The newsletter box only collects one free-text field, so name/phone are sent
+// as fixed markers the inbox owner recognises. Kept in Vietnamese in every
+// locale so the received emails stay uniform.
+const ANONYMOUS_NAME = "SOMEONE";
+const ANONYMOUS_PHONE = "KHÔNG CÓ";
+
+type FooterProps = {
+  dict: Pick<Dictionary, "footer" | "map">;
+  locale: Locale;
+};
+
+export default function Footer({ dict, locale }: FooterProps) {
   const router = useRouter();
+  const { footer } = dict;
   const [formData, setFormData] = useState<ContactFormData>({
-    name: "SOMEONE",
-    phone: "KHÔNG CÓ",
+    name: ANONYMOUS_NAME,
+    phone: ANONYMOUS_PHONE,
     content: "",
   });
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
+  // Tracked as a flag rather than by matching words in the message string, which
+  // would silently break the moment the message is translated.
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -39,7 +55,7 @@ export default function Footer() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setMessage("");
+    setStatus("idle");
 
     try {
       const response = await fetch("/api/contact", {
@@ -47,24 +63,24 @@ export default function Footer() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, locale }),
       });
 
       const data: ApiResponse = await response.json();
 
-      if (response.ok) {
-        setMessage("Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ lại sớm.");
+      if (response.ok && data.success) {
+        setStatus("success");
         setFormData({
-          name: "",
-          phone: "",
+          name: ANONYMOUS_NAME,
+          phone: ANONYMOUS_PHONE,
           content: "",
         });
       } else {
-        setMessage(data.message || "Có lỗi xảy ra. Vui lòng thử lại.");
+        setStatus("error");
       }
     } catch (error) {
       console.error("Form submission error:", error);
-      setMessage("Có lỗi xảy ra. Vui lòng thử lại.");
+      setStatus("error");
     } finally {
       setIsSubmitting(false);
     }
@@ -77,38 +93,33 @@ export default function Footer() {
           <div className="flex items-center gap-2">
             <Image
               src="/images/logo-light.webp"
-              alt="logo"
+              alt={footer.logoAlt}
               width={200}
               height={100}
             />
           </div>
-          <p className="text-sm text-moss-100 max-w-sm">
-            Dịch vụ thuê xe uy tín, nhanh chóng, giá hợp lý. Đặt xe dễ dàng chỉ
-            trong vài phút, sẵn sàng đồng hành cùng bạn trên mọi hành trình!
-          </p>
+          <p className="text-sm text-moss-100 max-w-sm">{footer.tagline}</p>
         </div>
 
         <form onSubmit={handleSubmit}>
           <div className="space-y-4">
-            <h3 className="font-semibold">
-              Để lại email hoặc số điện thoại để nhận được ưu đãi mới nhất
-            </h3>
-            {message && (
+            <h3 className="font-semibold">{footer.newsletterHeading}</h3>
+            {status !== "idle" && (
               <div
                 className={`py-3 px-6 rounded-r-3xl ${
-                  message.includes("thành công")
+                  status === "success"
                     ? "bg-green-100 text-green-700"
                     : "bg-red-100 text-red-700"
                 }`}
               >
-                {message}
+                {status === "success" ? footer.success : footer.error}
               </div>
             )}
             <input
               name="content"
               value={formData.content}
               onChange={handleChange}
-              placeholder="example@gmail.com or 0941437070"
+              placeholder={footer.inputPlaceholder}
               className="w-full p-3 rounded-r-3xl bg-white text-black placeholder-gray-400 px-6"
             />
             <button
@@ -116,7 +127,7 @@ export default function Footer() {
               disabled={isSubmitting}
               className="bg-lemon-500 hover:bg-lemon-400 text-black font-semibold px-6 py-2 rounded-r-3xl"
             >
-              {isSubmitting ? "Đang gửi..." : "Gửi yêu cầu"}
+              {isSubmitting ? footer.submitting : footer.submit}
             </button>
           </div>
         </form>
@@ -125,102 +136,31 @@ export default function Footer() {
       <hr className="my-10 border-moss-100/20" />
 
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-sm pb-10">
+        {footer.columns.map((column) => (
+          <div key={column.title}>
+            <h4 className="font-semibold mb-4">{column.title}</h4>
+            <ul className="space-y-2 text-moss-100">
+              {column.links.map((link) => (
+                <li
+                  key={link.href}
+                  onClick={() => router.push(link.href)}
+                  className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
+                >
+                  {link.label}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
         <div>
-          <h4 className="font-semibold mb-4">Trang</h4>
-          <ul className="space-y-2 text-moss-100">
-            <li
-              onClick={() => router.push("/")}
-              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
-            >
-              Trang chủ
-            </li>
-            <li
-              onClick={() => router.push("/gioi-thieu")}
-              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
-            >
-              Giới thiệu
-            </li>
-            <li
-              onClick={() => router.push("/tin-tuc")}
-              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
-            >
-              Tin tức
-            </li>
-            <li
-              onClick={() => router.push("/lien-he")}
-              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
-            >
-              Liên hệ
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-4">Dịch vụ</h4>
-          <ul className="space-y-2 text-moss-100">
-            <li
-              onClick={() => router.push("/thue-xe")}
-              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
-            >
-              Tất cả dịch vụ thuê xe
-            </li>
-            <li
-              onClick={() => router.push("/tin-tuc/thue-xe-co-tai-xe")}
-              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
-            >
-              Thuê xe có tài xế
-            </li>
-            <li
-              onClick={() => router.push("/thue-xe/du-lich-dak-lak")}
-              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
-            >
-              Thuê xe du lịch Đắk Lắk
-            </li>
-            <li
-              onClick={() => router.push("/thue-xe/thue-xe-16-cho")}
-              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
-            >
-              Thuê xe 16 chỗ
-            </li>
-            <li
-              onClick={() => router.push("/tin-tuc/thue-xe-di-du-lich")}
-              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
-            >
-              Thuê xe đi du lịch
-            </li>
-            <li
-              onClick={() => router.push("/tin-tuc/thue-xe-di-cong-tac")}
-              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
-            >
-              Thuê xe đi công tác
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-4">Hỗ trợ</h4>
-          <ul className="space-y-2 text-moss-100">
-            <li
-              onClick={() => router.push("/chinh-sach-bao-mat")}
-              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
-            >
-              Chính sách bảo mật
-            </li>
-            <li
-              onClick={() => router.push("/chinh-sach-van-chuyen")}
-              className="transition-all duration-300 cursor-pointer hover:text-lemon-500 hover:underline"
-            >
-              Chính sách vận chuyển
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-4">Liên hệ</h4>
+          <h4 className="font-semibold mb-4">{footer.contact.title}</h4>
           <ul className="space-y-2 text-moss-100">
             <li>
               <a
                 href="https://www.facebook.com/share/1AczYur4wu/"
                 className="hover:text-lemon-400 hover:underline"
               >
-                Facebook
+                {footer.contact.facebook}
               </a>
             </li>
             <li>
@@ -244,7 +184,7 @@ export default function Footer() {
                 href="https://zalo.me/0941437070"
                 className="hover:text-lemon-400 hover:underline"
               >
-                Zalo: 0941 437 070
+                {footer.contact.zaloLabel}
               </a>
             </li>
             <li>
@@ -252,9 +192,12 @@ export default function Footer() {
                 href="https://maps.app.goo.gl/7AeopSFXS4vKVxwL6"
                 className="hover:text-lemon-400 hover:underline"
               >
-                252/6 Phan Huy Chú,
-                <br />
-                Buôn Ma Thuột, Đắk Lắk, Vietnam
+                {footer.contact.addressLines.map((line, i) => (
+                  <Fragment key={line}>
+                    {i > 0 && <br />}
+                    {line}
+                  </Fragment>
+                ))}
               </a>
             </li>
           </ul>
@@ -262,7 +205,7 @@ export default function Footer() {
       </div>
 
       <div className="w-full pb-10 max-w-7xl mx-auto">
-        <LazyMapEmbed />
+        <LazyMapEmbed dict={dict.map} />
       </div>
 
       <div className="py-3 text-center text-sm text-moss-100 border-t border-moss-100/20">

@@ -27,6 +27,7 @@ export async function GET() {
     ``,
     `> Dịch vụ cho thuê xe du lịch có tài xế tại Buôn Ma Thuột, Đắk Lắk. Xe 4, 7, 16, 29, 45 chỗ, limousine, xe giường nằm. Phục vụ sân bay, tour tham quan, đi tỉnh và liên tỉnh.`,
     `- [llms-full.txt](${siteUrl}/llms-full.txt): Phiên bản đầy đủ với bảng giá, mô tả xe, FAQ và tin tức`,
+    `- [English version](${siteUrl}/en/llms.txt): Bản tiếng Anh`,
     ``,
     `## Trang chính`,
     ``,

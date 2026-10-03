@@ -13,7 +13,7 @@ export const testimonialsEn = [
   },
   {
     quote:
-      '"My family rented a 16-seat van for a trip to Đà Lạt. The car was new, rode smoothly, and felt very safe."',
+      '"My family rented a 16-seat van for a trip to Da Lat. The car was new, rode smoothly, and felt very safe."',
     name: 'Nguyễn Thị Hương',
     position: 'Individual customer',
   },
@@ -25,7 +25,7 @@ export const testimonialsEn = [
   },
   {
     quote:
-      '"My business trip to Cần Thơ was supported attentively from the moment I booked until the journey ended. Very professional."',
+      '"My business trip to Can Tho was supported attentively from the moment I booked until the journey ended. Very professional."',
     name: 'Võ Đức Thành',
     position: 'Technical Team Lead – Viet Infrastructure JSC',
   },
@@ -39,7 +39,7 @@ export const testimonialsEn = [
     quote:
       '"I booked a 16-seat van to take my child to school every day. The driver is always on time, friendly, and drives carefully."',
     name: 'Lưu Bảo Ngọc',
-    position: 'Parent of a student at Ánh Dương International School',
+    position: 'Parent of a student at Anh Duong International School',
   },
   {
     quote:
@@ -63,7 +63,7 @@ export const testimonialsEn = [
     quote:
       '"The 45-seat coach served our company\'s group tour excellently — nothing to complain about."',
     name: 'Mai Thanh Tùng',
-    position: 'Union Team Leader – Hoàng Gia Garment Company',
+    position: 'Union Team Leader – Hoang Gia Garment Company',
   },
   {
     quote:

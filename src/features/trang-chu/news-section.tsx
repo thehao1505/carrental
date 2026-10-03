@@ -3,6 +3,8 @@ import Link from "next/link";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
 import { client } from "@/sanity/client";
+import { intlLocale, type Locale } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/types";
 
 type NewsPost = {
   _id: string;
@@ -26,7 +28,14 @@ const urlFor = (source: SanityImageSource) =>
     ? imageUrlBuilder({ projectId, dataset }).image(source)
     : null;
 
-export async function NewsSection() {
+type NewsSectionProps = {
+  dict: Dictionary["newsSection"];
+  locale: Locale;
+  /** Base path of the news index, e.g. /tin-tuc. */
+  basePath: string;
+};
+
+export async function NewsSection({ dict, locale, basePath }: NewsSectionProps) {
   const posts = await client.fetch<NewsPost[]>(NEWS_QUERY, {}, options);
 
   return (
@@ -34,10 +43,10 @@ export async function NewsSection() {
       <div className="max-w-6xl mx-auto px-6 py-12 text-forest-500">
         <h2 className="text-3xl font-bold text-forest-500 mb-10 text-center">
           <Link
-            href="/tin-tuc"
+            href={basePath}
             className="hover:text-forest-400 transition-all duration-300"
           >
-            Tin Tức & Cẩm Nang Du Lịch
+            {dict.heading}
           </Link>
         </h2>
 
@@ -50,7 +59,7 @@ export async function NewsSection() {
             return (
               <Link
                 key={post._id}
-                href={`/tin-tuc/${post.slug.current}`}
+                href={`${basePath}/${post.slug.current}`}
                 className="border rounded-xl shadow-sm overflow-hidden bg-white hover:shadow-md hover:scale-105 transition-all duration-300 cursor-pointer"
               >
                 {imageUrl ? (
@@ -64,13 +73,13 @@ export async function NewsSection() {
                   />
                 ) : (
                   <div className="w-full h-[200px] bg-gray-100 flex items-center justify-center text-gray-400">
-                    Chưa có ảnh
+                    {dict.noImage}
                   </div>
                 )}
                 <div className="p-5 space-y-2">
                   <span className="text-sm text-gray-500">
                     {post._createdAt
-                      ? new Date(post._createdAt).toLocaleDateString("vi-VN")
+                      ? new Date(post._createdAt).toLocaleDateString(intlLocale[locale])
                       : ""}
                   </span>
                   <h2 className="text-lg font-semibold text-forest-600">
@@ -86,7 +95,7 @@ export async function NewsSection() {
                     </p>
                   )}
                   <span className="inline-block text-forest-500 text-sm font-medium hover:underline mt-2">
-                    Xem chi tiết →
+                    {dict.readMore}
                   </span>
                 </div>
               </Link>

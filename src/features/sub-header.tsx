@@ -1,8 +1,9 @@
 'use client';
 
 import { Mail, MapPin, PhoneCall } from "lucide-react";
+import type { Dictionary } from "@/lib/i18n/types";
 
-export default function SubHeader() {
+export default function SubHeader({ dict }: { dict: Dictionary["subHeader"] }) {
   return (
     <header className='px-5 md:px-10 xl:px-30 py-5 h-10 flex flex-row justify-between items-center bg-forest-500 z-40 relative'>
       <div className='flex flex-row items-center gap-2 text-sm'>
@@ -29,7 +30,7 @@ export default function SubHeader() {
         </p>
         <span className='text-white hidden md:block'>
           <a href="https://maps.app.goo.gl/7AeopSFXS4vKVxwL6" target="_blank" rel="noopener noreferrer" className="hover:text-lemon-500 hover:underline">
-            252/6 Phan Huy Chú, Buôn Ma Thuột, Đắk Lắk
+            {dict.address}
           </a>
         </span>
       </div>

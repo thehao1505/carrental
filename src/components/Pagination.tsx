@@ -1,14 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import type { Dictionary } from "@/lib/i18n/types";
 
 interface PaginationProps {
+  dict: Dictionary["pagination"];
   currentPage: number;
   totalPages: number;
   basePath: string;
 }
 
 export default function Pagination({
+  dict,
   currentPage,
   totalPages,
   basePath,
@@ -42,18 +45,18 @@ export default function Pagination({
   const pages = getPageNumbers();
 
   return (
-    <nav aria-label="Phân trang" className="flex justify-center items-center gap-2 mt-10">
+    <nav aria-label={dict.ariaLabel} className="flex justify-center items-center gap-2 mt-10">
       {/* Previous */}
       {currentPage > 1 ? (
         <Link
           href={getPageHref(currentPage - 1)}
           className="px-3 py-2 rounded-lg border border-gray-300 text-sm font-medium text-gray-700 hover:bg-forest-500 hover:text-white transition-colors"
         >
-          ← Trước
+          {dict.prev}
         </Link>
       ) : (
         <span className="px-3 py-2 rounded-lg border border-gray-200 text-sm font-medium text-gray-400 cursor-not-allowed">
-          ← Trước
+          {dict.prev}
         </span>
       )}
 
@@ -84,11 +87,11 @@ export default function Pagination({
           href={getPageHref(currentPage + 1)}
           className="px-3 py-2 rounded-lg border border-gray-300 text-sm font-medium text-gray-700 hover:bg-forest-500 hover:text-white transition-colors"
         >
-          Sau →
+          {dict.next}
         </Link>
       ) : (
         <span className="px-3 py-2 rounded-lg border border-gray-200 text-sm font-medium text-gray-400 cursor-not-allowed">
-          Sau →
+          {dict.next}
         </span>
       )}
     </nav>

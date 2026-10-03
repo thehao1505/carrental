@@ -1,11 +1,16 @@
 "use client";
 
+import type { Dictionary } from "@/lib/i18n/types";
+import { interpolate } from "@/lib/i18n/interpolate";
+
 interface FloatingContactButtonsProps {
+  dict: Dictionary["floating"];
   phoneNumber?: string;
   zaloNumber?: string;
 }
 
 export default function FloatingContactButtons({
+  dict,
   phoneNumber = "0941437070",
   zaloNumber = "0941437070",
 }: FloatingContactButtonsProps) {
@@ -23,7 +28,7 @@ export default function FloatingContactButtons({
         {/* Button */}
         <a
           href={`tel:${phoneNumber}`}
-          aria-label={`Gọi ngay ${phoneNumber}`}
+          aria-label={interpolate(dict.callAria, { phone: phoneNumber })}
           className="relative flex items-center justify-center w-14 h-14 bg-green-500 text-white rounded-full shadow-lg shadow-green-500/40 hover:scale-110 hover:shadow-green-500/60 transition-all duration-200"
         >
           <svg
@@ -42,7 +47,7 @@ export default function FloatingContactButtons({
         {/* Tooltip — desktop only; hidden on mobile to avoid overlapping body text */}
         <div className="hidden md:block pointer-events-none opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-out">
           <div className="relative bg-gray-900/90 text-white text-sm font-medium px-3 py-1.5 rounded-lg whitespace-nowrap shadow-lg">
-            Nhắn Zalo
+            {dict.zaloLabel}
             <div className="absolute right-[-6px] top-1/2 -translate-y-1/2 border-4 border-transparent border-l-gray-900/90" />
           </div>
         </div>
@@ -51,7 +56,7 @@ export default function FloatingContactButtons({
           href={`https://zalo.me/${zaloNumber}`}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Nhắn Zalo ${zaloNumber}`}
+          aria-label={interpolate(dict.zaloAria, { phone: zaloNumber })}
           className="relative flex items-center justify-center w-14 h-14 bg-[#0068FF] text-white rounded-full shadow-lg shadow-blue-500/40 hover:scale-110 hover:shadow-blue-500/60 transition-all duration-200"
         >
           {/* Zalo "Z" icon */}

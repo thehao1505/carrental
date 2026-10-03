@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { toInternalPath, toPublicPath } from "@/lib/i18n/routes";
+import { defaultLocale, prefixedLocales } from "@/lib/i18n/config";
 
 export function proxy(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
@@ -20,6 +22,47 @@ export function proxy(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-nonce", nonce);
   requestHeaders.set("Content-Security-Policy", cspHeader);
+
+  const { pathname } = request.nextUrl;
+
+  // The default locale is served without a URL prefix, and its paths are
+  // Vietnamese while the app tree is keyed by the English segment names. Map
+  // the public path onto the internal route; /en/* already matches its route
+  // and passes through untouched.
+  // not-found.tsx never receives route params, so the locale it should render
+  // in has to come from somewhere. This header is that somewhere, and is read
+  // only there — every real page resolves its locale from `params.locale`.
+  const prefix = pathname.split("/")[1]?.toLowerCase();
+  requestHeaders.set(
+    "x-locale",
+    prefixedLocales.find((l) => l === prefix) ?? defaultLocale,
+  );
+
+  const internal = toInternalPath(pathname);
+  if (internal !== null) {
+    const url = request.nextUrl.clone();
+    url.pathname = internal;
+    const rewritten = NextResponse.rewrite(url, {
+      request: { headers: requestHeaders },
+    });
+    rewritten.headers.set("Content-Security-Policy", cspHeader);
+    return rewritten;
+  }
+
+  // The rewrite target stays reachable on its own, which would publish every
+  // Vietnamese page at a second URL (/vi/car-rental as well as /thue-xe).
+  // Send the internal form back to the canonical public one.
+  if (
+    pathname === `/${defaultLocale}` ||
+    pathname.startsWith(`/${defaultLocale}/`)
+  ) {
+    const publicPath = toPublicPath(pathname);
+    if (publicPath !== null) {
+      const url = request.nextUrl.clone();
+      url.pathname = publicPath;
+      return NextResponse.redirect(url, 308);
+    }
+  }
 
   const response = NextResponse.next({
     request: { headers: requestHeaders },
