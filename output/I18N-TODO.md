@@ -1,8 +1,9 @@
 # TODO — Đa ngôn ngữ (i18n) dvdldaiduong.com
 
 > Checklist cho hạ tầng đa ngôn ngữ vi/en. Cùng quy ước với [TODO.md](./TODO.md): tick khi đã ship.
-> Trạng thái tính đến 2026-09-25, đối chiếu trực tiếp với code trong `src/`.
-> Mục A (kiến trúc route) đã refactor xong cùng ngày — xem phần A.
+> Trạng thái tính đến 2026-10-04, đối chiếu trực tiếp với code trong `src/`.
+> Mục A (kiến trúc route) refactor xong 2026-09-25; đợt 2026-10-04 làm A10c, A-404a, C11, C12, D3–D5, E4, H1–H3, H5.
+> Quy ước và checklist vận hành giờ nằm ở [README.md](../README.md#đa-ngôn-ngữ-vi--en).
 >
 > **Tóm tắt**: nền tảng đã đúng chuẩn ở phần khó nhất (hreflang, route registry, type-safe dictionary).
 > Nợ kỹ thuật tập trung ở 3 chỗ: cây route bị nhân bản, chưa có Intl theo locale, và toàn site đang render dynamic.
@@ -48,7 +49,10 @@ không đổi một ký tự nào.
 - [ ] **A10b** — `news` chưa gộp. Hai bản **không phải bản dịch của nhau**: bài viết từ Sanity chỉ
       có tiếng Việt, trang tiếng Anh chỉ dịch phần khung. Gộp trước khi làm F4–F6 (thêm trường
       `language` vào Sanity) là gộp nhầm thứ. Để sau F4–F6.
-- [ ] **A10c** — Gộp `car-rental.en.ts` + `car-rental.ts` thành một nguồn keyed theo locale
+- [x] **A10c** — Dữ liệu xe giờ key theo id trung lập (`"4-seat"`…) trong `carRentalSlugs`
+      (`src/lib/i18n/routes.ts`). Nội dung vi/en vẫn ở 2 file (văn xuôi, cùng lý do như A10) nhưng
+      cả hai là `Record<VehicleId, CarRentalCopy>`; slug, ảnh và giá theo ngày chỉ khai một lần.
+      `getCarRentalData(locale)` ghép lại. Đã thử bỏ 1 xe ở bản en → lỗi compile
 
 **Đã xác minh sau refactor** (`next build` + `next start`, 2026-09-25):
 - 21 page route → 13; toàn bộ 29 URL công khai trả 200
@@ -70,13 +74,22 @@ Refactor làm root layout chuyển vào `app/[locale]/`, nên trang 404 mất ch
 - [x] `dynamicParams = false` cho `car-rental/[slug]`: 6 slug là dữ liệu tĩnh, slug lạ không nên khớp route
 - [x] `next.config.ts` redirects cũ vẫn chạy đúng 1 hop qua middleware, kết thúc ở 200 (7/7 URL)
 
-- [ ] **A-404a** — 404 loại "route đã khớp rồi mới gọi `notFound()`" (`/car-rental`, `/thue-xe/<slug-lạ>`,
+- [~] **A-404a** — 404 loại "route đã khớp rồi mới gọi `notFound()`" (`/car-rental`, `/thue-xe/<slug-lạ>`,
       `/en/news/<slug-lạ>`) render nội dung ở phía client: HTML khởi tạo là `<html id="__next_error__">`
       không có `lang`, header/footer chỉ có trong RSC payload. Người dùng có JS thấy đúng trang.
       Đây là hành vi của Next App Router với `notFound()` trong route đã khớp, không phải do refactor —
       nhưng chưa đo được baseline HEAD để khẳng định chắc chắn (build worktree fail vì symlink
       `node_modules` không hợp với Turbopack). Nếu muốn 404 server-rendered hoàn toàn, cách là chặn ở
       middleware trước khi route khớp.
+
+      **Đã làm (2026-10-04)**: `src/proxy.ts` gọi `isPublishedPath()`; URL không phải trang nào
+      được rewrite sang `/vi/_not-found` (thư mục `_` là private, không bao giờ khớp route) →
+      `app/not-found.tsx` render đầy đủ phía server, status 404. Đã đo: `/car-rental`,
+      `/thue-xe/<lạ>`, `/en/car-rental/<lạ>`, `/xx/...`, `/vi/<lạ>` giờ có `<h1>`, header, footer
+      và `lang` ngay trong HTML.
+      **Còn lại**: slug bài viết lạ (`/tin-tuc/<lạ>`, `/en/news/<lạ>`) vẫn ra error shell, vì kiểm
+      tra slug cần gọi Sanity trên mỗi request. Nhỏ: `app/not-found.tsx` sinh ra `<html>` lồng
+      (Next tự bọc thêm một lớp); trình duyệt gộp thuộc tính nên `lang` vẫn đúng.
 
 ### Hai thay đổi hiển thị (A7)
 
@@ -142,8 +155,12 @@ thay đổi thật (file có đổi), nhưng cần biết trước khi nhìn Sea
 - [x] **C10** — Root layout giờ set `alternates("home", locale)` (đủ hreflang) thay vì chỉ `canonical`.
       Thêm nữa, `buildMetadata()` trong `src/app/[locale]/page-seo.ts` luôn dựng `alternates` +
       `alternateLocale` từ route registry, nên trang mới không thể ship canonical mà thiếu hreflang
-- [ ] **C11** — Thêm test/script CI: duyệt mọi key trong `routePaths`, assert mỗi URL emit đủ hreflang đối xứng
-- [ ] **C12** — `/tin-tuc` đang tự viết `alternates` inline (phân trang) thay vì dùng `alternates()` — rà lại cho nhất quán
+- [x] **C11** — `npm run check:hreflang [url]` (`scripts/check-hreflang.mjs`): duyệt mọi URL trong sitemap
+      (sinh từ `routePaths` + registry xe), kiểm tra status 200, canonical tự trỏ, `<html lang>` khớp hreflang,
+      có self + x-default, đối xứng hai chiều, và khớp `xhtml:link` trong sitemap. Fetch bằng UA Googlebot
+      (Next chỉ đặt metadata trong `<head>` cho bot). Đã thử làm hỏng 2 trang qua proxy giả → bắt đủ 3 lỗi.
+      Chưa gắn vào CI: repo chưa có CI; cần `build` + `start` rồi chạy script
+- [x] **C12** — `/tin-tuc` dùng `alternates("news", "vi")` + `routePaths` như bản en; bỏ mọi `/tin-tuc` viết cứng. Output không đổi
 - [ ] **C13** — Sau deploy: submit sitemap, kiểm tra Search Console → International Targeting không báo lỗi hreflang
 
 ---
@@ -152,9 +169,12 @@ thay đổi thật (file có đổi), nhưng cần biết trước khi nhìn Sea
 
 - [x] **D1** — `Dictionary` type ép `en.ts satisfies Dictionary` → thiếu key là lỗi compile, không phải chuỗi tiếng Việt lọt ra production (`src/lib/i18n/types.ts`)
 - [x] **D2** — `alternates()` throw khi route không có path cho locale, thay vì trả URL sai
-- [ ] **D3** — Áp cùng ràng buộc cho `src/lib/data/*.en.ts`: hiện là 2 file rời, thiếu 1 mục không ai biết
-- [ ] **D4** — Lint rule chặn chuỗi tiếng Việt hardcode trong `src/features/` (hiện còn ở `pricing-card.tsx:97`)
-- [ ] **D5** — Kiểm tra `carRentalSlugPairs` phủ đủ mọi slug trong `car-rental.ts` — thiếu cặp là mất hreflang im lặng
+- [x] **D3** — `car-rental*.ts` là `Record<VehicleId, …>` (xem A10c); testimonials là `Record<Locale, …>`
+- [x] **D4** — `no-restricted-syntax` trong `eslint.config.mjs` cho `src/features/**`: chặn ký tự có dấu
+      trong JSX text, string và template literal. 3 ngoại lệ có chủ đích đã gắn `eslint-disable` kèm lý do
+      (tên thương hiệu, nội dung email gửi nhân viên). Tiện thể sửa `npm run lint`: `next lint` đã bị bỏ
+      ở Next 16, giờ là `eslint .`
+- [x] **D5** — Không còn lệch được: `carRentalSlugPairs` sinh từ `carRentalSlugs`, và slug của xe cũng lấy từ đó
 
 ---
 
@@ -163,10 +183,13 @@ thay đổi thật (file có đổi), nhưng cần biết trước khi nhìn Sea
 Hiện `intlLocale` đã khai báo trong `config.ts` nhưng **chỉ dùng đúng 1 chỗ** (`news-section.tsx:82`).
 
 - [x] **E1** — Khai báo `intlLocale` + `ogLocale` per locale
-- [x] **E2/E3** — các chỗ hardcode `toLocaleDateString("vi-VN")` giờ nằm trong `content.vi.tsx`,
-      là file chỉ render tiếng Việt nên đúng theo cấu trúc. Khi gộp theo A10 thì phải đổi sang
+- [x] **E2/E3** — `toLocaleDateString("vi-VN")` chỉ còn trong `news/content.vi.tsx` và
+      `news/[slug]/content.vi.tsx` (file chỉ render tiếng Việt). Khi gộp `news` (A10b) phải đổi sang
       `intlLocale[locale]`, nếu không sẽ thành bug thật
-- [ ] **E4** — Format giá VND bằng `Intl.NumberFormat`, không nối chuỗi thủ công
+- [x] **E4** — Giá 4 bảng `/bang-gia` chuyển thành số trong `src/features/bang-gia/price-tables.ts`, dùng
+      chung cho mọi ngôn ngữ (trước đây chép tay 2 lần; đã đối chiếu: 0 lệch). Format bằng `formatNumber()`
+      (`Intl.NumberFormat`); ký hiệu tiền nằm trong `pricing.priceFormat`. HTML `/bang-gia` và `/en/pricing`
+      giống hệt trước. Bảng giá theo ngày trong `/llms-full.txt` giờ cũng lấy từ `dailyPriceVND`
 - [ ] **E5** — Quyết định: giữ giá bằng VND cho cả 2 locale (hiện đang vậy, có comment giải thích) — xác nhận rồi ghi vào doc
 - [ ] **E6** — Nếu thêm ngôn ngữ có số nhiều phức tạp: chuyển sang ICU MessageFormat thay `interpolate()`
 
@@ -200,9 +223,9 @@ khi làm i18n (xác nhận ở `git show HEAD:src/app/layout.tsx`). Refactor `[l
 
 ## H. Ops
 
-- [ ] **H1** — Viết quy ước đặt key dictionary vào README (hiện là nested theo trang — ghi lại cho người sau)
-- [ ] **H2** — Checklist "thêm 1 ngôn ngữ mới": thêm code vào `locales`, thêm cột vào `routePaths`,
+- [x] **H1** — Viết quy ước đặt key dictionary vào README (hiện là nested theo trang — ghi lại cho người sau)
+- [x] **H2** — Checklist "thêm 1 ngôn ngữ mới": thêm code vào `locales`, thêm cột vào `routePaths`,
       thêm dictionary, thêm `ogLocale`/`intlLocale`. Đã có comment ở `config.ts:3` — nâng thành doc đầy đủ
-- [ ] **H3** — Checklist "thêm 1 trang mới": thêm key vào `routePaths`, gọi `alternates()`, thêm vào `STATIC_ROUTES` của sitemap
-- [ ] **H4** — Quy trình review bản dịch trước khi deploy (hiện dịch thẳng trong code, không ai đối chiếu)
-- [ ] **H5** — Cập nhật `llms.txt` / `llms-full.txt` cho bản tiếng Anh khi nội dung đổi
+- [x] **H3** — Checklist "thêm 1 trang mới": thêm key vào `routePaths`, gọi `alternates()`, thêm vào `STATIC_ROUTES` của sitemap
+- [~] **H4** — Quy trình review bản dịch trước khi deploy — đã có bản đề xuất trong README, cần chủ dự án duyệt và người song ngữ thực hiện
+- [x] **H5** — Quy trình ghi trong README. Bản en đã đủ; bản **vi** thiếu trang doanh nghiệp + 2 chính sách → đã thêm, và dùng `url()` thay URL viết cứng
