@@ -6,7 +6,9 @@
 > Quy ước và checklist vận hành giờ nằm ở [README.md](../README.md#đa-ngôn-ngữ-vi--en).
 >
 > **Tóm tắt**: nền tảng đã đúng chuẩn ở phần khó nhất (hreflang, route registry, type-safe dictionary).
-> Nợ kỹ thuật tập trung ở 3 chỗ: cây route bị nhân bản, chưa có Intl theo locale, và toàn site đang render dynamic.
+> Cây route đã gộp, dữ liệu xe và giá đã về một nguồn, hreflang có script kiểm tra.
+> Phần còn mở chủ yếu là **quyết định của chủ dự án**: CSP nonce vs static (G1), `/en/news` dịch hay
+> `noindex` (F6), schema Sanity cho bài đa ngôn ngữ (F4–F5), giữ VND (E5) — cùng các bước sau deploy (C13).
 
 ---
 
