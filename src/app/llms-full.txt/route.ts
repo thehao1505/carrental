@@ -1,5 +1,19 @@
 import { client } from "@/sanity/client";
-import { carRentalData } from "@/lib/data";
+import { dailyPriceVND, getCarRentalData } from "@/lib/data";
+import { formatNumber } from "@/lib/i18n/format";
+import { vehicleIds, type VehicleId } from "@/lib/i18n/routes";
+
+const LOCALE = "vi" as const;
+
+/** Row labels for the daily price table; the prices come from dailyPriceVND. */
+const dailyPriceRows: Record<VehicleId, { label: string; suits: string }> = {
+  "4-seat": { label: "Xe 4 chỗ", suits: "Cá nhân, gia đình 1–3 người" },
+  "7-seat": { label: "Xe 7 chỗ", suits: "Nhóm 4–7 người" },
+  "16-seat": { label: "Xe 16 chỗ", suits: "Đoàn 10–16 người" },
+  "29-seat": { label: "Xe 29 chỗ", suits: "Đoàn 20–29 người" },
+  "45-seat": { label: "Xe 45 chỗ", suits: "Đoàn 30–45 người" },
+  limousine: { label: "Limousine", suits: "VIP 9–11 khách" },
+};
 
 const siteUrl = "https://www.dvdldaiduong.com";
 
@@ -25,9 +39,7 @@ export async function GET() {
     // Sanity unavailable – ship without blog section
   }
 
-  const vehicles = [
-    ...new Map(carRentalData.map((item) => [item.slug, item])).values(),
-  ];
+  const vehicles = getCarRentalData(LOCALE);
 
   const sections: string[] = [];
 
@@ -55,12 +67,11 @@ export async function GET() {
     ``,
     `| Loại xe | Giá từ | Giá đến | Phù hợp |`,
     `| --- | --- | --- | --- |`,
-    `| Xe 4 chỗ | 800.000 | 1.500.000 | Cá nhân, gia đình 1–3 người |`,
-    `| Xe 7 chỗ | 1.100.000 | 2.200.000 | Nhóm 4–7 người |`,
-    `| Xe 16 chỗ | 1.800.000 | 3.500.000 | Đoàn 10–16 người |`,
-    `| Xe 29 chỗ | 3.000.000 | 5.500.000 | Đoàn 20–29 người |`,
-    `| Xe 45 chỗ | 4.500.000 | 8.000.000 | Đoàn 30–45 người |`,
-    `| Limousine | 1.800.000 | 3.500.000 | VIP 9–11 khách |`,
+    ...vehicleIds.map((id) => {
+      const { low, high } = dailyPriceVND[id];
+      const { label, suits } = dailyPriceRows[id];
+      return `| ${label} | ${formatNumber(low, LOCALE)} | ${formatNumber(high, LOCALE)} | ${suits} |`;
+    }),
     ``,
     `Giá dao động theo lộ trình (nội thành / đi tỉnh / đường dài). Đã bao gồm tài xế và nhiên liệu. Đặt cọc 20–30% với hành trình dài ngày hoặc cao điểm.`,
     ``,

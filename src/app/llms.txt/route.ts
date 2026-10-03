@@ -1,7 +1,8 @@
 import { client } from "@/sanity/client";
-import { carRentalData } from "@/lib/data";
+import { getCarRentalData } from "@/lib/data";
+import { carRentalUrl, siteUrl, url } from "@/lib/i18n/routes";
 
-const siteUrl = "https://www.dvdldaiduong.com";
+const LOCALE = "vi" as const;
 
 const POSTS_QUERY = `*[_type == "post" && defined(slug.current)] | order(publishedAt desc) {
   "slug": slug.current,
@@ -18,9 +19,7 @@ export async function GET() {
     // fallback to empty if Sanity unavailable
   }
 
-  const unique = [
-    ...new Map(carRentalData.map((item) => [item.slug, item])).values(),
-  ];
+  const vehicles = getCarRentalData(LOCALE);
 
   const lines: string[] = [
     `# DVDL Đại Dương Ban Mê`,
@@ -32,22 +31,28 @@ export async function GET() {
     `## Trang chính`,
     ``,
     `- [Trang chủ](${siteUrl}/): Giới thiệu dịch vụ thuê xe du lịch tại Đắk Lắk`,
-    `- [Bảng giá](${siteUrl}/bang-gia): Bảng giá thuê xe 2026 – sân bay, tour nội tỉnh và liên tỉnh`,
-    `- [Dịch vụ thuê xe](${siteUrl}/thue-xe): Danh sách các dòng xe cho thuê`,
-    `- [Thuê xe du lịch Đắk Lắk](${siteUrl}/thue-xe/du-lich-dak-lak): Landing page dịch vụ thuê xe du lịch Đắk Lắk`,
-    `- [Tour Đắk Lắk](${siteUrl}/tour-dak-lak): Tour du lịch Đắk Lắk xe riêng có tài xế – 3 gói lịch trình từ 1.200.000đ/xe`,
-    `- [Giới thiệu](${siteUrl}/gioi-thieu): Thông tin về công ty DVDL Đại Dương Ban Mê`,
-    `- [Liên hệ](${siteUrl}/lien-he): Thông tin liên hệ và đặt xe`,
+    `- [Bảng giá](${url("pricing", LOCALE)}): Bảng giá thuê xe 2026 – sân bay, tour nội tỉnh và liên tỉnh`,
+    `- [Dịch vụ thuê xe](${url("carRental", LOCALE)}): Danh sách các dòng xe cho thuê`,
+    `- [Thuê xe du lịch Đắk Lắk](${url("carRentalTravel", LOCALE)}): Landing page dịch vụ thuê xe du lịch Đắk Lắk`,
+    `- [Thuê xe doanh nghiệp](${url("carRentalCorporate", LOCALE)}): Hợp đồng theo tháng/quý/năm, xuất hóa đơn VAT 10%, đưa đón nhân viên, hội nghị`,
+    `- [Tour Đắk Lắk](${url("tours", LOCALE)}): Tour du lịch Đắk Lắk xe riêng có tài xế – 3 gói lịch trình từ 1.200.000đ/xe`,
+    `- [Giới thiệu](${url("about", LOCALE)}): Thông tin về công ty DVDL Đại Dương Ban Mê`,
+    `- [Liên hệ](${url("contact", LOCALE)}): Thông tin liên hệ và đặt xe`,
     ``,
     `## Dịch vụ thuê xe`,
     ``,
-    ...unique.map(
-      (item) => `- [${item.title}](${siteUrl}/thue-xe/${item.slug})`,
+    ...vehicles.map(
+      (item) => `- [${item.title}](${carRentalUrl(item.slug, LOCALE)})`,
     ),
+    ``,
+    `## Chính sách`,
+    ``,
+    `- [Chính sách bảo mật](${url("privacyPolicy", LOCALE)}): Bảo vệ thông tin cá nhân của khách hàng theo Nghị định 13/2023/NĐ-CP`,
+    `- [Chính sách vận chuyển](${url("shippingPolicy", LOCALE)}): Quy định đặt xe, hủy chuyến, bồi thường và trách nhiệm các bên`,
     ``,
     `## Tin tức & Hướng dẫn`,
     ``,
-    ...posts.map((p) => `- [${p.title}](${siteUrl}/tin-tuc/${p.slug})`),
+    ...posts.map((p) => `- [${p.title}](${url("news", LOCALE)}/${p.slug})`),
   ];
 
   return new Response(lines.join("\n"), {

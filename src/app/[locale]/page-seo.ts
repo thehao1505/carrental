@@ -20,9 +20,9 @@ type OgImage = {
  * Per-locale SEO copy for one page.
  *
  * Every field is authored per language rather than templated, because these are
- * translations, not formatting. Pages keep their table in a colocated `seo.ts`;
- * folding it into the shared dictionary is tracked as A10 in
- * output/I18N-TODO.md.
+ * translations, not formatting. Pages keep their table in a colocated `seo.ts`
+ * on purpose: it is page copy, not a UI string reused across components, so it
+ * stays out of the shared dictionary (see A10 in output/I18N-TODO.md).
  */
 export type PageSeo = {
   title: string;

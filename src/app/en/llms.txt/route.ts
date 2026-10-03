@@ -1,4 +1,4 @@
-import { getUniqueCarRentalData } from "@/lib/data";
+import { getCarRentalData } from "@/lib/data";
 import { carRentalUrl, routePaths, siteUrl, url } from "@/lib/i18n/routes";
 
 const LOCALE = "en" as const;
@@ -9,7 +9,7 @@ export const revalidate = 3600;
 // Vietnamese-only content left is the blog article bodies, which is stated
 // explicitly rather than quietly linked to.
 export async function GET() {
-  const vehicles = getUniqueCarRentalData(LOCALE);
+  const vehicles = getCarRentalData(LOCALE);
 
   const lines: string[] = [
     `# DVDL Dai Duong Ban Me`,

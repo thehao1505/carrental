@@ -29,6 +29,7 @@ export default async function PricingPage({ params }: LocaleParams) {
       <BangGiaCard
         dict={dict.pricing}
         contactHref={path("contact", locale) ?? "/"}
+        locale={locale}
       />
     </>
   );

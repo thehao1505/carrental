@@ -119,11 +119,10 @@ export type Dictionary = {
   /**
    * The /bang-gia price tables.
    *
-   * Rows are per-locale strings, not numbers formatted at render time: the
-   * Vietnamese page writes prices as `200.000đ` and the English one as
-   * `200,000₫`, and the Vietnamese spelling is what is already indexed. Moving
-   * to `Intl.NumberFormat` would change it, so that is tracked separately as E4
-   * in output/I18N-TODO.md.
+   * The prices themselves are numbers shared by every locale, in
+   * src/features/bang-gia/price-tables.ts. `rows` here holds only the leading
+   * label cells of each row (route, duration, distance); the price cells are
+   * appended at render time.
    */
   pricing: {
     hero: { imageAlt: string; h1: string };
@@ -137,9 +136,16 @@ export type Dictionary = {
     tables: {
       h2: string;
       headers: string[];
+      /** Label cells only; prices come from price-tables.ts. */
       rows: string[][];
       note: string;
     }[];
+    /**
+     * How a VND amount is written. `{amount}` is the number with digit grouping
+     * from `Intl.NumberFormat` (1.400.000 / 1,400,000); the symbol and its
+     * placement are per-locale copy.
+     */
+    priceFormat: { amount: string; perKm: string; from: string };
     /** Button under the 29/45-seat table. */
     quoteCta: string;
     drivers: { h2: string; paragraphs: string[] };

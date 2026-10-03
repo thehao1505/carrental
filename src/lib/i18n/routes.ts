@@ -50,22 +50,45 @@ export type RouteKey = keyof typeof routePaths;
  */
 export const hreflangExcluded: ReadonlySet<RouteKey> = new Set(["news"]);
 
+/**
+ * Vehicle detail slugs per locale, keyed by a locale-neutral vehicle id.
+ *
+ * This is the registry every per-vehicle table is keyed by (copy in
+ * src/lib/data/car-rental*.ts, prices, images). Those tables are typed
+ * `Record<VehicleId, …>`, so adding a vehicle here without adding it everywhere
+ * else is a compile error — and a vehicle can never exist in one locale but lack
+ * the slug that pairs it for hreflang.
+ */
+export const carRentalSlugs = {
+  "4-seat": { vi: "thue-xe-4-cho", en: "car-rental-4-seat" },
+  "7-seat": { vi: "thue-xe-7-cho", en: "car-rental-7-seat" },
+  "16-seat": { vi: "thue-xe-16-cho", en: "car-rental-16-seat" },
+  "29-seat": { vi: "thue-xe-29-cho", en: "car-rental-29-seat" },
+  "45-seat": { vi: "thue-xe-45-cho", en: "car-rental-45-seat" },
+  limousine: { vi: "thue-xe-limousine", en: "car-rental-limousine" },
+} as const satisfies Record<string, Record<Locale, string>>;
+
+export type VehicleId = keyof typeof carRentalSlugs;
+
+/** Vehicle ids in display order. */
+export const vehicleIds = Object.keys(carRentalSlugs) as VehicleId[];
+
 /** Vehicle detail slugs, paired across locales so hreflang can cross-reference. */
-export const carRentalSlugPairs: ReadonlyArray<Record<Locale, string>> = [
-  { vi: "thue-xe-4-cho", en: "car-rental-4-seat" },
-  { vi: "thue-xe-7-cho", en: "car-rental-7-seat" },
-  { vi: "thue-xe-16-cho", en: "car-rental-16-seat" },
-  { vi: "thue-xe-29-cho", en: "car-rental-29-seat" },
-  { vi: "thue-xe-45-cho", en: "car-rental-45-seat" },
-  { vi: "thue-xe-limousine", en: "car-rental-limousine" },
-];
+export const carRentalSlugPairs: ReadonlyArray<Record<Locale, string>> =
+  Object.values(carRentalSlugs);
+
+/** The vehicle a slug in `locale` addresses, or `null` for an unknown slug. */
+export function vehicleIdFromSlug(slug: string, locale: Locale): VehicleId | null {
+  return vehicleIds.find((id) => carRentalSlugs[id][locale] === slug) ?? null;
+}
 
 /** Finds the cross-locale slug pair for a vehicle, given its slug in `locale`. */
 export function carRentalSlugPair(
   slug: string,
   locale: Locale,
 ): Record<Locale, string> | null {
-  return carRentalSlugPairs.find((pair) => pair[locale] === slug) ?? null;
+  const id = vehicleIdFromSlug(slug, locale);
+  return id ? carRentalSlugs[id] : null;
 }
 
 /** Path for a route in a locale, or `null` when untranslated. */
@@ -223,6 +246,43 @@ export function toInternalPath(pathname: string): string | null {
   }
 
   return null;
+}
+
+/**
+ * Whether `pathname` is a public page URL this site serves, in any locale.
+ *
+ * src/proxy.ts uses this to 404 everything else before it reaches the router.
+ * Without it, any one-segment path (/car-rental, /abc) matches app/[locale] as
+ * a locale and only 404s from inside the page via notFound(), which Next
+ * renders as a client-side error shell with no server-rendered content.
+ *
+ * News article slugs live in Sanity and can't be checked here without a fetch
+ * per request, so any single segment under a news base counts as published; the
+ * article page itself 404s when the slug doesn't exist.
+ */
+export function isPublishedPath(pathname: string): boolean {
+  const clean = pathname.replace(/\/+$/, "") || "/";
+
+  for (const key of Object.keys(routePaths) as RouteKey[]) {
+    for (const l of locales) {
+      if (routePaths[key][l] === clean) return true;
+    }
+  }
+
+  for (const l of locales) {
+    const carBase = `${routePaths.carRental[l]}/`;
+    if (clean.startsWith(carBase)) {
+      return vehicleIdFromSlug(clean.slice(carBase.length), l) !== null;
+    }
+
+    const newsBase = routePaths.news[l];
+    if (newsBase !== null && clean.startsWith(`${newsBase}/`)) {
+      const slug = clean.slice(newsBase.length + 1);
+      return slug.length > 0 && !slug.includes("/");
+    }
+  }
+
+  return false;
 }
 
 /**

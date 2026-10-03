@@ -8,6 +8,8 @@ import {
   locales,
   ogLocale,
   path,
+  siteUrl,
+  url,
 } from "@/lib/i18n";
 import { resolveLocale, type LocaleParams } from "./locale-params";
 import Header from "@/features/header";
@@ -27,8 +29,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://www.dvdldaiduong.com";
-
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
@@ -39,7 +39,7 @@ export async function generateMetadata({
   const locale = resolveLocale((await params).locale);
   const dict = await getDictionary(locale);
   const { site } = dict;
-  const homeUrl = locale === "vi" ? siteUrl : `${siteUrl}/${locale}`;
+  const homeUrl = url("home", locale) ?? siteUrl;
 
   return {
     metadataBase: new URL(siteUrl),

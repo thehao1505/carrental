@@ -1,10 +1,32 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/i18n/types";
+import { formatPriceCell, type PriceCell } from "./price-format";
+import { priceTables } from "./price-tables";
 
-type PriceTable = Dictionary["pricing"]["tables"][number];
+type PriceTableCopy = Dictionary["pricing"]["tables"][number];
 
-function PriceTable({ table }: { table: PriceTable }) {
+type PriceTableProps = {
+  table: PriceTableCopy;
+  prices: PriceCell[][];
+  format: Dictionary["pricing"]["priceFormat"];
+  locale: Locale;
+};
+
+function PriceTable({ table, prices, format, locale }: PriceTableProps) {
+  // Labels and prices are kept in separate files; a row added to one and not
+  // the other would shift every price below it onto the wrong route.
+  if (prices.length !== table.rows.length) {
+    throw new Error(
+      `Price table "${table.h2}" has ${table.rows.length} label rows but ${prices.length} price rows`,
+    );
+  }
+  const rows = table.rows.map((labels, i) => [
+    ...labels,
+    ...prices[i].map((cell) => formatPriceCell(cell, format, locale)),
+  ]);
+
   return (
     <div>
       <h2 className="text-2xl font-bold text-forest-600 mb-4">{table.h2}</h2>
@@ -20,7 +42,7 @@ function PriceTable({ table }: { table: PriceTable }) {
             </tr>
           </thead>
           <tbody className="text-gray-700">
-            {table.rows.map((row, i) => (
+            {rows.map((row, i) => (
               <tr key={i} className="border-t">
                 {row.map((cell, j) => (
                   <td
@@ -43,10 +65,24 @@ function PriceTable({ table }: { table: PriceTable }) {
 type BangGiaCardProps = {
   dict: Dictionary["pricing"];
   contactHref: string;
+  locale: Locale;
 };
 
-export function BangGiaCard({ dict, contactHref }: BangGiaCardProps) {
-  const lastTable = dict.tables[dict.tables.length - 1];
+export function BangGiaCard({ dict, contactHref, locale }: BangGiaCardProps) {
+  if (dict.tables.length !== priceTables.length) {
+    throw new Error(
+      `Pricing has ${dict.tables.length} tables of copy but ${priceTables.length} of prices`,
+    );
+  }
+  const tables = dict.tables.map((table, i) => (
+    <PriceTable
+      key={table.h2}
+      table={table}
+      prices={priceTables[i]}
+      format={dict.priceFormat}
+      locale={locale}
+    />
+  ));
 
   return (
     <main className="text-gray-800">
@@ -82,13 +118,11 @@ export function BangGiaCard({ dict, contactHref }: BangGiaCardProps) {
       </section>
 
       <section className="max-w-6xl mx-auto px-6 pb-16 space-y-16">
-        {dict.tables.slice(0, -1).map((table) => (
-          <PriceTable key={table.h2} table={table} />
-        ))}
+        {tables.slice(0, -1)}
 
         {/* The last table carries the quote CTA underneath it. */}
         <div>
-          <PriceTable table={lastTable} />
+          {tables[tables.length - 1]}
           <div className="mt-4">
             <Link
               href={contactHref}

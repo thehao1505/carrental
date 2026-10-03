@@ -22,6 +22,7 @@ export interface ApiResponse {
 // as fixed markers the inbox owner recognises. Kept in Vietnamese in every
 // locale so the received emails stay uniform.
 const ANONYMOUS_NAME = "SOMEONE";
+// eslint-disable-next-line no-restricted-syntax -- inbox marker, see above
 const ANONYMOUS_PHONE = "KHÔNG CÓ";
 
 type FooterProps = {
@@ -208,6 +209,7 @@ export default function Footer({ dict, locale }: FooterProps) {
         <LazyMapEmbed dict={dict.map} />
       </div>
 
+      {/* eslint-disable-next-line no-restricted-syntax -- brand name, not translated */}
       <div className="py-3 text-center text-sm text-moss-100 border-t border-moss-100/20">
         Copyright © DVDL Đại Dương Ban Mê | Powered by{" "}
         <span className="text-lemon-400">The Hao</span> | Designed by The Hao

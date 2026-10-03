@@ -13,8 +13,15 @@ import { client } from "@/sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
 import Pagination from "@/components/Pagination";
-import { getDictionary } from "@/lib/i18n";
+import {
+  alternates,
+  getDictionary,
+  ogLocale,
+  routePaths,
+  siteUrl,
+} from "@/lib/i18n";
 
+const LOCALE = "vi" as const;
 const POSTS_PER_PAGE = 9;
 
 const POSTS_QUERY = `*[
@@ -29,8 +36,6 @@ const ALL_POSTS_FOR_SCHEMA_QUERY = `*[
   && defined(slug.current)
 ]|order(publishedAt desc){title, slug, publishedAt, excerpt}`;
 
-const siteUrl = "https://www.dvdldaiduong.com";
-
 const options = { next: { revalidate: 30 } };
 
 const { projectId, dataset } = client.config();
@@ -39,10 +44,14 @@ const urlFor = (source: SanityImageSource) =>
     ? imageUrlBuilder({ projectId, dataset }).image(source)
     : null;
 
+const BASE_PATH = routePaths.news.vi;
+
 // Build the canonical URL for a given page. Page 1 has no query param so it
 // resolves to the clean /tin-tuc URL; paginated pages self-reference.
 const canonicalForPage = (page: number) =>
-  page > 1 ? `${siteUrl}/tin-tuc?page=${page}` : `${siteUrl}/tin-tuc`;
+  page > 1
+    ? `${siteUrl}${BASE_PATH}?page=${page}`
+    : `${siteUrl}${BASE_PATH}`;
 
 export async function buildMetadata({
   searchParams,
@@ -52,6 +61,11 @@ export async function buildMetadata({
   const { page } = await searchParams;
   const currentPage = Math.max(1, parseInt(page || "1", 10) || 1);
   const canonical = canonicalForPage(currentPage);
+
+  // alternates() deliberately returns no hreflang for `news` — the English page
+  // shares this article list rather than translating it. See `hreflangExcluded`
+  // in src/lib/i18n/routes.ts.
+  const base = alternates("news", LOCALE);
 
   return {
     title: "Tin Tức & Cẩm Nang Du Lịch",
@@ -65,15 +79,13 @@ export async function buildMetadata({
       "tour Daklak",
       "DVDL Đại Dương Ban Mê",
     ],
-    alternates: {
-      canonical,
-    },
+    alternates: { ...base, canonical },
     openGraph: {
       title: "Tin Tức & Cẩm Nang Du Lịch | DVDL Đại Dương Ban Mê",
       description:
         "Khám phá cẩm nang du lịch Buôn Ma Thuột - Đắk Lắk, mẹo thuê xe, kinh nghiệm tour từ DVDL Đại Dương Ban Mê.",
       url: canonical,
-      locale: "vi_VN",
+      locale: ogLocale[LOCALE],
       type: "website",
       images: [
         {
@@ -93,7 +105,6 @@ export async function buildMetadata({
   };
 }
 
-const LOCALE = "vi" as const;
 
 export default async function Content({
   searchParams,
@@ -117,8 +128,8 @@ export default async function Content({
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "@id": `${siteUrl}/tin-tuc#blog`,
-    url: `${siteUrl}/tin-tuc`,
+    "@id": `${siteUrl}${BASE_PATH}#blog`,
+    url: `${siteUrl}${BASE_PATH}`,
     name: "Tin Tức & Cẩm Nang Du Lịch DVDL Đại Dương Ban Mê",
     description:
       "Cẩm nang du lịch Buôn Ma Thuột - Đắk Lắk, mẹo thuê xe và kinh nghiệm tour.",
@@ -127,7 +138,7 @@ export default async function Content({
     blogPost: allPostsForSchema.map((p) => ({
       "@type": "BlogPosting",
       headline: p.title,
-      url: `${siteUrl}/tin-tuc/${p.slug?.current}`,
+      url: `${siteUrl}${BASE_PATH}/${p.slug?.current}`,
       datePublished: p.publishedAt,
       ...(p.excerpt ? { description: p.excerpt } : {}),
     })),
@@ -136,14 +147,14 @@ export default async function Content({
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "@id": `${siteUrl}/tin-tuc#itemlist`,
+    "@id": `${siteUrl}${BASE_PATH}#itemlist`,
     name: "Tin Tức & Cẩm Nang Du Lịch",
     numberOfItems: allPostsForSchema.length,
     itemListOrder: "https://schema.org/ItemListOrderDescending",
     itemListElement: allPostsForSchema.map((p, idx) => ({
       "@type": "ListItem",
       position: idx + 1,
-      url: `${siteUrl}/tin-tuc/${p.slug?.current}`,
+      url: `${siteUrl}${BASE_PATH}/${p.slug?.current}`,
       name: p.title,
     })),
   };
@@ -191,7 +202,7 @@ export default async function Content({
             return (
               <Link
                 key={post._id}
-                href={`/tin-tuc/${post.slug.current}`}
+                href={`${BASE_PATH}/${post.slug.current}`}
                 className="border rounded-xl shadow-sm overflow-hidden bg-white hover:shadow-md hover:scale-105 transition-all duration-300"
               >
                 {imageUrl ? (
@@ -240,7 +251,7 @@ export default async function Content({
           dict={dict.pagination}
           currentPage={currentPage}
           totalPages={totalPages}
-          basePath="/tin-tuc"
+          basePath={BASE_PATH}
         />
       </section>
     </main>

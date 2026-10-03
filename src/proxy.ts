@@ -1,7 +1,29 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { toInternalPath, toPublicPath } from "@/lib/i18n/routes";
+import {
+  isPublishedPath,
+  toInternalPath,
+  toPublicPath,
+} from "@/lib/i18n/routes";
 import { defaultLocale, prefixedLocales } from "@/lib/i18n/config";
+
+/**
+ * Rewrite target for URLs that aren't pages. Folders prefixed with `_` are
+ * private in the App Router and can never become a route, so this path is
+ * guaranteed to match nothing — which sends Next to app/not-found.tsx and its
+ * fully server-rendered 404 with the right status.
+ */
+const NOT_FOUND_PATH = `/${defaultLocale}/_not-found`;
+
+/** Requests the page router doesn't own: API routes, Next internals, files. */
+function isNonPageRequest(pathname: string): boolean {
+  return (
+    pathname.startsWith("/api/") ||
+    pathname.startsWith("/_next/") ||
+    // sitemap.xml, robots.txt, llms.txt, /en/llms.txt, files in public/
+    /\.[a-z0-9]+$/i.test(pathname)
+  );
+}
 
 export function proxy(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
@@ -38,7 +60,9 @@ export function proxy(request: NextRequest) {
     prefixedLocales.find((l) => l === prefix) ?? defaultLocale,
   );
 
-  const internal = toInternalPath(pathname);
+  const isPage = isNonPageRequest(pathname) || isPublishedPath(pathname);
+
+  const internal = isPage ? toInternalPath(pathname) : null;
   if (internal !== null) {
     const url = request.nextUrl.clone();
     url.pathname = internal;
@@ -62,6 +86,20 @@ export function proxy(request: NextRequest) {
       url.pathname = publicPath;
       return NextResponse.redirect(url, 308);
     }
+  }
+
+  // Not a page we publish. Answer with the 404 before the router sees it:
+  // otherwise /car-rental or /abc would match app/[locale] as a locale and 404
+  // from inside the page, which Next serves as an error shell rendered on the
+  // client instead of real HTML.
+  if (!isPage) {
+    const url = request.nextUrl.clone();
+    url.pathname = NOT_FOUND_PATH;
+    const notFound = NextResponse.rewrite(url, {
+      request: { headers: requestHeaders },
+    });
+    notFound.headers.set("Content-Security-Policy", cspHeader);
+    return notFound;
   }
 
   const response = NextResponse.next({

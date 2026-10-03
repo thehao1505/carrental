@@ -29,10 +29,12 @@ const EMPTY: FormData = {
  * out in the right one. (The API route also tags the subject; see
  * src/app/api/contact/route.ts.)
  */
+/* eslint-disable no-restricted-syntax -- staff-facing, see above */
 const enquiryHeading: Record<Locale, string> = {
   vi: "[YÊU CẦU ĐẶT TOUR ĐẮK LẮK]",
   en: "[YÊU CẦU ĐẶT TOUR ĐẮK LẮK — khách gửi từ trang tiếng Anh]",
 };
+/* eslint-enable no-restricted-syntax */
 
 type Props = {
   dict: Dictionary["tourBooking"];
@@ -60,11 +62,13 @@ export default function TourBookingForm({ dict, locale }: Props) {
     setStatus("idle");
     setMessage("");
 
+    /* eslint-disable no-restricted-syntax -- enquiry body is staff-facing, see enquiryHeading */
     const content = `${enquiryHeading[locale]}
 Tour: ${formData.tourType}
 Số người: ${formData.groupSize}
 Ngày dự kiến: ${formData.date || "Chưa xác định"}
 Ghi chú: ${formData.note || "Không có"}`;
+    /* eslint-enable no-restricted-syntax */
 
     try {
       const res = await fetch("/api/contact", {

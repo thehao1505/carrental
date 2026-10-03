@@ -3,14 +3,14 @@ import { client } from "@/sanity/client";
 import type { MetadataRoute } from "next";
 import { defaultLocale, locales, type Locale } from "@/lib/i18n/config";
 import {
-  carRentalSlugPairs,
+  carRentalSlugs,
   carRentalUrl,
   hreflangExcluded,
   routePaths,
   url as routeUrl,
+  vehicleIds,
   type RouteKey,
 } from "@/lib/i18n/routes";
-import { getUniqueCarRentalData } from "@/lib/data";
 
 const siteUrl = "https://www.dvdldaiduong.com";
 
@@ -115,7 +115,10 @@ function languagesFor(key: RouteKey): Record<string, string> | undefined {
   return languages;
 }
 
-const CAR_RENTAL_DATA_FILE = "src/lib/data/car-rental.ts";
+const CAR_RENTAL_DATA_FILES = [
+  "src/lib/data/car-rental.ts",
+  "src/lib/data/car-rental.en.ts",
+];
 const CAR_RENTAL_FALLBACK = "2026-06-09";
 
 function toYmd(value: string | undefined): string | null {
@@ -128,27 +131,23 @@ function toYmd(value: string | undefined): string | null {
 async function getCarRentalUrls(): Promise<MetadataRoute.Sitemap> {
   try {
     const lastModified =
-      gitLastModified([CAR_RENTAL_DATA_FILE]) ?? CAR_RENTAL_FALLBACK;
+      gitLastModified(CAR_RENTAL_DATA_FILES) ?? CAR_RENTAL_FALLBACK;
 
     const entries: MetadataRoute.Sitemap = [];
     for (const locale of locales) {
-      for (const item of getUniqueCarRentalData(locale)) {
-        const pair = carRentalSlugPairs.find((p) => p[locale] === item.slug);
+      for (const id of vehicleIds) {
+        const slugs = carRentalSlugs[id];
         entries.push({
-          url: carRentalUrl(item.slug, locale),
+          url: carRentalUrl(slugs[locale], locale),
           lastModified,
-          ...(pair
-            ? {
-                alternates: {
-                  languages: {
-                    ...Object.fromEntries(
-                      locales.map((l) => [l, carRentalUrl(pair[l], l)]),
-                    ),
-                    "x-default": carRentalUrl(pair[defaultLocale], defaultLocale),
-                  },
-                },
-              }
-            : {}),
+          alternates: {
+            languages: {
+              ...Object.fromEntries(
+                locales.map((l) => [l, carRentalUrl(slugs[l], l)]),
+              ),
+              "x-default": carRentalUrl(slugs[defaultLocale], defaultLocale),
+            },
+          },
         });
       }
     }
