@@ -90,6 +90,7 @@ export const en = {
     newsletterHeading:
       "Leave your email or phone number to receive our latest offers",
     inputPlaceholder: "example@gmail.com or +84 941 437 070",
+    invalidInput: "Please enter a valid email address or phone number.",
     submit: "Send request",
     submitting: "Sending...",
     success: "Request sent! We will get back to you shortly.",

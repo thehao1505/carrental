@@ -71,6 +71,8 @@ export type Dictionary = {
     tagline: string;
     newsletterHeading: string;
     inputPlaceholder: string;
+    /** Shown when the input is neither a valid email nor a phone number. */
+    invalidInput: string;
     submit: string;
     submitting: string;
     success: string;

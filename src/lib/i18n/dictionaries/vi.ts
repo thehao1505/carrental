@@ -77,6 +77,7 @@ export const vi = {
     newsletterHeading:
       "Để lại email hoặc số điện thoại để nhận được ưu đãi mới nhất",
     inputPlaceholder: "example@gmail.com or 0941437070",
+    invalidInput: "Vui lòng nhập email hoặc số điện thoại hợp lệ.",
     submit: "Gửi yêu cầu",
     submitting: "Đang gửi...",
     success: "Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ lại sớm.",

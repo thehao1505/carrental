@@ -25,6 +25,20 @@ const ANONYMOUS_NAME = "SOMEONE";
 // eslint-disable-next-line no-restricted-syntax -- inbox marker, see above
 const ANONYMOUS_PHONE = "KHÔNG CÓ";
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+// Vietnamese numbers (0xxxxxxxxx / +84xxxxxxxxx) or any international number in
+// E.164 form. Spaces, dots, dashes and parentheses are stripped first so
+// "+84 941 437 070" and "0941.437.070" both pass.
+const PHONE_PATTERN = /^(?:(?:\+?84|0)\d{9}|\+\d{8,14})$/;
+
+function isEmailOrPhone(value: string) {
+  const trimmed = value.trim();
+  return (
+    EMAIL_PATTERN.test(trimmed) ||
+    PHONE_PATTERN.test(trimmed.replace(/[\s.\-()]/g, ""))
+  );
+}
+
 type FooterProps = {
   dict: Pick<Dictionary, "footer" | "map">;
   locale: Locale;
@@ -42,11 +56,13 @@ export default function Footer({ dict, locale }: FooterProps) {
   // Tracked as a flag rather than by matching words in the message string, which
   // would silently break the moment the message is translated.
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [isInvalid, setIsInvalid] = useState<boolean>(false);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
+    setIsInvalid(false);
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -55,8 +71,12 @@ export default function Footer({ dict, locale }: FooterProps) {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setStatus("idle");
+    if (!isEmailOrPhone(formData.content)) {
+      setIsInvalid(true);
+      return;
+    }
+    setIsSubmitting(true);
 
     try {
       const response = await fetch("/api/contact", {
@@ -64,7 +84,11 @@ export default function Footer({ dict, locale }: FooterProps) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...formData, locale }),
+        body: JSON.stringify({
+          ...formData,
+          content: formData.content.trim(),
+          locale,
+        }),
       });
 
       const data: ApiResponse = await response.json();
@@ -121,8 +145,18 @@ export default function Footer({ dict, locale }: FooterProps) {
               value={formData.content}
               onChange={handleChange}
               placeholder={footer.inputPlaceholder}
-              className="w-full p-3 rounded-r-3xl bg-white text-black placeholder-gray-400 px-6"
+              aria-label={footer.inputPlaceholder}
+              aria-invalid={isInvalid}
+              aria-describedby={isInvalid ? "footer-input-error" : undefined}
+              className={`w-full p-3 rounded-r-3xl bg-white text-black placeholder-gray-400 px-6 ${
+                isInvalid ? "ring-2 ring-red-500" : ""
+              }`}
             />
+            {isInvalid && (
+              <p id="footer-input-error" className="text-sm text-red-300">
+                {footer.invalidInput}
+              </p>
+            )}
             <button
               type="submit"
               disabled={isSubmitting}
