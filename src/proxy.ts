@@ -2,10 +2,12 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import {
   isPublishedPath,
+  newsArticleSlug,
   toInternalPath,
   toPublicPath,
 } from "@/lib/i18n/routes";
 import { defaultLocale, prefixedLocales } from "@/lib/i18n/config";
+import { postExists } from "@/sanity/post-slugs";
 
 /**
  * Rewrite target for URLs that aren't pages. Folders prefixed with `_` are
@@ -25,7 +27,19 @@ function isNonPageRequest(pathname: string): boolean {
   );
 }
 
-export function proxy(request: NextRequest) {
+/** An article URL whose slug no post in Sanity has. */
+async function isUnknownArticle(pathname: string): Promise<boolean> {
+  const slug = newsArticleSlug(pathname);
+  if (slug === null) return false;
+  try {
+    return !(await postExists(decodeURIComponent(slug)));
+  } catch {
+    // Malformed percent-encoding: no post can have this slug.
+    return true;
+  }
+}
+
+export async function proxy(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
 
   const cspHeader = `
@@ -60,7 +74,9 @@ export function proxy(request: NextRequest) {
     prefixedLocales.find((l) => l === prefix) ?? defaultLocale,
   );
 
-  const isPage = isNonPageRequest(pathname) || isPublishedPath(pathname);
+  const isPage =
+    isNonPageRequest(pathname) ||
+    (isPublishedPath(pathname) && !(await isUnknownArticle(pathname)));
 
   const internal = isPage ? toInternalPath(pathname) : null;
   if (internal !== null) {

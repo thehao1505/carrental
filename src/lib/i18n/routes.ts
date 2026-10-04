@@ -256,9 +256,9 @@ export function toInternalPath(pathname: string): string | null {
  * a locale and only 404s from inside the page via notFound(), which Next
  * renders as a client-side error shell with no server-rendered content.
  *
- * News article slugs live in Sanity and can't be checked here without a fetch
- * per request, so any single segment under a news base counts as published; the
- * article page itself 404s when the slug doesn't exist.
+ * News article slugs live in Sanity, so any single segment under the news base
+ * counts as published here; src/proxy.ts checks the slug itself against Sanity
+ * (see newsArticleSlug).
  */
 export function isPublishedPath(pathname: string): boolean {
   const clean = pathname.replace(/\/+$/, "") || "/";
@@ -274,15 +274,26 @@ export function isPublishedPath(pathname: string): boolean {
     if (clean.startsWith(carBase)) {
       return vehicleIdFromSlug(clean.slice(carBase.length), l) !== null;
     }
-
-    const newsBase = routePaths.news[l];
-    if (newsBase !== null && clean.startsWith(`${newsBase}/`)) {
-      const slug = clean.slice(newsBase.length + 1);
-      return slug.length > 0 && !slug.includes("/");
-    }
   }
 
-  return false;
+  return newsArticleSlug(clean) !== null;
+}
+
+/**
+ * The article slug `pathname` addresses, e.g. "abc" for /tin-tuc/abc, or `null`
+ * when it isn't an article URL.
+ *
+ * Articles exist in the default locale only: posts in Sanity have no `language`
+ * field, and the English news listing links straight at the Vietnamese article
+ * URLs. So /en/news/<slug> is never an article URL.
+ */
+export function newsArticleSlug(pathname: string): string | null {
+  const clean = pathname.replace(/\/+$/, "") || "/";
+  const newsBase = routePaths.news[defaultLocale];
+  if (!clean.startsWith(`${newsBase}/`)) return null;
+
+  const slug = clean.slice(newsBase.length + 1);
+  return slug.length > 0 && !slug.includes("/") ? slug : null;
 }
 
 /**
