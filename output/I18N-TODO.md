@@ -25,6 +25,38 @@ Theo thứ tự nên làm. "Ai" là ai phải ra tay trước; việc của ch�
 | 6 | **H4** — Duyệt quy trình review bản dịch, tìm người song ngữ | Chủ dự án | Bản đề xuất trong README |
 | 7 | **F4 → F5 → A10b** — Chỉ khi F6 chọn dịch bài | Chủ dự án (Studio) → code | Đoạn schema có sẵn ở F4 |
 
+### Cần chủ dự án quyết
+
+Mỗi mục có các phương án và đề xuất. Chọn xong thì phần code làm được ngay.
+
+- [ ] **G1 — CSP nonce hay trang tĩnh?**
+      - Giữ nonce: bảo mật chặt nhất; bù tốc độ bằng cache ở CDN (G3). Trang vẫn render mỗi request.
+      - Bỏ nonce: chuyển GTM/GA sang `script-src` theo hash hoặc host allowlist (G2); các trang thành tĩnh, TTFB giảm rõ.
+      - **Đề xuất: bỏ nonce.** Site chỉ chạy GTM + GA, không có form nhập liệu nhạy cảm phía client;
+        allowlist host đủ chặt cho trường hợp này, còn lợi ích tốc độ áp dụng cho mọi trang.
+- [ ] **F6 — `/en/news`: `noindex` hay dịch bài?**
+      - `noindex`: vài dòng code, an toàn ngay; mở lại khi có bài tiếng Anh.
+      - Dịch bài: cần F4 (Studio) → F5 → A10b, cộng người viết/duyệt bài tiếng Anh lâu dài.
+      - **Đề xuất: `noindex` trước**, dịch sau nếu có nguồn lực viết bài tiếng Anh.
+- [ ] **FAQ-A10 — Giữ câu hỏi FAQ cũ không?** (chi tiết ở mục A10 bên dưới)
+      - Không: giữ như hiện tại (schema khớp FAQ hiển thị, đúng chính sách Google).
+      - Có: thêm câu hỏi cũ vào FAQ **hiển thị** trên 4 trang, cả vi lẫn en; chủ dự án duyệt câu trả lời (giá, lịch trình).
+      - **Đề xuất: có**, các câu cũ nhắm từ khóa tốt hơn (vd "Thuê xe đi Buôn Đôn giá bao nhiêu?").
+- [ ] **E5 — Giữ giá VND trên trang tiếng Anh?**
+      - **Đề xuất: giữ VND** (khách trả bằng VND; quy đổi USD sẽ lệch theo tỷ giá). Xác nhận xong ghi vào README.
+- [ ] **H4 — Duyệt quy trình review bản dịch** (đề xuất trong README) và chỉ định người song ngữ.
+
+### Claude làm được ngay, không cần chờ quyết định
+
+- [ ] Chạy `npm run check:hreflang https://www.dvdldaiduong.com` trên production sau khi Vercel deploy xong
+      (nửa đầu của C13; nửa còn lại là submit sitemap trong Search Console, cần tài khoản chủ dự án)
+
+### Claude không làm được
+
+- Submit sitemap / xem báo cáo Search Console (C13): cần tài khoản Google của chủ dự án.
+- Sửa schema trong Sanity Studio (F4): code Studio không ở repo này. Có repo Studio trên máy thì đưa đường dẫn là sửa được.
+- Review bản dịch (H4): cần người song ngữ.
+
 Không cần làm: CI cho `check:hreflang` (deploy qua Vercel, chủ dự án quyết định bỏ, 2026-10-05);
 E6 (chỉ cần khi thêm ngôn ngữ có số nhiều phức tạp).
 
