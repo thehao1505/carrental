@@ -66,6 +66,18 @@ export type Dictionary = {
     options: { locale: string; short: string; name: string }[];
   };
 
+  /**
+   * Banner offering this locale to a visitor whose browser prefers it while
+   * they read another one. Rendered in the language it offers, so the copy is
+   * taken from the *target* locale's dictionary, not the page's.
+   */
+  localeSuggestion: {
+    message: string;
+    switchCta: string;
+    /** aria-label of the close button. */
+    dismiss: string;
+  };
+
   footer: {
     logoAlt: string;
     tagline: string;

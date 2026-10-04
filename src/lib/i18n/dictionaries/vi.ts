@@ -70,6 +70,12 @@ export const vi = {
     ],
   },
 
+  localeSuggestion: {
+    message: "Trang này có phiên bản tiếng Việt.",
+    switchCta: "Xem bằng tiếng Việt",
+    dismiss: "Đóng",
+  },
+
   footer: {
     logoAlt: "logo",
     tagline:

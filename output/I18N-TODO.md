@@ -1,8 +1,9 @@
 # TODO — Đa ngôn ngữ (i18n) dvdldaiduong.com
 
 > Checklist cho hạ tầng đa ngôn ngữ vi/en. Cùng quy ước với [TODO.md](./TODO.md): tick khi đã ship.
-> Trạng thái tính đến 2026-10-04, đối chiếu trực tiếp với code trong `src/`.
-> Mục A (kiến trúc route) refactor xong 2026-09-25; đợt 2026-10-04 làm A10c, A-404a, C11, C12, D3–D5, E4, H1–H3, H5.
+> Trạng thái tính đến 2026-10-05, đối chiếu trực tiếp với code trong `src/`.
+> Mục A (kiến trúc route) refactor xong 2026-09-25; đợt 2026-10-04 làm A10c, A-404a, C11, C12, D3–D5, E4, H1–H3, H5;
+> đợt 2026-10-05 làm nốt A-404a, B5, B6 và soạn sẵn schema cho F4.
 > Quy ước và checklist vận hành giờ nằm ở [README.md](../README.md#đa-ngôn-ngữ-vi--en).
 >
 > **Tóm tắt**: nền tảng đã đúng chuẩn ở phần khó nhất (hreflang, route registry, type-safe dictionary).
@@ -76,7 +77,7 @@ Refactor làm root layout chuyển vào `app/[locale]/`, nên trang 404 mất ch
 - [x] `dynamicParams = false` cho `car-rental/[slug]`: 6 slug là dữ liệu tĩnh, slug lạ không nên khớp route
 - [x] `next.config.ts` redirects cũ vẫn chạy đúng 1 hop qua middleware, kết thúc ở 200 (7/7 URL)
 
-- [~] **A-404a** — 404 loại "route đã khớp rồi mới gọi `notFound()`" (`/car-rental`, `/thue-xe/<slug-lạ>`,
+- [x] **A-404a** — 404 loại "route đã khớp rồi mới gọi `notFound()`" (`/car-rental`, `/thue-xe/<slug-lạ>`,
       `/en/news/<slug-lạ>`) render nội dung ở phía client: HTML khởi tạo là `<html id="__next_error__">`
       không có `lang`, header/footer chỉ có trong RSC payload. Người dùng có JS thấy đúng trang.
       Đây là hành vi của Next App Router với `notFound()` trong route đã khớp, không phải do refactor —
@@ -89,9 +90,14 @@ Refactor làm root layout chuyển vào `app/[locale]/`, nên trang 404 mất ch
       `app/not-found.tsx` render đầy đủ phía server, status 404. Đã đo: `/car-rental`,
       `/thue-xe/<lạ>`, `/en/car-rental/<lạ>`, `/xx/...`, `/vi/<lạ>` giờ có `<h1>`, header, footer
       và `lang` ngay trong HTML.
-      **Còn lại**: slug bài viết lạ (`/tin-tuc/<lạ>`, `/en/news/<lạ>`) vẫn ra error shell, vì kiểm
-      tra slug cần gọi Sanity trên mỗi request. Nhỏ: `app/not-found.tsx` sinh ra `<html>` lồng
-      (Next tự bọc thêm một lớp); trình duyệt gộp thuộc tính nên `lang` vẫn đúng.
+      **Làm nốt (2026-10-05)**: `/en/news/<slug>` không bao giờ là URL bài viết (bài chỉ có tiếng
+      Việt, trang `/en/news` link thẳng sang `/tin-tuc/<slug>`) nên 404 tại proxy. `/tin-tuc/<slug>`
+      được kiểm tra với danh sách slug từ Sanity (`src/sanity/post-slugs.ts`): cache trong bộ nhớ
+      30 giây, mỗi instance tối đa 1 query / 30 giây; Sanity lỗi thì cho qua để trang tự 404.
+      Đã đo: slug thật 200; slug lạ, `/en/news/<slug thật>`, slug encode hỏng → 404 có `<h1>`,
+      header, footer, `lang` đúng. `check:hreflang` vẫn OK (52 URL).
+      Nhỏ, còn đó: `app/not-found.tsx` sinh ra `<html>` lồng (Next tự bọc thêm một lớp); trình
+      duyệt gộp thuộc tính nên `lang` vẫn đúng.
 
 ### Hai thay đổi hiển thị (A7)
 
@@ -137,9 +143,16 @@ thay đổi thật (file có đổi), nhưng cần biết trước khi nhìn Sea
 - [x] **B2** — Không auto-redirect theo `Accept-Language` — bot Google crawl từ US vẫn thấy bản tiếng Việt
 - [x] **B3** — Language switcher trỏ sang **trang tương đương**, không phải về trang chủ (`switchLocalePath`)
 - [x] **B4** — Switcher dùng `<a>` thay `next/link` vì shared root layout không re-render khi soft nav
-- [ ] **B5** — Banner gợi ý (không redirect) cho khách có `Accept-Language: en` khi họ vào path tiếng Việt.
-      Chỉ *gợi ý* + nhớ lựa chọn bằng cookie; **không** tự chuyển trang
-- [ ] **B6** — Ghi rõ trong code: cookie chỉ dùng cho banner, không bao giờ dùng để chọn locale khi render
+- [x] **B5** — Banner gợi ý (không redirect): `src/features/locale-suggestion.tsx`, gắn ở root layout.
+      Đọc `navigator.languages` phía client (không đọc header, để không cản G1 nếu chọn static).
+      Hai chiều: trình duyệt en trên trang vi và ngược lại. Banner viết bằng **ngôn ngữ được gợi ý**
+      (`localeSuggestion` trong dictionary của locale đích). Chỉ hiện khi trang có bản tương đương
+      (bài viết thì không). Bấm chuyển hoặc đóng → cookie 1 năm, không hiện lại. Bot không thấy banner
+      (render `null` ở server). Đã thử bằng Chromium với 6 tình huống: vi/vi, en/en, en/bài viết,
+      fr → không hiện; en trên `/thue-xe/thue-xe-4-cho` → link `/en/car-rental/car-rental-4-seat`;
+      vi trên trang en → banner tiếng Việt; đóng rồi sang trang khác → không hiện lại
+- [x] **B6** — Comment ở hằng `COOKIE` trong `locale-suggestion.tsx` + mục "Cấu trúc" trong README:
+      cookie chỉ dùng cho banner, không bao giờ dùng để chọn locale khi render
 
 ---
 
@@ -202,7 +215,38 @@ Hiện `intlLocale` đã khai báo trong `config.ts` nhưng **chỉ dùng đúng
 - [x] **F1** — Tách UI strings (dictionary) khỏi marketing copy khỏi content động
 - [x] **F2** — Dictionary import động → mỗi trang chỉ ship 1 ngôn ngữ (`get-dictionary.ts`)
 - [x] **F3** — Dictionary chỉ chứa data JSON-serializable, dùng `{placeholder}` + `interpolate()` thay function
-- [ ] **F4** — Thêm trường `language` + `translationOf` vào schema `post` trong Sanity
+- [ ] **F4** — Thêm trường `language` + `translationOf` vào schema `post` trong Sanity.
+      Schema Studio **không nằm trong repo này** (ở đây chỉ có `src/sanity/client.ts`), nên chủ dự án
+      phải dán đoạn dưới vào file schema `post` của project Sanity Studio rồi deploy Studio:
+
+      ```ts
+      defineField({
+        name: "language",
+        title: "Ngôn ngữ",
+        type: "string",
+        options: {
+          list: [
+            { title: "Tiếng Việt", value: "vi" },
+            { title: "English", value: "en" },
+          ],
+          layout: "radio",
+        },
+        initialValue: "vi",
+        validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: "translationOf",
+        title: "Bản dịch của bài",
+        description: "Chỉ điền cho bài tiếng Anh: chọn bài tiếng Việt gốc.",
+        type: "reference",
+        to: [{ type: "post" }],
+        options: { filter: 'language == "vi"' },
+        hidden: ({ document }) => document?.language !== "en",
+      }),
+      ```
+
+      Bài cũ chưa có `language`: query bên F5 dùng `coalesce(language, "vi")` nên không cần sửa tay
+      từng bài. Việc này chỉ nên làm nếu F6 chọn "dịch bài"; chọn `noindex` thì bỏ qua F4–F5
 - [ ] **F5** — Query bài viết theo locale; khi đó gỡ `news` khỏi `hreflangExcluded`
 - [ ] **F6** — `/en/news` hiện hiển thị bài tiếng Việt với khung tiếng Anh — quyết định: dịch bài, hoặc `noindex` trang này
 

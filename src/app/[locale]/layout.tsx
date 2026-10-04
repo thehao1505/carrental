@@ -15,6 +15,7 @@ import { resolveLocale, type LocaleParams } from "./locale-params";
 import Header from "@/features/header";
 import Footer from "@/features/footer";
 import SubHeader from "@/features/sub-header";
+import LocaleSuggestion from "@/features/locale-suggestion";
 import FloatingContactButtons from "@/features/floating-button";
 import BackToTopButton from "@/features/backtotop-button";
 import Script from "next/script";
@@ -105,6 +106,16 @@ export default async function RootLayout({
   const nonce = (await headers()).get("x-nonce") ?? undefined;
   const locale = resolveLocale((await params).locale);
   const dict = await getDictionary(locale);
+  // The suggestion banner speaks the language it offers, so it needs the copy
+  // from every other locale's dictionary. Only this small slice reaches the
+  // client.
+  const suggestionDicts = Object.fromEntries(
+    await Promise.all(
+      locales
+        .filter((l) => l !== locale)
+        .map(async (l) => [l, (await getDictionary(l)).localeSuggestion]),
+    ),
+  );
 
   return (
     <html lang={dict.htmlLang}>
@@ -145,6 +156,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+        <LocaleSuggestion current={locale} dicts={suggestionDicts} />
         <SubHeader dict={dict.subHeader} />
         <Header
           dict={dict}

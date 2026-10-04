@@ -19,7 +19,13 @@ Tiến độ và các quyết định còn mở: [output/I18N-TODO.md](output/I1
   (`car-rental`, `pricing`…), nên `/en/*` khớp route trực tiếp.
 - **URL tiếng Việt** (`/thue-xe`, `/bang-gia`…) được `src/proxy.ts` rewrite sang
   `/vi/<segment>`. URL nội bộ `/vi/*` trả 308 về URL tiếng Việt. URL không phải
-  trang nào trả 404 ngay tại proxy.
+  trang nào trả 404 ngay tại proxy, kể cả bài viết có slug không tồn tại trong
+  Sanity (`src/sanity/post-slugs.ts`, danh sách slug cache 30 giây).
+- **Locale chỉ lấy từ URL**. Không tự chuyển trang theo ngôn ngữ trình duyệt.
+  Khách có trình duyệt ưu tiên ngôn ngữ khác thấy banner gợi ý
+  (`src/features/locale-suggestion.tsx`), viết bằng chính ngôn ngữ được gợi ý.
+  Cookie `locale_suggestion` chỉ để banner không hiện lại, **không bao giờ** được
+  đọc để chọn ngôn ngữ render trang.
 - **`routePaths`** trong `src/lib/i18n/routes.ts` là nguồn duy nhất cho path của
   từng trang theo từng ngôn ngữ. Canonical, hreflang, sitemap, language switcher
   và map rewrite đều sinh ra từ đây.

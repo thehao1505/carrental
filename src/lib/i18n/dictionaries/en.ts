@@ -83,6 +83,12 @@ export const en = {
     ],
   },
 
+  localeSuggestion: {
+    message: "This page is also available in English.",
+    switchCta: "View in English",
+    dismiss: "Dismiss",
+  },
+
   footer: {
     logoAlt: "logo",
     tagline:
