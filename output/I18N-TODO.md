@@ -11,6 +11,23 @@
 > Phần còn mở chủ yếu là **quyết định của chủ dự án**: CSP nonce vs static (G1), `/en/news` dịch hay
 > `noindex` (F6), schema Sanity cho bài đa ngôn ngữ (F4–F5), giữ VND (E5) — cùng các bước sau deploy (C13).
 
+## Việc tiếp theo (cập nhật 2026-10-05, sau khi push `73ad105`)
+
+Theo thứ tự nên làm. "Ai" là ai phải ra tay trước; việc của chủ dự án xong thì phần code làm tiếp.
+
+| # | Việc | Ai | Ghi chú |
+|---|---|---|---|
+| 1 | **C13** — Sau deploy: submit sitemap, xem Search Console có báo lỗi hreflang không | Chủ dự án | Không phụ thuộc gì, làm được ngay |
+| 2 | **G1** — Chọn CSP nonce (giữ) hay static (bỏ nonce) | Chủ dự án quyết → code làm G2/G3, G4 | Ảnh hưởng tốc độ toàn site |
+| 3 | **F6** — `/en/news`: `noindex` hay dịch bài | Chủ dự án quyết → code | `noindex`: vài dòng code. Dịch: kéo theo F4 → F5 → A10b |
+| 4 | **FAQ-A10** — Duyệt FAQ schema mới; muốn giữ câu hỏi cũ thì thêm vào FAQ hiển thị | Chủ dự án duyệt → code | Xem mục "Thay đổi structured data (A10)" |
+| 5 | **E5** — Xác nhận giữ VND trên trang tiếng Anh | Chủ dự án | Xác nhận xong thì ghi vào README |
+| 6 | **H4** — Duyệt quy trình review bản dịch, tìm người song ngữ | Chủ dự án | Bản đề xuất trong README |
+| 7 | **F4 → F5 → A10b** — Chỉ khi F6 chọn dịch bài | Chủ dự án (Studio) → code | Đoạn schema có sẵn ở F4 |
+
+Không cần làm: CI cho `check:hreflang` (deploy qua Vercel, chủ dự án quyết định bỏ, 2026-10-05);
+E6 (chỉ cần khi thêm ngôn ngữ có số nhiều phức tạp).
+
 ---
 
 ## A. Kiến trúc route
@@ -124,6 +141,8 @@ Việc đó làm lộ ra một lỗi có sẵn:
 Chính sách FAQ structured data của Google yêu cầu nội dung đánh dấu phải **hiển thị được trên
 trang**; khai câu hỏi không tồn tại có nguy cơ bị manual action. Sau khi sửa, cả 4 trang lệch 0.
 
+- [ ] **FAQ-A10** — Chủ dự án duyệt thay đổi dưới đây (đã ship cùng refactor).
+
 Hệ quả: JSON-LD của 4 trang này đổi nội dung. Nếu bạn muốn giữ các câu hỏi cũ (chúng nhắm từ khóa
 tốt hơn, vd "Thuê xe đi Buôn Đôn giá bao nhiêu?"), cách đúng là **thêm chúng vào FAQ hiển thị**,
 không phải khai lại trong schema.
@@ -174,7 +193,7 @@ thay đổi thật (file có đổi), nhưng cần biết trước khi nhìn Sea
       (sinh từ `routePaths` + registry xe), kiểm tra status 200, canonical tự trỏ, `<html lang>` khớp hreflang,
       có self + x-default, đối xứng hai chiều, và khớp `xhtml:link` trong sitemap. Fetch bằng UA Googlebot
       (Next chỉ đặt metadata trong `<head>` cho bot). Đã thử làm hỏng 2 trang qua proxy giả → bắt đủ 3 lỗi.
-      Chưa gắn vào CI: repo chưa có CI; cần `build` + `start` rồi chạy script
+      Không gắn CI (deploy qua Vercel, quyết định 2026-10-05): chạy tay `build` + `start` rồi chạy script
 - [x] **C12** — `/tin-tuc` dùng `alternates("news", "vi")` + `routePaths` như bản en; bỏ mọi `/tin-tuc` viết cứng. Output không đổi
 - [ ] **C13** — Sau deploy: submit sitemap, kiểm tra Search Console → International Targeting không báo lỗi hreflang
 

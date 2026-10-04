@@ -43,7 +43,7 @@
 - [ ] **L1** — Convert `og-image.jpg` to WebP (only if perf budget tightens)
 - [ ] **L2** — Remove `noModule` legacy IE polyfill from Next.js head (saves ~3 KB HTML)
 - [x] **L3** — Build dedicated B2B landing page `/thue-xe/doanh-nghiep` with VAT invoice info + corporate billing terms
-- [ ] **L4** — (Strategic decision) Add English `/en/` version of 6 priority pages with proper `hreflang` if targeting international tourists
+- [x] **L4** — (Strategic decision) Add English `/en/` version of 6 priority pages with proper `hreflang` if targeting international tourists — done: every page has an `/en/` counterpart, tracked in [I18N-TODO.md](./I18N-TODO.md)
 - [ ] **L5** — Create Wikidata entity for the business; add Wikidata URL to `#business` schema `sameAs`
 - [ ] **L6** — Configure Moz API key + Bing Webmaster Tools API key at `~/.config/claude-seo/backlinks-api.json`
 - [ ] **L6** — Re-run `/seo backlinks https://www.dvdldaiduong.com` to populate backlinks section
