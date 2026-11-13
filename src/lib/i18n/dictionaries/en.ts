@@ -51,14 +51,12 @@ export const en = {
       { label: "Prices", href: p("pricing") },
     ],
     logoAlt: "logo",
-    avatarAlt: "Profile picture",
     openMenu: "Open navigation menu",
     closeMenu: "Close navigation menu",
   },
 
   contactButton: {
     label: "Contact",
-    copied: "Number copied",
   },
 
   subHeader: {
@@ -69,6 +67,7 @@ export const en = {
     callAria: "Call us now at {phone}",
     zaloLabel: "Chat on Zalo",
     zaloAria: "Chat on Zalo at {phone}",
+    backToTopAria: "Back to top",
   },
 
   map: {
@@ -153,6 +152,7 @@ export const en = {
 
   testimonials: {
     heading: "What our customers say about us",
+    closing: "Need a ride for your next trip?",
   },
 
   pagination: {
@@ -323,18 +323,23 @@ export const en = {
   pages: {
     home: {
       hero: {
-        eyebrow: "Tourist car rental",
-        headlineTop: "Dedicated.",
-        headlineBottom: "Professional.",
+        tagline: "Dedicated. Professional.",
         h1: "Car Rental in Dak Lak — 4 to 45-Seat Vehicles With Driver",
         intro:
           "Car rental with a professional driver from DVDL Dai Duong Ban Me — 4 to 45-seat vehicles, fair prices, quick paperwork and door-to-door delivery. Book in just a few minutes!",
         pricingPrompt: "See our rates and book",
-        pricingLinkText: "here.",
         priceLine:
           "From 800,000 VND/day with driver — 4 to 45 seats",
-        cta: "Contact us now",
-        imageAlt: "Central Highlands scenery",
+        facts: "Local Ban Me drivers · In business since 2018 · Answering 06:00–22:00 daily",
+        callCta: "Call +84 941 437 070",
+        zaloCta: "Chat on Zalo",
+        seatRailLabel: "Choose a vehicle to see its cabin",
+        viewVehicle: "See the {vehicle}",
+        interiorAlt: "{vehicle} cabin",
+      },
+      fleet: {
+        heading: "A fleet from 4 to 45 seats",
+        lead: "Pick the size that fits your trip. Every vehicle comes with a driver, fuel included.",
       },
       vehicles: [
         {
@@ -343,7 +348,9 @@ export const en = {
           title: "Personal travel",
           description:
             "Ideal for business trips, airport transfers and daily travel.",
-          image: "/images/thue-xe-4-cho.webp",
+          useCase: "Airport, business",
+          image: "/images/fleet/thue-xe-4-cho.webp",
+          interior: "/images/noi-that-xe-4-cho-hd.webp",
         },
         {
           value: "7 Seats",
@@ -351,7 +358,9 @@ export const en = {
           title: "Comfortable small groups",
           description:
             "Well suited to families, groups of friends and short getaways.",
-          image: "/images/thue-xe-7-cho.webp",
+          useCase: "Families, friends",
+          image: "/images/fleet/thue-xe-7-cho.webp",
+          interior: "/images/noi-that-xe-7-cho.webp",
         },
         {
           value: "16 Seats",
@@ -359,14 +368,18 @@ export const en = {
           title: "Flexible service",
           description:
             "Late-model vehicles, ideal for tours, events and company shuttles.",
-          image: "/images/thue-xe-16-cho.webp",
+          useCase: "Tours, events",
+          image: "/images/fleet/thue-xe-16-cho.webp",
+          interior: "/images/ben-trong-xe-16-cho.webp",
         },
         {
           value: "29 Seats",
           slug: "car-rental-29-seat",
           title: "Mid-size groups",
           description: "Suited to schools, companies and 1-3 day tours.",
-          image: "/images/thue-xe-29-cho.webp",
+          useCase: "Schools, companies",
+          image: "/images/fleet/thue-xe-29-cho.webp",
+          interior: "/images/noi-that-xe-29-cho.webp",
         },
         {
           value: "45 Seats",
@@ -374,7 +387,9 @@ export const en = {
           title: "Long journeys",
           description:
             "Modern coaches for group tours and professional conferences.",
-          image: "/images/thue-xe-45-cho.webp",
+          useCase: "Large groups",
+          image: "/images/fleet/thue-xe-45-cho.webp",
+          interior: "/images/noi-that-xe-45-cho-hd.webp",
         },
         {
           value: "Limousine",
@@ -382,7 +397,9 @@ export const en = {
           title: "Premium travel",
           description:
             "Luxury interior, massage seats, Wi-Fi and private screens.",
-          image: "/images/thue-xe-limousine.webp",
+          useCase: "Long trips in comfort",
+          image: "/images/fleet/thue-xe-limousine.webp",
+          interior: "/images/noi-that-xe-limousine-hd.webp",
         },
       ],
     },
@@ -537,9 +554,9 @@ export const en = {
       facebookLinkText: "Message the driver directly",
       form: {
         heading: "Send a request",
-        namePlaceholder: "Full name",
-        phonePlaceholder: "Phone number",
-        contentPlaceholder: "What do you need?",
+        nameLabel: "Full name",
+        phoneLabel: "Phone number",
+        contentLabel: "What do you need?",
         submit: "Send request",
         submitting: "Sending...",
         success: "Request sent! We will get back to you shortly.",

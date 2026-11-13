@@ -131,6 +131,7 @@ export default function Footer({ dict, locale }: FooterProps) {
             <h3 className="font-semibold">{footer.newsletterHeading}</h3>
             {status !== "idle" && (
               <div
+                role={status === "error" ? "alert" : "status"}
                 className={`py-3 px-6 rounded-r-3xl ${
                   status === "success"
                     ? "bg-green-100 text-green-700"
@@ -148,7 +149,7 @@ export default function Footer({ dict, locale }: FooterProps) {
               aria-label={footer.inputPlaceholder}
               aria-invalid={isInvalid}
               aria-describedby={isInvalid ? "footer-input-error" : undefined}
-              className={`w-full p-3 rounded-r-3xl bg-white text-black placeholder-gray-400 px-6 ${
+              className={`w-full p-3 rounded-r-3xl bg-white text-black placeholder:text-gray-500 px-6 ${
                 isInvalid ? "ring-2 ring-red-500" : ""
               }`}
             />

@@ -241,3 +241,33 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-moss-400);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background-color: var(--color-lemon-300);
+    color: var(--color-forest-700);
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* Home hero: a cabin photo eases in when the visitor switches vehicle. */
+@media (prefers-reduced-motion: no-preference) {
+  .cabin-in {
+    animation: cabin-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+@keyframes cabin-in {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}

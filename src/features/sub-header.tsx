@@ -5,13 +5,13 @@ import type { Dictionary } from "@/lib/i18n/types";
 
 export default function SubHeader({ dict }: { dict: Dictionary["subHeader"] }) {
   return (
-    <header className='px-5 md:px-10 xl:px-30 py-5 h-10 flex flex-row justify-between items-center bg-forest-500 z-40 relative'>
+    <div className='px-5 md:px-10 xl:px-30 py-5 h-10 flex flex-row justify-between items-center bg-forest-500 z-40 relative'>
       <div className='flex flex-row items-center gap-2 text-sm'>
         <p className='text-white'>
           <PhoneCall size={16} />
         </p>
         <span className='text-white'>
-          <a href="tel:0941437070" target="_blank" rel="noopener noreferrer" className="hover:text-lemon-500 hover:underline">
+          <a href="tel:0941437070" className="hover:text-lemon-500 hover:underline">
             0941 437 070
           </a>
         </span>
@@ -19,7 +19,7 @@ export default function SubHeader({ dict }: { dict: Dictionary["subHeader"] }) {
           <Mail size={16} />
         </p>
         <span className='text-white hidden md:block '>
-          <a href="mailto:dvdldaiduong@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-lemon-500 hover:underline">
+          <a href="mailto:dvdldaiduong@gmail.com" className="hover:text-lemon-500 hover:underline">
             dvdldaiduong@gmail.com
           </a>
         </span>
@@ -34,6 +34,6 @@ export default function SubHeader({ dict }: { dict: Dictionary["subHeader"] }) {
           </a>
         </span>
       </div>
-    </header>
+    </div>
   );
 }

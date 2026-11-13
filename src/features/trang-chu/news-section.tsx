@@ -40,11 +40,11 @@ export async function NewsSection({ dict, locale, basePath }: NewsSectionProps) 
 
   return (
     <section className="bg-pale-500 w-full">
-      <div className="max-w-6xl mx-auto px-6 py-12 text-forest-500">
-        <h2 className="text-3xl font-bold text-forest-500 mb-10 text-center">
+      <div className="px-5 py-20 md:px-10 md:py-28 xl:px-30 text-forest-500">
+        <h2 className="text-3xl md:text-5xl font-extrabold tracking-[-0.03em] text-forest-500 mb-12">
           <Link
             href={basePath}
-            className="hover:text-forest-400 transition-all duration-300"
+            className="underline-offset-8 decoration-lemon-600 decoration-4 hover:underline"
           >
             {dict.heading}
           </Link>
@@ -60,7 +60,7 @@ export async function NewsSection({ dict, locale, basePath }: NewsSectionProps) 
               <Link
                 key={post._id}
                 href={`${basePath}/${post.slug.current}`}
-                className="border rounded-xl shadow-sm overflow-hidden bg-white hover:shadow-md hover:scale-105 transition-all duration-300 cursor-pointer"
+                className="group rounded-2xl overflow-hidden bg-white shadow-[0_1px_2px_rgb(10_60_35/0.06),0_8px_24px_-12px_rgb(10_60_35/0.18)] hover:shadow-[0_2px_4px_rgb(10_60_35/0.08),0_16px_32px_-12px_rgb(10_60_35/0.28)] transition-shadow duration-300"
               >
                 {imageUrl ? (
                   <Image
@@ -69,15 +69,15 @@ export async function NewsSection({ dict, locale, basePath }: NewsSectionProps) 
                     width={800}
                     height={480}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 384px"
-                    className="w-full h-[200px] object-cover"
+                    className="w-full h-[200px] object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.03]"
                   />
                 ) : (
-                  <div className="w-full h-[200px] bg-gray-100 flex items-center justify-center text-gray-400">
+                  <div className="w-full h-[200px] bg-gray-100 flex items-center justify-center text-gray-600">
                     {dict.noImage}
                   </div>
                 )}
                 <div className="p-5 space-y-2">
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-gray-600">
                     {post._createdAt
                       ? new Date(post._createdAt).toLocaleDateString(intlLocale[locale])
                       : ""}

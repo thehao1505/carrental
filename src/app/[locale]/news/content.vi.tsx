@@ -160,7 +160,7 @@ export default async function Content({
   };
 
   return (
-    <main className="text-gray-800">
+    <div className="text-gray-800">
       {currentPage > 1 && (
         <link rel="prev" href={canonicalForPage(currentPage - 1)} />
       )}
@@ -203,7 +203,7 @@ export default async function Content({
               <Link
                 key={post._id}
                 href={`${BASE_PATH}/${post.slug.current}`}
-                className="border rounded-xl shadow-sm overflow-hidden bg-white hover:shadow-md hover:scale-105 transition-all duration-300"
+                className="border rounded-xl shadow-sm overflow-hidden bg-white hover:shadow-md motion-safe:hover:scale-105 transition-all duration-300"
               >
                 {imageUrl ? (
                   <Image
@@ -254,6 +254,6 @@ export default async function Content({
           basePath={BASE_PATH}
         />
       </section>
-    </main>
+    </div>
   );
 }

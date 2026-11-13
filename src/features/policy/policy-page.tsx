@@ -25,7 +25,7 @@ export type PolicyDocument = Record<Locale, PolicyContent>;
 
 export function PolicyPage({ content }: { content: PolicyContent }) {
   return (
-    <main className="max-w-4xl mx-auto px-6 py-16 text-gray-800">
+    <div className="max-w-4xl mx-auto px-6 py-16 text-gray-800">
       <h1 className="text-3xl font-bold text-forest-600 mb-2">{content.h1}</h1>
       <p className="text-sm text-gray-500 mb-10">{content.lastUpdated}</p>
 
@@ -37,6 +37,6 @@ export function PolicyPage({ content }: { content: PolicyContent }) {
           <div dangerouslySetInnerHTML={{ __html: section.bodyHtml }} />
         </section>
       ))}
-    </main>
+    </div>
   );
 }

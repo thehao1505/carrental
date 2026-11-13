@@ -161,11 +161,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <Header
           dict={dict}
           homeHref={path("home", locale) ?? "/"}
+          contactHref={path("contact", locale) ?? "/lien-he"}
           locale={locale}
         />
         <main>{children}</main>
         <Footer dict={dict} locale={locale} />
-        <BackToTopButton />
+        <BackToTopButton label={dict.floating.backToTopAria} />
         <FloatingContactButtons
           dict={dict.floating}
           phoneNumber="0941437070"

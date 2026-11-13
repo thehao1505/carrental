@@ -126,7 +126,7 @@ export default async function Content({
   ]);
 
   return (
-    <main className="text-gray-800">
+    <div className="text-gray-800">
       {currentPage > 1 && (
         <link rel="prev" href={canonicalForPage(currentPage - 1)} />
       )}
@@ -157,7 +157,7 @@ export default async function Content({
       <section className="max-w-5xl mx-auto px-6 py-12">
         {/* Say plainly what the reader is about to get, rather than letting them
             click through to an unexpected language. */}
-        <div className="bg-lemon-50 border-l-4 border-lemon-500 rounded-r-xl px-5 py-4 mb-10 text-sm text-gray-700">
+        <div className="bg-lemon-50 border border-lemon-300 rounded-xl px-5 py-4 mb-10 text-sm text-gray-700">
           These articles are written in Vietnamese. For anything you need in
           English, call us on{" "}
           <a
@@ -181,7 +181,7 @@ export default async function Content({
                 // The articles themselves only exist in Vietnamese.
                 href={`${routePaths.news.vi}/${post.slug.current}`}
                 hrefLang="vi"
-                className="border rounded-xl shadow-sm overflow-hidden bg-white hover:shadow-md hover:scale-105 transition-all duration-300"
+                className="border rounded-xl shadow-sm overflow-hidden bg-white hover:shadow-md motion-safe:hover:scale-105 transition-all duration-300"
               >
                 {imageUrl ? (
                   <Image
@@ -235,6 +235,6 @@ export default async function Content({
           basePath={BASE_PATH}
         />
       </section>
-    </main>
+    </div>
   );
 }

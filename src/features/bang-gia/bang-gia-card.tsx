@@ -85,7 +85,7 @@ export function BangGiaCard({ dict, contactHref, locale }: BangGiaCardProps) {
   ));
 
   return (
-    <main className="text-gray-800">
+    <div className="text-gray-800">
       {/* Hero */}
       <section className="relative h-[300px] w-full">
         <Image
@@ -126,7 +126,7 @@ export function BangGiaCard({ dict, contactHref, locale }: BangGiaCardProps) {
           <div className="mt-4">
             <Link
               href={contactHref}
-              className="inline-block bg-forest-500 text-lemon-500 px-6 py-2.5 rounded-full text-base font-semibold hover:bg-forest-600 transition hover:scale-105"
+              className="inline-block bg-forest-500 text-lemon-500 px-6 py-2.5 rounded-full text-base font-semibold hover:bg-forest-600 transition motion-safe:hover:scale-105"
             >
               {dict.quoteCta}
             </Link>
@@ -171,11 +171,11 @@ export function BangGiaCard({ dict, contactHref, locale }: BangGiaCardProps) {
         <p className="mb-6 text-gray-600">{dict.cta.body}</p>
         <Link
           href={contactHref}
-          className="inline-block bg-forest-500 text-lemon-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition hover:scale-105"
+          className="inline-block bg-forest-500 text-lemon-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition motion-safe:hover:scale-105"
         >
           {dict.cta.button}
         </Link>
       </section>
-    </main>
+    </div>
   );
 }

@@ -41,7 +41,7 @@ export function ThueXeSlugPage({
   if (!xe) return notFound();
 
   return (
-    <main className="max-w-5xl mx-auto px-6 py-12 text-gray-800">
+    <div className="max-w-5xl mx-auto px-6 py-12 text-gray-800">
       <Link href={backHref} className="text-sm text-forest-500 hover:underline mb-6 inline-block">
         {dict.back}
       </Link>
@@ -49,7 +49,7 @@ export function ThueXeSlugPage({
       <h1 className="text-3xl font-bold text-forest-600 mb-4">{xe.title}</h1>
       {typeof xe.tldr === "string" && xe.tldr.length > 0 && (
         <p
-          className="text-base md:text-lg leading-relaxed text-gray-800 bg-lemon-50 border-l-4 border-forest-500 rounded-md px-4 py-3 mb-6"
+          className="text-base md:text-lg leading-relaxed text-gray-800 bg-lemon-50 border border-lemon-300 rounded-md px-4 py-3 mb-6"
           data-testid="tldr"
         >
           <strong className="text-forest-600">{dict.tldrLabel}</strong> {xe.tldr}
@@ -68,7 +68,7 @@ export function ThueXeSlugPage({
         <h3 className="text-lg text-moss-500 mb-4">{dict.ctaHeading}</h3>
         <Link
           href={contactHref}
-          className="inline-block bg-forest-500 text-lemon-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition hover:scale-105"
+          className="inline-block bg-forest-500 text-lemon-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition motion-safe:hover:scale-105"
         >
           {dict.ctaButton}
         </Link>
@@ -89,7 +89,7 @@ export function ThueXeSlugPage({
                     src={related.image}
                     alt={related.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover motion-safe:group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <div className="p-4">
@@ -105,6 +105,6 @@ export function ThueXeSlugPage({
           </div>
         </section>
       )}
-    </main>
+    </div>
   );
 }

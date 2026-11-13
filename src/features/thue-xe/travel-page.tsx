@@ -96,7 +96,7 @@ function PriceTable({ table }: { table: TableBlock }) {
             ))}
           </tbody>
         </table>
-        <p className="text-xs text-gray-500 mt-3 italic">{table.note}</p>
+        <p className="text-xs text-gray-600 mt-3 italic">{table.note}</p>
       </div>
     </div>
   );
@@ -104,7 +104,7 @@ function PriceTable({ table }: { table: TableBlock }) {
 
 export function TravelPage({ content }: { content: TravelContent }) {
   return (
-    <main className="text-gray-800">
+    <div className="text-gray-800">
       {/* ── Hero ── */}
       <section className="relative h-[380px] w-full">
         <Image
@@ -125,7 +125,7 @@ export function TravelPage({ content }: { content: TravelContent }) {
           <div className="flex flex-wrap gap-3 justify-center mt-2">
             <a
               href="tel:0941437070"
-              className="bg-lemon-500 text-forest-600 font-bold px-7 py-3 rounded-full text-base hover:bg-lemon-400 transition hover:scale-105"
+              className="bg-lemon-500 text-forest-600 font-bold px-7 py-3 rounded-full text-base hover:bg-lemon-400 transition motion-safe:hover:scale-105"
             >
               {content.hero.callCta}
             </a>
@@ -142,7 +142,7 @@ export function TravelPage({ content }: { content: TravelContent }) {
       {/* ── TL;DR (30–50 word definitive answer for AI extractors) ── */}
       <section className="max-w-5xl mx-auto px-6 pt-10">
         <div
-          className="bg-forest-50 border-l-4 border-forest-500 rounded-r-2xl px-6 py-5"
+          className="bg-forest-50 border border-forest-100 rounded-2xl px-6 py-5"
           data-testid="tldr"
         >
           <p className="font-bold text-forest-700 text-base mb-1">
@@ -175,7 +175,7 @@ export function TravelPage({ content }: { content: TravelContent }) {
               <div className="font-semibold text-forest-700 text-sm">
                 {item.label}
               </div>
-              <div className="text-xs text-gray-500 mt-1">{item.sub}</div>
+              <div className="text-xs text-gray-600 mt-1">{item.sub}</div>
             </div>
           ))}
         </div>
@@ -202,7 +202,7 @@ export function TravelPage({ content }: { content: TravelContent }) {
                 <div className="text-xs text-moss-500 font-medium mt-1">
                   {dest.km}
                 </div>
-                <div className="text-xs text-gray-500 mt-1">{dest.note}</div>
+                <div className="text-xs text-gray-600 mt-1">{dest.note}</div>
               </div>
             ))}
           </div>
@@ -223,7 +223,7 @@ export function TravelPage({ content }: { content: TravelContent }) {
           <p className="text-white/85 text-sm mb-5">{content.pricing.cta.body}</p>
           <a
             href="tel:0941437070"
-            className="inline-block bg-lemon-500 text-forest-600 font-bold px-8 py-3 rounded-full hover:bg-lemon-400 transition hover:scale-105"
+            className="inline-block bg-lemon-500 text-forest-600 font-bold px-8 py-3 rounded-full hover:bg-lemon-400 transition motion-safe:hover:scale-105"
           >
             {content.pricing.cta.button}
           </a>
@@ -317,7 +317,7 @@ export function TravelPage({ content }: { content: TravelContent }) {
         <div className="flex flex-wrap gap-4 justify-center">
           <a
             href="tel:0941437070"
-            className="bg-lemon-500 text-forest-600 font-bold px-9 py-4 rounded-full text-lg hover:bg-lemon-400 transition hover:scale-105 shadow-lg"
+            className="bg-lemon-500 text-forest-600 font-bold px-9 py-4 rounded-full text-lg hover:bg-lemon-400 transition motion-safe:hover:scale-105 shadow-lg"
           >
             {content.finalCta.callButton}
           </a>
@@ -340,6 +340,6 @@ export function TravelPage({ content }: { content: TravelContent }) {
           ))}
         </div>
       </section>
-    </main>
+    </div>
   );
 }

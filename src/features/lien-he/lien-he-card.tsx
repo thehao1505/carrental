@@ -78,7 +78,7 @@ export default function LienHeCard({ dict, locale }: LienHeCardProps) {
   };
 
   return (
-    <main className="max-w-5xl mx-auto px-6 py-12 text-gray-800">
+    <div className="max-w-5xl mx-auto px-6 py-12 text-gray-800">
       <h1 className="text-3xl font-bold text-forest-600 mb-6 text-center">
         {contact.h1}
       </h1>
@@ -160,47 +160,64 @@ export default function LienHeCard({ dict, locale }: LienHeCardProps) {
             {contact.form.heading}
           </h2>
 
-          {status !== "idle" && (
-            <div
-              className={`p-3 rounded-md ${
-                status === "success"
-                  ? "bg-green-100 text-green-700"
-                  : "bg-red-100 text-red-700"
-              }`}
-            >
-              {status === "success" ? contact.form.success : contact.form.error}
-            </div>
-          )}
+          <div aria-live="polite">
+            {status !== "idle" && (
+              <div
+                className={`p-3 rounded-md ${
+                  status === "success"
+                    ? "bg-green-100 text-green-700"
+                    : "bg-red-100 text-red-700"
+                }`}
+              >
+                {status === "success" ? contact.form.success : contact.form.error}
+              </div>
+            )}
+          </div>
 
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder={contact.form.namePlaceholder}
-            className="w-full border px-4 py-2 rounded-md focus:outline-moss-500"
-            required
-          />
+          <div>
+            <label htmlFor="contact-name" className="block text-sm font-medium text-gray-800 mb-1">
+              {contact.form.nameLabel}
+            </label>
+            <input
+              id="contact-name"
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full border border-gray-300 bg-white px-4 py-2 rounded-md focus:outline-2 focus:outline-moss-400"
+              required
+            />
+          </div>
 
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder={contact.form.phonePlaceholder}
-            className="w-full border px-4 py-2 rounded-md focus:outline-moss-500"
-            required
-          />
+          <div>
+            <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-800 mb-1">
+              {contact.form.phoneLabel}
+            </label>
+            <input
+              id="contact-phone"
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full border border-gray-300 bg-white px-4 py-2 rounded-md focus:outline-2 focus:outline-moss-400"
+              required
+            />
+          </div>
 
-          <textarea
-            rows={4}
-            name="content"
-            value={formData.content}
-            onChange={handleChange}
-            placeholder={contact.form.contentPlaceholder}
-            className="w-full border px-4 py-2 rounded-md focus:outline-moss-500"
-            required
-          />
+          <div>
+            <label htmlFor="contact-content" className="block text-sm font-medium text-gray-800 mb-1">
+              {contact.form.contentLabel}
+            </label>
+            <textarea
+              id="contact-content"
+              rows={4}
+              name="content"
+              value={formData.content}
+              onChange={handleChange}
+              className="w-full border border-gray-300 bg-white px-4 py-2 rounded-md focus:outline-2 focus:outline-moss-400"
+              required
+            />
+          </div>
 
           <button
             type="submit"
@@ -225,6 +242,6 @@ export default function LienHeCard({ dict, locale }: LienHeCardProps) {
       <div className="text-center">
         <p className="text-gray-600">{contact.responseNote}</p>
       </div>
-    </main>
+    </div>
   );
 }

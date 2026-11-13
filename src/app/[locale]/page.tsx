@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { NewsSection } from "@/features/trang-chu/news-section";
-import StatsGrid from "@/features/trang-chu/section";
-import { HeroSection } from "@/features/trang-chu/split-image";
+import { CabinHero } from "@/features/trang-chu/cabin-hero";
+import { FleetLineup } from "@/features/trang-chu/fleet-lineup";
 import Testimonials from "@/features/trang-chu/testimonials";
 import { getTestimonials } from "@/lib/data";
 import {
@@ -176,13 +176,16 @@ export default async function Home({ params }: LocaleParams) {
           __html: JSON.stringify(websiteSchema[locale]),
         }}
       />
-      <HeroSection
+      <CabinHero
         dict={dict.pages.home.hero}
+        vehicles={dict.pages.home.vehicles}
         pricingHref={path("pricing", locale) ?? "/"}
-        contactHref={path("contact", locale) ?? "/"}
+        carRentalBasePath={routePaths.carRental[locale]}
       />
-      <StatsGrid
+      <FleetLineup
+        dict={dict.pages.home.fleet}
         items={dict.pages.home.vehicles}
+        viewLabel={dict.pages.home.hero.viewVehicle}
         carRentalBasePath={routePaths.carRental[locale]}
       />
       {hasNewsContent(locale) && (
@@ -194,7 +197,12 @@ export default async function Home({ params }: LocaleParams) {
           />
         </Suspense>
       )}
-      <Testimonials dict={dict.testimonials} items={getTestimonials(locale)} />
+      <Testimonials
+        dict={dict.testimonials}
+        items={getTestimonials(locale)}
+        callCta={dict.pages.home.hero.callCta}
+        zaloCta={dict.pages.home.hero.zaloCta}
+      />
     </>
   );
 }

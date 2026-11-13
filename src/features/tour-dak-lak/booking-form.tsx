@@ -98,17 +98,18 @@ Ghi chú: ${formData.note || "Không có"}`;
   };
 
   const inputClass =
-    "w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-forest-400 text-gray-800 text-sm bg-white";
+    "w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-forest-400 text-gray-800 text-sm bg-white placeholder:text-gray-500";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            {dict.nameLabel} <span className="text-red-500">*</span>
+          <label htmlFor="booking-name" className="block text-sm font-medium text-gray-700 mb-1">
+            {dict.nameLabel} <span aria-hidden="true" className="text-red-600">*</span>
           </label>
           <input
             type="text"
+            id="booking-name"
             name="name"
             value={formData.name}
             onChange={handleChange}
@@ -118,11 +119,12 @@ Ghi chú: ${formData.note || "Không có"}`;
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            {dict.phoneLabel} <span className="text-red-500">*</span>
+          <label htmlFor="booking-phone" className="block text-sm font-medium text-gray-700 mb-1">
+            {dict.phoneLabel} <span aria-hidden="true" className="text-red-600">*</span>
           </label>
           <input
             type="tel"
+            id="booking-phone"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
@@ -135,10 +137,11 @@ Ghi chú: ${formData.note || "Không có"}`;
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            {dict.tourLabel} <span className="text-red-500">*</span>
+          <label htmlFor="booking-tourType" className="block text-sm font-medium text-gray-700 mb-1">
+            {dict.tourLabel} <span aria-hidden="true" className="text-red-600">*</span>
           </label>
           <select
+            id="booking-tourType"
             name="tourType"
             value={formData.tourType}
             onChange={handleChange}
@@ -154,10 +157,11 @@ Ghi chú: ${formData.note || "Không có"}`;
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            {dict.groupLabel} <span className="text-red-500">*</span>
+          <label htmlFor="booking-groupSize" className="block text-sm font-medium text-gray-700 mb-1">
+            {dict.groupLabel} <span aria-hidden="true" className="text-red-600">*</span>
           </label>
           <select
+            id="booking-groupSize"
             name="groupSize"
             value={formData.groupSize}
             onChange={handleChange}
@@ -175,11 +179,12 @@ Ghi chú: ${formData.note || "Không có"}`;
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="booking-date" className="block text-sm font-medium text-gray-700 mb-1">
           {dict.dateLabel}
         </label>
         <input
           type="date"
+          id="booking-date"
           name="date"
           value={formData.date}
           onChange={handleChange}
@@ -188,10 +193,11 @@ Ghi chú: ${formData.note || "Không có"}`;
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="booking-note" className="block text-sm font-medium text-gray-700 mb-1">
           {dict.noteLabel}
         </label>
         <textarea
+          id="booking-note"
           name="note"
           value={formData.note}
           onChange={handleChange}
@@ -203,6 +209,7 @@ Ghi chú: ${formData.note || "Không có"}`;
 
       {message && (
         <div
+          role={status === "error" ? "alert" : "status"}
           className={`px-4 py-3 rounded-xl text-sm font-medium ${
             status === "success"
               ? "bg-green-50 text-green-700 border border-green-200"
@@ -216,11 +223,11 @@ Ghi chú: ${formData.note || "Không có"}`;
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-lemon-500 text-forest-700 font-bold py-3.5 rounded-xl text-base hover:bg-lemon-400 transition hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed"
+        className="w-full bg-lemon-500 text-forest-700 font-bold py-3.5 rounded-xl text-base hover:bg-lemon-400 transition disabled:opacity-60 disabled:cursor-not-allowed"
       >
         {isSubmitting ? dict.submitting : dict.submit}
       </button>
-      <p className="text-xs text-gray-400 text-center">
+      <p className="text-xs text-gray-600 text-center">
         {dict.hotlineBefore}
         <a
           href="tel:0941437070"

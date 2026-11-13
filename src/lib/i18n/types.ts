@@ -33,14 +33,12 @@ export type Dictionary = {
   header: {
     nav: NavLink[];
     logoAlt: string;
-    avatarAlt: string;
     openMenu: string;
     closeMenu: string;
   };
 
   contactButton: {
     label: string;
-    copied: string;
   };
 
   subHeader: {
@@ -53,6 +51,7 @@ export type Dictionary = {
     zaloLabel: string;
     /** Uses the `{phone}` placeholder. */
     zaloAria: string;
+    backToTopAria: string;
   };
 
   map: {
@@ -106,6 +105,7 @@ export type Dictionary = {
 
   testimonials: {
     heading: string;
+    closing: string;
   };
 
   pagination: {
@@ -194,24 +194,38 @@ export type Dictionary = {
   pages: {
     home: {
       hero: {
-        eyebrow: string;
-        headlineTop: string;
-        headlineBottom: string;
+        tagline: string;
         h1: string;
         intro: string;
         pricingPrompt: string;
-        pricingLinkText: string;
         priceLine: string;
-        cta: string;
-        imageAlt: string;
+        /** Short proof line under the price: local drivers, since 2018, hours. */
+        facts: string;
+        callCta: string;
+        zaloCta: string;
+        /** Accessible name of the seat-count switcher. */
+        seatRailLabel: string;
+        /** Uses the `{vehicle}` placeholder. */
+        viewVehicle: string;
+        /** Uses the `{vehicle}` placeholder. */
+        interiorAlt: string;
       };
-      /** The six vehicle tiles under the hero. */
+      fleet: {
+        heading: string;
+        lead: string;
+      };
+      /** The six vehicle sizes: the hero's seat rail and the fleet line-up. */
       vehicles: {
         value: string;
         slug: string;
         title: string;
         description: string;
+        /** Two- or three-word use case for the hero's seat rail. */
+        useCase: string;
+        /** Exterior cut-out on white, trimmed to the vehicle. */
         image: string;
+        /** Cabin photo shown full-bleed in the hero. */
+        interior: string;
       }[];
     };
 
@@ -286,9 +300,9 @@ export type Dictionary = {
       facebookLinkText: string;
       form: {
         heading: string;
-        namePlaceholder: string;
-        phonePlaceholder: string;
-        contentPlaceholder: string;
+        nameLabel: string;
+        phoneLabel: string;
+        contentLabel: string;
         submit: string;
         submitting: string;
         success: string;

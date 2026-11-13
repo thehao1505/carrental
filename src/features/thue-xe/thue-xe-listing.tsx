@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Check } from "lucide-react";
 import type { CarRentalItem } from "@/lib/data";
 import type { Dictionary } from "@/lib/i18n/types";
 import { interpolate } from "@/lib/i18n/interpolate";
@@ -24,7 +25,7 @@ export function ThueXeListing({
   const { hero, intro, priceTable, whyUs, process, cards, destinations } = dict;
 
   return (
-    <main className="text-gray-800">
+    <div className="text-gray-800">
       {/* Hero */}
       <section className="relative h-[340px] w-full">
         <Image
@@ -44,7 +45,7 @@ export function ThueXeListing({
           <div className="flex flex-col sm:flex-row gap-3 mt-2">
             <a
               href="tel:0941437070"
-              className="bg-forest-500 text-lemon-500 px-6 py-3 rounded-3xl text-base font-semibold text-center hover:bg-forest-600 hover:scale-105 transition-all duration-200"
+              className="bg-forest-500 text-lemon-500 px-6 py-3 rounded-3xl text-base font-semibold text-center hover:bg-forest-600 motion-safe:hover:scale-105 transition-all duration-200"
             >
               {hero.callCta}
             </a>
@@ -52,7 +53,7 @@ export function ThueXeListing({
               href="https://zalo.me/0941437070"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-forest-500 px-6 py-3 rounded-3xl text-base font-semibold text-center hover:bg-lemon-500 hover:scale-105 transition-all duration-200"
+              className="bg-white text-forest-500 px-6 py-3 rounded-3xl text-base font-semibold text-center hover:bg-lemon-500 motion-safe:hover:scale-105 transition-all duration-200"
             >
               {hero.zaloCta}
             </a>
@@ -124,7 +125,12 @@ export function ThueXeListing({
         <ul className="space-y-4">
           {whyUs.items.map((item) => (
             <li key={item.title} className="flex gap-3">
-              <span className="text-lemon-500 font-bold text-lg shrink-0">✓</span>
+              <span
+                aria-hidden="true"
+                className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-lemon-500 text-forest-600"
+              >
+                <Check size={14} strokeWidth={3} />
+              </span>
               <span className="text-gray-700 leading-relaxed text-[15px] md:text-base">
                 <strong className="text-forest-600">{item.title}</strong>{" "}
                 {item.body}
@@ -145,7 +151,7 @@ export function ThueXeListing({
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {process.steps.map((step, index) => (
             <div key={step.title} className="border rounded-2xl p-5 bg-white">
-              <div className="text-lemon-500 font-bold text-2xl mb-2">
+              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-lemon-500 text-forest-600 font-bold text-lg">
                 {index + 1}
               </div>
               <h3 className="font-semibold text-forest-600 mb-2">
@@ -173,7 +179,7 @@ export function ThueXeListing({
                   src={xe.image}
                   alt={xe.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-cover motion-safe:group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="p-5 space-y-2">
@@ -250,11 +256,11 @@ export function ThueXeListing({
         <p className="text-gray-600 mb-6">{dict.cta.body}</p>
         <Link
           href={contactHref}
-          className="inline-block bg-forest-500 text-lemon-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition hover:scale-105"
+          className="inline-block bg-forest-500 text-lemon-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition motion-safe:hover:scale-105"
         >
           {dict.cta.button}
         </Link>
       </section>
-    </main>
+    </div>
   );
 }

@@ -38,14 +38,12 @@ export const vi = {
       { label: "Bảng giá", href: p("pricing") },
     ],
     logoAlt: "logo",
-    avatarAlt: "Ảnh đại diện",
     openMenu: "Mở menu điều hướng",
     closeMenu: "Đóng menu điều hướng",
   },
 
   contactButton: {
     label: "Liên hệ",
-    copied: "Đã copy sđt",
   },
 
   subHeader: {
@@ -56,6 +54,7 @@ export const vi = {
     callAria: "Gọi ngay {phone}",
     zaloLabel: "Nhắn Zalo",
     zaloAria: "Nhắn Zalo {phone}",
+    backToTopAria: "Lên đầu trang",
   },
 
   map: {
@@ -139,6 +138,7 @@ export const vi = {
 
   testimonials: {
     heading: "Khách hàng nói gì về chúng tôi?",
+    closing: "Cần xe cho chuyến tới?",
   },
 
   pagination: {
@@ -308,17 +308,22 @@ export const vi = {
   pages: {
     home: {
       hero: {
-        eyebrow: "Cho thuê xe du lịch",
-        headlineTop: "Tận tâm.",
-        headlineBottom: "Chuyên nghiệp.",
+        tagline: "Tận tâm. Chuyên nghiệp.",
         h1: "Cho Thuê Xe Du Lịch Đắk Lắk - Xe 4 đến 45 Chỗ Có Tài Xế",
         intro:
           "Cho thuê xe ô tô có tài xế tại DVDL Đại Dương Ban Mê - Đa dạng xe 4-45 chỗ, giá tốt, thủ tục nhanh, giao xe tận nơi. Đặt xe dễ dàng chỉ trong vài phút!",
         pricingPrompt: "Xem bảng giá và đặt lịch",
-        pricingLinkText: "tại đây.",
         priceLine: "Giá từ 800.000đ/ngày có tài xế — 4 đến 45 chỗ",
-        cta: "Liên hệ ngay",
-        imageAlt: "Thắng cảnh Tây Nguyên",
+        facts: "Tài xế người Ban Mê · Hoạt động từ 2018 · Nghe máy 06:00–22:00 mỗi ngày",
+        callCta: "Gọi 0941 437 070",
+        zaloCta: "Nhắn Zalo",
+        seatRailLabel: "Chọn loại xe để xem nội thất",
+        viewVehicle: "Xem xe {vehicle}",
+        interiorAlt: "Nội thất xe {vehicle}",
+      },
+      fleet: {
+        heading: "Đội xe từ 4 đến 45 chỗ",
+        lead: "Chọn cỡ xe vừa với chuyến đi. Xe nào cũng có tài xế, giá đã gồm nhiên liệu.",
       },
       vehicles: [
         {
@@ -327,7 +332,9 @@ export const vi = {
           title: "Di chuyển cá nhân",
           description:
             "Lý tưởng cho công tác, đưa đón sân bay, đi lại hằng ngày.",
-          image: "/images/thue-xe-4-cho.webp",
+          useCase: "Sân bay, công tác",
+          image: "/images/fleet/thue-xe-4-cho.webp",
+          interior: "/images/noi-that-xe-4-cho-hd.webp",
         },
         {
           value: "7 Chỗ",
@@ -335,7 +342,9 @@ export const vi = {
           title: "Nhóm nhỏ thoải mái",
           description:
             "Phù hợp cho gia đình, nhóm bạn đi chơi hoặc du lịch gần.",
-          image: "/images/thue-xe-7-cho.webp",
+          useCase: "Gia đình, nhóm bạn",
+          image: "/images/fleet/thue-xe-7-cho.webp",
+          interior: "/images/noi-that-xe-7-cho.webp",
         },
         {
           value: "16 Chỗ",
@@ -343,14 +352,18 @@ export const vi = {
           title: "Dịch vụ linh hoạt",
           description:
             "Xe đời mới, lý tưởng cho tour, sự kiện, đưa đón công ty.",
-          image: "/images/thue-xe-16-cho.webp",
+          useCase: "Tour, sự kiện",
+          image: "/images/fleet/thue-xe-16-cho.webp",
+          interior: "/images/ben-trong-xe-16-cho.webp",
         },
         {
           value: "29 Chỗ",
           slug: "thue-xe-29-cho",
           title: "Đoàn thể vừa",
           description: "Phù hợp cho trường học, công ty, tour 1-3 ngày.",
-          image: "/images/thue-xe-29-cho.webp",
+          useCase: "Trường học, công ty",
+          image: "/images/fleet/thue-xe-29-cho.webp",
+          interior: "/images/noi-that-xe-29-cho.webp",
         },
         {
           value: "45 Chỗ",
@@ -358,14 +371,18 @@ export const vi = {
           title: "Hành trình dài",
           description:
             "Xe hiện đại, phục vụ tour đoàn, hội nghị chuyên nghiệp.",
-          image: "/images/thue-xe-45-cho.webp",
+          useCase: "Đoàn lớn, hội nghị",
+          image: "/images/fleet/thue-xe-45-cho.webp",
+          interior: "/images/noi-that-xe-45-cho-hd.webp",
         },
         {
           value: "Limousine",
           slug: "thue-xe-limousine",
           title: "Di chuyển đẳng cấp",
           description: "Nội thất sang trọng, ghế massage, Wi-Fi, màn hình riêng.",
-          image: "/images/thue-xe-limousine.webp",
+          useCase: "Đi xa, tiện nghi",
+          image: "/images/fleet/thue-xe-limousine.webp",
+          interior: "/images/noi-that-xe-limousine-hd.webp",
         },
       ],
     },
@@ -520,9 +537,9 @@ export const vi = {
       facebookLinkText: "Liên hệ ngay với tài xế",
       form: {
         heading: "Gửi yêu cầu",
-        namePlaceholder: "Họ và tên",
-        phonePlaceholder: "Số điện thoại",
-        contentPlaceholder: "Nội dung yêu cầu",
+        nameLabel: "Họ và tên",
+        phoneLabel: "Số điện thoại",
+        contentLabel: "Nội dung yêu cầu",
         submit: "Gửi yêu cầu",
         submitting: "Đang gửi...",
         success: "Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ lại sớm.",

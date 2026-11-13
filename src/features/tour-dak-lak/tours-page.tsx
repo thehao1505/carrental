@@ -84,7 +84,7 @@ type Props = {
 
 export function ToursPage({ content, bookingDict, locale }: Props) {
   return (
-    <main className="text-gray-800">
+    <div className="text-gray-800">
       {/* ── Hero ── */}
       <section className="relative h-[420px] w-full">
         <Image
@@ -107,7 +107,7 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
           <div className="flex flex-wrap gap-3 justify-center mt-2">
             <a
               href={`#${content.anchors.booking}`}
-              className="bg-lemon-500 text-forest-700 font-bold px-7 py-3 rounded-full text-base hover:bg-lemon-400 transition hover:scale-105 shadow-lg"
+              className="bg-lemon-500 text-forest-700 font-bold px-7 py-3 rounded-full text-base hover:bg-lemon-400 transition motion-safe:hover:scale-105 shadow-lg"
             >
               {content.hero.bookCta}
             </a>
@@ -125,7 +125,7 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
       <section className="max-w-5xl mx-auto px-6 py-14">
         {/* TL;DR — 30–50 word definitive answer for AI extractors */}
         <div
-          className="bg-forest-50 border-l-4 border-forest-500 rounded-r-2xl px-6 py-5 mb-6"
+          className="bg-forest-50 border border-forest-100 rounded-2xl px-6 py-5 mb-6"
           data-testid="tldr"
         >
           <p className="font-bold text-forest-700 text-base mb-1">
@@ -137,7 +137,7 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
         </div>
 
         {/* Price answer box */}
-        <div className="bg-lemon-50 border-l-4 border-lemon-500 rounded-r-2xl px-6 py-5 mb-8">
+        <div className="bg-lemon-50 border border-lemon-300 rounded-2xl px-6 py-5 mb-8">
           <p className="font-bold text-forest-700 text-base mb-1">
             {content.priceAnswer.label}
           </p>
@@ -166,7 +166,7 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
               <div className="font-semibold text-forest-700 text-sm">
                 {item.label}
               </div>
-              <div className="text-xs text-gray-500 mt-1">{item.sub}</div>
+              <div className="text-xs text-gray-600 mt-1">{item.sub}</div>
             </div>
           ))}
         </div>
@@ -178,7 +178,7 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
           <h2 className="text-2xl font-bold text-forest-600 mb-3 text-center">
             {content.reasons.h2}
           </h2>
-          <p className="text-center text-gray-500 mb-8 text-sm">
+          <p className="text-center text-gray-600 mb-8 text-sm">
             {content.reasons.lead}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -210,7 +210,7 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
           <h2 className="text-3xl font-bold text-forest-600 mb-2 text-center">
             {content.itineraries.h2}
           </h2>
-          <p className="text-center text-gray-500 mb-10 text-sm">
+          <p className="text-center text-gray-600 mb-10 text-sm">
             {content.itineraries.lead}
           </p>
           <div className="space-y-8">
@@ -229,7 +229,7 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
                     </h3>
                   </div>
                   <div className="flex items-center gap-4 text-sm shrink-0">
-                    <span className="text-gray-500">{tour.highlight}</span>
+                    <span className="text-gray-600">{tour.highlight}</span>
                     <span className="font-bold text-forest-600 text-base">
                       {tour.priceFrom}
                     </span>
@@ -246,7 +246,7 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
                           <div className="font-medium text-gray-800 text-sm">
                             {step.label}
                           </div>
-                          <div className="text-xs text-gray-500 mt-0.5 leading-relaxed">
+                          <div className="text-xs text-gray-600 mt-0.5 leading-relaxed">
                             {step.desc}
                           </div>
                         </div>
@@ -265,7 +265,7 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
         <h2 className="text-3xl font-bold text-forest-600 text-center mb-2">
           {content.pricing.h2}
         </h2>
-        <p className="text-center text-gray-500 mb-8 text-sm">
+        <p className="text-center text-gray-600 mb-8 text-sm">
           {content.pricing.lead}
         </p>
         <div className="overflow-x-auto">
@@ -278,7 +278,7 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
                 {content.pricing.headers.map((header) => (
                   <th key={header.label} className="py-3 px-4 text-center">
                     {header.label}
-                    <span className="block text-xs font-normal text-gray-500">
+                    <span className="block text-xs font-normal text-gray-600">
                       {header.sub}
                     </span>
                   </th>
@@ -297,7 +297,7 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
                       <div className="font-bold text-forest-600">
                         {cell.total}
                       </div>
-                      <div className="text-xs text-gray-400 mt-0.5">
+                      <div className="text-xs text-gray-600 mt-0.5">
                         {cell.perPerson}
                       </div>
                     </td>
@@ -307,7 +307,7 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
             </tbody>
           </table>
         </div>
-        <p className="text-xs text-gray-500 mt-3 italic">
+        <p className="text-xs text-gray-600 mt-3 italic">
           {content.pricing.note}
         </p>
 
@@ -316,7 +316,7 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
           <p className="text-white/80 text-sm mb-4">{content.pricing.cta.body}</p>
           <a
             href={`#${content.anchors.booking}`}
-            className="inline-block bg-lemon-500 text-forest-700 font-bold px-8 py-3 rounded-full hover:bg-lemon-400 transition hover:scale-105"
+            className="inline-block bg-lemon-500 text-forest-700 font-bold px-8 py-3 rounded-full hover:bg-lemon-400 transition motion-safe:hover:scale-105"
           >
             {content.pricing.cta.button}
           </a>
@@ -328,7 +328,7 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
         <h2 className="text-2xl font-bold text-forest-600 mb-2 text-center">
           {content.booking.h2}
         </h2>
-        <p className="text-center text-gray-500 mb-8 text-sm">
+        <p className="text-center text-gray-600 mb-8 text-sm">
           {content.booking.lead}
         </p>
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-7">
@@ -398,7 +398,7 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
         <div className="flex flex-wrap gap-4 justify-center">
           <a
             href={`#${content.anchors.booking}`}
-            className="bg-lemon-500 text-forest-700 font-bold px-9 py-4 rounded-full text-lg hover:bg-lemon-400 transition hover:scale-105 shadow-lg"
+            className="bg-lemon-500 text-forest-700 font-bold px-9 py-4 rounded-full text-lg hover:bg-lemon-400 transition motion-safe:hover:scale-105 shadow-lg"
           >
             {content.finalCta.bookButton}
           </a>
@@ -421,6 +421,6 @@ export function ToursPage({ content, bookingDict, locale }: Props) {
           ))}
         </div>
       </section>
-    </main>
+    </div>
   );
 }

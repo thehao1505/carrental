@@ -32,7 +32,7 @@ export type CorporateContent = {
 
 export function CorporatePage({ content }: { content: CorporateContent }) {
   return (
-    <main className="text-gray-800">
+    <div className="text-gray-800">
       {/* Hero */}
       <section className="relative h-[380px] w-full">
         <Image
@@ -54,7 +54,7 @@ export function CorporatePage({ content }: { content: CorporateContent }) {
 
       {/* TL;DR */}
       <section className="max-w-3xl mx-auto px-6 py-10">
-        <div className="bg-green-50 border-l-4 border-forest-500 p-5 rounded-r-lg">
+        <div className="bg-forest-50 border border-forest-100 p-5 rounded-lg">
           <p
             className="text-sm md:text-base leading-relaxed"
             dangerouslySetInnerHTML={{ __html: content.tldrHtml }}
@@ -181,6 +181,6 @@ export function CorporatePage({ content }: { content: CorporateContent }) {
           ))}
         </ul>
       </section>
-    </main>
+    </div>
   );
 }

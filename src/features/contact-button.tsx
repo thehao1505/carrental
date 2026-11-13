@@ -1,41 +1,22 @@
-import { useState } from "react";
+import Link from "next/link";
 import type { Dictionary } from "@/lib/i18n/types";
 
-export function ContactButton({ dict }: { dict: Dictionary["contactButton"] }) {
-  const [copied, setCopied] = useState(false);
-  const [isClicked, setIsClicked] = useState(false)
-
-  const handleCopy = async () => {
-    setIsClicked(true);
-    setTimeout(() => setIsClicked(false), 200);
-
-    try {
-      if (typeof window !== 'undefined' && navigator.clipboard) {
-        await navigator.clipboard.writeText('0941 437 070');
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      }
-    } catch (error) {
-      console.error('Failed to copy: ', error);
-    }
-  };
-  
+export function ContactButton({
+  dict,
+  href,
+  onClick,
+}: {
+  dict: Dictionary["contactButton"];
+  href: string;
+  onClick?: () => void;
+}) {
   return (
-    <>
-      {!copied ? (
-        <button
-          onClick={handleCopy}
-          className={`bg-forest-500 cursor-pointer h-[50px] text-sm font-semibold px-6 py-2 rounded-3xl text-lemon-500 w-fit hover:scale-105 transition-all duration-200 transform ${
-            isClicked ? 'scale-95' : ''
-          }`}
-        >
-          {dict.label}
-        </button>
-      ) : (
-        <button className='bg-forest-500 text-sm h-[50px] font-semibold px-6 py-2 rounded-3xl text-lemon-500 w-fit'>
-          {dict.copied}
-        </button>
-      )}
-    </>
+    <Link
+      href={href}
+      onClick={onClick}
+      className="inline-flex items-center justify-center bg-forest-500 h-12 text-sm font-semibold px-6 rounded-full text-lemon-500 whitespace-nowrap hover:bg-forest-600 active:scale-95 transition-[background-color,transform] duration-200"
+    >
+      {dict.label}
+    </Link>
   );
 }

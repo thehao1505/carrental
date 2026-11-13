@@ -44,6 +44,7 @@ export default async function NotFound() {
         <Header
           dict={dict}
           homeHref={path("home", locale) ?? "/"}
+          contactHref={path("contact", locale) ?? "/lien-he"}
           locale={locale}
         />
         <main>

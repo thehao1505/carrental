@@ -252,7 +252,7 @@ export default async function Content({
   };
 
   return (
-    <main className="max-w-3xl mx-auto px-6 py-12 text-gray-800">
+    <div className="max-w-3xl mx-auto px-6 py-12 text-gray-800">
       {/* JSON-LD Article */}
       <script
         type="application/ld+json"
@@ -325,7 +325,7 @@ export default async function Content({
         </h3>
         <Link
           href="/lien-he"
-          className="inline-block bg-forest-500 text-lemon-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition hover:scale-105"
+          className="inline-block bg-forest-500 text-lemon-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition motion-safe:hover:scale-105"
         >
           Liên hệ ngay
         </Link>
@@ -374,6 +374,6 @@ export default async function Content({
           </div>
         </section>
       )}
-    </main>
+    </div>
   );
 }

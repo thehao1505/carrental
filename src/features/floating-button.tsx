@@ -15,12 +15,12 @@ export default function FloatingContactButtons({
   zaloNumber = "0941437070",
 }: FloatingContactButtonsProps) {
   return (
-    <div className="fixed bottom-6 md:bottom-24 right-5 flex flex-col items-end gap-3 z-50">
+    <div className="fixed bottom-24 right-5 flex flex-col items-end gap-3 z-50">
       {/* Phone Button */}
       <div className="group flex items-center gap-3">
         {/* Tooltip — desktop only; hidden on mobile to avoid overlapping body text */}
-        <div className="hidden md:block pointer-events-none opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-out">
-          <div className="bg-gray-900/90 text-white text-sm font-medium px-3 py-1.5 rounded-lg whitespace-nowrap shadow-lg">
+        <div className="hidden md:block pointer-events-none opacity-0 motion-safe:translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-out">
+          <div className="relative bg-gray-900/90 text-white text-sm font-medium px-3 py-1.5 rounded-lg whitespace-nowrap shadow-lg">
             {phoneNumber}
             <div className="absolute right-[-6px] top-1/2 -translate-y-1/2 border-4 border-transparent border-l-gray-900/90" />
           </div>
@@ -29,23 +29,24 @@ export default function FloatingContactButtons({
         <a
           href={`tel:${phoneNumber}`}
           aria-label={interpolate(dict.callAria, { phone: phoneNumber })}
-          className="relative flex items-center justify-center w-14 h-14 bg-green-500 text-white rounded-full shadow-lg shadow-green-500/40 hover:scale-110 hover:shadow-green-500/60 transition-all duration-200"
+          className="relative flex items-center justify-center w-14 h-14 bg-green-500 text-white rounded-full shadow-lg shadow-green-500/40 motion-safe:hover:scale-110 hover:shadow-green-500/60 transition-all duration-200"
         >
           <svg
+            aria-hidden="true"
             className="w-6 h-6 relative z-10"
             fill="currentColor"
             viewBox="0 0 24 24"
           >
             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
           </svg>
-          <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-50" />
+          <span className="absolute inset-0 rounded-full bg-green-400 motion-safe:animate-ping opacity-50" />
         </a>
       </div>
 
       {/* Zalo Button */}
       <div className="group flex items-center gap-3">
         {/* Tooltip — desktop only; hidden on mobile to avoid overlapping body text */}
-        <div className="hidden md:block pointer-events-none opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-out">
+        <div className="hidden md:block pointer-events-none opacity-0 motion-safe:translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-out">
           <div className="relative bg-gray-900/90 text-white text-sm font-medium px-3 py-1.5 rounded-lg whitespace-nowrap shadow-lg">
             {dict.zaloLabel}
             <div className="absolute right-[-6px] top-1/2 -translate-y-1/2 border-4 border-transparent border-l-gray-900/90" />
@@ -57,10 +58,11 @@ export default function FloatingContactButtons({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={interpolate(dict.zaloAria, { phone: zaloNumber })}
-          className="relative flex items-center justify-center w-14 h-14 bg-[#0068FF] text-white rounded-full shadow-lg shadow-blue-500/40 hover:scale-110 hover:shadow-blue-500/60 transition-all duration-200"
+          className="relative flex items-center justify-center w-14 h-14 bg-[#0068FF] text-white rounded-full shadow-lg shadow-blue-500/40 motion-safe:hover:scale-110 hover:shadow-blue-500/60 transition-all duration-200"
         >
           {/* Zalo "Z" icon */}
           <svg
+            aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
             y="0px"
@@ -93,7 +95,7 @@ export default function FloatingContactButtons({
               d="M21.25,18h-8v1.5h5.321L13,26h0.026c-0.163,0.211-0.276,0.463-0.276,0.75V27h7.5	c0.276,0,0.5-0.224,0.5-0.5v-1h-5.321L21,19h-0.026c0.163-0.211,0.276-0.463,0.276-0.75V18z"
             ></path>
           </svg>
-          <span className="absolute inset-0 rounded-full bg-blue-400 animate-ping opacity-40" />
+          <span className="absolute inset-0 rounded-full bg-blue-400 motion-safe:animate-ping opacity-40" />
         </a>
       </div>
     </div>

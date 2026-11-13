@@ -27,7 +27,7 @@ export default function GioiThieuCard({ dict, contactHref }: GioiThieuCardProps)
 
   return (
     <>
-      <main className="text-gray-800">
+      <div className="text-gray-800">
         {/* Hero section */}
         <section className="relative h-[400px] w-full">
           <Image
@@ -174,12 +174,12 @@ export default function GioiThieuCard({ dict, contactHref }: GioiThieuCardProps)
           <p className="mb-6 text-gray-600 text-lg">{cta.body}</p>
           <Link
             href={contactHref}
-            className="inline-block bg-forest-500 text-lemon-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition hover:scale-105"
+            className="inline-block bg-forest-500 text-lemon-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-forest-600 transition motion-safe:hover:scale-105"
           >
             {cta.button}
           </Link>
         </section>
-      </main>
+      </div>
     </>
   );
 }
